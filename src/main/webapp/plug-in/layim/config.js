@@ -1,7 +1,7 @@
 //layim聊天组件start
 //请将这个ip地址修改为本机ip地址
 //websocket 配置
-var chatIp = "192.168.0.110";
+var chatIp = "localhost";
 var id = "";
 jQuery.post("chat/imController.do?getUserid", {
 
@@ -12,9 +12,20 @@ if(!/^http(s*):\/\//.test(location.href)){
     alert('请部署到localhost上查看该演示');
 }
 
+if (window.WebSocket){
+    console.log("This browser supports WebSocket!");
+} else {
+    console.log("This browser does not support WebSocket.");
+}
+
+
 layui.use('layim', function(layim){
+    //连接测试
+    //     var socket = new WebSocket("ws://echo.websocket.org");
+
 //      //建立WebSocket通讯
     var socket = new WebSocket("ws://"+chatIp+":8080/jeecg/WebSocket/"+id);
+
 
     //基础配置
     layim.config({
@@ -71,7 +82,14 @@ layui.use('layim', function(layim){
 
     //连接成功时触发
     socket.onopen = function(){
-        //socket.send('XXX连接成功');
+        console.log("连接成功");
+        //这里只能发送指定格式的json字符串，否则会造成websocket后端解析异常
+        // socket.send('XXX连接成功');
+    };
+
+    //连接失败时触发
+    socket.onerror = function(e){
+        console.log(e);
     };
 
     //监听收到的消息

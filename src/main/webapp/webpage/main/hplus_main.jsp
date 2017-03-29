@@ -44,7 +44,7 @@
             <ul class="nav" id="side-menu">
                 <li class="nav-header">
                     <div class="dropdown profile-element">
-                        <span><img alt="image" class="img-circle" src="plug-in/login/images/jeecg-aceplus.png" /></span>
+                        <span><img alt="image" class="img-container" src="plug-in/login/images/qianlong.png" /></span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                 <span class="clear">
                                 <span class="block m-t-xs"><strong class="font-bold">${userName }</strong></span>
@@ -61,12 +61,12 @@
                             <li><a href="javascript:openwindow('<t:mutiLang langKey="common.ssms.getSysInfos"/>','tSSmsController.do?getSysInfos')"><t:mutiLang langKey="common.ssms.getSysInfos"/></a></li>
                             <li><a href="javascript:add('<t:mutiLang langKey="common.change.style"/>','userController.do?changestyle','',550,250)"><t:mutiLang langKey="common.my.style"/></a></li>
                             <li><a href="javascript:clearLocalstorage()"><t:mutiLang langKey="common.clear.localstorage"/></a></li>
-                            <li><a href="http://yun.jeecg.org" target="_blank">云应用中心</li>
+                            <li><a href="http://www.kito.cn" target="_blank">KITO官网</li>
                             <li class="divider"></li>
                             <li><a href="javascript:logout()">注销</a></li>
                         </ul>
                     </div>
-                    <div class="logo-element">JEECG
+                    <div class="logo-element">QLONG
                     </div>
                 </li>
 
@@ -83,7 +83,7 @@
                 <div class="navbar-header" style="height: 60px;"><a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
                     <form role="search" class="navbar-form-custom" method="post" action="search_results.html">
                         <div class="form-group">
-                            <input type="text" placeholder="欢迎使用Jeecg快速开发平台 …" class="form-control" name="top-search" id="top-search">
+                            <input type="text" placeholder="欢迎使用Jeecg …" class="form-control" name="top-search" id="top-search">
                         </div>
                     </form>
                 </div>
@@ -153,7 +153,7 @@
                             <li><a href="javascript:openwindow('<t:mutiLang langKey="common.ssms.getSysInfos"/>','tSSmsController.do?getSysInfos')"><t:mutiLang langKey="common.ssms.getSysInfos"/></a></li>
                             <li><a href="javascript:add('<t:mutiLang langKey="common.change.style"/>','userController.do?changestyle','',550,250)"><t:mutiLang langKey="common.my.style"/></a></li>
                             <li><a href="javascript:clearLocalstorage()"><t:mutiLang langKey="common.clear.localstorage"/></a></li>
-                            <li><a href="javascript:toJeecgYun()">云应用中心</a></li>
+                            <li><a href="javascript:toJeecgYun()">KITO官网</a></li>
                             <!-- <li><a href="http://yun.jeecg.org" target="_blank">云应用中心</li> -->
                            <!--  <li class="divider"></li>
                             <li><a href="javascript:logout()">注销</a></li> -->
@@ -502,7 +502,7 @@
         layer.msg("浏览器缓存清除成功!");
     }
     function toJeecgYun(){
-    	window.open("http://yun.jeecg.org","_blank");
+    	window.open("http://www.kito.cn","_blank");
     }
 
     $(document).ready(function(){

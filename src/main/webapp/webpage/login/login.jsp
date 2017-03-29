@@ -51,9 +51,9 @@
           <div class="center">
             <h1 id="id-text2" class="grey">
               <i class="ace-icon fa fa-leaf green"></i>
-               JEECG 演示系统
+               ql-iot 平台
             </h1>
-            <h4 class="blue" id="id-company-text">www.jeecg.org</h4>
+            <h4 class="blue" id="id-company-text">www.kito.cn</h4>
           </div>
           <div class="space-6"></div>
           <div class="position-relative">
@@ -114,7 +114,7 @@
                 </form>
               </div>
             </div>
-            <div class="center"><h4 class="blue" id="id-company-text">&copy; JEECG版权所有 v_3.6.6</h4></div>
+            <div class="center"><h4 class="blue" id="id-company-text">&copy; 乾龙信息科技有限公司【JEECG v_3.6.6】</h4></div>
             <div class="navbar-fixed-top align-right">
               <br />
               &nbsp;

@@ -1,0 +1,2 @@
+2017-03-29 14:42:13.944 [main] WARN  RMICacheManagerPeerListener - Explicitly setting the listener hostname to 'localhost' is not recommended. It will only work if all CacheManager peers are on the same machine.
+2017-03-29 14:42:15.733 [main] INFO  Version - Hibernate Validator 4.2.0.Final

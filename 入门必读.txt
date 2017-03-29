@@ -2,7 +2,23 @@
 必看贴（常见问题贴）：http://www.jeecg.org/forum.php?mod=viewthread&tid=1830&extra=page%3D1
 
 1. 标准开发环境：
-    eclipse + maven + jdk7 + tomcat6 + mysql
+    eclipse + maven + jdk7 + tomcat8 + mysql
+    zhaoyi-add：
+    如果使用tomcat7则存在websocket 404错误，但是如果使用tomcat8则没有这个问题，
+    可能tomcat7有些版本将编译包javax.websocket做如下依赖 ，在编译时使用，但是证实部署不提供，而是tomcat7自己带的websocket实现，这样避免冲突。
+    但是我自己使用tomcat7-maven-plugin插件开发是没有成功的
+    		<dependency>
+    			<groupId>javax.websocket</groupId>
+    			<artifactId>javax.websocket-api</artifactId>
+    			<version>1.1</version>
+    			<scope>provided</scope>
+    		</dependency>
+    使用tomcat8时注意依赖配置如下：
+        		<dependency>
+        			<groupId>javax.websocket</groupId>
+        			<artifactId>javax.websocket-api</artifactId>
+        			<version>1.1</version>
+        		</dependency>
 2. 必须手工执行SQL脚本 (自动初始化已作废)
     docs/db/jeecg3.6.6-mysql-20170208.sql
 	说明：目前官方只提供了mysql脚本,其他数据库可以自己通过工具转换

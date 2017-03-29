@@ -546,7 +546,15 @@ public class CgformTemplateController extends BaseController {
 	private String getUploadBasePath(HttpServletRequest request){
 
 //		String path=request.getSession().getServletContext().getRealPath("/WEB-INF/classes/online/template");
-		String path= this.getClass().getResource("/").getPath()+"online/template";
+		//获取的是java文件的路径
+		String path= this.getClass().getResource("").getPath();
+		if(path.contains("target")){
+			String replaceString=this.getClass().getPackage().getName().replace(".","/");
+			path=path.replace(replaceString+"/","")+"online/template";
+		}else{
+			path=this.getClass().getResource("/").getPath()+"online/template";
+		}
+//		String path= this.getClass().getResource("/").getPath()+"online/template";
 		return path;
 	}
 

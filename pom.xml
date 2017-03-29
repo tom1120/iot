@@ -17,7 +17,7 @@
 		<hibernate-jpa.version>1.0.1.Final</hibernate-jpa.version>
 
 		<!-- 工作流 -->
-		<activiti.version>5.11</activiti.version>
+		<activiti.version>5.22.0</activiti.version>
 		<mybatis.version>3.1.1</mybatis.version>
 
 		<!-- 辅助依赖包 -->
@@ -122,6 +122,9 @@
     </repositories>
 
 	<dependencies>
+
+
+
 		<!-- activation -->
 		<dependency>
 			<groupId>javax.activation</groupId>
@@ -291,8 +294,7 @@
 		</dependency>
 
 		<!--工作流依赖包 -->
-		<!--
-		<dependency>
+<!--		<dependency>
 			<groupId>org.activiti</groupId>
 			<artifactId>activiti-engine</artifactId>
 			<version>${activiti.version}</version>
@@ -301,8 +303,7 @@
 			<groupId>org.activiti</groupId>
 			<artifactId>activiti-spring</artifactId>
 			<version>${activiti.version}</version>
-		</dependency>
-		-->
+		</dependency>-->
 		<!-- mybatis -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
@@ -931,14 +932,45 @@
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
+
+		<!-- 插件：微信企业号-->
+		<dependency>
+			<groupId>org.p3framework</groupId>
+			<artifactId>jeecg-p3-biz-qywx</artifactId>
+			<version>1.0.0</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jeewx</groupId>
+			<artifactId>jeewx-qywx-api</artifactId>
+			<version>1.0-SNAPSHOT</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+
 		
 		 <!-- 在线聊天工具-->
 		<dependency>
 			<groupId>org.p3framework</groupId>
 			<artifactId>jeecg-p3-biz-chat</artifactId>
 			<version>1.0.0</version>
+			<type>jar</type>
+			<scope>compile</scope>
 		</dependency>
-		 
+
+		<dependency>
+			<groupId>javax.websocket</groupId>
+			<artifactId>javax.websocket-api</artifactId>
+			<version>1.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>4.2.4.RELEASE</version>
+		</dependency>
+
 	</dependencies>
 
 	<organization>
@@ -964,8 +996,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>  
                 <version>2.3.2</version>  
                 <configuration>  
-                    <source>1.6</source>  
-                    <target>1.6</target>  
+                    <source>1.8</source>
+                    <target>1.8</target>
                     <encoding>UTF-8</encoding>
                 </configuration>  
             </plugin>
@@ -1002,6 +1034,20 @@
 					</systemProperties>
 				</configuration>
 			</plugin>
+			<!--打包将资源打包-->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.1.1</version>
+				<configuration>
+					<webResources>
+						<resource>
+							<directory>src/main/resources</directory>
+						</resource>
+					</webResources>
+				</configuration>
+			</plugin>
+
 	    </plugins>
 		<finalName>jeecg</finalName>
 		<resources>

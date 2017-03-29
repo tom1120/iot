@@ -8,6 +8,7 @@
           <deploymentDescriptor name="weblogic.xml" url="file://$MODULE_DIR$/src/main/webapp/WEB-INF/weblogic.xml" />
         </descriptors>
         <webroots>
+          <root url="file://$MODULE_DIR$/src/main/resources" relative="/" />
           <root url="file://$MODULE_DIR$/src/main/webapp" relative="/" />
         </webroots>
         <sourceRoots>
@@ -17,7 +18,7 @@
       </configuration>
     </facet>
   </component>
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_6" inherit-compiler-output="false">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8" inherit-compiler-output="false">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">
@@ -26,7 +27,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Maven: javax.activation:activation:1.1.1" level="project" />
     <orderEntry type="library" name="Maven: aopalliance:aopalliance:1.0" level="project" />
@@ -131,7 +132,7 @@
     <orderEntry type="library" name="Maven: org.openoffice:unoil:3.2.1" level="project" />
     <orderEntry type="library" name="Maven: org.artofsolving:jodconverter:3.0-beta-4" level="project" />
     <orderEntry type="library" name="Maven: com.opensymphony:xwork-core:2.1.6" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.springframework:spring-test:4.0.9.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-test:4.2.4.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: ognl:ognl:2.7.3" level="project" />
     <orderEntry type="library" name="Maven: jboss:javassist:3.7.ga" level="project" />
     <orderEntry type="library" name="Maven: junit:junit:4.7" level="project" />
@@ -174,8 +175,13 @@
     <orderEntry type="library" name="Maven: org.jeecgframework:freemarker-null:2.3.19" level="project" />
     <orderEntry type="library" name="Maven: org.p3framework:jeecg-p3-biz-demo:1.0.2" level="project" />
     <orderEntry type="library" name="Maven: org.p3framework:jeecg-p3-biz-mail:1.0.0" level="project" />
+    <orderEntry type="library" name="Maven: org.p3framework:jeecg-p3-biz-qywx:1.0.0" level="project" />
+    <orderEntry type="library" name="Maven: org.jeewx:jeewx-qywx-api:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.baidu.bcs:baidu-sdk:1.4.5" level="project" />
+    <orderEntry type="library" name="Maven: com.qiniu:qiniu-java-sdk:6.1.7.1" level="project" />
     <orderEntry type="library" name="Maven: org.p3framework:jeecg-p3-biz-chat:1.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-websocket:4.0.6.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-messaging:4.0.6.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: javax.websocket:javax.websocket-api:1.1" level="project" />
   </component>
 </module>

@@ -108,6 +108,7 @@
           <element id="library" level="project" name="Maven: org.openoffice:unoil:3.2.1" />
           <element id="library" level="project" name="Maven: org.artofsolving:jodconverter:3.0-beta-4" />
           <element id="library" level="project" name="Maven: com.opensymphony:xwork-core:2.1.6" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-test:4.2.4.RELEASE" />
           <element id="library" level="project" name="Maven: ognl:ognl:2.7.3" />
           <element id="library" level="project" name="Maven: jboss:javassist:3.7.ga" />
           <element id="library" level="project" name="Maven: junit:junit:4.7" />
@@ -148,9 +149,14 @@
           <element id="library" level="project" name="Maven: org.jeecgframework:freemarker-null:2.3.19" />
           <element id="library" level="project" name="Maven: org.p3framework:jeecg-p3-biz-demo:1.0.2" />
           <element id="library" level="project" name="Maven: org.p3framework:jeecg-p3-biz-mail:1.0.0" />
+          <element id="library" level="project" name="Maven: org.p3framework:jeecg-p3-biz-qywx:1.0.0" />
+          <element id="library" level="project" name="Maven: org.jeewx:jeewx-qywx-api:1.0-SNAPSHOT" />
+          <element id="library" level="project" name="Maven: com.baidu.bcs:baidu-sdk:1.4.5" />
+          <element id="library" level="project" name="Maven: com.qiniu:qiniu-java-sdk:6.1.7.1" />
           <element id="library" level="project" name="Maven: org.p3framework:jeecg-p3-biz-chat:1.0.0" />
           <element id="library" level="project" name="Maven: org.springframework:spring-websocket:4.0.6.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-messaging:4.0.6.RELEASE" />
+          <element id="library" level="project" name="Maven: javax.websocket:javax.websocket-api:1.1" />
         </element>
       </element>
       <element id="directory" name="META-INF">
