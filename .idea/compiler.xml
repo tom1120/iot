@@ -26,6 +26,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="jeecg_activiti" target="1.6" />
       <module name="jeecgos" target="1.8" />
     </bytecodeTargetLevel>
   </component>

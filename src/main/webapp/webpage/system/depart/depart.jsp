@@ -46,6 +46,7 @@
 <t:formvalid formid="formobj" layout="div" dialog="true" action="systemController.do?saveDepart">
 	<input id="id" name="id" type="hidden" value="${depart.id }">
 	<fieldset class="step">
+
         <div class="form">
             <label class="Validform_label"> <t:mutiLang langKey="common.department.name"/>: </label>
             <input name="departname" class="inputxt" type="text" value="${depart.departname }"  datatype="s1-20">
