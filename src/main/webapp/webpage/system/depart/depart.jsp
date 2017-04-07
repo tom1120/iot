@@ -12,11 +12,26 @@
             width: 155,
             onSelect : function(node) {
 //                alert(node.text);
+//                console.log(node);
                 if(node.text!='请选择组织机构'){
                     changeOrgType();
                 }
 
+
+            },
+            onChange:function (value) {
+//                console.log(node);
+                if(!value) { // 为空时，不选表明为公司
+
+                    var orgTypeSelect = $("#orgType");
+                    var companyOrgType = '<option value="1" <c:if test="${orgType=='1'}">selected="selected"</c:if>><t:mutiLang langKey="common.company"/></option>';
+                    orgTypeSelect.empty();
+                    orgTypeSelect.append(companyOrgType);
+                } else { // 存在值时，表明为组织架构和岗位
+                    changeOrgType();
+                }
             }
+
         });
 //        console.log($('#cc').val()=='');
         if(!$('#cc').val()) { // 第一级，只显示公司选择项
@@ -35,7 +50,11 @@
             $('#cc').combotree('setValue', '${pid}');
         }
 
-//        console.log("123");
+
+
+/*        $('#orgType').bind('change',function () {
+            console.log("123");
+        })*/
 
 
 	});
@@ -49,6 +68,8 @@
             orgTypeSelect.append(bumen).append(gangwei);
         }
     }
+
+
 </script>
 </head>
 <body style="overflow-y: hidden" scroll="no">
