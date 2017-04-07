@@ -9,6 +9,11 @@
 	<t:dgCol title="common.department" sortable="false" field="userOrgList.tsDepart.departname" query="false"></t:dgCol>
 	<t:dgCol title="common.real.name" field="realName" query="false"></t:dgCol>
 	<t:dgCol title="common.role" field="userKey" ></t:dgCol>
+
+	<t:dgCol title="common.mobile" field="mobilePhone"></t:dgCol>
+	<t:dgCol title="common.tel" field="officePhone"></t:dgCol>
+	<t:dgCol title="common.common.mail" field="email"></t:dgCol>
+
 	<t:dgCol title="common.createby" field="createBy" hidden="true"></t:dgCol>
 	<t:dgCol title="common.createtime" field="createDate" formatter="yyyy-MM-dd" hidden="true"></t:dgCol>
 	<t:dgCol title="common.updateby" field="updateBy" hidden="true"></t:dgCol>
