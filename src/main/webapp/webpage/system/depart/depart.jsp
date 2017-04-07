@@ -12,10 +12,15 @@
             width: 155,
             onSelect : function(node) {
 //                alert(node.text);
-                changeOrgType();
+                if(node.text!='请选择组织机构'){
+                    changeOrgType();
+                }
+
             }
         });
+//        console.log($('#cc').val()=='');
         if(!$('#cc').val()) { // 第一级，只显示公司选择项
+
             var orgTypeSelect = $("#orgType");
             var companyOrgType = '<option value="1" <c:if test="${orgType=='1'}">selected="selected"</c:if>><t:mutiLang langKey="common.company"/></option>';
             orgTypeSelect.empty();
@@ -29,6 +34,10 @@
         if('${empty pid}' == 'false') { // 设置新增页面时的父级
             $('#cc').combotree('setValue', '${pid}');
         }
+
+//        console.log("123");
+
+
 	});
     function changeOrgType() { // 处理组织类型，不显示公司选择项
         var orgTypeSelect = $("#orgType");
