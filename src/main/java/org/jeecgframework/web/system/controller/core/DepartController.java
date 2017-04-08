@@ -149,6 +149,7 @@ public class DepartController extends BaseController {
 		AjaxJson j = new AjaxJson();
 		depart = systemService.getEntity(TSDepart.class, depart.getId());
         message = MutiLangUtil.paramDelSuccess("common.department");
+		//无子部门时
         if (depart.getTSDeparts().size() == 0) {
             Long userCount = systemService.getCountForJdbc("select count(1) from t_s_user_org where org_id='" + depart.getId() + "'");
             if(userCount == 0) { // 组织机构下没有用户时，该组织机构才允许删除。
@@ -156,7 +157,9 @@ public class DepartController extends BaseController {
                 systemService.delete(depart);
 
                 systemService.addLog(message, Globals.Log_Type_DEL, Globals.Log_Leavel_INFO);
-            }
+            }else{
+				message = MutiLangUtil.paramDelFail("common.department");
+			}
         } else {
             message = MutiLangUtil.paramDelFail("common.department");
         }
