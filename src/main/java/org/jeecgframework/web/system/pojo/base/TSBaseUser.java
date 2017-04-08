@@ -11,12 +11,16 @@ import java.util.List;
 /**
  * 系统用户父类表
  * @author  张代浩
+ * @modify zhaoyi
+ * 增加用户编码
  */
 @Entity
 @Table(name = "t_s_base_user")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class TSBaseUser extends IdEntity implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
+	@Excel(name = "用户编码")
+	private String userCode;//用户编码
 	@Excel(name = "用户名")
 	private String userName;// 用户名
 	@Excel(name = "真实姓名")
@@ -35,6 +39,14 @@ public class TSBaseUser extends IdEntity implements java.io.Serializable {
 
 	@Excel(name = "组织机构编码(多个组织机构编码用逗号分隔，非必填)")
 	private String departid;
+	@Column(name="user_code",length = 20)
+	public String getUserCode() {
+		return userCode;
+	}
+
+	public void setUserCode(String userCode) {
+		this.userCode = userCode;
+	}
 
 	public void setDepartid(String departid){
 		this.departid = departid;

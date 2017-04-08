@@ -70,6 +70,17 @@
 <t:formvalid formid="formobj" dialog="true" usePlugin="password" layout="table" action="userController.do?saveUser" beforeSubmit="setOrgIds">
 	<input id="id" name="id" type="hidden" value="${user.id }">
 	<table style="width: 600px;" cellpadding="0" cellspacing="1" class="formtable">
+		<%--添加用户编码并必填--%>
+		<tr>
+			<td align="right" width="25%" nowrap>
+				<label class="Validform_label"><t:mutiLang langKey="common.usercode"/>:  </label>
+			</td>
+			<td class="value" width="85%">
+				<%--validType 验证顺序，当前表，当前字段，当前id--%>
+				<input id="userCode" class="inputxt" name="userCode" validType="t_s_base_user,user_code,id" value="${user.userCode }" datatype="s2-20" />
+				<span class="Validform_checktip"> <t:mutiLang langKey="username.rang2to10"/></span>
+			</td>
+		</tr>
 		<tr>
 			<td align="right" width="25%" nowrap>
                 <label class="Validform_label">  <t:mutiLang langKey="common.username"/>:  </label>

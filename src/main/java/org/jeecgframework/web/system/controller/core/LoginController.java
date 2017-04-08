@@ -299,7 +299,9 @@ public class LoginController extends BaseController{
 		HttpSession session = ContextHolderUtils.getSession();
 		Client client = ClientManager.getInstance().getClient(session.getId());
 		if (client.getFunctionMap() == null || client.getFunctionMap().size() == 0) {
+			//菜单级别，菜单集合
 			Map<Integer, List<TSFunction>> functionMap = new HashMap<Integer, List<TSFunction>>();
+			//菜单id，菜单
 			Map<String, TSFunction> loginActionlist = getUserFunction(user);
 			if (loginActionlist.size() > 0) {
 				Collection<TSFunction> allFunctions = loginActionlist.values();

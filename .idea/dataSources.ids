@@ -3841,1411 +3841,1414 @@ auto_form_id</columns>
         <comment>删除状态</comment>
         <data-type>smallint(6)</data-type>
       </column>
-      <index id="1065" parent="67" name="FK_15jh1g4iem1857546ggor42et">
+      <column id="1065" parent="67" name="user_code">
+        <data-type>varchar(20)</data-type>
+      </column>
+      <index id="1066" parent="67" name="FK_15jh1g4iem1857546ggor42et">
         <columns>departid</columns>
         <desc-columns></desc-columns>
       </index>
-      <index id="1066" parent="67" name="idx_deleteflg">
+      <index id="1067" parent="67" name="idx_deleteflg">
         <columns>delete_flag</columns>
         <desc-columns></desc-columns>
       </index>
-      <index id="1067" parent="67" name="index_login">
+      <index id="1068" parent="67" name="index_login">
         <columns>password
 username</columns>
         <desc-columns></desc-columns>
       </index>
-      <key id="1068" parent="67" name="PRIMARY">
+      <key id="1069" parent="67" name="PRIMARY">
         <columns>ID</columns>
         <primary>1</primary>
       </key>
-      <foreign-key id="1069" parent="67" name="t_s_base_user_ibfk_1">
+      <foreign-key id="1070" parent="67" name="t_s_base_user_ibfk_1">
         <columns>departid</columns>
         <ref-key>~.t_s_depart.PRIMARY</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <column id="1070" parent="68" name="id">
+      <column id="1071" parent="68" name="id">
         <mandatory>1</mandatory>
         <data-type>varchar(36)</data-type>
       </column>
-      <column id="1071" parent="68" name="icon_id">
+      <column id="1072" parent="68" name="icon_id">
         <comment>图标地址</comment>
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1072" parent="68" name="code">
+      <column id="1073" parent="68" name="code">
         <comment>类型编码</comment>
         <mandatory>1</mandatory>
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1073" parent="68" name="name">
+      <column id="1074" parent="68" name="name">
         <comment>类型名称</comment>
         <mandatory>1</mandatory>
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1074" parent="68" name="create_name">
+      <column id="1075" parent="68" name="create_name">
         <comment>创建人名称</comment>
         <mandatory>1</mandatory>
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="1075" parent="68" name="create_by">
+      <column id="1076" parent="68" name="create_by">
         <comment>创建人登录名称</comment>
         <mandatory>1</mandatory>
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="1076" parent="68" name="create_date">
+      <column id="1077" parent="68" name="create_date">
         <comment>创建日期</comment>
         <mandatory>1</mandatory>
         <data-type>datetime</data-type>
       </column>
-      <column id="1077" parent="68" name="update_name">
+      <column id="1078" parent="68" name="update_name">
         <comment>更新人名称</comment>
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="1078" parent="68" name="update_by">
+      <column id="1079" parent="68" name="update_by">
         <comment>更新人登录名称</comment>
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="1079" parent="68" name="update_date">
+      <column id="1080" parent="68" name="update_date">
         <comment>更新日期</comment>
         <data-type>datetime</data-type>
       </column>
-      <column id="1080" parent="68" name="parent_id">
+      <column id="1081" parent="68" name="parent_id">
         <comment>上级ID</comment>
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1081" parent="68" name="sys_org_code">
+      <column id="1082" parent="68" name="sys_org_code">
         <comment>机构</comment>
         <mandatory>1</mandatory>
         <data-type>varchar(10)</data-type>
       </column>
-      <column id="1082" parent="68" name="sys_company_code">
+      <column id="1083" parent="68" name="sys_company_code">
         <comment>公司</comment>
         <mandatory>1</mandatory>
         <data-type>varchar(10)</data-type>
       </column>
-      <column id="1083" parent="68" name="PARENT_CODE">
+      <column id="1084" parent="68" name="PARENT_CODE">
         <data-type>varchar(32)</data-type>
       </column>
-      <index id="1084" parent="68" name="uniq_code">
+      <index id="1085" parent="68" name="uniq_code">
         <columns>code</columns>
         <desc-columns></desc-columns>
         <unique>1</unique>
       </index>
-      <key id="1085" parent="68" name="PRIMARY">
+      <key id="1086" parent="68" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <key id="1086" parent="68" name="uniq_code">
+      <key id="1087" parent="68" name="uniq_code">
         <columns>code</columns>
         <underlying-index>uniq_code</underlying-index>
       </key>
-      <column id="1087" parent="69" name="ID">
+      <column id="1088" parent="69" name="ID">
         <mandatory>1</mandatory>
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1088" parent="69" name="code">
+      <column id="1089" parent="69" name="code">
         <data-type>varchar(100)</data-type>
       </column>
-      <column id="1089" parent="69" name="content">
+      <column id="1090" parent="69" name="content">
         <data-type>longtext</data-type>
       </column>
-      <column id="1090" parent="69" name="name">
+      <column id="1091" parent="69" name="name">
         <mandatory>1</mandatory>
         <data-type>varchar(100)</data-type>
       </column>
-      <column id="1091" parent="69" name="note">
+      <column id="1092" parent="69" name="note">
         <data-type>longtext</data-type>
       </column>
-      <column id="1092" parent="69" name="userid">
+      <column id="1093" parent="69" name="userid">
         <data-type>varchar(32)</data-type>
       </column>
-      <index id="1093" parent="69" name="FK_m3q8r50ror4fl7fjkvd82tqgn">
+      <index id="1094" parent="69" name="FK_m3q8r50ror4fl7fjkvd82tqgn">
         <columns>userid</columns>
         <desc-columns></desc-columns>
       </index>
-      <key id="1094" parent="69" name="PRIMARY">
+      <key id="1095" parent="69" name="PRIMARY">
         <columns>ID</columns>
         <primary>1</primary>
       </key>
-      <foreign-key id="1095" parent="69" name="t_s_config_ibfk_1">
+      <foreign-key id="1096" parent="69" name="t_s_config_ibfk_1">
         <columns>userid</columns>
         <ref-key>~.t_s_user.PRIMARY</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <column id="1096" parent="70" name="id">
+      <column id="1097" parent="70" name="id">
         <mandatory>1</mandatory>
         <data-type>varchar(36)</data-type>
       </column>
-      <column id="1097" parent="70" name="create_name">
+      <column id="1098" parent="70" name="create_name">
         <comment>创建人名称</comment>
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="1098" parent="70" name="create_by">
+      <column id="1099" parent="70" name="create_by">
         <comment>创建人登录名称</comment>
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="1099" parent="70" name="create_date">
+      <column id="1100" parent="70" name="create_date">
         <comment>创建日期</comment>
         <data-type>datetime</data-type>
       </column>
-      <column id="1100" parent="70" name="update_name">
+      <column id="1101" parent="70" name="update_name">
         <comment>更新人名称</comment>
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="1101" parent="70" name="update_by">
+      <column id="1102" parent="70" name="update_by">
         <comment>更新人登录名称</comment>
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="1102" parent="70" name="update_date">
+      <column id="1103" parent="70" name="update_date">
         <comment>更新日期</comment>
         <data-type>datetime</data-type>
       </column>
-      <column id="1103" parent="70" name="sys_org_code">
+      <column id="1104" parent="70" name="sys_org_code">
         <comment>所属部门</comment>
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="1104" parent="70" name="sys_company_code">
+      <column id="1105" parent="70" name="sys_company_code">
         <comment>所属公司</comment>
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="1105" parent="70" name="table_name">
+      <column id="1106" parent="70" name="table_name">
         <comment>表名</comment>
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1106" parent="70" name="data_id">
+      <column id="1107" parent="70" name="data_id">
         <comment>数据ID</comment>
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1107" parent="70" name="data_content">
+      <column id="1108" parent="70" name="data_content">
         <comment>数据内容</comment>
         <data-type>text</data-type>
       </column>
-      <column id="1108" parent="70" name="version_number">
+      <column id="1109" parent="70" name="version_number">
         <comment>版本号</comment>
         <data-type>int(11)</data-type>
       </column>
-      <index id="1109" parent="70" name="sindex">
+      <index id="1110" parent="70" name="sindex">
         <columns>table_name
 data_id</columns>
         <desc-columns></desc-columns>
       </index>
-      <key id="1110" parent="70" name="PRIMARY">
+      <key id="1111" parent="70" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="1111" parent="71" name="id">
+      <column id="1112" parent="71" name="id">
         <data-type>varchar(96)</data-type>
       </column>
-      <column id="1112" parent="71" name="rule_name">
+      <column id="1113" parent="71" name="rule_name">
         <data-type>varchar(96)</data-type>
       </column>
-      <column id="1113" parent="71" name="rule_column">
+      <column id="1114" parent="71" name="rule_column">
         <data-type>varchar(300)</data-type>
       </column>
-      <column id="1114" parent="71" name="rule_conditions">
+      <column id="1115" parent="71" name="rule_conditions">
         <data-type>varchar(300)</data-type>
       </column>
-      <column id="1115" parent="71" name="rule_value">
+      <column id="1116" parent="71" name="rule_value">
         <data-type>varchar(300)</data-type>
       </column>
-      <column id="1116" parent="71" name="create_date">
+      <column id="1117" parent="71" name="create_date">
         <data-type>datetime</data-type>
       </column>
-      <column id="1117" parent="71" name="create_by">
+      <column id="1118" parent="71" name="create_by">
         <data-type>varchar(96)</data-type>
       </column>
-      <column id="1118" parent="71" name="create_name">
+      <column id="1119" parent="71" name="create_name">
         <data-type>varchar(96)</data-type>
       </column>
-      <column id="1119" parent="71" name="update_date">
+      <column id="1120" parent="71" name="update_date">
         <data-type>datetime</data-type>
       </column>
-      <column id="1120" parent="71" name="update_by">
+      <column id="1121" parent="71" name="update_by">
         <data-type>varchar(96)</data-type>
       </column>
-      <column id="1121" parent="71" name="update_name">
+      <column id="1122" parent="71" name="update_name">
         <data-type>varchar(96)</data-type>
       </column>
-      <column id="1122" parent="71" name="functionId">
+      <column id="1123" parent="71" name="functionId">
         <data-type>varchar(96)</data-type>
       </column>
-      <column id="1123" parent="72" name="id">
+      <column id="1124" parent="72" name="id">
         <mandatory>1</mandatory>
         <data-type>varchar(36)</data-type>
       </column>
-      <column id="1124" parent="72" name="db_key">
+      <column id="1125" parent="72" name="db_key">
         <mandatory>1</mandatory>
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="1125" parent="72" name="description">
+      <column id="1126" parent="72" name="description">
         <mandatory>1</mandatory>
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="1126" parent="72" name="driver_class">
+      <column id="1127" parent="72" name="driver_class">
         <mandatory>1</mandatory>
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="1127" parent="72" name="url">
+      <column id="1128" parent="72" name="url">
         <mandatory>1</mandatory>
         <data-type>varchar(200)</data-type>
       </column>
-      <column id="1128" parent="72" name="db_user">
+      <column id="1129" parent="72" name="db_user">
         <mandatory>1</mandatory>
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="1129" parent="72" name="db_password">
+      <column id="1130" parent="72" name="db_password">
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="1130" parent="72" name="db_type">
+      <column id="1131" parent="72" name="db_type">
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="1131" parent="72" name="db_name">
+      <column id="1132" parent="72" name="db_name">
         <data-type>varchar(50)</data-type>
       </column>
-      <key id="1132" parent="72" name="PRIMARY">
+      <key id="1133" parent="72" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="1133" parent="73" name="ID">
+      <column id="1134" parent="73" name="ID">
         <mandatory>1</mandatory>
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1134" parent="73" name="democode">
+      <column id="1135" parent="73" name="democode">
         <data-type>longtext</data-type>
       </column>
-      <column id="1135" parent="73" name="demoorder">
+      <column id="1136" parent="73" name="demoorder">
         <data-type>smallint(6)</data-type>
       </column>
-      <column id="1136" parent="73" name="demotitle">
+      <column id="1137" parent="73" name="demotitle">
         <data-type>varchar(200)</data-type>
       </column>
-      <column id="1137" parent="73" name="demourl">
+      <column id="1138" parent="73" name="demourl">
         <data-type>varchar(200)</data-type>
       </column>
-      <column id="1138" parent="73" name="demopid">
+      <column id="1139" parent="73" name="demopid">
         <data-type>varchar(32)</data-type>
       </column>
-      <index id="1139" parent="73" name="FK_fni8e3v88wcf2sahhlv57u4nm">
+      <index id="1140" parent="73" name="FK_fni8e3v88wcf2sahhlv57u4nm">
         <columns>demopid</columns>
         <desc-columns></desc-columns>
       </index>
-      <key id="1140" parent="73" name="PRIMARY">
+      <key id="1141" parent="73" name="PRIMARY">
         <columns>ID</columns>
         <primary>1</primary>
       </key>
-      <foreign-key id="1141" parent="73" name="t_s_demo_ibfk_1">
+      <foreign-key id="1142" parent="73" name="t_s_demo_ibfk_1">
         <columns>demopid</columns>
         <ref-key>PRIMARY</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <column id="1142" parent="74" name="ID">
+      <column id="1143" parent="74" name="ID">
         <mandatory>1</mandatory>
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1143" parent="74" name="departname">
+      <column id="1144" parent="74" name="departname">
         <mandatory>1</mandatory>
         <data-type>varchar(100)</data-type>
       </column>
-      <column id="1144" parent="74" name="description">
+      <column id="1145" parent="74" name="description">
         <data-type>longtext</data-type>
       </column>
-      <column id="1145" parent="74" name="parentdepartid">
+      <column id="1146" parent="74" name="parentdepartid">
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1146" parent="74" name="org_code">
+      <column id="1147" parent="74" name="org_code">
         <data-type>varchar(64)</data-type>
       </column>
-      <column id="1147" parent="74" name="org_type">
+      <column id="1148" parent="74" name="org_type">
         <data-type>varchar(1)</data-type>
       </column>
-      <column id="1148" parent="74" name="mobile">
+      <column id="1149" parent="74" name="mobile">
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1149" parent="74" name="fax">
+      <column id="1150" parent="74" name="fax">
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1150" parent="74" name="address">
+      <column id="1151" parent="74" name="address">
         <data-type>varchar(100)</data-type>
       </column>
-      <column id="1151" parent="74" name="depart_order">
+      <column id="1152" parent="74" name="depart_order">
         <comment>排序</comment>
         <data-type>varchar(5)</data-type>
         <default-expression>&apos;0&apos;</default-expression>
       </column>
-      <index id="1152" parent="74" name="FK_knnm3wb0bembwvm0il7tf6686">
+      <index id="1153" parent="74" name="FK_knnm3wb0bembwvm0il7tf6686">
         <columns>parentdepartid</columns>
         <desc-columns></desc-columns>
       </index>
-      <key id="1153" parent="74" name="PRIMARY">
+      <key id="1154" parent="74" name="PRIMARY">
         <columns>ID</columns>
         <primary>1</primary>
       </key>
-      <column id="1154" parent="75" name="documentstate">
+      <column id="1155" parent="75" name="documentstate">
         <data-type>smallint(6)</data-type>
       </column>
-      <column id="1155" parent="75" name="documenttitle">
+      <column id="1156" parent="75" name="documenttitle">
         <data-type>varchar(100)</data-type>
       </column>
-      <column id="1156" parent="75" name="pictureindex">
+      <column id="1157" parent="75" name="pictureindex">
         <data-type>blob</data-type>
       </column>
-      <column id="1157" parent="75" name="showhome">
+      <column id="1158" parent="75" name="showhome">
         <data-type>smallint(6)</data-type>
       </column>
-      <column id="1158" parent="75" name="id">
+      <column id="1159" parent="75" name="id">
         <mandatory>1</mandatory>
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1159" parent="75" name="typeid">
+      <column id="1160" parent="75" name="typeid">
         <data-type>varchar(32)</data-type>
       </column>
-      <index id="1160" parent="75" name="FK_f2mc12eu0umghp2i70apmtxjl">
+      <index id="1161" parent="75" name="FK_f2mc12eu0umghp2i70apmtxjl">
         <columns>id</columns>
         <desc-columns></desc-columns>
       </index>
-      <index id="1161" parent="75" name="FK_qr3qlmgkflj35m5ci1xv0vvg3">
+      <index id="1162" parent="75" name="FK_qr3qlmgkflj35m5ci1xv0vvg3">
         <columns>typeid</columns>
         <desc-columns></desc-columns>
       </index>
-      <key id="1162" parent="75" name="PRIMARY">
+      <key id="1163" parent="75" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="1163" parent="76" name="ID">
+      <column id="1164" parent="76" name="ID">
         <mandatory>1</mandatory>
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1164" parent="76" name="filenobefore">
+      <column id="1165" parent="76" name="filenobefore">
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1165" parent="76" name="filenonum">
+      <column id="1166" parent="76" name="filenonum">
         <data-type>int(11)</data-type>
       </column>
-      <column id="1166" parent="76" name="filenotype">
+      <column id="1167" parent="76" name="filenotype">
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1167" parent="76" name="filenoYear">
+      <column id="1168" parent="76" name="filenoYear">
         <data-type>date</data-type>
       </column>
-      <key id="1168" parent="76" name="PRIMARY">
+      <key id="1169" parent="76" name="PRIMARY">
         <columns>ID</columns>
         <primary>1</primary>
       </key>
-      <column id="1169" parent="77" name="ID">
+      <column id="1170" parent="77" name="ID">
         <mandatory>1</mandatory>
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1170" parent="77" name="functioniframe">
+      <column id="1171" parent="77" name="functioniframe">
         <data-type>smallint(6)</data-type>
       </column>
-      <column id="1171" parent="77" name="functionlevel">
+      <column id="1172" parent="77" name="functionlevel">
         <data-type>smallint(6)</data-type>
       </column>
-      <column id="1172" parent="77" name="functionname">
+      <column id="1173" parent="77" name="functionname">
         <mandatory>1</mandatory>
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="1173" parent="77" name="functionorder">
+      <column id="1174" parent="77" name="functionorder">
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="1174" parent="77" name="functionurl">
+      <column id="1175" parent="77" name="functionurl">
         <data-type>varchar(100)</data-type>
       </column>
-      <column id="1175" parent="77" name="parentfunctionid">
+      <column id="1176" parent="77" name="parentfunctionid">
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1176" parent="77" name="iconid">
+      <column id="1177" parent="77" name="iconid">
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1177" parent="77" name="desk_iconid">
+      <column id="1178" parent="77" name="desk_iconid">
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1178" parent="77" name="functiontype">
+      <column id="1179" parent="77" name="functiontype">
         <data-type>smallint(6)</data-type>
       </column>
-      <column id="1179" parent="77" name="function_icon_style">
+      <column id="1180" parent="77" name="function_icon_style">
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="1180" parent="77" name="create_by">
+      <column id="1181" parent="77" name="create_by">
         <comment>创建人id</comment>
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1181" parent="77" name="create_name">
+      <column id="1182" parent="77" name="create_name">
         <comment>创建人</comment>
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1182" parent="77" name="update_by">
+      <column id="1183" parent="77" name="update_by">
         <comment>修改人id</comment>
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1183" parent="77" name="update_date">
+      <column id="1184" parent="77" name="update_date">
         <comment>修改时间</comment>
         <data-type>datetime</data-type>
       </column>
-      <column id="1184" parent="77" name="create_date">
+      <column id="1185" parent="77" name="create_date">
         <comment>创建时间</comment>
         <data-type>datetime</data-type>
       </column>
-      <column id="1185" parent="77" name="update_name">
+      <column id="1186" parent="77" name="update_name">
         <comment>修改人</comment>
         <data-type>varchar(32)</data-type>
       </column>
-      <index id="1186" parent="77" name="FK_brd7b3keorj8pmxcv8bpahnxp">
+      <index id="1187" parent="77" name="FK_brd7b3keorj8pmxcv8bpahnxp">
         <columns>parentfunctionid</columns>
         <desc-columns></desc-columns>
       </index>
-      <index id="1187" parent="77" name="FK_gbdacaoju6d5u53rp4jo4rbs9">
+      <index id="1188" parent="77" name="FK_gbdacaoju6d5u53rp4jo4rbs9">
         <columns>desk_iconid</columns>
         <desc-columns></desc-columns>
       </index>
-      <index id="1188" parent="77" name="FK_q5tqo3v4ltsp1pehdxd59rccx">
+      <index id="1189" parent="77" name="FK_q5tqo3v4ltsp1pehdxd59rccx">
         <columns>iconid</columns>
         <desc-columns></desc-columns>
       </index>
-      <key id="1189" parent="77" name="PRIMARY">
+      <key id="1190" parent="77" name="PRIMARY">
         <columns>ID</columns>
         <primary>1</primary>
       </key>
-      <foreign-key id="1190" parent="77" name="t_s_function_ibfk_1">
+      <foreign-key id="1191" parent="77" name="t_s_function_ibfk_1">
         <columns>parentfunctionid</columns>
         <ref-key>PRIMARY</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <foreign-key id="1191" parent="77" name="t_s_function_ibfk_2">
+      <foreign-key id="1192" parent="77" name="t_s_function_ibfk_2">
         <columns>desk_iconid</columns>
         <ref-key>~.t_s_icon.PRIMARY</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <foreign-key id="1192" parent="77" name="t_s_function_ibfk_3">
+      <foreign-key id="1193" parent="77" name="t_s_function_ibfk_3">
         <columns>iconid</columns>
         <ref-key>~.t_s_icon.PRIMARY</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <column id="1193" parent="78" name="ID">
+      <column id="1194" parent="78" name="ID">
         <mandatory>1</mandatory>
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1194" parent="78" name="extend">
+      <column id="1195" parent="78" name="extend">
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="1195" parent="78" name="iconclas">
+      <column id="1196" parent="78" name="iconclas">
         <data-type>varchar(200)</data-type>
       </column>
-      <column id="1196" parent="78" name="content">
+      <column id="1197" parent="78" name="content">
         <data-type>blob</data-type>
       </column>
-      <column id="1197" parent="78" name="name">
+      <column id="1198" parent="78" name="name">
         <mandatory>1</mandatory>
         <data-type>varchar(100)</data-type>
       </column>
-      <column id="1198" parent="78" name="path">
+      <column id="1199" parent="78" name="path">
         <data-type>longtext</data-type>
       </column>
-      <column id="1199" parent="78" name="type">
+      <column id="1200" parent="78" name="type">
         <data-type>smallint(6)</data-type>
       </column>
-      <key id="1200" parent="78" name="PRIMARY">
+      <key id="1201" parent="78" name="PRIMARY">
         <columns>ID</columns>
         <primary>1</primary>
       </key>
-      <column id="1201" parent="79" name="ID">
+      <column id="1202" parent="79" name="ID">
         <mandatory>1</mandatory>
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1202" parent="79" name="broswer">
+      <column id="1203" parent="79" name="broswer">
         <data-type>varchar(100)</data-type>
       </column>
-      <column id="1203" parent="79" name="logcontent">
+      <column id="1204" parent="79" name="logcontent">
         <mandatory>1</mandatory>
         <data-type>longtext</data-type>
       </column>
-      <column id="1204" parent="79" name="loglevel">
+      <column id="1205" parent="79" name="loglevel">
         <data-type>smallint(6)</data-type>
       </column>
-      <column id="1205" parent="79" name="note">
+      <column id="1206" parent="79" name="note">
         <data-type>longtext</data-type>
       </column>
-      <column id="1206" parent="79" name="operatetime">
+      <column id="1207" parent="79" name="operatetime">
         <mandatory>1</mandatory>
         <data-type>datetime</data-type>
       </column>
-      <column id="1207" parent="79" name="operatetype">
+      <column id="1208" parent="79" name="operatetype">
         <data-type>smallint(6)</data-type>
       </column>
-      <column id="1208" parent="79" name="userid">
+      <column id="1209" parent="79" name="userid">
         <data-type>varchar(32)</data-type>
       </column>
-      <index id="1209" parent="79" name="FK_oe64k4852uylhyc5a00rfwtay">
+      <index id="1210" parent="79" name="FK_oe64k4852uylhyc5a00rfwtay">
         <columns>userid</columns>
         <desc-columns></desc-columns>
       </index>
-      <key id="1210" parent="79" name="PRIMARY">
+      <key id="1211" parent="79" name="PRIMARY">
         <columns>ID</columns>
         <primary>1</primary>
       </key>
-      <column id="1211" parent="80" name="id">
+      <column id="1212" parent="80" name="id">
         <comment>主键</comment>
         <mandatory>1</mandatory>
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1212" parent="80" name="lang_key">
+      <column id="1213" parent="80" name="lang_key">
         <comment>语言主键</comment>
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="1213" parent="80" name="lang_context">
+      <column id="1214" parent="80" name="lang_context">
         <comment>内容</comment>
         <data-type>varchar(500)</data-type>
       </column>
-      <column id="1214" parent="80" name="lang_code">
+      <column id="1215" parent="80" name="lang_code">
         <comment>语言</comment>
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="1215" parent="80" name="create_date">
+      <column id="1216" parent="80" name="create_date">
         <comment>创建时间</comment>
         <data-type>datetime</data-type>
       </column>
-      <column id="1216" parent="80" name="create_by">
+      <column id="1217" parent="80" name="create_by">
         <comment>创建人编号</comment>
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="1217" parent="80" name="create_name">
+      <column id="1218" parent="80" name="create_name">
         <comment>创建人姓名</comment>
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="1218" parent="80" name="update_date">
+      <column id="1219" parent="80" name="update_date">
         <comment>更新日期</comment>
         <data-type>datetime</data-type>
       </column>
-      <column id="1219" parent="80" name="update_by">
+      <column id="1220" parent="80" name="update_by">
         <comment>更新人编号</comment>
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="1220" parent="80" name="update_name">
+      <column id="1221" parent="80" name="update_name">
         <comment>更新人姓名</comment>
         <data-type>varchar(50)</data-type>
       </column>
-      <index id="1221" parent="80" name="uniq_langkey_langcode">
+      <index id="1222" parent="80" name="uniq_langkey_langcode">
         <columns>lang_key
 lang_code</columns>
         <desc-columns></desc-columns>
         <unique>1</unique>
       </index>
-      <key id="1222" parent="80" name="PRIMARY">
+      <key id="1223" parent="80" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <key id="1223" parent="80" name="uniq_langkey_langcode">
+      <key id="1224" parent="80" name="uniq_langkey_langcode">
         <columns>lang_key
 lang_code</columns>
         <underlying-index>uniq_langkey_langcode</underlying-index>
       </key>
-      <column id="1224" parent="81" name="id">
+      <column id="1225" parent="81" name="id">
         <comment>ID</comment>
         <mandatory>1</mandatory>
         <data-type>varchar(36)</data-type>
         <default-expression>&apos;&apos;</default-expression>
       </column>
-      <column id="1225" parent="81" name="notice_title">
+      <column id="1226" parent="81" name="notice_title">
         <comment>通知标题</comment>
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="1226" parent="81" name="notice_content">
+      <column id="1227" parent="81" name="notice_content">
         <comment>通知公告内容</comment>
         <data-type>longtext</data-type>
       </column>
-      <column id="1227" parent="81" name="notice_type">
+      <column id="1228" parent="81" name="notice_type">
         <comment>通知公告类型（1：通知，2:公告）</comment>
         <data-type>varchar(2)</data-type>
       </column>
-      <column id="1228" parent="81" name="notice_level">
+      <column id="1229" parent="81" name="notice_level">
         <comment>通告授权级别（1:全员，2：角色，3：用户）</comment>
         <data-type>varchar(2)</data-type>
       </column>
-      <column id="1229" parent="81" name="notice_term">
+      <column id="1230" parent="81" name="notice_term">
         <comment>阅读期限</comment>
         <data-type>datetime</data-type>
       </column>
-      <column id="1230" parent="81" name="create_user">
+      <column id="1231" parent="81" name="create_user">
         <comment>创建者</comment>
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1231" parent="81" name="create_time">
+      <column id="1232" parent="81" name="create_time">
         <comment>创建时间</comment>
         <data-type>datetime</data-type>
       </column>
-      <key id="1232" parent="81" name="PRIMARY">
+      <key id="1233" parent="81" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="1233" parent="82" name="id">
+      <column id="1234" parent="82" name="id">
         <comment>ID</comment>
         <mandatory>1</mandatory>
         <data-type>varchar(36)</data-type>
         <default-expression>&apos;&apos;</default-expression>
       </column>
-      <column id="1234" parent="82" name="notice_id">
+      <column id="1235" parent="82" name="notice_id">
         <comment>通告ID</comment>
         <data-type>varchar(36)</data-type>
       </column>
-      <column id="1235" parent="82" name="role_id">
+      <column id="1236" parent="82" name="role_id">
         <comment>授权角色ID</comment>
         <data-type>varchar(32)</data-type>
       </column>
-      <key id="1236" parent="82" name="PRIMARY">
+      <key id="1237" parent="82" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="1237" parent="83" name="id">
+      <column id="1238" parent="83" name="id">
         <comment>ID</comment>
         <mandatory>1</mandatory>
         <data-type>varchar(36)</data-type>
         <default-expression>&apos;&apos;</default-expression>
       </column>
-      <column id="1238" parent="83" name="notice_id">
+      <column id="1239" parent="83" name="notice_id">
         <comment>通告ID</comment>
         <data-type>varchar(36)</data-type>
       </column>
-      <column id="1239" parent="83" name="user_id">
+      <column id="1240" parent="83" name="user_id">
         <comment>授权用户ID</comment>
         <data-type>varchar(32)</data-type>
       </column>
-      <key id="1240" parent="83" name="PRIMARY">
+      <key id="1241" parent="83" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="1241" parent="84" name="id">
+      <column id="1242" parent="84" name="id">
         <comment>ID</comment>
         <mandatory>1</mandatory>
         <data-type>varchar(36)</data-type>
         <default-expression>&apos;&apos;</default-expression>
       </column>
-      <column id="1242" parent="84" name="notice_id">
+      <column id="1243" parent="84" name="notice_id">
         <comment>通告ID</comment>
         <data-type>varchar(36)</data-type>
       </column>
-      <column id="1243" parent="84" name="user_id">
+      <column id="1244" parent="84" name="user_id">
         <comment>用户ID</comment>
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1244" parent="84" name="create_time">
+      <column id="1245" parent="84" name="create_time">
         <comment>创建时间</comment>
         <data-type>datetime</data-type>
       </column>
-      <key id="1245" parent="84" name="PRIMARY">
+      <key id="1246" parent="84" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="1246" parent="85" name="ID">
+      <column id="1247" parent="85" name="ID">
         <mandatory>1</mandatory>
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1247" parent="85" name="operationcode">
+      <column id="1248" parent="85" name="operationcode">
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="1248" parent="85" name="operationicon">
+      <column id="1249" parent="85" name="operationicon">
         <data-type>varchar(100)</data-type>
       </column>
-      <column id="1249" parent="85" name="operationname">
+      <column id="1250" parent="85" name="operationname">
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="1250" parent="85" name="status">
+      <column id="1251" parent="85" name="status">
         <data-type>smallint(6)</data-type>
       </column>
-      <column id="1251" parent="85" name="functionid">
+      <column id="1252" parent="85" name="functionid">
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1252" parent="85" name="iconid">
+      <column id="1253" parent="85" name="iconid">
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1253" parent="85" name="operationtype">
+      <column id="1254" parent="85" name="operationtype">
         <data-type>smallint(6)</data-type>
       </column>
-      <index id="1254" parent="85" name="FK_ny5de7922l39ta2pkhyspd5f">
+      <index id="1255" parent="85" name="FK_ny5de7922l39ta2pkhyspd5f">
         <columns>iconid</columns>
         <desc-columns></desc-columns>
       </index>
-      <index id="1255" parent="85" name="FK_pceuy41wr2fjbcilyc7mk3m1f">
+      <index id="1256" parent="85" name="FK_pceuy41wr2fjbcilyc7mk3m1f">
         <columns>functionid</columns>
         <desc-columns></desc-columns>
       </index>
-      <key id="1256" parent="85" name="PRIMARY">
+      <key id="1257" parent="85" name="PRIMARY">
         <columns>ID</columns>
         <primary>1</primary>
       </key>
-      <foreign-key id="1257" parent="85" name="t_s_operation_ibfk_1">
+      <foreign-key id="1258" parent="85" name="t_s_operation_ibfk_1">
         <columns>iconid</columns>
         <ref-key>~.t_s_icon.PRIMARY</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <foreign-key id="1258" parent="85" name="t_s_operation_ibfk_2">
+      <foreign-key id="1259" parent="85" name="t_s_operation_ibfk_2">
         <columns>functionid</columns>
         <ref-key>~.t_s_function.PRIMARY</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <column id="1259" parent="86" name="ID">
+      <column id="1260" parent="86" name="ID">
         <mandatory>1</mandatory>
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1260" parent="86" name="descript">
+      <column id="1261" parent="86" name="descript">
         <data-type>varchar(100)</data-type>
       </column>
-      <key id="1261" parent="86" name="PRIMARY">
+      <key id="1262" parent="86" name="PRIMARY">
         <columns>ID</columns>
         <primary>1</primary>
       </key>
-      <column id="1262" parent="87" name="ID">
+      <column id="1263" parent="87" name="ID">
         <mandatory>1</mandatory>
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1263" parent="87" name="rolecode">
+      <column id="1264" parent="87" name="rolecode">
         <data-type>varchar(10)</data-type>
       </column>
-      <column id="1264" parent="87" name="rolename">
+      <column id="1265" parent="87" name="rolename">
         <mandatory>1</mandatory>
         <data-type>varchar(100)</data-type>
       </column>
-      <column id="1265" parent="87" name="update_name">
+      <column id="1266" parent="87" name="update_name">
         <comment>修改人</comment>
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1266" parent="87" name="update_date">
+      <column id="1267" parent="87" name="update_date">
         <comment>修改时间</comment>
         <data-type>datetime</data-type>
       </column>
-      <column id="1267" parent="87" name="update_by">
+      <column id="1268" parent="87" name="update_by">
         <comment>修改人id</comment>
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1268" parent="87" name="create_name">
+      <column id="1269" parent="87" name="create_name">
         <comment>创建人</comment>
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1269" parent="87" name="create_date">
+      <column id="1270" parent="87" name="create_date">
         <comment>创建时间</comment>
         <data-type>datetime</data-type>
       </column>
-      <column id="1270" parent="87" name="create_by">
+      <column id="1271" parent="87" name="create_by">
         <comment>创建人id</comment>
         <data-type>varchar(32)</data-type>
       </column>
-      <key id="1271" parent="87" name="PRIMARY">
+      <key id="1272" parent="87" name="PRIMARY">
         <columns>ID</columns>
         <primary>1</primary>
       </key>
-      <column id="1272" parent="88" name="ID">
+      <column id="1273" parent="88" name="ID">
         <mandatory>1</mandatory>
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1273" parent="88" name="operation">
+      <column id="1274" parent="88" name="operation">
         <data-type>varchar(2000)</data-type>
       </column>
-      <column id="1274" parent="88" name="functionid">
+      <column id="1275" parent="88" name="functionid">
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1275" parent="88" name="roleid">
+      <column id="1276" parent="88" name="roleid">
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1276" parent="88" name="datarule">
+      <column id="1277" parent="88" name="datarule">
         <data-type>varchar(1000)</data-type>
       </column>
-      <index id="1277" parent="88" name="FK_9dww3p4w8jwvlrgwhpitsbfif">
+      <index id="1278" parent="88" name="FK_9dww3p4w8jwvlrgwhpitsbfif">
         <columns>roleid</columns>
         <desc-columns></desc-columns>
       </index>
-      <index id="1278" parent="88" name="FK_fvsillj2cxyk5thnuu625urab">
+      <index id="1279" parent="88" name="FK_fvsillj2cxyk5thnuu625urab">
         <columns>functionid</columns>
         <desc-columns></desc-columns>
       </index>
-      <key id="1279" parent="88" name="PRIMARY">
+      <key id="1280" parent="88" name="PRIMARY">
         <columns>ID</columns>
         <primary>1</primary>
       </key>
-      <foreign-key id="1280" parent="88" name="t_s_role_function_ibfk_1">
+      <foreign-key id="1281" parent="88" name="t_s_role_function_ibfk_1">
         <columns>roleid</columns>
         <ref-key>~.t_s_role.PRIMARY</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <foreign-key id="1281" parent="88" name="t_s_role_function_ibfk_2">
+      <foreign-key id="1282" parent="88" name="t_s_role_function_ibfk_2">
         <columns>functionid</columns>
         <ref-key>~.t_s_function.PRIMARY</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <column id="1282" parent="89" name="ID">
+      <column id="1283" parent="89" name="ID">
         <mandatory>1</mandatory>
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1283" parent="89" name="org_id">
+      <column id="1284" parent="89" name="org_id">
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1284" parent="89" name="role_id">
+      <column id="1285" parent="89" name="role_id">
         <data-type>varchar(32)</data-type>
       </column>
-      <key id="1285" parent="89" name="PRIMARY">
+      <key id="1286" parent="89" name="PRIMARY">
         <columns>ID</columns>
         <primary>1</primary>
       </key>
-      <column id="1286" parent="90" name="ID">
+      <column id="1287" parent="90" name="ID">
         <mandatory>1</mandatory>
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1287" parent="90" name="roleid">
+      <column id="1288" parent="90" name="roleid">
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1288" parent="90" name="userid">
+      <column id="1289" parent="90" name="userid">
         <data-type>varchar(32)</data-type>
       </column>
-      <index id="1289" parent="90" name="FK_d4qb5xld2pfb0bkjx9iwtolda">
+      <index id="1290" parent="90" name="FK_d4qb5xld2pfb0bkjx9iwtolda">
         <columns>userid</columns>
         <desc-columns></desc-columns>
       </index>
-      <index id="1290" parent="90" name="FK_n2ucxeorvpjy7qhnmuem01kbx">
+      <index id="1291" parent="90" name="FK_n2ucxeorvpjy7qhnmuem01kbx">
         <columns>roleid</columns>
         <desc-columns></desc-columns>
       </index>
-      <key id="1291" parent="90" name="PRIMARY">
+      <key id="1292" parent="90" name="PRIMARY">
         <columns>ID</columns>
         <primary>1</primary>
       </key>
-      <foreign-key id="1292" parent="90" name="t_s_role_user_ibfk_1">
+      <foreign-key id="1293" parent="90" name="t_s_role_user_ibfk_1">
         <columns>userid</columns>
         <ref-key>~.t_s_user.PRIMARY</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <foreign-key id="1293" parent="90" name="t_s_role_user_ibfk_2">
+      <foreign-key id="1294" parent="90" name="t_s_role_user_ibfk_2">
         <columns>roleid</columns>
         <ref-key>~.t_s_role.PRIMARY</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <column id="1294" parent="91" name="id">
+      <column id="1295" parent="91" name="id">
         <mandatory>1</mandatory>
         <data-type>varchar(36)</data-type>
       </column>
-      <column id="1295" parent="91" name="create_name">
+      <column id="1296" parent="91" name="create_name">
         <comment>创建人名称</comment>
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="1296" parent="91" name="create_by">
+      <column id="1297" parent="91" name="create_by">
         <comment>创建人登录名称</comment>
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="1297" parent="91" name="create_date">
+      <column id="1298" parent="91" name="create_date">
         <comment>创建日期</comment>
         <data-type>datetime</data-type>
       </column>
-      <column id="1298" parent="91" name="update_name">
+      <column id="1299" parent="91" name="update_name">
         <comment>更新人名称</comment>
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="1299" parent="91" name="update_by">
+      <column id="1300" parent="91" name="update_by">
         <comment>更新人登录名称</comment>
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="1300" parent="91" name="update_date">
+      <column id="1301" parent="91" name="update_date">
         <comment>更新日期</comment>
         <data-type>datetime</data-type>
       </column>
-      <column id="1301" parent="91" name="es_title">
+      <column id="1302" parent="91" name="es_title">
         <comment>消息标题</comment>
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1302" parent="91" name="es_type">
+      <column id="1303" parent="91" name="es_type">
         <comment>消息类型</comment>
         <data-type>varchar(1)</data-type>
       </column>
-      <column id="1303" parent="91" name="es_sender">
+      <column id="1304" parent="91" name="es_sender">
         <comment>发送人</comment>
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="1304" parent="91" name="es_receiver">
+      <column id="1305" parent="91" name="es_receiver">
         <comment>接收人</comment>
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="1305" parent="91" name="es_content">
+      <column id="1306" parent="91" name="es_content">
         <comment>内容</comment>
         <data-type>longtext</data-type>
       </column>
-      <column id="1306" parent="91" name="es_sendtime">
+      <column id="1307" parent="91" name="es_sendtime">
         <comment>发送时间</comment>
         <data-type>datetime</data-type>
       </column>
-      <column id="1307" parent="91" name="remark">
+      <column id="1308" parent="91" name="remark">
         <data-type>varchar(500)</data-type>
       </column>
-      <column id="1308" parent="91" name="es_status">
+      <column id="1309" parent="91" name="es_status">
         <comment>发送状态</comment>
         <data-type>varchar(1)</data-type>
       </column>
-      <key id="1309" parent="91" name="PRIMARY">
+      <key id="1310" parent="91" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="1310" parent="92" name="id">
+      <column id="1311" parent="92" name="id">
         <comment>主键</comment>
         <mandatory>1</mandatory>
         <data-type>varchar(36)</data-type>
       </column>
-      <column id="1311" parent="92" name="sql_name">
+      <column id="1312" parent="92" name="sql_name">
         <comment>SQL名称</comment>
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1312" parent="92" name="sql_content">
+      <column id="1313" parent="92" name="sql_content">
         <comment>SQL内容</comment>
         <data-type>varchar(1000)</data-type>
       </column>
-      <column id="1313" parent="92" name="create_date">
+      <column id="1314" parent="92" name="create_date">
         <comment>创建日期</comment>
         <data-type>datetime</data-type>
       </column>
-      <column id="1314" parent="92" name="create_by">
+      <column id="1315" parent="92" name="create_by">
         <comment>创建人登录名称</comment>
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="1315" parent="92" name="create_name">
+      <column id="1316" parent="92" name="create_name">
         <comment>创建人名称</comment>
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="1316" parent="92" name="update_date">
+      <column id="1317" parent="92" name="update_date">
         <comment>更新日期</comment>
         <data-type>datetime</data-type>
       </column>
-      <column id="1317" parent="92" name="update_by">
+      <column id="1318" parent="92" name="update_by">
         <comment>更新人登录名称</comment>
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="1318" parent="92" name="update_name">
+      <column id="1319" parent="92" name="update_name">
         <comment>更新人名称</comment>
         <data-type>varchar(50)</data-type>
       </column>
-      <key id="1319" parent="92" name="PRIMARY">
+      <key id="1320" parent="92" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="1320" parent="93" name="id">
+      <column id="1321" parent="93" name="id">
         <comment>主键</comment>
         <mandatory>1</mandatory>
         <data-type>varchar(36)</data-type>
       </column>
-      <column id="1321" parent="93" name="template_type">
+      <column id="1322" parent="93" name="template_type">
         <comment>模板类型</comment>
         <data-type>varchar(1)</data-type>
       </column>
-      <column id="1322" parent="93" name="template_name">
+      <column id="1323" parent="93" name="template_name">
         <comment>模板名称</comment>
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="1323" parent="93" name="template_content">
+      <column id="1324" parent="93" name="template_content">
         <comment>模板内容</comment>
         <data-type>varchar(1000)</data-type>
       </column>
-      <column id="1324" parent="93" name="create_date">
+      <column id="1325" parent="93" name="create_date">
         <comment>创建日期</comment>
         <data-type>datetime</data-type>
       </column>
-      <column id="1325" parent="93" name="create_by">
+      <column id="1326" parent="93" name="create_by">
         <comment>创建人登录名称</comment>
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="1326" parent="93" name="create_name">
+      <column id="1327" parent="93" name="create_name">
         <comment>创建人名称</comment>
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="1327" parent="93" name="update_date">
+      <column id="1328" parent="93" name="update_date">
         <comment>更新日期</comment>
         <data-type>datetime</data-type>
       </column>
-      <column id="1328" parent="93" name="update_by">
+      <column id="1329" parent="93" name="update_by">
         <comment>更新人登录名称</comment>
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="1329" parent="93" name="update_name">
+      <column id="1330" parent="93" name="update_name">
         <comment>更新人名称</comment>
         <data-type>varchar(50)</data-type>
       </column>
-      <key id="1330" parent="93" name="PRIMARY">
+      <key id="1331" parent="93" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="1331" parent="94" name="id">
+      <column id="1332" parent="94" name="id">
         <comment>主键</comment>
         <mandatory>1</mandatory>
         <data-type>varchar(36)</data-type>
       </column>
-      <column id="1332" parent="94" name="code">
+      <column id="1333" parent="94" name="code">
         <comment>配置CODE</comment>
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1333" parent="94" name="name">
+      <column id="1334" parent="94" name="name">
         <comment>配置名称</comment>
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1334" parent="94" name="sql_id">
+      <column id="1335" parent="94" name="sql_id">
         <comment>业务SQLID</comment>
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1335" parent="94" name="template_id">
+      <column id="1336" parent="94" name="template_id">
         <comment>消息模本ID</comment>
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1336" parent="94" name="create_date">
+      <column id="1337" parent="94" name="create_date">
         <comment>创建日期</comment>
         <data-type>datetime</data-type>
       </column>
-      <column id="1337" parent="94" name="create_by">
+      <column id="1338" parent="94" name="create_by">
         <comment>创建人登录名称</comment>
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="1338" parent="94" name="create_name">
+      <column id="1339" parent="94" name="create_name">
         <comment>创建人名称</comment>
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="1339" parent="94" name="update_date">
+      <column id="1340" parent="94" name="update_date">
         <comment>更新日期</comment>
         <data-type>datetime</data-type>
       </column>
-      <column id="1340" parent="94" name="update_by">
+      <column id="1341" parent="94" name="update_by">
         <comment>更新人登录名称</comment>
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="1341" parent="94" name="update_name">
+      <column id="1342" parent="94" name="update_name">
         <comment>更新人名称</comment>
         <data-type>varchar(50)</data-type>
       </column>
-      <key id="1342" parent="94" name="PRIMARY">
+      <key id="1343" parent="94" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="1343" parent="95" name="ID">
+      <column id="1344" parent="95" name="ID">
         <mandatory>1</mandatory>
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1344" parent="95" name="classname">
+      <column id="1345" parent="95" name="classname">
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="1345" parent="95" name="name">
+      <column id="1346" parent="95" name="name">
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="1346" parent="95" name="sex">
+      <column id="1347" parent="95" name="sex">
         <data-type>varchar(255)</data-type>
       </column>
-      <key id="1347" parent="95" name="PRIMARY">
+      <key id="1348" parent="95" name="PRIMARY">
         <columns>ID</columns>
         <primary>1</primary>
       </key>
-      <column id="1348" parent="96" name="ID">
+      <column id="1349" parent="96" name="ID">
         <mandatory>1</mandatory>
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1349" parent="96" name="CREATE_BY">
+      <column id="1350" parent="96" name="CREATE_BY">
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1350" parent="96" name="CREATE_DATE">
+      <column id="1351" parent="96" name="CREATE_DATE">
         <data-type>datetime</data-type>
       </column>
-      <column id="1351" parent="96" name="CREATE_NAME">
+      <column id="1352" parent="96" name="CREATE_NAME">
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1352" parent="96" name="CRON_EXPRESSION">
+      <column id="1353" parent="96" name="CRON_EXPRESSION">
         <mandatory>1</mandatory>
         <data-type>varchar(100)</data-type>
       </column>
-      <column id="1353" parent="96" name="IS_EFFECT">
+      <column id="1354" parent="96" name="IS_EFFECT">
         <mandatory>1</mandatory>
         <data-type>varchar(1)</data-type>
       </column>
-      <column id="1354" parent="96" name="IS_START">
+      <column id="1355" parent="96" name="IS_START">
         <mandatory>1</mandatory>
         <data-type>varchar(1)</data-type>
       </column>
-      <column id="1355" parent="96" name="TASK_DESCRIBE">
+      <column id="1356" parent="96" name="TASK_DESCRIBE">
         <mandatory>1</mandatory>
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="1356" parent="96" name="TASK_ID">
+      <column id="1357" parent="96" name="TASK_ID">
         <mandatory>1</mandatory>
         <data-type>varchar(100)</data-type>
       </column>
-      <column id="1357" parent="96" name="UPDATE_BY">
+      <column id="1358" parent="96" name="UPDATE_BY">
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1358" parent="96" name="UPDATE_DATE">
+      <column id="1359" parent="96" name="UPDATE_DATE">
         <data-type>datetime</data-type>
       </column>
-      <column id="1359" parent="96" name="UPDATE_NAME">
+      <column id="1360" parent="96" name="UPDATE_NAME">
         <data-type>varchar(32)</data-type>
       </column>
-      <key id="1360" parent="96" name="PRIMARY">
+      <key id="1361" parent="96" name="PRIMARY">
         <columns>ID</columns>
         <primary>1</primary>
       </key>
-      <column id="1361" parent="97" name="ID">
+      <column id="1362" parent="97" name="ID">
         <mandatory>1</mandatory>
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1362" parent="97" name="typecode">
+      <column id="1363" parent="97" name="typecode">
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="1363" parent="97" name="typename">
+      <column id="1364" parent="97" name="typename">
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="1364" parent="97" name="typepid">
+      <column id="1365" parent="97" name="typepid">
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1365" parent="97" name="typegroupid">
+      <column id="1366" parent="97" name="typegroupid">
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1366" parent="97" name="create_date">
+      <column id="1367" parent="97" name="create_date">
         <comment>创建时间</comment>
         <data-type>datetime</data-type>
       </column>
-      <column id="1367" parent="97" name="create_name">
+      <column id="1368" parent="97" name="create_name">
         <comment>创建用户</comment>
         <data-type>varchar(36)</data-type>
       </column>
-      <index id="1368" parent="97" name="FK_3q40mr4ebtd0cvx79matl39x1">
+      <index id="1369" parent="97" name="FK_3q40mr4ebtd0cvx79matl39x1">
         <columns>typegroupid</columns>
         <desc-columns></desc-columns>
       </index>
-      <index id="1369" parent="97" name="FK_nw2b22gy7plh7pqows186odmq">
+      <index id="1370" parent="97" name="FK_nw2b22gy7plh7pqows186odmq">
         <columns>typepid</columns>
         <desc-columns></desc-columns>
       </index>
-      <key id="1370" parent="97" name="PRIMARY">
+      <key id="1371" parent="97" name="PRIMARY">
         <columns>ID</columns>
         <primary>1</primary>
       </key>
-      <foreign-key id="1371" parent="97" name="t_s_type_ibfk_1">
+      <foreign-key id="1372" parent="97" name="t_s_type_ibfk_1">
         <columns>typegroupid</columns>
         <ref-key>~.t_s_typegroup.PRIMARY</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <foreign-key id="1372" parent="97" name="t_s_type_ibfk_2">
+      <foreign-key id="1373" parent="97" name="t_s_type_ibfk_2">
         <columns>typepid</columns>
         <ref-key>PRIMARY</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <column id="1373" parent="98" name="ID">
+      <column id="1374" parent="98" name="ID">
         <mandatory>1</mandatory>
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1374" parent="98" name="typegroupcode">
+      <column id="1375" parent="98" name="typegroupcode">
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="1375" parent="98" name="typegroupname">
+      <column id="1376" parent="98" name="typegroupname">
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="1376" parent="98" name="create_date">
+      <column id="1377" parent="98" name="create_date">
         <comment>创建时间</comment>
         <data-type>datetime</data-type>
       </column>
-      <column id="1377" parent="98" name="create_name">
+      <column id="1378" parent="98" name="create_name">
         <comment>创建用户</comment>
         <data-type>varchar(36)</data-type>
       </column>
-      <key id="1378" parent="98" name="PRIMARY">
+      <key id="1379" parent="98" name="PRIMARY">
         <columns>ID</columns>
         <primary>1</primary>
       </key>
-      <column id="1379" parent="99" name="email">
+      <column id="1380" parent="99" name="email">
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="1380" parent="99" name="mobilePhone">
+      <column id="1381" parent="99" name="mobilePhone">
         <data-type>varchar(30)</data-type>
       </column>
-      <column id="1381" parent="99" name="officePhone">
+      <column id="1382" parent="99" name="officePhone">
         <data-type>varchar(20)</data-type>
       </column>
-      <column id="1382" parent="99" name="signatureFile">
+      <column id="1383" parent="99" name="signatureFile">
         <data-type>varchar(100)</data-type>
       </column>
-      <column id="1383" parent="99" name="id">
+      <column id="1384" parent="99" name="id">
         <mandatory>1</mandatory>
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1384" parent="99" name="update_name">
+      <column id="1385" parent="99" name="update_name">
         <comment>修改人</comment>
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1385" parent="99" name="update_date">
+      <column id="1386" parent="99" name="update_date">
         <comment>修改时间</comment>
         <data-type>datetime</data-type>
       </column>
-      <column id="1386" parent="99" name="update_by">
+      <column id="1387" parent="99" name="update_by">
         <comment>修改人id</comment>
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1387" parent="99" name="create_name">
+      <column id="1388" parent="99" name="create_name">
         <comment>创建人</comment>
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1388" parent="99" name="create_date">
+      <column id="1389" parent="99" name="create_date">
         <comment>创建时间</comment>
         <data-type>datetime</data-type>
       </column>
-      <column id="1389" parent="99" name="create_by">
+      <column id="1390" parent="99" name="create_by">
         <comment>创建人id</comment>
         <data-type>varchar(32)</data-type>
       </column>
-      <index id="1390" parent="99" name="FK_2cuji5h6yorrxgsr8ojndlmal">
+      <index id="1391" parent="99" name="FK_2cuji5h6yorrxgsr8ojndlmal">
         <columns>id</columns>
         <desc-columns></desc-columns>
       </index>
-      <key id="1391" parent="99" name="PRIMARY">
+      <key id="1392" parent="99" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <foreign-key id="1392" parent="99" name="t_s_user_ibfk_1">
+      <foreign-key id="1393" parent="99" name="t_s_user_ibfk_1">
         <columns>id</columns>
         <ref-key>~.t_s_base_user.PRIMARY</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <column id="1393" parent="100" name="ID">
+      <column id="1394" parent="100" name="ID">
         <mandatory>1</mandatory>
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1394" parent="100" name="user_id">
+      <column id="1395" parent="100" name="user_id">
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1395" parent="100" name="org_id">
+      <column id="1396" parent="100" name="org_id">
         <data-type>varchar(32)</data-type>
       </column>
-      <index id="1396" parent="100" name="index_org_id">
+      <index id="1397" parent="100" name="index_org_id">
         <columns>org_id</columns>
         <desc-columns></desc-columns>
       </index>
-      <index id="1397" parent="100" name="index_user_id">
+      <index id="1398" parent="100" name="index_user_id">
         <columns>user_id</columns>
         <desc-columns></desc-columns>
       </index>
-      <key id="1398" parent="100" name="PRIMARY">
+      <key id="1399" parent="100" name="PRIMARY">
         <columns>ID</columns>
         <primary>1</primary>
       </key>
-      <column id="1399" parent="101" name="ID">
+      <column id="1400" parent="101" name="ID">
         <mandatory>1</mandatory>
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1400" parent="101" name="loginpage">
+      <column id="1401" parent="101" name="loginpage">
         <data-type>varchar(100)</data-type>
       </column>
-      <column id="1401" parent="101" name="versioncode">
+      <column id="1402" parent="101" name="versioncode">
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="1402" parent="101" name="versionname">
+      <column id="1403" parent="101" name="versionname">
         <data-type>varchar(30)</data-type>
       </column>
-      <column id="1403" parent="101" name="versionnum">
+      <column id="1404" parent="101" name="versionnum">
         <data-type>varchar(20)</data-type>
       </column>
-      <key id="1404" parent="101" name="PRIMARY">
+      <key id="1405" parent="101" name="PRIMARY">
         <columns>ID</columns>
         <primary>1</primary>
       </key>
-      <column id="1405" parent="102" name="id">
+      <column id="1406" parent="102" name="id">
         <comment>主键</comment>
         <mandatory>1</mandatory>
         <data-type>varchar(36)</data-type>
       </column>
-      <column id="1406" parent="102" name="create_name">
+      <column id="1407" parent="102" name="create_name">
         <comment>创建人名称</comment>
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="1407" parent="102" name="create_by">
+      <column id="1408" parent="102" name="create_by">
         <comment>创建人登录名称</comment>
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="1408" parent="102" name="create_date">
+      <column id="1409" parent="102" name="create_date">
         <comment>创建日期</comment>
         <data-type>datetime</data-type>
       </column>
-      <column id="1409" parent="102" name="update_name">
+      <column id="1410" parent="102" name="update_name">
         <comment>更新人名称</comment>
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="1410" parent="102" name="update_by">
+      <column id="1411" parent="102" name="update_by">
         <comment>更新人登录名称</comment>
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="1411" parent="102" name="update_date">
+      <column id="1412" parent="102" name="update_date">
         <comment>更新日期</comment>
         <data-type>datetime</data-type>
       </column>
-      <column id="1412" parent="102" name="sys_org_code">
+      <column id="1413" parent="102" name="sys_org_code">
         <comment>所属部门</comment>
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="1413" parent="102" name="sys_company_code">
+      <column id="1414" parent="102" name="sys_company_code">
         <comment>所属公司</comment>
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="1414" parent="102" name="name">
+      <column id="1415" parent="102" name="name">
         <comment>地铁站名</comment>
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1415" parent="102" name="begin_date">
+      <column id="1416" parent="102" name="begin_date">
         <comment>启动时间</comment>
         <data-type>datetime</data-type>
       </column>
-      <column id="1416" parent="102" name="content">
+      <column id="1417" parent="102" name="content">
         <comment>说明</comment>
         <data-type>varchar(500)</data-type>
       </column>
-      <column id="1417" parent="102" name="ctypedd">
+      <column id="1418" parent="102" name="ctypedd">
         <comment>类型</comment>
         <data-type>varchar(32)</data-type>
       </column>
-      <key id="1418" parent="102" name="PRIMARY">
+      <key id="1419" parent="102" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="1419" parent="103" name="id">
+      <column id="1420" parent="103" name="id">
         <comment>主键</comment>
         <mandatory>1</mandatory>
         <data-type>varchar(32)</data-type>
         <default-expression>&apos;&apos;</default-expression>
       </column>
-      <column id="1420" parent="103" name="name">
+      <column id="1421" parent="103" name="name">
         <comment>用户名</comment>
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="1421" parent="103" name="age">
+      <column id="1422" parent="103" name="age">
         <comment>年龄</comment>
         <data-type>int(11)</data-type>
       </column>
-      <column id="1422" parent="103" name="salary">
+      <column id="1423" parent="103" name="salary">
         <comment>工资</comment>
         <data-type>decimal(10,2)</data-type>
       </column>
-      <column id="1423" parent="103" name="createDt">
+      <column id="1424" parent="103" name="createDt">
         <comment>创建时间</comment>
         <data-type>datetime</data-type>
       </column>
-      <key id="1424" parent="103" name="PRIMARY">
+      <key id="1425" parent="103" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <argument id="1425" parent="104" name="tableName">
+      <argument id="1426" parent="104" name="tableName">
         <direction>IN</direction>
         <data-type>varchar(50)</data-type>
       </argument>
-      <argument id="1426" parent="104" name="dbFields">
+      <argument id="1427" parent="104" name="dbFields">
         <direction>IN</direction>
         <data-type>varchar(500)</data-type>
       </argument>
-      <argument id="1427" parent="104" name="whereSql">
+      <argument id="1428" parent="104" name="whereSql">
         <direction>IN</direction>
         <data-type>varchar(1000)</data-type>
       </argument>
