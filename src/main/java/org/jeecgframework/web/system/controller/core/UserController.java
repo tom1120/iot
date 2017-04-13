@@ -310,6 +310,43 @@ public class UserController extends BaseController {
 		j.setMsg(message);
 		return j;
 	}
+
+	/**
+	 * 撤销逻辑删除用户
+	 * @param id
+	 * @param req
+     * @return
+     */
+	@RequestMapping(params = "undelete")
+	@ResponseBody
+	public AjaxJson undelete(String id,HttpServletRequest req){
+		AjaxJson j=new AjaxJson();
+		String message=null;
+		TSUser user=systemService.getEntity(TSUser.class,id);
+		if("admin".equals(user.getUserName())){
+			message="超级管理员[admin]不可操作";
+			j.setMsg(message);
+			return j;
+		}
+		String deleteValue=req.getParameter("deletevalue");
+		user.setDeleteFlag(new Short(deleteValue));
+		try{
+			userService.updateEntitie(user);
+			if("0".equals(deleteValue)){
+				message = "用户：" + user.getUserName() + "撤销删除成功!";
+			}else if("1".equals(deleteValue)){
+				message = "用户：" + user.getUserName() + "删除成功!";
+			}
+			systemService.addLog(message, Globals.Log_Type_UPDATE, Globals.Log_Leavel_INFO);
+		}catch (Exception e){
+			message="操作失败！";
+		}
+		j.setMsg(message);
+		return j;
+
+
+	}
+
 	
 
 	/**
@@ -380,8 +417,10 @@ public class UserController extends BaseController {
 
         Short[] userstate = new Short[]{Globals.User_Normal, Globals.User_ADMIN, Globals.User_Forbidden};
         cq.in("status", userstate);
+		//        cq.eq("deleteFlag", Globals.Delete_Normal);
 
-        cq.eq("deleteFlag", Globals.Delete_Normal);
+		Short[] deleteFlag=new Short[]{Globals.Delete_Normal,Globals.Delete_Forbidden};
+		cq.in("deleteFlag",deleteFlag);
 
         String orgIds = request.getParameter("orgIds");
         List<String> orgIdList = extractIdListByComma(orgIds);
@@ -445,6 +484,12 @@ public class UserController extends BaseController {
 			return j;
 		}
 	}
+
+
+
+
+
+
 	
 	/**
 	 * 用户信息录入和更新
@@ -458,12 +503,14 @@ public class UserController extends BaseController {
 	public AjaxJson del(TSUser user, HttpServletRequest req) {
 		String message = null;
 		AjaxJson j = new AjaxJson();
+
+		user = systemService.getEntity(TSUser.class, user.getId());
+
 		if("admin".equals(user.getUserName())){
 			message = "超级管理员[admin]不可删除";
 			j.setMsg(message);
 			return j;
 		}
-		user = systemService.getEntity(TSUser.class, user.getId());
 //		List<TSRoleUser> roleUser = systemService.findByProperty(TSRoleUser.class, "TSUser.id", user.getId());
 		if (!user.getStatus().equals(Globals.User_ADMIN)) {
 
@@ -499,12 +546,14 @@ public class UserController extends BaseController {
 	public AjaxJson trueDel(TSUser user, HttpServletRequest req) {
 		String message = null;
 		AjaxJson j = new AjaxJson();
+
+		user = systemService.getEntity(TSUser.class, user.getId());
+
 		if("admin".equals(user.getUserName())){
 			message = "超级管理员[admin]不可删除";
 			j.setMsg(message);
 			return j;
 		}
-		user = systemService.getEntity(TSUser.class, user.getId());
 		List<TSRoleUser> roleUser = systemService.findByProperty(TSRoleUser.class, "TSUser.id", user.getId());
 		if (!user.getStatus().equals(Globals.User_ADMIN)) {
 			if (roleUser.size()>0) {
@@ -578,6 +627,7 @@ public class UserController extends BaseController {
 			users.setOfficePhone(user.getOfficePhone());
 			users.setMobilePhone(user.getMobilePhone());
 			users.setUserCode(user.getUserCode());
+			users.setUserName(user.getUserName());
 
             systemService.executeSql("delete from t_s_user_org where user_id=?", user.getId());
             saveUserOrgList(req, user);

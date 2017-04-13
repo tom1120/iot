@@ -21,11 +21,13 @@
 	<t:dgCol title="common.updateby" field="updateBy" hidden="true"></t:dgCol>
 	<t:dgCol title="common.updatetime" field="updateDate" formatter="yyyy-MM-dd" hidden="true"></t:dgCol>
 	<t:dgCol title="common.status" sortable="true" field="status" replace="common.active_1,common.inactive_0,super.admin_-1" ></t:dgCol>
+	<t:dgCol title="common.delete" field="deleteFlag" replace="common.delete_1,common.using_0"></t:dgCol>
 
 
 	<t:dgCol title="common.operation" field="opt" width="100"></t:dgCol>
 	<%--管理员id不能存在删除--%>
 	<t:dgFunOpt funname="deleteDialog(id)" title="common.delete" urlclass="ace_button"  urlfont="fa-trash-o" operationCode="delete"></t:dgFunOpt>
+	<t:dgFunOpt funname="undeleteDialog(id)" title="common.undelete.user" urlclass="ace_button"  urlfont="fa-trash-o" operationCode="undelete"></t:dgFunOpt>
 
 
 
@@ -34,6 +36,7 @@
 	<t:dgToolBar title="common.password.reset" icon="icon-edit" url="userController.do?changepasswordforuser" funname="update"></t:dgToolBar>
 	<t:dgToolBar title="common.lock.user" icon="icon-edit" url="userController.do?lock&lockvalue=0" funname="lockObj"></t:dgToolBar>
 	<t:dgToolBar title="common.unlock.user" icon="icon-edit" url="userController.do?lock&lockvalue=1" funname="unlockObj"></t:dgToolBar>
+	<t:dgToolBar title="common.undelete.user" icon="icon-edit" url="userController.do?undelete&deletevalue=0" funname="undeleteObj"></t:dgToolBar>
 	<t:dgToolBar title="excelImport" icon="icon-put" funname="ImportXls"></t:dgToolBar>
 	<t:dgToolBar title="excelOutput" icon="icon-putout" funname="ExportXls"></t:dgToolBar>
 	<t:dgToolBar title="templateDownload" icon="icon-putout" funname="ExportXlsByT"></t:dgToolBar>
@@ -64,6 +67,15 @@ function deleteDialog(id){
 	var url = "userController.do?deleteDialog&id=" + id
 	createwindow("删除模式", url, 200, 100);
 }
+
+function undeleteDialog(id){
+	var url = "userController.do?undelete&deletevalue=0&id=" + id
+//	createwindow("删除模式", url, 200, 100);
+	lockuploadify(url,id);
+
+}
+
+
 function lockObj(title,url, id) {
 
 	gridname=id;
@@ -90,6 +102,22 @@ function unlockObj(title,url, id) {
 		url += '&id='+rowsData[0].id;
 
 	$.dialog.confirm('<t:mutiLang langKey="common.unlock.user.tips"/>', function(){
+		lockuploadify(url, '&id');
+	}, function(){
+	});
+}
+
+function undeleteObj(title,url, id) {
+
+	gridname=id;
+	var rowsData = $('#'+id).datagrid('getSelections');
+	if (!rowsData || rowsData.length==0) {
+		tip('<t:mutiLang langKey="common.please.select.edit.item"/>');
+		return;
+	}
+	url += '&id='+rowsData[0].id;
+
+	$.dialog.confirm('<t:mutiLang langKey="common.undelete.user.tips"/>', function(){
 		lockuploadify(url, '&id');
 	}, function(){
 	});
