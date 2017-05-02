@@ -1,4 +1,4 @@
-﻿﻿//﻿var jq = jQuery.noConflict();
+﻿//﻿var jq = jQuery.noConflict();
 /**
  * 增删改工具栏
  */

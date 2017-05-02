@@ -147,23 +147,45 @@
 			</table>
 		</t:formvalid>
 		<script type="text/javascript">
+
+
+
+
 			$(function(){
 				var formobj=$("#formobj").Validform();
-				$('#dbtest').click(function(){//点击测试
-					formobj.config({
-					    //url:"dynamicDataSourceController.do?testConnection",
-					    ajaxpost:{
-					        //可以传入$.ajax()能使用的，除dataType外的所有参数;
-					    	success:function(data,object){
-					            //data是返回的json数据;
-					            //obj是当前表单的jquery对象;
-					            //alert(data.obj.msg);
-					            $("#dbmsg").html("<font color='red'>"+data.obj.msg+"</font>");
-					        }
-					    }
-					}); 
-					formobj.ajaxPost(false,false,"dynamicDataSourceController.do?testConnection");
+
+//				$('#dbtest').click(function(){//点击测试
+//					formobj.config({
+//					    //url:"dynamicDataSourceController.do?testConnection",
+//					    ajaxpost:{
+//					        //可以传入$.ajax()能使用的，除dataType外的所有参数;
+//					    	success:function(data,object){
+//					            //data是返回的json数据;
+//					            //obj是当前表单的jquery对象;
+//					            //alert(data.obj.msg);
+//					            $("#dbmsg").html("<font color='red'>"+data.obj.msg+"</font>");
+//					        }
+//					    }
+//					});
+//					formobj.ajaxPost(false,false,"dynamicDataSourceController.do?testConnection");
+//				});
+				var olddata=$("#formobj").serializeArray();
+
+				$("#dbtest").click(function () {
+					$.ajax({
+						type: "POST",
+						sync:false,
+						url: "dynamicDataSourceController.do?testConnection",
+						data: olddata,
+						success: function(data,object){
+							var d=$.parseJSON(data);
+//							console.log(d.obj);
+							$("#dbmsg").html("<font color='red'>"+d.obj.msg+"</font>");
+						}
+					});
 				});
+
+
 			});
 		</script>
  </body>

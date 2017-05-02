@@ -166,8 +166,8 @@ public class DynamicDataSourceController extends BaseController {
 			dbSource = dynamicDataSourceService.getEntity(DynamicDataSourceEntity.class, dbSource.getId());
 
 			try {
-				//String result = PasswordUtil.decrypt(d.getDbPassword(), d.getDbUser(), PasswordUtil.getStaticSalt());
-				//System.out.println("==result"+result);
+				String result = PasswordUtil.decrypt(dbSource.getDbPassword(), dbSource.getDbUser(), PasswordUtil.getStaticSalt());
+				System.out.println("==result"+result);
 				dbSource.setDbPassword(PasswordUtil.decrypt(dbSource.getDbPassword(), dbSource.getDbUser(), PasswordUtil.getStaticSalt()));//解密字符串,密文展示
 			} catch (Exception e) {
 				e.printStackTrace();
