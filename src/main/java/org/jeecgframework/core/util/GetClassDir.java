@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 /**
  * Created by zhaoyipc on 2017/4/25.
  */
-@Service("getClassDir")
+
 public class GetClassDir {
     private static GetClassDir ourInstance = new GetClassDir();
 
@@ -15,11 +15,11 @@ public class GetClassDir {
     }
 
     public static String classRootDir="";
-    static {
+/*    static {
         String absoluteFileName =GetClassDir.class.getClass().getResource("/").getPath();
         String classRootDir = absoluteFileName.replaceFirst("/", "");
         setClassRootDir(classRootDir);
-    }
+    }*/
 
     private static void setClassRootDir(String classRootDir){
         GetClassDir.classRootDir=classRootDir;
@@ -41,8 +41,9 @@ public class GetClassDir {
      * @return
      */
     public String getResourceRootPath() {
-        String absoluteFileName = getClass().getResource("/").getPath();
-        absoluteFileName = absoluteFileName.replaceFirst("/", "");
+        String absoluteFileName = getClass().getResource("").getPath();
+        String replaceString=getClass().getPackage().getName().replace(".","/");
+        absoluteFileName = absoluteFileName.replace(replaceString+"/","").replaceFirst("/", "");
         return absoluteFileName;
     }
 
