@@ -28,11 +28,13 @@ public class DataBaseCronTriggerBean extends CronTriggerBean{
 		if(task!=null&&task.getIsEffect().equals("1")
 				&&!task.getCronExpression().equals(this.getCronExpression())){
 			try {
+				//使用数据库定义配置覆盖spring-mvc-timetask.xml定时配置
 				this.setCronExpression(task.getCronExpression());
 			} catch (ParseException e) {
 				// TODO 异常必须被处理
 				e.printStackTrace();
 			}
+			//更新配置文件spring-mvc-timetask.xml
 			DynamicTask.updateSpringMvcTaskXML(this,task.getCronExpression());
 		}
 	}

@@ -24,11 +24,7 @@ import org.jeecgframework.core.common.hibernate.qbc.CriteriaQuery;
 import org.jeecgframework.core.common.model.json.AjaxJson;
 import org.jeecgframework.core.common.model.json.DataGrid;
 import org.jeecgframework.core.constant.Globals;
-import org.jeecgframework.core.util.ExceptionUtil;
-import org.jeecgframework.core.util.FileUtils;
-import org.jeecgframework.core.util.MyBeanUtils;
-import org.jeecgframework.core.util.ResourceUtil;
-import org.jeecgframework.core.util.StringUtil;
+import org.jeecgframework.core.util.*;
 import org.jeecgframework.poi.excel.ExcelImportUtil;
 import org.jeecgframework.poi.excel.entity.ExportParams;
 import org.jeecgframework.poi.excel.entity.ImportParams;
@@ -547,14 +543,18 @@ public class CgformTemplateController extends BaseController {
 
 //		String path=request.getSession().getServletContext().getRealPath("/WEB-INF/classes/online/template");
 		//获取的是java文件的路径
-		String path= this.getClass().getResource("").getPath();
-		if(path.contains("target")){
-			String replaceString=this.getClass().getPackage().getName().replace(".","/");
-			path=path.replace(replaceString+"/","")+"online/template";
-		}else{
-			path=this.getClass().getResource("/").getPath()+"online/template";
-		}
-//		String path= this.getClass().getResource("/").getPath()+"online/template";
+//		String path= this.getClass().getResource("").getPath();
+//		if(path.contains("target")){
+//			String replaceString=this.getClass().getPackage().getName().replace(".","/");
+//			path=path.replace(replaceString+"/","")+"online/template";
+//		}else{
+//			path=this.getClass().getResource("/").getPath()+"online/template";
+//		}
+		GetClassDir getClassDir= (GetClassDir) ApplicationContextUtil.getContext().getBean("getClassDir");
+
+		String path= getClassDir.getResourceRootPath()+"online/template";
+
+
 		return path;
 	}
 

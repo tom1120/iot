@@ -47,14 +47,77 @@ public class TuiSongMsgUtil {
 	private static TSSmsSqlServiceI tSSmsSqlService;//业务sqlservice
 	private static NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 	private static Configuration configuration;
+
+
+	/**
+	 * sendMessage 统一消息发送接口
+	 * @param title 标题
+	 * @param code   业务配置CODE
+	 * @param map    传递过滤参数
+	 * @param sentTo 发送给谁
+	 * @param @return 发送结果
+	 * @throws
+	 */
+	public static String sendMessage(String title, String code,Map<String, Object> map, String sentTo) {
+		// TODO Auto-generated method stub
+		try {
+			//查出发送内容
+			String hql="from TSSmsTemplateSqlEntity as tempSql where tempSql.code=? ";
+
+			List<TSSmsTemplateSqlEntity> tssmsTemplateSqlList=getTssmsTemplateSqlInstance().findHql(hql, code);
+
+			String smsContent="";
+			String msgType="";
+			for (TSSmsTemplateSqlEntity tsSmsTemplateSqlEntity : tssmsTemplateSqlList) {
+				TSSmsSqlEntity tsSmsSqlEntity = getTSSmsServiceInstance().getEntity(TSSmsSqlEntity.class, tsSmsTemplateSqlEntity.getSqlId());
+				String templateSql= tsSmsSqlEntity.getSqlContent();//获取对应业务sql表中的sql语句
+				TSSmsTemplateEntity tsSmsTemplateEntity= getTSSmsServiceInstance().getEntity(TSSmsTemplateEntity.class, tsSmsTemplateSqlEntity.getTemplateId());
+				String templateContent=tsSmsTemplateEntity.getTemplateContent();//获取模板表的对应的模板内容
+				msgType=tsSmsTemplateEntity.getTemplateType();//获取模板表的模板类型
+				//执行查询出来的模板sql
+				Map<String, Object> rootMap  =  getRootMapBySql(templateSql,map);
+				StringReader strR= new StringReader(templateContent);
+				Template template = new Template("strTemplate", strR, new Configuration());
+				StringWriter stringWriter = new StringWriter();
+				BufferedWriter writer = new BufferedWriter(stringWriter);
+				//使用查询出来的结果替换${}参数
+				template.process(rootMap, writer);
+				smsContent = stringWriter.toString();
+			}
+
+
+
+
+			TSSmsEntity tss=new TSSmsEntity();
+			tss.setEsType(msgType);
+			tss.setEsTitle(title);
+			tss.setEsReceiver(sentTo);
+			tss.setEsStatus(Constants.SMS_SEND_STATUS_1);
+
+
+			tss.setEsContent(smsContent);
+			getTSSmsServiceInstance().save(tss);		//保存发送的消息
+
+
+			return "success";
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return e.getMessage();
+		}
+	}
+
+
+
 	/**
 	  * sendMessage 统一消息发送接口
-	  *
-	  * @param @param msgType 消息类型
-	  * @param @param code   业务配置CODE
-	  * @param @param map    数据参数
-	  * @param @param sentTo 发送给谁
-	  * @param @return       发送结果
+	  * @param title 标题
+	  * @param msgType 消息类型
+	  * @param code   业务配置CODE
+	  * @param map    传递过滤参数
+	  * @param sentTo 发送给谁
+	  * @param @return 发送结果
 	  * @throws
 	 */
 	public static String sendMessage(String title,String msgType, String code,
@@ -66,6 +129,7 @@ public class TuiSongMsgUtil {
 			tss.setEsTitle(title);
 			tss.setEsReceiver(sentTo);
 			tss.setEsStatus(Constants.SMS_SEND_STATUS_1);
+			//查出发送内容
 			String hql="from TSSmsTemplateSqlEntity as tempSql where tempSql.code=? ";
 			String smsContent="";
 			List<TSSmsTemplateSqlEntity> tssmsTemplateSqlList=getTssmsTemplateSqlInstance().findHql(hql, code);
@@ -85,6 +149,9 @@ public class TuiSongMsgUtil {
 			}
 			tss.setEsContent(smsContent);
 			getTSSmsServiceInstance().save(tss);		//对库进行查询操作
+
+
+
 			return "success";
 
 		} catch (Exception e) {

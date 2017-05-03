@@ -21,6 +21,8 @@
 	<bean class="org.jeecgframework.core.util.ApplicationContextUtil"></bean>
 	<bean class="org.jeecgframework.p3.core.utils.common.ApplicationContextUtil"></bean>
 
+	<!--GetClassDir-->
+	<bean id="getClassDir" class="org.jeecgframework.core.util.GetClassDir"></bean>
 	<!-- 避免IE执行AJAX时,返回JSON出现下载文件 -->
 	<bean id="mappingJacksonHttpMessageConverter"
 		class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">

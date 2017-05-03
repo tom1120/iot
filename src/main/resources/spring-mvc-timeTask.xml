@@ -39,7 +39,7 @@
 		<property name="targetMethod" value="run" />
 		<property name="concurrent" value="true" />
 	</bean>
-
+	<!--此处cron表达式会被数据库定义cron给覆盖注入-->
 	<bean id="smsSendTaskCronTrigger" class="org.jeecgframework.core.timer.DataBaseCronTriggerBean">
 		<property name="jobDetail" ref="smsSendTaskJob" />
 		<property name="cronExpression" value="0 0/1 * * * ?" />
@@ -50,10 +50,8 @@
 		class="org.jeecgframework.core.timer.DataBaseSchedulerFactoryBean">
 		<property name="triggers">
 			<list>
-				<!--
 				<ref bean="taskDemoServiceTaskCronTrigger" />
-				<ref bean="smsSendTaskCronTrigger" />
-				-->
+				<!--<ref bean="smsSendTaskCronTrigger" />-->
 			</list>
 		</property>
 	</bean>
