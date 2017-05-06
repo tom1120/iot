@@ -108,7 +108,7 @@
           <element id="library" level="project" name="Maven: org.openoffice:unoil:3.2.1" />
           <element id="library" level="project" name="Maven: org.artofsolving:jodconverter:3.0-beta-4" />
           <element id="library" level="project" name="Maven: com.opensymphony:xwork-core:2.1.6" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-test:4.2.4.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-test:4.0.9.RELEASE" />
           <element id="library" level="project" name="Maven: ognl:ognl:2.7.3" />
           <element id="library" level="project" name="Maven: jboss:javassist:3.7.ga" />
           <element id="library" level="project" name="Maven: junit:junit:4.7" />

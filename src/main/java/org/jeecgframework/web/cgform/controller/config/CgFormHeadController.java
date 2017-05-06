@@ -117,6 +117,9 @@ public class CgFormHeadController extends BaseController {
 			DataGrid dataGrid) {
 		CriteriaQuery cq = new CriteriaQuery(CgFormHeadEntity.class,
 				dataGrid);
+		// 查询条件组装器
+		org.jeecgframework.core.extend.hqlsearch.HqlGenerateUtil.installHql(cq,
+				cgFormHead);
 
 		String jformCategory = request.getParameter("jformCategory");
 		if(StringUtil.isNotEmpty(jformCategory)){
@@ -124,12 +127,13 @@ public class CgFormHeadController extends BaseController {
 			//cq.add();
 		}
 
+		//过滤掉复制表单
 		cq.isNull("physiceId");
+		//开始加载查询条件
 		cq.add();
-		
-		// 查询条件组装器
-		org.jeecgframework.core.extend.hqlsearch.HqlGenerateUtil.installHql(cq,
-				cgFormHead);
+
+
+
 		this.cgFormFieldService.getDataGridReturn(cq, true);
 		TagUtil.datagrid(response, dataGrid);
 	}

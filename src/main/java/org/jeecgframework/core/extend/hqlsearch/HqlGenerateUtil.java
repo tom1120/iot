@@ -151,6 +151,7 @@ public class HqlGenerateUtil {
 						
 						value = PageValueConvertRuleEnum.replaceValue(rule,
 								value);
+						//增加查询条件到查询对象中
 						ObjectParseUtil.addCriteria(cq, aliasName, rule, value);
 					} else if (parameterMap != null) {
 						Object beginValue_=null , endValue_ =null;
