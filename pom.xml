@@ -1009,11 +1009,14 @@
 			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>
 				<artifactId>tomcat7-maven-plugin</artifactId>
-				<version>${tomcat.version}</version> 
+				<version>${tomcat.version}</version>
+
 				<configuration>
 					<port>${webserver.port}</port>
 					<path>/${project.artifactId}</path>
+
 					<uriEncoding>${project.build.sourceEncoding}</uriEncoding>
+
 				</configuration>
 			</plugin>
 			<!-- jetty插件 -->
@@ -1036,8 +1039,13 @@
 							<value>${project.build.sourceEncoding}</value>
 						</systemProperty>
 					</systemProperties>
-					<stopKey/>
-					<stopPort/>
+					<stopKey>stop</stopKey>
+					<stopPort>8889</stopPort>
+					<scanIntervalSeconds>3</scanIntervalSeconds>
+
+
+					<!--<reload>automatic</reload>-->
+					<reload>manual</reload>
 				</configuration>
 			</plugin>
 			<!--打包将资源打包-->
@@ -1069,6 +1077,13 @@
 			<resource>
 				<directory>src/main/resources</directory>
 			</resource>
+			<!--增加资源避免找不到资料-->
+			<!--<resource>-->
+				<!--<directory>src/main/webapp</directory>-->
+				<!--<excludes>-->
+					<!--<exclude>webpage/**</exclude>-->
+				<!--</excludes>-->
+			<!--</resource>-->
 		</resources>
 
 		<testResources>

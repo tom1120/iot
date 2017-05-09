@@ -48,7 +48,9 @@ public class TransactionTestServiceImpl  implements TransactionTestServiceI {
         //jeecgMinidaoDao.saveByHiber(entity);
         counts.put("minidao",1);
         demo.setId(new Date().getTime()+"");
+//        counts.put("jdbc",jdbcDao.executeForObject("insert into jeecg_demo (ID,MOBILE_PHONE,OFFICE_PHONE,EMAIL,AGE,USER_NAME) values(:id,:mobilePhone,:officePhone,:email,:age,'test')", demo));
         counts.put("jdbc",jdbcDao.executeForObject("insert into jeecg_demo (ID,MOBILE_PHONE,OFFICE_PHONE,EMAIL,AGE,USER_NAME) values(:id,:mobilePhone,:officePhone,:email,:age,'test')", demo));
+
         counts.put("hibernate",commonDao.save(customEntity)==null?0:1);
         if(rollback){
             throw new RuntimeException();

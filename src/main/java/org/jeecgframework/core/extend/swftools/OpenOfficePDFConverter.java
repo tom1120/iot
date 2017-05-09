@@ -6,7 +6,9 @@ import java.io.FileNotFoundException;
 import org.artofsolving.jodconverter.OfficeDocumentConverter;
 import org.artofsolving.jodconverter.office.DefaultOfficeManagerConfiguration;
 import org.artofsolving.jodconverter.office.OfficeManager;
+import org.jeecgframework.core.util.ApplicationContextUtil;
 import org.jeecgframework.core.util.FileUtils;
+import org.jeecgframework.core.util.GetClassDir;
 
 
 /**
@@ -48,6 +50,7 @@ public class OpenOfficePDFConverter implements PDFConverter {
 		OfficeDocumentConverter converter = new OfficeDocumentConverter(
 				officeManager);
 		try {
+
 			converter.convert(new File(inputFile), new File(pdfFile));
 		} catch (Exception e) {
 			// TODO: handle exception

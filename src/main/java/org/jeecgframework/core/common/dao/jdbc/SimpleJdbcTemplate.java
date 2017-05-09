@@ -144,7 +144,9 @@ public class SimpleJdbcTemplate {
 	public int executeForObject(final String sql,Object bean){
 		Assert.hasText(sql,"sql语句不正确!");
 		if(bean!=null){
-			return jdbcTemplate.update(sql, paramBeanMapper(bean));
+//			return jdbcTemplate.update(sql, paramBeanMapper(bean));
+			return namedJdbcTemplate.update(sql, paramBeanMapper(bean));
+
 		}else{
 			return jdbcTemplate.update(sql);
 		}

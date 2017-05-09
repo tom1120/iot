@@ -183,11 +183,14 @@ public class CourseController extends BaseController {
         CriteriaQuery cq = new CriteriaQuery(CourseEntity.class, dataGrid);
         org.jeecgframework.core.extend.hqlsearch.HqlGenerateUtil.installHql(cq, course, request.getParameterMap());
         List<CourseEntity> courses = this.courseService.getListByCriteriaQuery(cq,false);
-
+		//文件名称
         map.put(NormalExcelConstants.FILE_NAME,"用户信息");
+		//导出实体对象
         map.put(NormalExcelConstants.CLASS,CourseEntity.class);
+		//参数依次为 标题，导出人说明，工作簿名称
         map.put(NormalExcelConstants.PARAMS,new ExportParams("课程列表", "导出人:Jeecg",
                 "导出信息"));
+		//导出列表信息
         map.put(NormalExcelConstants.DATA_LIST,courses);
         return NormalExcelConstants.JEECG_EXCEL_VIEW;
 

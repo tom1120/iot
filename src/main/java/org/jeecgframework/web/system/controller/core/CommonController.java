@@ -16,12 +16,10 @@ import org.jeecgframework.core.common.model.json.AjaxJson;
 import org.jeecgframework.core.common.model.json.DataGrid;
 import org.jeecgframework.core.common.model.json.ImportFile;
 import org.jeecgframework.core.constant.Globals;
-import org.jeecgframework.core.util.FileUtils;
-import org.jeecgframework.core.util.JSONHelper;
-import org.jeecgframework.core.util.MyClassLoader;
-import org.jeecgframework.core.util.ReflectHelper;
-import org.jeecgframework.core.util.StringUtil;
-import org.jeecgframework.core.util.oConvertUtils;
+import org.jeecgframework.core.extend.swftools.DocConverter;
+import org.jeecgframework.core.extend.swftools.OpenOfficePDFConverter;
+import org.jeecgframework.core.extend.swftools.SWFToolsSWFConverter;
+import org.jeecgframework.core.util.*;
 import org.jeecgframework.tag.core.easyui.TagUtil;
 import org.jeecgframework.tag.vo.easyui.Autocomplete;
 import org.jeecgframework.web.system.pojo.base.TSAttachment;
@@ -31,6 +29,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.ContextLoader;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
@@ -93,6 +92,24 @@ public class CommonController extends BaseController {
 			return new ModelAndView("common/upload/imageView");
 		} else {
 			String swfpath = oConvertUtils.getString(reflectHelper.getMethodValue("swfpath"));
+			GetClassDir getClassDir= (GetClassDir) ApplicationContextUtil.getContext().getBean("getClassDir");
+			String projectpath=getClassDir.getProjectRootPath();
+
+
+			File f=new File(projectpath+swfpath);
+			LogUtil.info("绝对："+f.getAbsolutePath());
+			if(!f.exists()||f.length()==0) {
+				OpenOfficePDFConverter openOfficePDFConverter = new OpenOfficePDFConverter();
+				SWFToolsSWFConverter swfToolsSWFConverter = new SWFToolsSWFConverter();
+				DocConverter docConverter = new DocConverter(openOfficePDFConverter, swfToolsSWFConverter);
+				String realpath = oConvertUtils.getString(reflectHelper.getMethodValue("realpath"));
+				realpath=projectpath+realpath;
+
+				docConverter.convert(realpath, swfpath, extend);
+			}else{
+				LogUtil.info("文件："+f.getName()+"已经转换为swf");
+			}
+
 			request.setAttribute("swfpath", swfpath);
 			return new ModelAndView("common/upload/swfView");
 		}
