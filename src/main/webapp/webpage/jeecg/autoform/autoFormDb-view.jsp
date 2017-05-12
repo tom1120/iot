@@ -15,6 +15,7 @@
 	  				 type:'post',
 	  				success:function(data){
 	  					var jsonObj = $.parseJSON(data);
+						if(d==null||"undefined"==typeof d){d=data}
 	  					if(jsonObj.success){
 	  						$("#viewData").val(JSON.stringify(jsonObj.obj,null,4));
 	  					}else{

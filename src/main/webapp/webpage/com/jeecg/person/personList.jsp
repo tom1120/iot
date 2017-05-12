@@ -14,6 +14,27 @@
    <t:dgToolBar title="录入" icon="icon-add" url="personController.do?addorupdate" funname="add"></t:dgToolBar>
    <t:dgToolBar title="编辑" icon="icon-edit" url="personController.do?addorupdate" funname="update"></t:dgToolBar>
    <t:dgToolBar title="查看" icon="icon-search" url="personController.do?addorupdate" funname="detail"></t:dgToolBar>
+      <t:dgToolBar title="excelImport" icon="icon-put" funname="ImportXls"></t:dgToolBar>
+      <t:dgToolBar title="excelOutput" icon="icon-putout" funname="ExportXls"></t:dgToolBar>
+      <t:dgToolBar title="templateDownload" icon="icon-putout" funname="ExportXlsByT"></t:dgToolBar>
   </t:datagrid>
   </div>
  </div>
+
+
+<script>
+
+    //导入
+    function ImportXls() {
+        openuploadwin('Excel导入', 'personController.do?upload', "personList");
+    }
+
+    //导出
+    function ExportXls() {
+        JeecgExcelExport("personController.do?exportXls", "personList");
+    }
+    //模板下载
+    function ExportXlsByT() {
+        JeecgExcelExport("personController.do?exportXlsByT", "personList");
+    }
+</script>

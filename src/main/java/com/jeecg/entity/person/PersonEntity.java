@@ -13,6 +13,8 @@ import javax.persistence.Table;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.GenericGenerator;
+import org.jeecgframework.poi.excel.annotation.Excel;
+
 import javax.persistence.SequenceGenerator;
 
 /**   
@@ -30,14 +32,19 @@ import javax.persistence.SequenceGenerator;
 @SuppressWarnings("serial")
 public class PersonEntity implements java.io.Serializable {
 	/**主键*/
+	@Excel(name = "id")
 	private java.lang.String id;
 	/**用户名*/
+	@Excel(name = "用户名")
 	private java.lang.String name;
 	/**年龄*/
+	@Excel(name="年龄")
 	private java.lang.Integer age;
 	/**工资*/
+	@Excel(name="工资")
 	private BigDecimal salary;
 	/**创建时间*/
+	@Excel(name = "创建时间")
 	private java.util.Date createdt;
 	
 	/**

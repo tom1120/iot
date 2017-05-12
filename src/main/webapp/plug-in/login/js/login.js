@@ -135,6 +135,7 @@ function Login(orgId) {
 		},
 		success : function(data) {
 			var d = $.parseJSON(data);
+			if(d==null||"undefined"==typeof d){d=data}
 			if (d.success) {
 				loginsuccess();
 

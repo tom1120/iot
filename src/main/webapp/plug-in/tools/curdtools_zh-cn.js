@@ -149,6 +149,7 @@ function deleteALLSelect(title,url,gname) {
 					cache : false,
 					success : function(data) {
 						var d = $.parseJSON(data);
+						if(d==null||"undefined"==typeof d){d=data}
 						if (d.success) {
 							var msg = d.msg;
 							tip(msg);
@@ -253,6 +254,7 @@ function deluploadify(url, id) {
 		},
 		success : function(data) {
 			var d = $.parseJSON(data);
+			if(d==null||"undefined"==typeof d){d=data}
 			if (d.success) {
 				$("#" + id).remove();// 移除SPAN
 				m.remove(id);// 移除MAP对象内字符串
@@ -633,6 +635,7 @@ function doSubmit(url,name,data) {
 		},
 		success : function(data) {
 			var d = $.parseJSON(data);
+			if(d==null||"undefined"==typeof d){d=data}
 			if (d.success) {
 				var msg = d.msg;
 				tip(msg);

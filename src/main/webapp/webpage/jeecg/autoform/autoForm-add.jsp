@@ -67,6 +67,7 @@
 		        		{formName:value},
 		        		function(data){
 		        			var d = $.parseJSON(data);
+		 if(d==null||"undefined"==typeof d){d=data}
 		        			if(d.msg == '0' || d.msg == '1'){
 		        				$("#formName").removeClass(); 
 		        			} else{
@@ -97,6 +98,7 @@
 				{formdbId:formdbId,styleId:styleId},
 				function(data) {
 					var d = $.parseJSON(data);
+					if(d==null||"undefined"==typeof d){d=data}
 					if (d.success) {
 						var editor = UE.getEditor('content');
 						editor.ready(
@@ -135,6 +137,7 @@
 		    		},
 		    		success : function(data) {
 		    			var d = $.parseJSON(data);
+						if(d==null||"undefined"==typeof d){d=data}
 						if (d.success) {
 							id = d.attributes.id;
 							$("#id").val(id);
@@ -177,6 +180,7 @@
 		    		success : function(data) {
 		    			iframe.windowapi.close();
 		    			var d = $.parseJSON(data);
+						if(d==null||"undefined"==typeof d){d=data}
 						if (d.success) {
 							tip(d.msg);
 							doReload();
@@ -222,6 +226,7 @@
 		    		success : function(data) {
 		    			iframe.windowapi.close();
 		    			var d = $.parseJSON(data);
+						if(d==null||"undefined"==typeof d){d=data}
 						if (d.success) {
 							tip(d.msg);
 							doReload();
@@ -247,6 +252,7 @@
 				{ids : id},
 				function(data) {
 					var d = $.parseJSON(data);
+					if(d==null||"undefined"==typeof d){d=data}
 					if (d.success) {
 						doReload();
 					}
@@ -260,6 +266,7 @@
 			 {autoFormId: $("#id").val()},
 			 function(data){
 			    var d = $.parseJSON(data);
+				 if(d==null||"undefined"==typeof d){d=data}
 				if (d.success) {
 					var dbDate = eval(d.msg);
 					$.fn.zTree.init($("#dbSelect"), setting, dbDate);
@@ -323,6 +330,7 @@
     		},
     		success : function(data) {
     			var d = $.parseJSON(data);
+				if(d==null||"undefined"==typeof d){d=data}
 				if (d.success) {
 					id = d.attributes.id;
 					$("#id").val(id);

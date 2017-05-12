@@ -165,6 +165,7 @@ function changeStatus(url, index) {
 		},
 		success : function(data) {
 			var d = $.parseJSON(data);
+			if(d==null||"undefined"==typeof d){d=data}
 			if (d.success) {
 				$.messager.show({
 					title : '提示消息',
@@ -193,6 +194,7 @@ function delSubmit(url, index) {
 		},
 		success : function(data) {
 			var d = $.parseJSON(data);
+			if(d==null||"undefined"==typeof d){d=data}
 			if (d.success) {
 				$.messager.show({
 					title : '提示消息',

@@ -168,6 +168,7 @@
 	}
 	function dosearch(params) {
 		var jsonparams = $.parseJSON(params);
+		if(jsonparams==null||"undefined"==typeof jsonparams){jsonparams=params}
 		$('#jeecgOrderMainListNoTag').datagrid({
 			url : 'jeecgOrderMainNoTagController.do?datagrid&field=id,goOrderCode,goderType,usertype,goContactName,goTelphone,goOrderCount,goAllPrice,goReturnPrice,goContent,',
 			queryParams : jsonparams

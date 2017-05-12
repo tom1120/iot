@@ -98,6 +98,7 @@
 									},
 									onUploadSuccess : function(file, data, response) {
 										var d=$.parseJSON(data);
+                                        if(d==null||"undefined"==typeof d){d=data};
 										if(d.success){
 											var win = frameElement.api.opener;
 											serverMsg = d.msg;

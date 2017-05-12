@@ -8,8 +8,9 @@ var ${config_id}Fw = 700,${config_id}Fh = 400;
 $(function(){
 	$.get("cgFormHeadController.do?checkIsExit&checkIsTableCreate&name=${config_id}",
 	function(data){
-		data = $.parseJSON(data);
-		if(data.success){
+		var d = $.parseJSON(data);
+        if(d==null||"undefined"==typeof d){d=data};
+		if(d.success){
 			createDataGrid${config_id}();
 		}else{
 			alertTip('表:<span style="color:red;">${config_id}</span>还没有生成,请到表单配置生成表');
@@ -332,6 +333,7 @@ function createDataGrid${config_id}(){
 	}
 	function dosearch(params){
 		var jsonparams=$.parseJSON(params);
+        if(jsonparams==null||"undefined"==typeof jsonparams){jsonparams=params};
 		$('#${config_id}List').<#if config_istree=="Y">treegrid<#else>datagrid</#if>({url:'cgAutoListController.do?datagrid&configId=${config_id}&field=${fileds},',queryParams:jsonparams});
 	}
 	function ${config_id}Listsearchbox(value,name){

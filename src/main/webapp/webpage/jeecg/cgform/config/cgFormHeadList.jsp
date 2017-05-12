@@ -103,6 +103,7 @@
 	function checkIsExit(id,name){
 		$.post("cgFormHeadController.do?checkIsExit&&name="+name,function(data){
 			var d = $.parseJSON(data);
+			if(d==null||"undefined"==typeof d){d=data}
 			if (d.success) {
 				$.dialog.confirm('<t:mutiLang langKey="table.exit.in.db.confirm"/>', function(){
 					delThis(id);
@@ -431,6 +432,7 @@
 					{id : id},	
 					function(data){
 					var d = $.parseJSON(data);
+						if(d==null||"undefined"==typeof d){d=data}
 					if (d.success) {
 						tip(d.msg);
 					}else{
@@ -449,6 +451,7 @@
 				{id : id},	
 				function(data){
 				var d = $.parseJSON(data);
+					if(d==null||"undefined"==typeof d){d=data}
 				if (d.success) {
 					addOneTab( 'Online配置表单开发', "cgFormHeadController.do?cgFormHeadConfigList&id="+d.obj);
 				}else{

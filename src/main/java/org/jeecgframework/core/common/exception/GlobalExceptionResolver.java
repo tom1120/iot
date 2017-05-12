@@ -126,13 +126,18 @@ public class GlobalExceptionResolver implements HandlerExceptionResolver {
 		json.setMsg(deepestException.getMessage());
 		PrintWriter pw = null;
 		try {
-			pw=response.getWriter();
+			/*add by zhaoyi*/
+			pw=new PrintWriter(response.getOutputStream());
+//			pw=response.getWriter();
 			pw.write(JSONHelper.bean2json(json));
 			pw.flush();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}finally{
-			pw.close();
+			if(pw!=null){
+				pw.close();
+			}
+
 		}
 		empty.clear();
 		return empty;

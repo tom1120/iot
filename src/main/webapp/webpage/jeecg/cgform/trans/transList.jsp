@@ -22,6 +22,7 @@
 						cache : false,
 						success : function(data) {
 							var c = $.parseJSON(data);
+							if(c==null||"undefined"==typeof c){c=data}
 							var d = "";
 							var e = "";
 							$.each(c.obj, function(key, value) {

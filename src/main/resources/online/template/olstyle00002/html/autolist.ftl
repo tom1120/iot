@@ -9,6 +9,7 @@ $(function(){
 	$.get("cgFormHeadController.do?checkIsExit&checkIsTableCreate&name=${config_id}",
 	function(data){
 		data = $.parseJSON(data);
+        if(d==null||"undefined"==typeof d){d=data}
 		if(data.success){
 			createDataGrid${config_id}();
 		}else{
@@ -214,6 +215,7 @@ function createDataGrid${config_id}(){
 	}
 	function dosearch(params){
 		var jsonparams=$.parseJSON(params);
+        if(jsonparams==null||"undefined"==typeof jsonparams){jsonparams=params}
 		$('#${config_id}List').<#if config_istree=="Y">treegrid<#else>datagrid</#if>({url:'cgAutoListController.do?datagrid&configId=${config_id}&field=${fileds},',queryParams:jsonparams});
 	}
 	function ${config_id}Listsearchbox(value,name){

@@ -179,6 +179,7 @@
 						data: olddata,
 						success: function(data,object){
 							var d=$.parseJSON(data);
+							if(d==null||"undefined"==typeof d){d=data}
 //							console.log(d.obj);
 							$("#dbmsg").html("<font color='red'>"+d.obj.msg+"</font>");
 						}

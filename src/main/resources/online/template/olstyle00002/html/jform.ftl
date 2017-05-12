@@ -238,6 +238,7 @@
 				},
 				success : function(data) {
 					var d = $.parseJSON(data);
+                    if(d==null||"undefined"==typeof d){d=data}
 					if (d.success) {
 						var msg = d.msg;
 						tip(msg);

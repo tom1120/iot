@@ -300,6 +300,7 @@ window.onload = function() {
 	       			async:false,
 	       			success:function(data){
 	       				var d = $.parseJSON(data);
+                        if(d==null||"undefined"==typeof d){d=data}
 	       				if(d.success){
 	       					$('#tbl1').html('');
 	       					$('#tbl1').append($(d.attributes.tableHtml).first()).append($(d.attributes.tableHtml).last());
@@ -556,6 +557,7 @@ $(function(){
 			{dbName:dbId,autoFormId:id},
 			function(data){
 				var d = $.parseJSON(data);
+                if(d==null||"undefined"==typeof d){d=data}
 				if(d.success){
 					$('#tbl1').html('');
 					//table内容

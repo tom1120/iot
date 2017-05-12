@@ -14,6 +14,7 @@ $(function(){
 		'tSSmsController.do?getMsgs',
 	    function(data){
 			var d = $.parseJSON(data);
+			if(d==null||"undefined"==typeof d){d=data}
 			console.log(d);
 			if(d.success && $.trim(d.msg) != ''){
 				tip(d.msg);

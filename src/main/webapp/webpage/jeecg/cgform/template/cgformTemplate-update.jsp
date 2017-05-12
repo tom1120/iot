@@ -220,6 +220,7 @@
 			 onUploadSuccess : function(file, data, response) {
 				 if(data){
 					 var d=$.parseJSON(data);
+					 if(d==null||"undefined"==typeof d){d=data}
 					 if(d.success){
 						 $("#prePic").attr("src","cgformTemplateController.do?showPic&path="+ d.obj);
 						 $("#templatePic").val(d.obj);
@@ -249,6 +250,7 @@
 			 onUploadSuccess : function(file, data, response) {
 				 if(data){
 					 var d=$.parseJSON(data);
+					 if(d==null||"undefined"==typeof d){d=data}
 					 if(d.success){
 						 $("#templateZipName").val(d.obj);
 						 $("#formobj").submit();

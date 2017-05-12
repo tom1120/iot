@@ -586,6 +586,7 @@
 		        			data:"indexStyle="+indexStyle,//+"&cssTheme="+cssTheme,
 		        			success:function(data){
 								var d = $.parseJSON(data);
+								if(d==null||"undefined"==typeof d){d=data}
 								if (d.success) {
 									var msg = d.msg;
 									bootbox.alert(msg);
@@ -623,6 +624,7 @@
 		        			data:$('#formobj2').serialize(),// 要提交的表单 ,
 		        			success:function(data){
 								var d = $.parseJSON(data);
+								if(d==null||"undefined"==typeof d){d=data}
 								if (d.success) {
 									var msg = d.msg;
 									bootbox.alert(msg);

@@ -36,8 +36,9 @@
 			//判断表单是否生成
             $.get("cgFormHeadController.do?checkIsExit&checkIsTableCreate&name=${config_id}",
                     function(data){
-                        data = $.parseJSON(data);
-                        if(data.success){
+                        var d = $.parseJSON(data);
+                        if(d==null||"undefined"==typeof d){d=data};
+                        if(d.success){
                             loadData(1);
                         }else{
                             alertTip('表:<span style="color:red;">${config_id}</span>还没有生成,请到表单配置生成表');

@@ -72,6 +72,7 @@
 	function checkIsExit(id,name){
 		$.post("cgFormHeadController.do?checkIsExit&&name="+name,function(data){
 			var d = $.parseJSON(data);
+			if(d==null||"undefined"==typeof d){d=data}
 			if (d.success) {
 				$.dialog.confirm('<t:mutiLang langKey="table.exit.in.db.confirm"/>', function(){
 					delThis(id);
@@ -387,6 +388,7 @@
 	function copyOnline(id){
 		$.post("cgFormHeadController.do?copyOnline",function(data){
 			var d = $.parseJSON(data);
+			if(d==null||"undefined"==typeof d){d=data}
 			if (d.success) {
 				addOneTab( '智能表单配置表配置', "cgFormHeadController.do?copyList&id="+d.obj);
 			}else{

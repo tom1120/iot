@@ -333,6 +333,7 @@
 							   $("#form1").serialize(),
 							   function(data){
 							   	  var d = $.parseJSON(data);
+                                   if(d==null||"undefined"==typeof d){d=data};
 							   	  if(data.success){
 				            		alert(d.msg);
 				            	  }else{

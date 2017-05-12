@@ -32,6 +32,7 @@
 			{parentid:treeNodeId,orgIds:$("#orgIds").val()},
 			function(data){
 				var d = $.parseJSON(data);
+				if(d==null||"undefined"==typeof d){d=data}
 				if (d.success) {
 					var dbDate = eval(d.msg);
 					var tree = $.fn.zTree.getZTreeObj("departSelect");
@@ -55,6 +56,7 @@
 		    {orgIds:$("#orgIds").val()},
 			function(data){
 				var d = $.parseJSON(data);
+				if(d==null||"undefined"==typeof d){d=data}
 				if (d.success) {
 					var dbDate = eval(d.msg);
 					$.fn.zTree.init($("#departSelect"), setting, dbDate);
