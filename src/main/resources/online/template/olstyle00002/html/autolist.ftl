@@ -8,9 +8,9 @@ var ${config_id}Fw = 900,${config_id}Fh = 600;
 $(function(){
 	$.get("cgFormHeadController.do?checkIsExit&checkIsTableCreate&name=${config_id}",
 	function(data){
-		data = $.parseJSON(data);
+		var d = $.parseJSON(data);
         if(d==null||"undefined"==typeof d){d=data}
-		if(data.success){
+		if(d.success){
 			createDataGrid${config_id}();
 		}else{
 			alertTip('表:<span style="color:red;">${config_id}</span>还没有生成,请到表单配置生成表');

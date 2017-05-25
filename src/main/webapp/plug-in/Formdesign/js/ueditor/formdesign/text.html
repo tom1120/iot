@@ -145,9 +145,10 @@ window.onload = function() {
    				'autoFormController.do?getFormField',		
    				{dbName:arr1[0],autoFormId:id},
    				function(data){
-   					data = $.parseJSON(data);
+                    var d = $.parseJSON(data);
+                    if(d==null||"undefined"==typeof d){d=data};
    					$('#field').html('');
-   					$('#field').html(data.msg);
+   					$('#field').html(d.msg);
    					$('#field').val(field);
    					$("#datasource").val(arr1[0]);
    			});
@@ -334,8 +335,9 @@ function getName(datasource,field,title){
 			'autoFormController.do?getFormDb',		
 			{autoFormId:id},
 			function(data){
-				data = $.parseJSON(data);
-				$('#datasource').html(data.msg);
+                var d = $.parseJSON(data);
+                if(d==null||"undefined"==typeof d){d=data};
+				$('#datasource').html(d.msg);
 		});
 		//2.2 绑定change事件,并填充字段
 		$("#datasource").change(function(){
@@ -344,9 +346,10 @@ function getName(datasource,field,title){
                     'autoFormController.do?getFormField',
                     {dbName:dbId,autoFormId:id},
                     function(data){
-                        data = $.parseJSON(data);
+                        var d = $.parseJSON(data);
+                        if(d==null||"undefined"==typeof d){d=data};
                         $('#field').html('');
-                        $('#field').html(data.msg);
+                        $('#field').html(d.msg);
                     });
         });
         $("#field").change(function(){
@@ -363,7 +366,9 @@ function loadDataType(val){
         type:"post",
         dataType:"json",
         success:function(data){
-            var results=data.rows;
+            var d = $.parseJSON(data);
+            if(d==null||"undefined"==typeof d){d=data};
+            var results=d.rows;
             $.each(results,function(i,dict){
                $("#datatype").append("<option value='"+dict.typecode+"'>"+dict.typename+"</option>");
             })

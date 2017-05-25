@@ -116,9 +116,10 @@ window.onload = function() {
                     contentPath+'autoFormController.do?getFormField',
                     {dbName:arr1[0],autoFormId:id},
                     function(data){
-                        data = $.parseJSON(data);
+                        var d = $.parseJSON(data);
+                        if(d==null||"undefined"==typeof d){d=data};
                         $('#field').html('');
-                        $('#field').html(data.msg);
+                        $('#field').html(d.msg);
                         $('#field').val(field);
                         $("#datasource").val(arr1[0]);
                     });
@@ -251,8 +252,9 @@ $(function(){
             contentPath+'autoFormController.do?getFormDb',
             {autoFormId:id},
             function(data){
-                data = $.parseJSON(data);
-                $('#datasource').html(data.msg);
+                var d = $.parseJSON(data);
+                if(d==null||"undefined"==typeof d){d=data};
+                $('#datasource').html(d.msg);
             });
     //2.2 绑定change事件,并填充字段
     $("#datasource").change(function(){
@@ -261,9 +263,10 @@ $(function(){
                 contentPath+'autoFormController.do?getFormField',
                 {dbName:dbId,autoFormId:id},
                 function(data){
-                    data = $.parseJSON(data);
+                    var d = $.parseJSON(data);
+                    if(d==null||"undefined"==typeof d){d=data};
                     $('#field').html('');
-                    $('#field').html(data.msg);
+                    $('#field').html(d.msg);
                 });
     });
     $("#field").change(function(){

@@ -541,8 +541,9 @@ function initDataSource(id){
 			data:{autoFormId:id},
 			async:false,
    			success:function(data){
-				data = $.parseJSON(data);
-				$('#datasource').html(data.msg);
+                var d = $.parseJSON(data);
+                if(d==null||"undefined"==typeof d){d=data};
+				$('#datasource').html(d.msg);
 				
    			}});
 }
