@@ -14,6 +14,12 @@
 	</div>
 	<div class="form"><label class="Validform_label"> <t:mutiLang langKey="common.role.code"/>: </label> <input name="roleCode" id="roleCode" ajaxurl="roleController.do?checkRole&code=${role.roleCode }" class="inputxt"
 		value="${role.roleCode }" datatype="s2-15"> <span class="Validform_checktip"><t:mutiLang langKey="rolecode.rang2to15.notnull"/></span></div>
+	<div class="form"><label class="Validform_label"> <t:mutiLang langKey="common.role.type"/>: </label>
+		<%--增加角色选择--%>
+		<t:dictSelect field="roleType" typeGroupCode="roleType" hasLabel="false" defaultVal="${mutiLangPage.roleType}"></t:dictSelect>
+
+		<span class="Validform_checktip"><t:mutiLang langKey="rolecode.rang2to15.notnull"/></span></div>
+
 	</fieldset>
 </t:formvalid>
 </body>

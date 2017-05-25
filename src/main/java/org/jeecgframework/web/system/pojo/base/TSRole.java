@@ -36,6 +36,12 @@ public class TSRole extends IdEntity implements java.io.Serializable {
 	private java.lang.String updateBy;
 	/**修改人名称*/
 	private java.lang.String updateName;
+
+
+	/*角色类型，为了与activiti流程grouptype类型兼容而用*/
+	private String roleType;
+
+
 	@Column(name = "rolename", nullable = false, length = 100)
 	public String getRoleName() {
 		return this.roleName;
@@ -147,5 +153,13 @@ public class TSRole extends IdEntity implements java.io.Serializable {
 	 */
 	public void setUpdateName(java.lang.String updateName){
 		this.updateName = updateName;
+	}
+	@Column(name = "roletype",nullable = true,length = 64)
+	public String getRoleType() {
+		return roleType;
+	}
+
+	public void setRoleType(String roleType) {
+		this.roleType = roleType;
 	}
 }

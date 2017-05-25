@@ -24,7 +24,15 @@ public class ModuleController {
 	
 	@Autowired
 	private RepositoryService repositoryService;
-	
+
+	/**
+	 * 创建流程设计图
+	 * @param name 流程名称
+	 * @param key 流程关键字key
+	 * @param description 流程描述
+	 * @param request
+     * @param response
+     */
 	@RequestMapping(value = "create")
 	  public void create(@RequestParam("name") String name, @RequestParam("key") String key, @RequestParam("description") String description,
 						 HttpServletRequest request, HttpServletResponse response) {

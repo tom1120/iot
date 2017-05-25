@@ -17,9 +17,9 @@
 	<t:dgCol title="common.common.mail" field="email"></t:dgCol>
 
 	<t:dgCol title="common.createby" field="createBy" hidden="true"></t:dgCol>
-	<t:dgCol title="common.createtime" field="createDate" formatter="yyyy-MM-dd" hidden="true"></t:dgCol>
+	<t:dgCol title="common.createtime" field="createDate" formatter="yyyy-MM-dd" hidden="false"></t:dgCol>
 	<t:dgCol title="common.updateby" field="updateBy" hidden="true"></t:dgCol>
-	<t:dgCol title="common.updatetime" field="updateDate" formatter="yyyy-MM-dd" hidden="true"></t:dgCol>
+	<t:dgCol title="common.updatetime" field="updateDate" formatter="yyyy-MM-dd" hidden="false"></t:dgCol>
 	<t:dgCol title="common.status" sortable="true" field="status" replace="common.active_1,common.inactive_0,super.admin_-1" ></t:dgCol>
 	<t:dgCol title="common.delete" field="deleteFlag" replace="common.delete_1,common.using_0"></t:dgCol>
 

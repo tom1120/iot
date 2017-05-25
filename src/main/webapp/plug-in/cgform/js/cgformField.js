@@ -19,7 +19,7 @@ function iframeLoaded() {
 	iframeLoadNumber++;
 	if (iframeLoadNumber == 6) {
 		$(".datagrid-toolbar").parent().css("width", "auto");
-//		setTimeout(initData, 500);
+		// setTimeout(initData, 500);
 		initData();
 	}
 }
@@ -103,7 +103,7 @@ function getIframeDocument(id){
  * data
  */
 function getDataHanlder(data) {
-	data = eval("(" + data + ")");
+	// data = eval("(" + data + ")");
 	// 兼容之前order最小为0的问题
 	var orderMin = data[0].orderNum == 0;
 	$.each(data, function(idx, item) {
@@ -121,7 +121,7 @@ function getDataHanlder(data) {
 	
 }
 function getDataHanlderIndex(data) {
-	data = eval("(" + data + ")");
+	// data = eval("(" + data + ")");
 	// 兼容之前order最小为0的问题
 	var orderMin = data[0].orderNum == 0;
 	$.each(data, function(idx, item) {
