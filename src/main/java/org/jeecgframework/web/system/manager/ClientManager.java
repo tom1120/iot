@@ -9,6 +9,8 @@ import org.jeecgframework.core.util.ContextHolderUtils;
 import org.jeecgframework.core.util.EhcacheUtil;
 import org.jeecgframework.web.system.pojo.base.Client;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * 对在线用户的管理
  * @author JueYue
@@ -93,13 +95,19 @@ public class ClientManager {
 	 * @param sessionId
 	 */
 	public Client getClient(String sessionId){
-		if(!StringUtils.isEmpty(sessionId)&&ContextHolderUtils.getSession().getAttribute(sessionId)!=null){
-			return (Client)ContextHolderUtils.getSession().getAttribute(sessionId);
+
+		Object o=ContextHolderUtils.getSession().getAttribute(sessionId);
+
+		if(!StringUtils.isEmpty(sessionId)&&o!=null){
+			return (Client)o;
 		}
 		else{
 			return null;
 		}
 	}
+
+
+
 	/**
 	 * 得到Client 对象
 	 */

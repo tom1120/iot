@@ -162,6 +162,8 @@
 						<value>loginController.do?checkuser=</value>
 						<value>repairController.do?repair</value>
 						<value>systemController.do?saveFiles</value>
+						<!--流程图部署上传路径-->
+						<value>activitiController.do?deploy</value>
 						<value>repairController.do?deleteAndRepair</value>
 						<value>userController.do?userOrgSelect</value>
 						<!--移动图表-->

@@ -1,0 +1,22 @@
+mysql下如何执行sql脚本
+首要步骤(一般可省略):
+开启mysql服务(默认是开机时就自动运行了):
+控制面板-->管理工具-->服务,在里面找到名称为mysql的项,双击就可看它的服务状态是启动还是停止,把它设为启动
+
+连接mysql:
+在命令行下输入 mysql -h localhost -u root -p回车,然后输入密码即可;或直接运行mysql自带的连接工具,然后输入密码即可.
+
+1.编写sql脚本,假设内容如下:
+
+  create database dearabao;
+  use dearabao;
+  create table niuzi (name varchar(20));
+
+  保存脚本文件,假设我把它保存在F盘的hello world目录下,于是该文件的路径为:F:\hello world\niuzi.sql
+
+
+2.执行sql脚本,可以有2种方法:
+  第一种方法:
+ 在命令行下(未连接数据库),输入 mysql -h localhost -u root -p123456 < F:\hello world\niuzi.sql (注意路径不用加引号的!!) 回车即可.
+  第二种方法:
+ 在命令行下(已连接数据库,此时的提示符为 mysql> ),输入 source F:\hello world\niuzi.sql (注意路径不用加引号的) 或者 \. F:\hello world\niuzi.sql (注意路径不用加引号的) 回车即可

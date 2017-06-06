@@ -78,8 +78,10 @@ public class AuthInterceptor implements HandlerInterceptor {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object object) throws Exception {
 		String requestPath = ResourceUtil.getRequestPath(request);// 用户访问的资源地址
 		//logger.info("-----authInterceptor----requestPath------"+requestPath);
+		//获取当前session
 		HttpSession session = ContextHolderUtils.getSession();
 		Client client = ClientManager.getInstance().getClient(session.getId());
+		//为空就从当前请求中获取
 		if(client == null){ 
 			client = ClientManager.getInstance().getClient(
 					request.getParameter("sessionId"));

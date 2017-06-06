@@ -10,6 +10,9 @@
         <property name="jobExecutorActivate" value="false" />
         <!--禁用原有activiti身份认证模块表类型检测，使用业务系统的视图代替-->
         <property name="dbIdentityUsed" value="false"/>
+        <!--设置流程图的字体，防止乱码-->
+        <property name="activityFontName" value="宋体"/>
+        <property name="labelFontName" value="宋体"/>
     </bean>
 
     <bean id="objectMapper" class="com.fasterxml.jackson.databind.ObjectMapper"/>

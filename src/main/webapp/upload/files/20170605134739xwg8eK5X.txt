@@ -1,0 +1,27 @@
+select ism.year as 年份,ism.month as 月份,cpc.entname as 组织,w.warehouse_name as 仓库,
+       ic.item_class_name as 产品分类,case when ism.sale_channel_id>10 then ic2.item_class_name else bpc.product_channel_name end 产品渠道,i.item_code as 产品编码,
+       bl.levelname as 等级,ism.Colornumber as 色号,ism.Length as 长度,ism.Width as 宽度,u.Uom_Name as 包装,
+       bp.base_paddr as 产地,ib.Inv_Batch_Code as 批号,c.customer_code as 客户编码,c.customer_name as 客户名称,ism.qty_candrafit as 可开票数,ism.CanArea as 可开票面积,
+       ism.Total as 数量,ism.Area as 面积,ism.InvbillDate as 最早入库日期,
+       ism.stockage as 库龄,ism.stocktime as 库期
+from inv_stockage_month ism,cpcent cpc,warehouse w,item_class ic,
+     bas_product_channel bpc,item i,base_level bl,uom u,base_paddr bp,
+     inv_batch ib,customer c,item_class ic2
+where ism.organization_id=cpc.entid(+)
+      and ism.warehouse_id=w.warehouse_id(+)
+      and ism.item_class_id=ic.item_class_id(+)
+      and ism.sale_channel_id=bpc.product_channel_id(+)
+      and ism.sale_channel_id = ic2.item_class_id(+)
+      and ism.item_id=i.item_id(+)
+      and ism.base_level_id=bl.base_level_id(+)
+      and ism.assistant_uom_id=u.uom_id(+)
+      and ism.base_paddr_id=bp.base_paddr_id(+)
+      and ism.inv_batch_id=ib.inv_batch_id(+)
+      and ism.customer_id=c.customer_id(+)
+      ${if(len(年份)==0,""," and ism.year=" + 年份 )} 
+      ${if(len(月份)==0,""," and ism.month=" + 月份 )} 
+      ${if(len(仓库)==0,""," and w.warehouse_name='" + 仓库 + "'" )} 
+      ${if(len(组织)==0,""," and cpc.entname='" + 组织 + "'" )}
+      ${if(len(产品编码)==0,""," and i.item_code like '%" + 产品编码 + "%'" )}
+      ${if(len(等级)==0,""," and bl.levelname='" + 等级 + "'" )}
+      ${if(len(色号)==0,""," and ism.Colornumber like '%" + 色号 + "%'" )}

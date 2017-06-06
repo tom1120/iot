@@ -560,6 +560,7 @@ function createdialog(title, content, url,name) {
 	$.dialog.confirm(content, function(){
 		doSubmit(url,name);
 		rowid = '';
+		this.close();
 	}, function(){
 	});
 }
@@ -570,6 +571,8 @@ function createdialog(title, content, url,name) {
  * @param gridname
  */
 function saveObj() {
+	// console.log(iframe.document);
+	//绑定iframe内的按钮
 	$('#btn_sub', iframe.document).click();
 }
 
@@ -634,20 +637,98 @@ function doSubmit(url,name,data) {
 		error : function() {// 请求失败处理函数
 		},
 		success : function(data) {
-			var d = $.parseJSON(data);
+			var	d = $.parseJSON(data);
 			if(d==null||"undefined"==typeof d){d=data}
+			var msg = d.msg;
 			if (d.success) {
-				var msg = d.msg;
-				tip(msg);
+				if(msg!=null||"undefined"!=typeof msg){
+					tip(msg);
+				}
+
 				reloadTable();
 			} else {
-				tip(d.msg);
+				if(msg!=null||"undefined"!=typeof msg){
+					tip(msg);
+				}
 			}
 		}
 	});
 	
 	
 }
+
+/**
+ * 执行操作
+ * add by zhaoyi
+ * @param url ajax提交url
+ * @param name datagrid的id
+ * @param data ajax提交data
+ * @param successfun 成功后执行函数
+ * @param errorfun 错误后执行的函数
+ * @param istip 是否显示tip
+ */
+function doSubmitNew(url,name,data,successfun,errorfun,istip) {
+	gridname=name;
+	//--author：JueYue ---------date：20140227---------for：把URL转换成POST参数防止URL参数超出范围的问题
+	var paramsData = data;
+	if(!paramsData){
+		paramsData = new Object();
+		if (url.indexOf("&") != -1) {
+			var str = url.substr(url.indexOf("&")+1);
+			url = url.substr(0,url.indexOf("&"));
+			var strs = str.split("&");
+			for(var i = 0; i < strs.length; i ++) {
+				paramsData[strs[i].split("=")[0]]=(strs[i].split("=")[1]);
+			}
+		}
+	}
+	//--author：JueYue ---------date：20140227---------for：把URL转换成POST参数防止URL参数超出范围的问题
+	$.ajax({
+		async : false,
+		cache : false,
+		type : 'POST',
+		data : paramsData,
+		url : url,// 请求的action路径
+		error : function() {// 请求失败处理函数
+		},
+		success : function(data) {
+			var	d = $.parseJSON(data);
+			if(d==null||"undefined"==typeof d){d=data}
+			var msg = d.msg;
+			if (d.success) {
+				if( successfun!=null&&"function"==typeof successfun){
+					successfun();
+				}
+
+				if(istip){
+					if(msg!=null||"undefined"!=typeof msg){
+
+						tip(msg);
+					}
+				}
+
+
+				reloadTable();
+			} else {
+				if( errorfun!=null&&"function"==typeof errorfun){
+					errorfun();
+				}
+
+				if(istip){
+					if(msg!=null||"undefined"!=typeof msg){
+						tip(msg);
+					}
+				}
+
+			}
+		}
+	});
+
+
+}
+
+
+
 /**
  * 退出确认框
  * 

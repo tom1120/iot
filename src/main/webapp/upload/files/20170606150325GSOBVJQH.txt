@@ -1,0 +1,7 @@
+原来session
+StandardSession[AE929DE7A592D80720BAB24380938CB6]
+
+
+
+上传时获取的session变了
+StandardSession[5D7508DBE4BC11FBCE0B9EEEBC223116]

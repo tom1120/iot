@@ -52,7 +52,8 @@
 		<commons-io.version>1.3.2</commons-io.version>
 		<commons-fileupload.version>1.2.1</commons-fileupload.version>
 		<commons-lang.version>2.6</commons-lang.version>
-		<commons-lang3.version>3.1</commons-lang3.version>
+		<!--<commons-lang3.version>3.1</commons-lang3.version>-->
+		<commons-lang3.version>3.3.2</commons-lang3.version>
         <commons-email.version>1.2</commons-email.version>
 		<commons-logging.version>1.0.4</commons-logging.version>
 
@@ -101,7 +102,7 @@
 		<!--maven插件变量-->
 		<tomcat.version>2.2</tomcat.version>
 		<jetty.version>7.6.14.v20131031</jetty.version>
-		<webserver.port>8080</webserver.port>
+		<webserver.port>8888</webserver.port>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 

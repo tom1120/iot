@@ -34,6 +34,10 @@ public class 	FormValidationTag extends TagSupport {
 	protected String styleClass ;//table 样式
 
 	protected String cssTheme;//主题样式目录默认为空
+
+	protected boolean multipart=false;//是否文件上传方式为
+
+
 	
 	public String getCssTheme() {
 		return cssTheme;
@@ -106,6 +110,12 @@ public class 	FormValidationTag extends TagSupport {
 			if(this.getStyleClass()!=null){
 				sb.append("class=\""+this.getStyleClass()+"\" ");
 			}
+//			增加上传方式为enctype="multipart/form-data"
+			if(this.multipart){
+				sb.append("enctype=\"multipart/form-data\" ");
+			}
+
+
 					sb.append(" action=\"" + action + "\" name=\"" + formid + "\" method=\"post\">");
 			if ("btn_sub".equals(btnsub) && dialog)
 				sb.append("<input type=\"hidden\" id=\"" + btnsub + "\" class=\"" + btnsub + "\"/>");
@@ -323,5 +333,8 @@ public class 	FormValidationTag extends TagSupport {
 	public void setTiptype(String tiptype) {
 		this.tiptype = tiptype;
 	}
-	
+
+	public void setMultipart(boolean multipart) {
+		this.multipart = multipart;
+	}
 }

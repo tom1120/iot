@@ -1,0 +1,40 @@
+SELECT h.DepName 部门,h.StaffCode 员工编码,h.Name 员工姓名,wc.mobile 电话,
+	(case wc.timeResult
+		when 'Normal' then '正常'
+		when 'Early' then '早退'
+		when 'Late' then '迟到'
+		when 'SeriousLate' then '严重迟到'
+		when 'NotSigned' then '未打卡'
+	else '' end) 时间结果,
+	(case wc.checkType
+		when 'OnDuty' then '上班'
+		when 'OffDuty' then '下班'
+	else '' end) 考勤类型,
+	(case wc.locationResult
+		when 'Normal' then '范围内'
+		when 'Outside' then '范围外'
+	else '' end) 位置结果,
+	(case datepart(weekday,wc.workDate)
+		when 1 then '周日'
+		when 2 then '周一'
+		when 3 then '周二'
+		when 4 then '周三'
+		when 5 then '周四'
+		when 6 then '周五'
+		when 7 then '周六'	
+	else '' end) 周,
+	wc.workDate 工作日,wc.baseCheckTime 基准时间,wc.userCheckTime 实际打卡时间
+from 
+(
+select (case when isnumeric(w.jobnumber)=1 then w.jobnumber else null end) jobnumber,
+	(case when isnumeric(w.userid)=1 then w.userid else null end) userid,
+	w.workDate,w.baseCheckTime,w.userCheckTime,w.timeResult,w.checkType,w.locationResult,w.mobile 
+from hrWorkcheck w
+) wc,
+v_hrstaffinfo h
+where isnull(wc.jobnumber,wc.userid)=h.StaffId 
+   ${if(len(开始日期) == 0,""," and wc.workDate >= '" + 开始日期 + "'")}
+   ${if(len(结束日期) == 0,""," and wc.workDate <= '" + 结束日期 + "'")}
+   ${if(len(部门) == 0,""," and h.DepName = '" + 部门 + "'")}
+   ${if(len(员工姓名) == 0,""," and h.Name = '" + 员工姓名 + "'")}
+order by wc.baseCheckTime

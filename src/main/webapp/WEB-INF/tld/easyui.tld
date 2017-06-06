@@ -1127,6 +1127,13 @@
 			<rtexprvalue>true</rtexprvalue>
 			<description>formdiv.css主题目录</description>
 		</attribute>
+		<!--增加上传方式为enctype="multipart/form-data" -->
+		<attribute>
+			<name>multipart</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>为true时enctype="multipart/form-data"否则普通方式</description>
+		</attribute>
 	</tag>
 	<!-- 自定义的选中操作 -->
 	<tag>
