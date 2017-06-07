@@ -32,7 +32,7 @@
 
 </body>
 </html>
-<script>
+<script type="text/javascript">
     function uploadsuccess(d,file,response) {
         if(d.success){
             addOneTab("流程模板", "activitiController.do?processList");
