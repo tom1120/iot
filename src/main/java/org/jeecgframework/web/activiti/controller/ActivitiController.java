@@ -320,7 +320,11 @@ public class ActivitiController extends BaseController {
 	 * @return
      */
 	@RequestMapping(params = "deploy",method = RequestMethod.POST)
-	public String deploy(HttpServletRequest request) {
+	@ResponseBody
+	public AjaxJson deploy(HttpServletRequest request) {
+		AjaxJson ajaxJson=new AjaxJson();
+		ajaxJson.setMsg("部署失败！");
+		ajaxJson.setSuccess(false);
 
 		PropertiesUtil util = new PropertiesUtil("sysConfig.properties");
 		String exportDir=util.readProperty("export.diagram.path");
@@ -370,11 +374,16 @@ public class ActivitiController extends BaseController {
 				WorkflowUtils.exportDiagramToFile(repositoryService, processDefinition, exportDir);
 			}
 
+			ajaxJson.setMsg("部署成功");
+			ajaxJson.setSuccess(true);
+
 		} catch (Exception e) {
 			logger.error("error on deploy process, because of file input stream", e);
 		}
 
-		return "redirect:activitiController.do?processList";
+//		return "redirect:activitiController.do?processList";
+
+		return ajaxJson;
 	}
 
 

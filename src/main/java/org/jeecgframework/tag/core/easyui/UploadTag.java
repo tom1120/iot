@@ -195,8 +195,8 @@ public class UploadTag extends TagSupport {
 
 
 				//增加上传失败函数 add by zhaoyi
-				sb.append("onUploadError : function(file,errorCode,errorMsg,errorString,swfuploadifyQueue) {\n" +
-						"　　alert( 'id: ' + file.id\n" +
+				sb.append("onUploadError : function(file,errorCode,errorMsg,errorString) {\n" +
+						"　　console.log( 'id: ' + file.id\n" +
 						"　　+ ' - 索引: ' + file.index\n" +
 						"　　+ ' - 文件名: ' + file.name\n" +
 						"　　+ ' - 文件大小: ' + file.size\n" +
@@ -207,11 +207,7 @@ public class UploadTag extends TagSupport {
 						"　　+ ' - 错误代码: ' + errorCode\n" +
 						"　　+ ' - 错误描述: ' + errorMsg\n" +
 						"　　+ ' - 简要错误描述: ' + errorString\n" +
-						"　　+ ' - 出错的文件数: ' + swfuploadifyQueue.filesErrored\n" +
-						"　　+ ' - 错误信息: ' + swfuploadifyQueue.errorMsg\n" +
-						"　　+ ' - 要添加至队列的数量: ' + swfuploadifyQueue.filesSelected\n" +
-						"　　+ ' - 添加至对立的数量: ' + swfuploadifyQueue.filesQueued\n" +
-						"　　+ ' - 队列长度: ' + swfuploadifyQueue.queueLength); },");
+						"　　); },\n");
 
 				//上传成功处理函数
 				sb.append("onUploadSuccess : function(file, data, response) {"+"\n");
