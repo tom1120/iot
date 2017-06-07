@@ -100,6 +100,7 @@
 
                 if(d.success){
                     datagrid.datagrid('reload');
+                    addOneTab("流程模板", "activitiController.do?processList");
                     tip(d.msg);
                 }else{
                     tip(d.msg);
