@@ -254,6 +254,7 @@ public class ActivitiController extends BaseController {
 	
 	
 	/**
+	 * 流程模板列表
 	 * easyui AJAX请求数据
 	 * @param request
 	 * @param response
@@ -291,7 +292,16 @@ public class ActivitiController extends BaseController {
 		int i = 0;
 		for(ProcessDefinition pi : list){
 			i++;
-			rows.append("{'id':"+i+",'processDefinitionId':'"+pi.getId() +"','startPage':'"+pi.getDescription()+"','resourceName':'"+pi.getResourceName()+"','deploymentId':'"+pi.getDeploymentId()+"','key':'"+pi.getKey()+"','name':'"+pi.getName()+"','version':'"+pi.getVersion()+"','isSuspended':'"+pi.isSuspended()+"'},");
+			rows.append("{'id':"+i
+					+",'processDefinitionId':'"+pi.getId()
+					+"','startPage':'"+pi.getDescription()
+					+"','resourceName':'"+pi.getResourceName()
+					+"','deploymentId':'"+pi.getDeploymentId()
+					+"','category':'"+pi.getCategory()
+					+"','key':'"+pi.getKey()
+					+"','name':'"+pi.getName()
+					+"','version':'"+pi.getVersion()
+					+"','isSuspended':'"+pi.isSuspended()+"'},");
 		}
 		String rowStr = StringUtils.substringBeforeLast(rows.toString(), ",");
 		
@@ -477,12 +487,13 @@ public class ActivitiController extends BaseController {
 		org.activiti.engine.repository.Model modelData = repositoryService.newModel();
 		modelData.setKey(processDefinition.getKey());
 		modelData.setName(processDefinition.getResourceName());
-		modelData.setCategory(processDefinition.getDeploymentId());
+		modelData.setCategory(processDefinition.getCategory());
 
 		ObjectNode modelObjectNode = new ObjectMapper().createObjectNode();
 		modelObjectNode.put(ModelDataJsonConstants.MODEL_NAME, processDefinition.getName());
 		modelObjectNode.put(ModelDataJsonConstants.MODEL_REVISION, 1);
 		modelObjectNode.put(ModelDataJsonConstants.MODEL_DESCRIPTION, processDefinition.getDescription());
+
 		modelData.setMetaInfo(modelObjectNode.toString());
 
 		repositoryService.saveModel(modelData);

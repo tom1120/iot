@@ -255,7 +255,8 @@ public class ModuleController {
 //			}
 
 			String processName = modelData.getName() + ".bpmn20.xml";
-			Deployment deployment = repositoryService.createDeployment().name(modelData.getName()).addString(processName, new String(bpmnBytes)).deploy();
+			Deployment deployment = repositoryService.createDeployment().name(modelData.getName()).category(modelData.getCategory()).
+					addString(processName, new String(bpmnBytes)).deploy();
 
 			ajaxJson.setMsg("部署成功,部署id="+deployment.getId());
 			ajaxJson.setSuccess(true);

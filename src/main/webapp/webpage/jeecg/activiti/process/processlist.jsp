@@ -10,6 +10,7 @@
                 <th field="id" hidden="hidden">编号</th>
                 <th field="processDefinitionId" width="50">ProcessDefinitionId</th>
                 <th field="deploymentId" width="50">DeploymentId</th>
+                <th field="category" width="50">分类</th>
                 <th field="name" width="50">流程名称</th>
                 <th field="key" width="50">KEY</th>
                 <th field="version" width="20">版本</th>
@@ -94,6 +95,7 @@
                 id: data.rows[i].id,
                 processDefinitionId: data.rows[i].processDefinitionId,
                 deploymentId: data.rows[i].deploymentId,
+                category:data.rows[i].category,
                 name: data.rows[i].name,
                 key: data.rows[i].key,
                 version: data.rows[i].version,

@@ -261,7 +261,10 @@ KISBPM.TOOLBAR = {
         },
         
         closeEditor: function(services) {
-        	window.location.href = "./";
+            //原始关闭事件
+        	// window.location.href = "./";
+            window.opener=null;
+            window.close();
         },
         
         /**
@@ -326,7 +329,11 @@ var SaveModelCtrl = [ '$rootScope', '$scope', '$http', '$route', '$location',
 
     $scope.saveAndClose = function () {
     	$scope.save(function() {
-    		window.location.href = "./";
+            //原始保存关闭事件
+            // window.location.href = "./";
+            window.opener=null;
+            window.close();
+
     	});
     };
     $scope.save = function (successCallback) {
