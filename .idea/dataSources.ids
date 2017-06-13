@@ -6831,7 +6831,7 @@ GROUP_ID_</columns>
       </key>
       <column id="1872" parent="132" name="ID_">
         <mandatory>1</mandatory>
-        <data-type>varchar(32)</data-type>
+        <data-type>varchar(10)</data-type>
       </column>
       <column id="1873" parent="132" name="REV_">
         <mandatory>1</mandatory>

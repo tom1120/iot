@@ -24,11 +24,13 @@ import org.jeecgframework.core.common.controller.BaseController;
 import org.jeecgframework.core.common.model.json.AjaxJson;
 import org.jeecgframework.core.common.model.json.DataGrid;
 import org.jeecgframework.core.util.PropertiesUtil;
+import org.jeecgframework.core.util.ResourceUtil;
 import org.jeecgframework.core.util.oConvertUtils;
 import org.jeecgframework.web.activiti.util.HistoryProcessInstanceDiagramCmd;
 import org.jeecgframework.web.activiti.util.WorkflowUtils;
 import org.jeecgframework.web.demo.controller.test.DemoController;
 import org.jeecgframework.web.system.pojo.base.TSDemo;
+import org.jeecgframework.web.system.pojo.base.TSUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.support.ManagedProperties;
@@ -61,7 +63,7 @@ import java.util.zip.ZipInputStream;
 @RequestMapping("/activitiController")
 public class ActivitiController extends BaseController {
 
-	private static final Logger logger = Logger.getLogger(DemoController.class);
+	private static final Logger logger = Logger.getLogger(ActivitiController.class);
 	
 	@Autowired
 	protected RepositoryService repositoryService;
@@ -172,7 +174,7 @@ public class ActivitiController extends BaseController {
     }
 	
 	/**
-	 * 读取带跟踪的流程图片
+	 * 读取带跟踪的流程图片，使用官方api存在缺陷，需要重新写相关信息
 	 * @throws Exception
 	 */
 	@RequestMapping(params = "traceImage")
@@ -254,7 +256,7 @@ public class ActivitiController extends BaseController {
 	
 	
 	/**
-	 * 流程模板列表
+	 * 流程实例列表
 	 * easyui AJAX请求数据
 	 * @param request
 	 * @param response
@@ -418,7 +420,11 @@ public class ActivitiController extends BaseController {
 	@RequestMapping(params = "waitingClaimTaskDataGrid")
 	public void waitingClaimTaskDataGrid(HttpServletRequest request, HttpServletResponse response, DataGrid dataGrid) {
 		
-		String userId = "hruser";
+
+		//获取当前用户信息
+		TSUser user=ResourceUtil.getSessionUserName();
+		String userId = user.getUserName();
+
 		TaskService taskService = processEngine.getTaskService();
         List<Task> tasks = taskService.createTaskQuery().taskCandidateUser(userId).active().list();//.taskCandidateGroup("hr").active().list();
 		
@@ -530,8 +536,10 @@ public class ActivitiController extends BaseController {
 	 */
 	@RequestMapping(params = "claimedTaskDataGrid")
 	public void claimedTaskDataGrid(HttpServletRequest request, HttpServletResponse response, DataGrid dataGrid) {
-		
-		String userId = "leaderuser";
+		//获取当前登录用户信息
+		TSUser user = ResourceUtil.getSessionUserName();
+
+		String userId = user.getUserName();
 		TaskService taskService = processEngine.getTaskService();
         List<Task> tasks = taskService.createTaskQuery().taskAssignee(userId).list();
 		
@@ -562,8 +570,10 @@ public class ActivitiController extends BaseController {
 	 */
 	@RequestMapping(params = "finishedTaskDataGrid")
 	public void finishedTask(HttpServletRequest request, HttpServletResponse response, DataGrid dataGrid) {
-		
-		String userId = "leaderuser";
+		//获取当前用户
+		TSUser user=ResourceUtil.getSessionUserName();
+
+		String userId = user.getUserName();
 		List<HistoricTaskInstance> historicTasks = historyService
                 .createHistoricTaskInstanceQuery().taskAssignee(userId)
                 .finished().list();
@@ -586,8 +596,10 @@ public class ActivitiController extends BaseController {
 	@ResponseBody
 	public AjaxJson claimTask(@RequestParam("taskId") String taskId, HttpServletRequest request) {
 		AjaxJson j = new AjaxJson();
-		
-		String userId = "leaderuser";
+		//获取当前用户
+		TSUser user=ResourceUtil.getSessionUserName();
+		String userId = user.getUserName();
+
 		
 		TaskService taskService = processEngine.getTaskService();
         taskService.claim(taskId, userId);
@@ -600,7 +612,7 @@ public class ActivitiController extends BaseController {
 		// -----------------------------------------------------------------------------------
 		// 以下各函数可以提成共用部件 (Add by Quainty)
 		// -----------------------------------------------------------------------------------
-		public void responseDatagrid(HttpServletResponse response, JSONObject jObject) {
+		public static void responseDatagrid(HttpServletResponse response, JSONObject jObject) {
 			response.setContentType("application/json");
 			response.setHeader("Cache-Control", "no-store");
 			try {
@@ -611,4 +623,32 @@ public class ActivitiController extends BaseController {
 				e.printStackTrace();
 			}
 		}
+
+
+	/**
+	 * 读取流程资源
+	 *
+	 * @param processDefinitionId 流程定义ID
+	 * @param resourceName        资源名称
+	 */
+	@RequestMapping(value = "read-resource")
+	public void readResource(@RequestParam("pdid") String processDefinitionId, @RequestParam("resourceName") String resourceName, HttpServletResponse response)
+			throws Exception {
+		ProcessDefinitionQuery pdq = repositoryService.createProcessDefinitionQuery();
+		ProcessDefinition pd = pdq.processDefinitionId(processDefinitionId).singleResult();
+
+		// 通过接口读取
+		InputStream resourceAsStream = repositoryService.getResourceAsStream(pd.getDeploymentId(), resourceName);
+
+		// 输出资源内容到相应对象
+		byte[] b = new byte[1024];
+		int len = -1;
+		while ((len = resourceAsStream.read(b, 0, 1024)) != -1) {
+			response.getOutputStream().write(b, 0, len);
+		}
+	}
+
+
+
+
 }

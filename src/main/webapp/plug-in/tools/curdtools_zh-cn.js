@@ -166,6 +166,10 @@ function deleteALLSelect(title,url,gname) {
 	}
 }
 
+
+
+
+
 /**
  * 查看时的弹出窗口
  * 
@@ -644,7 +648,6 @@ function doSubmit(url,name,data) {
 				if(msg!=null||"undefined"!=typeof msg){
 					tip(msg);
 				}
-
 				reloadTable();
 			} else {
 				if(msg!=null||"undefined"!=typeof msg){

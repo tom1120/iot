@@ -247,6 +247,7 @@ public class ModuleController {
 			byte[] bpmnBytes = null;
 
 			BpmnModel model = new BpmnJsonConverter().convertToBpmnModel(modelNode);
+			//空流程模型是无法部署的，此处会报空指针错误
 			bpmnBytes = new BpmnXMLConverter().convertToXML(model);
 //			if(bpmnBytes.length==0){
 //				logger.error("无流程细节，部署流程失败：modelId", modelId);
@@ -313,6 +314,7 @@ public class ModuleController {
 
 		return ajaxJson;
 	}
+
 
 
 }

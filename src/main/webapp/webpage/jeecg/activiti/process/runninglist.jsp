@@ -20,7 +20,8 @@
 		function viewHistory(processInstanceId){
 			var url = "";
 			var title = "流程历史";
-			url = "activitiController.do?viewProcessInstanceHistory&processInstanceId="+processInstanceId+"&isIframe"
+//			url = "activitiController.do?viewProcessInstanceHistory&processInstanceId="+processInstanceId+"&isIframe"
+			url = "service/traceProcessController/trace/view/"+processInstanceId;
 			addOneTab(title, url);
 		}
 	    // 编辑初始化数据
