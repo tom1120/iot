@@ -79,7 +79,7 @@ function showActivities() {
             var tipContent = "<table class='table table-bordered'>";
             $.each(varsArray[i], function(varKey, varValue) {
                 if (varValue) {
-                    tipContent += "<tr><td>" + varKey + "</td><td>" + varValue + "</td></tr>";
+                    tipContent += "<tr style='color: #FFFFFF;'><td>" + varKey + "</td><td>" + varValue + "</td></tr>";
                 }
             });
             tipContent += "</table>";

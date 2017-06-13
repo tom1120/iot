@@ -20,7 +20,9 @@
 		function viewHistory(processInstanceId){
 			var url = "";
 			var title = "流程历史";
+			//使用官方api流程历史流程图跟踪存在缺陷，流名称不会画出来，会出现不可预料的错位等
 //			url = "activitiController.do?viewProcessInstanceHistory&processInstanceId="+processInstanceId+"&isIframe"
+			//自己实现历史流程图
 			url = "service/traceProcessController/trace/view/"+processInstanceId;
 			addOneTab(title, url);
 		}

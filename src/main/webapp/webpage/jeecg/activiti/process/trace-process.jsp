@@ -14,6 +14,14 @@
     <base href="${webRoot}/">
     <title>流程跟踪--${historicProcessInstance.processInstanceId}</title>
     <t:base type="jquery,easyui,tools,DatePicker"></t:base>
+
+    <link rel="stylesheet" href="plug-in/bootstrap/css/bootstrap.min.css" type="text/css"/>
+    <link rel="stylesheet" href="plug-in/bootstrap/css/bootstrap-responsive.min.css" type="text/css"/>
+    <link rel="stylesheet" href="plug-in/bootstrap/css/style.css" type="text/css"/>
+    <style type="text/css">
+        #pinfo th {background: #f7f7f9;}
+    </style>
+
     <script type="text/javascript" src="plug-in/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript">
         var processInstanceId = '${historicProcessInstance.processInstanceId}';
@@ -23,12 +31,7 @@
 
 
 
-    <link rel="stylesheet" href="plug-in/bootstrap/css/bootstrap.min.css" type="text/css"/>
-    <link rel="stylesheet" href="plug-in/bootstrap/css/bootstrap-responsive.min.css" type="text/css"/>
-    <link rel="stylesheet" href="plug-in/bootstrap/css/style.css" type="text/css"/>
-    <style type="text/css">
-        #pinfo th {background: #f7f7f9;}
-    </style>
+
 
 
 </head>
