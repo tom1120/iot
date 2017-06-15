@@ -609,11 +609,43 @@ public class TagUtil {
 			String testparam = functionname.substring(
 					functionname.indexOf("(") + 1, functionname.length() - 1);
 			if (StringUtil.isNotEmpty(testparam)) {
-				String[] params = testparam.split(",");
-				for (String string : params) {
-					param += (string.indexOf("{") != -1) ? ("'\"+"
-							+ string.substring(1, string.length() - 1) + "+\"',")
-							: ("'\"+rec." + string + "+\"',");
+				if(testparam.contains("SPECIALCHAR")){
+					String specialparam=testparam.substring(testparam.indexOf("SPECIALCHAR")+12,testparam.length());
+					//此参数要求放到最后面，用来表示存在特殊参数,
+					testparam=testparam.substring(0,testparam.indexOf("SPECIALCHAR")-1);
+
+					//特殊字段以#分割
+					String sparams[]=specialparam.split("#");
+					List<String> list=Arrays.asList(sparams);
+					String[] params = testparam.split(",");
+
+					//对每个参数进行处理
+					for (String string : params) {
+						//包含特殊字符就执行escape编码
+						if(list.contains(string)){
+							param += (string.indexOf("{") != -1) ? ("'\"+"
+									+ string.substring(1, string.length() - 1) + "+\"',")
+									: ("'\"+escape(rec." + string + ")+\"',");
+						}else{
+							param += (string.indexOf("{") != -1) ? ("'\"+"
+									+ string.substring(1, string.length() - 1) + "+\"',")
+									: ("'\"+rec." + string + "+\"',");
+						}
+
+
+					}
+
+
+
+				}else{
+					String[] params = testparam.split(",");
+					//对每个参数进行处理
+					for (String string : params) {
+
+						param += (string.indexOf("{") != -1) ? ("'\"+"
+								+ string.substring(1, string.length() - 1) + "+\"',")
+								: ("'\"+rec." + string + "+\"',");
+					}
 				}
 			}
 		}

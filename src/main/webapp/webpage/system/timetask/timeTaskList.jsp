@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="/context/mytags.jsp"%>
 <t:base type="jquery,easyui,tools,DatePicker"></t:base>
+
+
 <div class="easyui-layout" fit="true">
 <div region="center" style="padding:0px;border:0px">
 	<t:datagrid name="timeTaskList" title="schedule.task.manage" actionUrl="timeTaskController.do?datagrid" 
@@ -19,9 +21,18 @@
 	<t:dgConfOpt title="common.start" url="timeTaskController.do?startOrStopTask&id={id}&isStart=1" urlclass="ace_button"  urlfont="fa-play-circle" message="确认运行任务" exp="isStart#eq#0"/>
 	<t:dgConfOpt title="common.stop" url="timeTaskController.do?startOrStopTask&id={id}&isStart=0" urlclass="ace_button"  urlfont="fa-stop" message="确认停止" exp="isStart#eq#1"/>
 	<t:dgConfOpt title="effective.immediately" url="timeTaskController.do?updateTime&id={id}" urlclass="ace_button"  urlfont="fa-clock-o" message="确认更新任务时间"  exp="isEffect#eq#0"/>
+		<%--特殊字符SPECIALCHAR开始，以#分割多个字符--%>
+		<t:dgFunOpt title="cron编辑" funname="editCron(cronExpression,id,SPECIALCHAR#cronExpression)" urlclass="ace_button" urlfont="fa-edit"></t:dgFunOpt>
 	<t:dgDelOpt  url="timeTaskController.do?del&id={id}" title="common.delete" urlclass="ace_button"  urlfont="fa-trash-o"></t:dgDelOpt>
 	<t:dgToolBar title="common.add" icon="icon-add" url="timeTaskController.do?addorupdate" funname="add"></t:dgToolBar>
 	<t:dgToolBar title="common.edit" icon="icon-edit" url="timeTaskController.do?addorupdate" funname="update"></t:dgToolBar>
 	<t:dgToolBar title="common.view" icon="icon-search" url="timeTaskController.do?addorupdate" funname="detail"></t:dgToolBar>
 </t:datagrid></div>
 </div>
+
+<script>
+	function editCron(cronExpression,id,SPECIALCHAR) {
+		console.log(unescape(cronExpression));
+		add("cron表达式","cron.html?cronExpression="+unescape(cronExpression),"timeTaskList",'1000','800');
+	}
+</script>

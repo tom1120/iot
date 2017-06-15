@@ -16,6 +16,7 @@ import javax.servlet.jsp.tagext.TagSupport;
 
 import net.sf.json.JSONObject;
 
+import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 import org.jeecgframework.core.constant.Globals;
 import org.jeecgframework.core.util.ApplicationContextUtil;
@@ -1194,13 +1195,34 @@ public class DataGridTag extends TagSupport {
 				}
 				
 			}
+			//自定义函数加入
 			if (OptTypeDirection.Fun.equals(dataGridUrl.getType())) {
 				String name = TagUtil.getFunction(dataGridUrl.getFunname());
 				String parmars = TagUtil.getFunParams(dataGridUrl.getFunname());
+
+
+
+//				parmars=parmars.replaceAll("\\+","");
+//				parmars= StringEscapeUtils.escapeHtml(parmars);
+
+
 				if(!StringUtil.isEmpty(dataGridUrl.getUrlclass())){//倘若urlclass不为空，则去掉链接前面的"[";
-					sb.append("href+=\"<a href=\'#\'  "+urlclass.toString()+"  onclick=" + name + "(" + parmars + ")" + style.toString() + "> "+urlfont.toString()+"\";");
+
+					if(dataGridUrl.getFunname().contains("SPECIALCHAR")){
+						sb.append("href+=\"<a href=\'#\'  "+urlclass.toString()+"  onclick=" + name + "(" + parmars + ")" + style.toString() + "> "+urlfont.toString()+"\";");
+					}else{
+						sb.append("href+=\"<a href=\'#\'  "+urlclass.toString()+"  onclick=" + name + "(" + parmars + ")" + style.toString() + "> "+urlfont.toString()+"\";");
+					}
+
+
+
 				}else{
-					sb.append("href+=\"[<a href=\'#\'   onclick=" + name + "(" + parmars + ")" + style.toString() + ">\";");
+					if(dataGridUrl.getFunname().contains("SPECIALCHAR")){
+						sb.append("href+=\"[<a href=\'#\'   onclick=" + name + "(" + parmars + ")" + style.toString() + ">\";");
+					}else{
+						sb.append("href+=\"[<a href=\'#\'   onclick=" + name + "(" + parmars + ")" + style.toString() + ">\";");
+					}
+
 				}
 				
 			}
