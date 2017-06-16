@@ -522,8 +522,9 @@ li {
 				Cron在线表达式生成器
 			</div>
 		</div>
-
-		<div><input type="text" value=""></div>
+		<!--注意id不能变，因为使用add系统固定函数绑定了id-->
+		<a id="btn_sub" href="#" onclick="updateCronExpression()" disabled="true"></a>
+		<input type="hidden" id="cronid" value="" readonly="readonly">
 	</center>
 	<script type="text/javascript"
 		src="http://lib.sinaapp.com/js/jquery/2.2.4/jquery-2.2.4.min.js"></script>
@@ -545,12 +546,70 @@ li {
 			if (r != null) return decodeURI(r[2]); return null;
 		}
 
+		function updateCronExpression() {
+//			console.log('测试通过');
+//			window.parent.tip('asdas');
+			var cronValue=$("#cron").val();
+//			console.log(cronValue);
+			var cronid=$("#cronid").val();
+			if(typeof cronValue!=undefined&&cronValue!=null&&cronValue!=''){
+
+				$.ajax({
+					url:'timeTaskController.do?updateCronExpression&cronExpression='+cronValue+'&cronid='+cronid,
+//					data:{cronExpression:cronValue,cronid:cronid},
+					type:'post',
+					async:true,
+					dataType:'json',
+					success:function (data,textStatus) {
+//						var d=$.parseJSON(data);
+//						if(d==null||undefined==typeof data){d=data};
+//						console.log(data);
+						if(data.success){
+//刷新整个层页面
+//							window.parent.location.reload();
+
+							//刷新网格
+//							$('#timeTaskList', window.parent.document).datagrid('reload');
+//							console.log(window.parent[1]);
+							window.parent[1].reloadTable();
+
+//							第一种关闭方法：
+							frameElement.api.close();
+//							第二种关闭方法：设置了id才能使用
+//							$.dialog({id:'editYundong'}).close();
+
+
+
+//							window.parent.tip(data.msg);
+						}else{
+//							window.parent.tip(data.msg);
+						}
+					},
+					error:function (xmlHttpRequest,textStatus,errorThrow) {
+
+					}
+
+				})
+			}else{
+				alert('cron表达式参数为空！');
+			}
+
+		}
+
 		/**
-		 * 获取编辑信息到在线生成器中
+		 * 获取编辑信息到在线生成器中并反解析
          */
 		$(document).ready(function () {
-			console.log(getQueryString('cronExpression'));
-			$("#cron").val(getQueryString('cronExpression'));
+//			console.log(getQueryString('cronExpression'));
+			var cronid=getQueryString('id');
+			$("#cronid").val(cronid);
+			var cronValue=getQueryString('cronExpression');
+			if(typeof cronValue!=undefined&&cronValue!=null&&cronValue!=''){
+				$("#cron").val(getQueryString('cronExpression'));
+				btnFan();
+			}
+
+
 
 		});
 

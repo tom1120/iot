@@ -32,7 +32,10 @@
 
 <script>
 	function editCron(cronExpression,id,SPECIALCHAR) {
-		console.log(unescape(cronExpression));
-		add("cron表达式","cron.html?cronExpression="+unescape(cronExpression),"timeTaskList",'1000','800');
+//		console.log(unescape(cronExpression));
+		add("cron表达式","cron.html?cronExpression="+unescape(cronExpression)+"&id="+id,"timeTaskList",'1000','800');
+	}
+	function reloadTable() {
+		$("#timeTaskList").datagrid("reload");
 	}
 </script>

@@ -20,6 +20,7 @@ import org.quartz.CronTrigger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -55,8 +56,36 @@ public class TimeTaskController extends BaseController {
 		return new ModelAndView("system/timetask/timeTaskList");
 	}
 
+	/**
+	 * 更新cron表达式
+	 * @param cronExpression
+	 * @param cronid
+     * @return
+     */
+	@RequestMapping(params = "updateCronExpression")
+	@ResponseBody
+	public AjaxJson updateCronExpression(@RequestParam("cronExpression") String cronExpression,
+										 @RequestParam("cronid") String cronid,HttpServletRequest request){
+//		String s=request.getParameter("cronExpression");
+		AjaxJson ajaxJson=new AjaxJson();
+		ajaxJson.setMsg("更新失败！");
+		ajaxJson.setSuccess(false);
 
-
+		if(cronExpression!=null&&!cronExpression.equals("")){
+			TSTimeTaskEntity timeTask = timeTaskService.get(TSTimeTaskEntity.class, cronid);
+			timeTask.setCronExpression(cronExpression);
+			boolean isUpdate = dynamicTask.updateCronExpression(timeTask.getTaskId() , timeTask.getCronExpression());
+			if(isUpdate){
+				//不立即生效
+				timeTask.setIsEffect("0");
+				timeTask.setIsStart("0");
+				timeTaskService.updateEntitie(timeTask);
+			}
+			ajaxJson.setMsg(isUpdate?"定时任务管理更新成功":"定时任务管理更新失败");
+			ajaxJson.setSuccess(true);
+		}
+		return ajaxJson;
+	}
 
 	/**
 	 * easyui AJAX请求数据

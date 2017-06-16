@@ -33,6 +33,7 @@
 </body>
 </html>
 <script type="text/javascript">
+    //上传成功
     function uploadsuccess(d,file,response) {
         console.debug(d);
         if(d.success){

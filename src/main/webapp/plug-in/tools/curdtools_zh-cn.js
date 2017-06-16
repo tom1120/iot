@@ -576,7 +576,7 @@ function createdialog(title, content, url,name) {
  */
 function saveObj() {
 	// console.log(iframe.document);
-	//绑定iframe内的按钮
+	//绑定iframe内的元素点击事件
 	$('#btn_sub', iframe.document).click();
 }
 
