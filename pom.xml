@@ -102,7 +102,7 @@
 		<!--maven插件变量-->
 		<tomcat.version>2.2</tomcat.version>
 		<jetty.version>7.6.14.v20131031</jetty.version>
-		<webserver.port>8888</webserver.port>
+		<webserver.port>80</webserver.port>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
@@ -359,6 +359,12 @@
 			<groupId>org.activiti</groupId>
 			<artifactId>activiti-explorer</artifactId>
 			<version>${activiti.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-log4j12</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.activiti</groupId>
@@ -681,32 +687,33 @@
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
-		<dependency>
+<!--		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 			<version>1.6.1</version>
 			<type>jar</type>
 			<scope>compile</scope>
-		</dependency>
-		<dependency>
+		</dependency>-->
+<!--		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-nop</artifactId>
 			<version>1.6.1</version>
 			<type>jar</type>
 			<scope>compile</scope>
-		</dependency>
-		<!-- <dependency>
+		</dependency>-->
+
+		 <dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>1.6.1</version>
 			<type>jar</type>
 			<scope>compile</scope>
-		</dependency> -->
-		<dependency>
+		</dependency>
+<!--		<dependency>
                  <groupId>org.slf4j</groupId>
                  <artifactId>log4j-over-slf4j</artifactId>
                  <version>1.6.1</version>
-         </dependency>
+         </dependency>-->
 		<!-- classmate -->
 		<dependency>
 			<groupId>com.fasterxml</groupId>
@@ -1041,16 +1048,34 @@
 			<groupId>org.codehaus.xfire</groupId>
 			<artifactId>xfire-jaxb2</artifactId>
 			<version>1.1.1</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.codehaus.xfire</groupId>
 			<artifactId>xfire-spring</artifactId>
 			<version>1.1.1</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.codehaus.xfire</groupId>
 			<artifactId>xfire-java5</artifactId>
 			<version>1.1.1</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 
@@ -1065,18 +1090,36 @@
 			<artifactId>jeecg-p3-ui</artifactId>
 			<version>1.1.2</version>
 			<type>jar</type>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-log4j12</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.p3framework</groupId>
 			<artifactId>jeecg-p3-bizcore</artifactId>
 			<version>1.0-SNAPSHOT</version>
 			<type>jar</type>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-log4j12</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<!-- 插件demo -->
 		<dependency>
 			<groupId>org.p3framework</groupId>
 			<artifactId>jeecg-p3-biz-demo</artifactId>
 			<version>1.0.2</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-log4j12</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		
 		<!-- 插件: 我的邮箱 -->
@@ -1086,6 +1129,12 @@
 			<version>1.0.0</version>
 			<type>jar</type>
 			<scope>compile</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-log4j12</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 		<!-- 插件：微信企业号-->
@@ -1095,6 +1144,12 @@
 			<version>1.0.0</version>
 			<type>jar</type>
 			<scope>compile</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-log4j12</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.jeewx</groupId>
@@ -1102,6 +1157,12 @@
 			<version>1.0-SNAPSHOT</version>
 			<type>jar</type>
 			<scope>compile</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-log4j12</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 		
@@ -1112,6 +1173,12 @@
 			<version>1.0.0</version>
 			<type>jar</type>
 			<scope>compile</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-log4j12</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 		<dependency>
@@ -1165,6 +1232,9 @@
 				<configuration>
 					<port>${webserver.port}</port>
 					<path>/${project.artifactId}</path>
+
+					<url>http://121.201.125.154/manager/text</url> <!-- tomcat管理路径 -->
+					<server>Tomcat8</server> <!-- 与settings.xml文件中Server的id相同 -->
 
 					<uriEncoding>${project.build.sourceEncoding}</uriEncoding>
 

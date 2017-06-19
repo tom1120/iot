@@ -289,7 +289,7 @@ $(function() {
 		btnFan();
 		$.ajax({
 			type: "get",
-			url: "preview",
+			url: "timeTaskController.do?preview",
 			dataType: "json",
 			data: {
 				"CronExpression": $("#cron").val()

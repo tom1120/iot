@@ -52,9 +52,30 @@ public class DynamicTask {
 			CronTrigger trigger = (CronTrigger) getTrigger(triggerName,
 					Scheduler.DEFAULT_GROUP);
 			if(start){
-				schedulerFactory.resumeTrigger(trigger.getName(), trigger.getGroup());
-				logger.info("trigger the start successfully!!");
+				//恢复触发
+//				schedulerFactory.resumeTrigger(trigger.getName(), trigger.getGroup());
+				/**
+				 *
+				 state的值代表该任务触发器的状态：
+				 STATE_BLOCKED   4 // 运行
+				 STATE_COMPLETE  2  //完成那一刻，不过一般不用这个判断Job状态
+				 STATE_ERROR     3  // 错误
+				 STATE_NONE  -1      //未知
+				 STATE_NORMAL    0   //正常无任务，用这个判断Job是否在运行
+				 STATE_PAUSED    1   //暂停状态
+				 */
+				int state=schedulerFactory.getTriggerState(trigger.getName(), trigger.getGroup());
+				if(state!=4){//非运行时
+					schedulerFactory.rescheduleJob(trigger.getName(), trigger.getGroup(),trigger);
+					logger.info("trigger the starting successfully!!");
+				}else {
+					//恢复触发
+					schedulerFactory.resumeTrigger(trigger.getName(), trigger.getGroup());
+					logger.info("trigger the resume successfully!!");
+				}
+
 			}else{
+				//停止触发
 				schedulerFactory.pauseTrigger(trigger.getName(), trigger.getGroup());
 				logger.info("trigger the pause successfully!!");
 			}
@@ -87,8 +108,11 @@ public class DynamicTask {
 				return true;
 			}
 			trigger.setCronExpression(cronExpression);
-			schedulerFactory.rescheduleJob(trigger.getName(), trigger.getGroup(),
-					trigger);
+			//更新任务表达式时立即触发任务
+//			schedulerFactory.rescheduleJob(trigger.getName(), trigger.getGroup(),
+//					trigger);
+
+
 			updateSpringMvcTaskXML(trigger,cronExpression);
 			logger.info("Update the cronExpression successfully!!");
 			return true;
@@ -96,10 +120,11 @@ public class DynamicTask {
 			logger.error("The new cronExpression - " + cronExpression
 					+ " not conform to the standard. " + e);
 			return false;
-		} catch (SchedulerException e) {
-			logger.error("Fail to reschedule. " + e);
-			return false;
 		}
+//		catch (SchedulerException e) {
+//			logger.error("Fail to reschedule. " + e);
+//			return false;
+//		}
 	}
 
 	/**

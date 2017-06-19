@@ -19,6 +19,8 @@
 	<context:component-scan base-package="org.activiti.rest.editor" />
 	<context:component-scan base-package="org.activiti.rest.diagram" />
 
+
+
 	<!-- ApplicationContext -->
 	<bean class="org.jeecgframework.core.util.ApplicationContextUtil"></bean>
 	<bean class="org.jeecgframework.p3.core.utils.common.ApplicationContextUtil"></bean>

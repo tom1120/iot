@@ -76,8 +76,7 @@ public class TimeTaskController extends BaseController {
 			timeTask.setCronExpression(cronExpression);
 			boolean isUpdate = dynamicTask.updateCronExpression(timeTask.getTaskId() , timeTask.getCronExpression());
 			if(isUpdate){
-				//不立即生效
-				timeTask.setIsEffect("0");
+				timeTask.setIsEffect("1");
 				timeTask.setIsStart("0");
 				timeTaskService.updateEntitie(timeTask);
 			}
@@ -86,6 +85,17 @@ public class TimeTaskController extends BaseController {
 		}
 		return ajaxJson;
 	}
+
+	/**
+	 * 解析cron最近几次的表达式
+	 */
+	@RequestMapping(params = "preview")
+	public void previewExpression(){
+
+	}
+
+
+
 
 	/**
 	 * easyui AJAX请求数据
@@ -190,7 +200,7 @@ public class TimeTaskController extends BaseController {
 		boolean isUpdate = dynamicTask.updateCronExpression(timeTask.getTaskId() , timeTask.getCronExpression());
 		if(isUpdate){
 			timeTask.setIsEffect("1");
-			timeTask.setIsStart("1");
+			timeTask.setIsStart("0");
 			timeTaskService.updateEntitie(timeTask);
 		}
 		j.setMsg(isUpdate?"定时任务管理更新成功":"定时任务管理更新失败");
