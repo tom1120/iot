@@ -14,15 +14,16 @@ import java.net.URL;
  */
 @Service("fineReportSendService")
 public class FineReportSendServiceImpl implements FineReportSendService {
-    @Override
-    public boolean work() {
+
+    private boolean execute(String url,String method){
         boolean b=false;
         try {
-            System.out.println("================================helloWorld()========================");
-            URL url = new URL("http://localhost:8080/kito/services/FineReportSendService?wsdl");
-            Client client = new Client(url);
+            System.out.println("================================execute()========================");
+//            URL url = new URL("http://localhost:8080/kito/services/FineReportSendService?wsdl");
+            URL urlService = new URL(url);
+            Client client = new Client(urlService);
             Object[] results = new Object[1];
-            results = client.invoke("executeSaleImgSend",null);
+            results = client.invoke(method,null);
             b=(boolean)results[0];
             System.out.println(results[0]);
         } catch (MalformedURLException e) {
@@ -32,5 +33,49 @@ public class FineReportSendServiceImpl implements FineReportSendService {
         }
 
         return b;
+
+    }
+
+    @Override
+    public boolean executeSaleImgSend() {
+        String url="http://k6.kito.cn/services/FineReportSendService?wsdl";
+        String method="executeSaleImgSend";
+        return execute(url,method);
+
+    }
+
+    @Override
+    public boolean executeNewProductSend() {
+        String url="http://k6.kito.cn/services/FineReportSendService?wsdl";
+        String method="executeNewProductSend";
+        return execute(url,method);
+    }
+
+    @Override
+    public boolean executeFactoryProductInSend() {
+        String url="http://k6.kito.cn/services/FineReportSendService?wsdl";
+        String method="executeFactoryProductInSend";
+        return execute(url,method);
+    }
+
+    @Override
+    public boolean executeProductRealtimeStoreSend() {
+        String url="http://k6.kito.cn/services/FineReportSendService?wsdl";
+        String method="executeProductRealtimeStoreSend";
+        return execute(url,method);
+    }
+
+    @Override
+    public boolean executeChannelRealtimeStoreAgeSend() {
+        String url="http://k6.kito.cn/services/FineReportSendService?wsdl";
+        String method="executeChannelRealtimeStoreAgeSend";
+        return execute(url,method);
+    }
+
+    @Override
+    public boolean executeForeignTradeLightSend() {
+        String url="http://k6.kito.cn/services/FineReportSendService?wsdl";
+        String method="executeForeignTradeLightSend";
+        return execute(url,method);
     }
 }

@@ -249,6 +249,26 @@ function workDay(dom) {
 	item.val(start + "W");
 	item.change()
 }
+
+/**
+ * 取String 或者 object的长度
+ *
+ * */
+function count(o){
+	var t = typeof o;
+	if(t == 'string'){
+		return o.length;
+	}else if(t == 'object'){
+		var n = 0;
+		for(var i in o){
+			n++;
+		}
+		return n;
+	}
+	return false;
+};
+
+
 $(function() {
 	$(".numberspinner").numberspinner({
 		onChange: function() {
@@ -295,9 +315,11 @@ $(function() {
 				"CronExpression": $("#cron").val()
 			},
 			success: function(data) {
-				if(data && data.length == 5) {
+				// console.log(data[0]);
+				var num=count(data);
+				if(data && num==5) {
 					var strHTML = "<ul>";
-					for(var i = 0; i < data.length; i++) {
+					for(var i = 0; i < num; i++) {
 						strHTML += "<li>" + data[i] + "</li>"
 					}
 					strHTML += "</ul>";
@@ -305,6 +327,9 @@ $(function() {
 				} else {
 					$("#runTime").html("")
 				}
+			},
+			error:function (xmlHttpRequest,textStatus,errorThrow) {
+				console.log(errorThrow);
 			}
 		})
 	});

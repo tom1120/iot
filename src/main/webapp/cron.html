@@ -454,7 +454,7 @@ li {
 							<tr>
 								<td>Cron 表达式:</td>
 								<td colspan="6"><input type="text" name="cron"
-									style="width: 100%;" value="* * * * * ?" id="cron" /></td>
+									style="width: 100%;" value="* * * * * ?" id="cron"/></td>
 								<td><input type="button" value="反解析到UI "
 									style="margin-left: 10px;" id="btnFan" onclick="btnFan()" /></td>
 							</tr>
@@ -604,8 +604,16 @@ li {
 			var cronid=getQueryString('id');
 			$("#cronid").val(cronid);
 			var cronValue=getQueryString('cronExpression');
+//			console.log(cronValue.length);
 			if(typeof cronValue!=undefined&&cronValue!=null&&cronValue!=''){
-				$("#cron").val(getQueryString('cronExpression'));
+				//赋值取值多了空格
+//				$("#cron").val(cronValue);
+
+				$("#cron").attr("value",cronValue);
+
+//				console.log($("#cron").val());
+//				console.log($("#cron").attr("value"));
+
 				btnFan();
 			}
 

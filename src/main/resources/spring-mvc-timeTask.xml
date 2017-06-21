@@ -1,79 +1,109 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:util="http://www.springframework.org/schema/util"
-	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:task="http://www.springframework.org/schema/task"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
-	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
-	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
-	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
-	http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.0.xsd
-	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd"
-	default-autowire="byName" default-lazy-init="false">
+<?xml version="1.0" encoding="utf-8"?>
 
-
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:util="http://www.springframework.org/schema/util" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:task="http://www.springframework.org/schema/task" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd  http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd  http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd  http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd  http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.0.xsd  http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd" default-autowire="byName" default-lazy-init="false">
 	<!-- 定时任务配置 scheduler 方式 注解 暂时不支持动态更新 -->
-	<context:component-scan base-package="org.jeecgframework.core.timer" />
-	<task:executor id="executor" pool-size="5" />
-	<task:scheduler id="scheduler" pool-size="10" />
-	<task:annotation-driven executor="executor" scheduler="scheduler" />
-
-
-
-
+	<context:component-scan base-package="org.jeecgframework.core.timer"/>
+	<!--<task:executor id="executor" pool-size="5"/>-->
+	<!--<task:scheduler id="scheduler" pool-size="10"/>-->
+	<!--<task:annotation-driven executor="executor" scheduler="scheduler"/>-->
 	<!-- 定时任务配置   taskDemoService 可配置到管理界面 -->
-	<bean id="taskDemoServiceTaskJob"
-		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
-		<property name="targetObject" ref="taskDemoService" />
-		<property name="targetMethod" value="work" />
-		<property name="concurrent" value="true" />
+	<bean id="taskDemoServiceTaskJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="taskDemoService"/>
+		<property name="targetMethod" value="work"/>
+		<property name="concurrent" value="false"/>
 	</bean>
-
 	<bean id="taskDemoServiceTaskCronTrigger" class="org.jeecgframework.core.timer.DataBaseCronTriggerBean">
-		<property name="jobDetail" ref="taskDemoServiceTaskJob" />
-		<property name="cronExpression" value="0 0/1 * * * ?" />
+		<property name="jobDetail" ref="taskDemoServiceTaskJob"/>
+		<property name="cronExpression" value="0 0/2 * * * ? "/>
 	</bean>
-	
-	
 	<!-- 定时任务配置   smsSendTask 可配置到管理界面 -->
-	<bean id="smsSendTaskJob"
-		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
-		<property name="targetObject" ref="smsSendTask" />
-		<property name="targetMethod" value="run" />
-		<property name="concurrent" value="true" />
+	<bean id="smsSendTaskJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="smsSendTask"/>
+		<property name="targetMethod" value="run"/>
+		<property name="concurrent" value="false"/>
 	</bean>
 	<!--此处cron表达式会被数据库定义cron给覆盖注入-->
 	<bean id="smsSendTaskCronTrigger" class="org.jeecgframework.core.timer.DataBaseCronTriggerBean">
-		<property name="jobDetail" ref="smsSendTaskJob" />
-		<property name="cronExpression" value="0 0/1 * * * ?" />
+		<property name="jobDetail" ref="smsSendTaskJob"/>
+		<property name="cronExpression" value="0 0/1 * * * ?"/>
 	</bean>
-
-	<!-- 定时任务配置   fineReportSendService 可配置到管理界面 -->
-	<bean id="fineReportSendServiceTaskJob"
-		  class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
-		<property name="targetObject" ref="fineReportSendService" />
-		<property name="targetMethod" value="work" />
-		<property name="concurrent" value="true" />
+	<!-- 定时任务配置   fineReportSendService SaleImgSend可配置到管理界面 -->
+	<bean id="frSaleImgSendJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="fineReportSendService"/>
+		<property name="targetMethod" value="executeSaleImgSend"/>
+		<property name="concurrent" value="false"/>
 	</bean>
-
-	<bean id="fineReportSendServiceTaskCronTrigger" class="org.jeecgframework.core.timer.DataBaseCronTriggerBean">
-		<property name="jobDetail" ref="fineReportSendServiceTaskJob" />
-		<property name="cronExpression" value="0 0/1 * * * ?" />
+	<bean id="frSaleImgSendTrigger" class="org.jeecgframework.core.timer.DataBaseCronTriggerBean">
+		<property name="jobDetail" ref="frSaleImgSendJob"/>
+		<property name="cronExpression" value="0 0/2 * * * ?"/>
 	</bean>
-
-
-
-
+	<!-- 定时任务配置   fineReportSendService NewProductSend可配置到管理界面 -->
+	<bean id="frNewProductSendJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="fineReportSendService"/>
+		<property name="targetMethod" value="executeNewProductSend"/>
+		<property name="concurrent" value="false"/>
+	</bean>
+	<bean id="frNewProductSendTrigger" class="org.jeecgframework.core.timer.DataBaseCronTriggerBean">
+		<property name="jobDetail" ref="frNewProductSendJob"/>
+		<property name="cronExpression" value="0 5 19 * * ?"/>
+	</bean>
+	<!-- 定时任务配置   fineReportSendService FactoryProductInSend可配置到管理界面 -->
+	<bean id="frFactoryProductInSendJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="fineReportSendService"/>
+		<property name="targetMethod" value="executeFactoryProductInSend"/>
+		<property name="concurrent" value="false"/>
+	</bean>
+	<bean id="frFactoryProductInSendTrigger" class="org.jeecgframework.core.timer.DataBaseCronTriggerBean">
+		<property name="jobDetail" ref="frFactoryProductInSendJob"/>
+		<property name="cronExpression" value="0 0 20 * * ?"/>
+	</bean>
+	<!-- 定时任务配置   fineReportSendService ProductRealtimeStoreSend可配置到管理界面 -->
+	<bean id="frProductRealtimeStoreSendJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="fineReportSendService"/>
+		<property name="targetMethod" value="executeProductRealtimeStoreSend"/>
+		<property name="concurrent" value="false"/>
+	</bean>
+	<bean id="frProductRealtimeStoreSendTrigger" class="org.jeecgframework.core.timer.DataBaseCronTriggerBean">
+		<property name="jobDetail" ref="frProductRealtimeStoreSendJob"/>
+		<property name="cronExpression" value="0 45 20 * * ?"/>
+	</bean>
+	<!-- 定时任务配置   fineReportSendService ChannelRealtimeStoreAgeSend可配置到管理界面 -->
+	<bean id="frChannelRealtimeStoreAgeSendJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="fineReportSendService"/>
+		<property name="targetMethod" value="executeChannelRealtimeStoreAgeSend"/>
+		<property name="concurrent" value="false"/>
+	</bean>
+	<bean id="frChannelRealtimeStoreAgeSendTrigger" class="org.jeecgframework.core.timer.DataBaseCronTriggerBean">
+		<property name="jobDetail" ref="frChannelRealtimeStoreAgeSendJob"/>
+		<property name="cronExpression" value="0 30 20 * * ?"/>
+	</bean>
+	<!-- 定时任务配置   fineReportSendService ForeignTradeLightSend可配置到管理界面 -->
+	<bean id="frForeignTradeLightSendJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="fineReportSendService"/>
+		<property name="targetMethod" value="executeForeignTradeLightSend"/>
+		<property name="concurrent" value="false"/>
+	</bean>
+	<bean id="frForeignTradeLightSendTrigger" class="org.jeecgframework.core.timer.DataBaseCronTriggerBean">
+		<property name="jobDetail" ref="frForeignTradeLightSendJob"/>
+		<property name="cronExpression" value="0 20 19 * * ?"/>
+	</bean>
 	<!-- 定时任务调度器 -->
-	<bean id="schedulerFactory" lazy-init="false" autowire="no"
-		class="org.jeecgframework.core.timer.DataBaseSchedulerFactoryBean">
+	<bean id="schedulerFactory" lazy-init="false" autowire="no" class="org.jeecgframework.core.timer.DataBaseSchedulerFactoryBean">
 		<property name="triggers">
 			<list>
-				<ref bean="taskDemoServiceTaskCronTrigger" />
-				<ref bean="smsSendTaskCronTrigger" />
-				<ref bean="fineReportSendServiceTaskCronTrigger"/>
+				<!--静态才会需要引用-->
+				<!--<ref bean="taskDemoServiceTaskCronTrigger"/>-->
+				<!--<ref bean="smsSendTaskCronTrigger"/>-->
+				<!--<ref bean="frSaleImgSendTrigger"/>-->
+				<!--<ref bean="frNewProductSendTrigger"/>-->
+				<!--<ref bean="frFactoryProductInSendTrigger"/>-->
+				<!--<ref bean="frProductRealtimeStoreSendTrigger"/>-->
+				<!--<ref bean="frChannelRealtimeStoreAgeSendTrigger"/>-->
+				<!--<ref bean="frForeignTradeLightSendTrigger"/>-->
 			</list>
 		</property>
-	</bean>
+		<property name="configLocation" value="classpath:quartz.properties"/>
+		<property name="dataSource"><ref bean="dataSource"/> </property>
 
+	</bean>
 </beans>

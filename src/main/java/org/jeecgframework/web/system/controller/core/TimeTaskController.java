@@ -1,9 +1,14 @@
 package org.jeecgframework.web.system.controller.core;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.sf.json.JSONObject;
 import org.jeecgframework.core.common.controller.BaseController;
 import org.jeecgframework.core.common.hibernate.qbc.CriteriaQuery;
 import org.jeecgframework.core.common.model.json.AjaxJson;
@@ -13,16 +18,19 @@ import org.jeecgframework.core.timer.DynamicTask;
 import org.jeecgframework.core.util.MyBeanUtils;
 import org.jeecgframework.core.util.StringUtil;
 import org.jeecgframework.tag.core.easyui.TagUtil;
+import org.jeecgframework.web.activiti.controller.ActivitiController;
 import org.jeecgframework.web.system.pojo.base.TSTimeTaskEntity;
 import org.jeecgframework.web.system.service.SystemService;
 import org.jeecgframework.web.system.service.TimeTaskServiceI;
-import org.quartz.CronTrigger;
+import org.quartz.*;
+import org.quartz.impl.triggers.CronTriggerImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import test.testCron.CronTest;
 
 
 /**   
@@ -57,7 +65,7 @@ public class TimeTaskController extends BaseController {
 	}
 
 	/**
-	 * 更新cron表达式
+	 * 更新cron表达式，cron在线编辑器编辑更新
 	 * @param cronExpression
 	 * @param cronid
      * @return
@@ -73,6 +81,7 @@ public class TimeTaskController extends BaseController {
 
 		if(cronExpression!=null&&!cronExpression.equals("")){
 			TSTimeTaskEntity timeTask = timeTaskService.get(TSTimeTaskEntity.class, cronid);
+			cronExpression=cronExpression.trim();
 			timeTask.setCronExpression(cronExpression);
 			boolean isUpdate = dynamicTask.updateCronExpression(timeTask.getTaskId() , timeTask.getCronExpression());
 			if(isUpdate){
@@ -90,8 +99,12 @@ public class TimeTaskController extends BaseController {
 	 * 解析cron最近几次的表达式
 	 */
 	@RequestMapping(params = "preview")
-	public void previewExpression(){
+	public void previewExpression(@RequestParam("CronExpression") String cronExpression,HttpServletResponse response) throws ParseException {
+		JSONObject jsonObject=new JSONObject();
+		cronExpression=cronExpression.trim();
+		jsonObject=CronTest.getMoreTimesByCronExpression(cronExpression,4);
 
+		ActivitiController.responseDatagrid(response,jsonObject);
 	}
 
 
@@ -145,13 +158,24 @@ public class TimeTaskController extends BaseController {
 	public AjaxJson save(TSTimeTaskEntity timeTask, HttpServletRequest request) {
 		String message = null;
 		AjaxJson j = new AjaxJson();
-		CronTrigger trigger = new CronTrigger();
+//		CronTrigger trigger = new CronTrigger();
+		Trigger trigger=new DynamicTask().getTrigger(timeTask.getTaskId(), Scheduler.DEFAULT_GROUP);
+
 		try {
-			trigger.setCronExpression(timeTask.getCronExpression());
-		} catch (ParseException e) {
+//			trigger.setCronExpression(timeTask.getCronExpression());
+			// 触发器
+			TriggerBuilder<Trigger> triggerBuilder = TriggerBuilder.newTrigger();
+			// 触发器名,触发器组
+			triggerBuilder.withIdentity(timeTask.getTaskId(), Scheduler.DEFAULT_GROUP);
+			triggerBuilder.startNow();
+			// 触发器时间设定
+			triggerBuilder.withSchedule(CronScheduleBuilder.cronSchedule(timeTask.getCronExpression()));
+		} catch (Exception e) {
 			j.setMsg("Cron表达式错误");
 			return j;
 		}
+
+
 		if (StringUtil.isNotEmpty(timeTask.getId())) {
 			message = "定时任务管理更新成功";
 			TSTimeTaskEntity t = timeTaskService.get(TSTimeTaskEntity.class, timeTask.getId());
