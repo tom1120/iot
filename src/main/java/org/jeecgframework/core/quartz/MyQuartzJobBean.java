@@ -9,6 +9,7 @@ import org.quartz.Trigger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.scheduling.quartz.QuartzJobBean;
 
+
 /**
  * @author zhaoyi
  * @date 2017-06-2017/6/24-8:44

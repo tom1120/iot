@@ -3367,3 +3367,1376 @@ Caused by: org.quartz.JobPersistenceException: The job (DEFAULT.jobtask) referen
 2017-06-26 13:59:51.670 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED shutting down.
 2017-06-26 13:59:51.670 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED paused.
 2017-06-26 13:59:51.670 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED shutdown complete.
+2017-06-26 14:17:05.813 [main] INFO  StdSchedulerFactory - Using default implementation for ThreadExecutor
+2017-06-26 14:17:05.816 [main] INFO  SimpleThreadPool - Job execution threads will use class loader of thread: main
+2017-06-26 14:17:05.825 [main] INFO  SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2017-06-26 14:17:05.825 [main] INFO  QuartzScheduler - Quartz Scheduler v.2.2.3 created.
+2017-06-26 14:17:05.826 [main] INFO  JobStoreTX - Using thread monitor-based data access locking (synchronization).
+2017-06-26 14:17:05.826 [main] INFO  JobStoreTX - JobStoreTX initialized.
+2017-06-26 14:17:05.827 [main] INFO  QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.2.3) 'DefaultQuartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.impl.jdbcjobstore.JobStoreTX' - which supports persistence. and is not clustered.
+
+2017-06-26 14:17:05.827 [main] INFO  StdSchedulerFactory - Quartz scheduler 'DefaultQuartzScheduler' initialized from default resource file in Quartz package: 'quartz.properties'
+2017-06-26 14:17:05.827 [main] INFO  StdSchedulerFactory - Quartz scheduler version: 2.2.3
+2017-06-26 14:17:24.166 [main] INFO  JobStoreTX - Freed 0 triggers from 'acquired' / 'blocked' state.
+2017-06-26 14:17:24.172 [main] INFO  JobStoreTX - Recovering 0 jobs that were in-progress at the time of the last shut-down.
+2017-06-26 14:17:24.172 [main] INFO  JobStoreTX - Recovery complete.
+2017-06-26 14:17:24.172 [main] INFO  JobStoreTX - Removed 0 'complete' triggers.
+2017-06-26 14:17:24.173 [main] INFO  JobStoreTX - Removed 0 stale fired job entries.
+2017-06-26 14:17:24.174 [main] INFO  QuartzScheduler - Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED started.
+2017-06-26 14:17:24.344 [main] INFO  StdSchedulerFactory - Using default implementation for ThreadExecutor
+2017-06-26 14:17:24.345 [main] INFO  SimpleThreadPool - Job execution threads will use class loader of thread: main
+2017-06-26 14:17:24.345 [main] INFO  SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2017-06-26 14:17:24.345 [main] INFO  QuartzScheduler - Quartz Scheduler v.2.2.3 created.
+2017-06-26 14:17:24.372 [main] INFO  QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.2.3) 'schedulerFactory' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.springframework.scheduling.quartz.LocalDataSourceJobStore' - which supports persistence. and is not clustered.
+
+2017-06-26 14:17:24.372 [main] INFO  StdSchedulerFactory - Quartz scheduler 'schedulerFactory' initialized from an externally provided properties instance.
+2017-06-26 14:17:24.372 [main] INFO  StdSchedulerFactory - Quartz scheduler version: 2.2.3
+2017-06-26 14:17:24.376 [main] INFO  QuartzScheduler - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@25bc0606
+2017-06-26 14:17:24.454 [main] ERROR TestContextManager - Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@36f48b4] to prepare test instance [org.jeecgframework.test.quartz.TestQuartzManager@5c00384f]
+java.lang.IllegalStateException: Failed to load ApplicationContext
+	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContext(CacheAwareContextLoaderDelegate.java:103) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.DefaultTestContext.getApplicationContext(DefaultTestContext.java:98) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:109) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:75) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:331) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:213) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:290) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15) [junit-4.7.jar:na]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:292) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:233) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:87) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:193) [junit-4.7.jar:na]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:52) [junit-4.7.jar:na]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:191) [junit-4.7.jar:na]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:42) [junit-4.7.jar:na]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:184) [junit-4.7.jar:na]
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:71) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:236) [junit-4.7.jar:na]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:176) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157) [junit-4.7.jar:na]
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:119) [junit-rt.jar:na]
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:42) [junit-rt.jar:na]
+	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:234) [junit-rt.jar:na]
+	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:74) [junit-rt.jar:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[na:1.8.0_45]
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:144) [idea_rt.jar:na]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'schedulerService': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: private org.quartz.Scheduler org.jeecgframework.core.quartz.SchedulerServiceImpl.scheduler; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'schedulerFactory' defined in URL [file:src/test/resource/spring-mvc-managerTimeTask.xml]: Invocation of init method failed; nested exception is org.quartz.JobPersistenceException: Couldn't store trigger 'DEFAULT.cronTrigger' for 'DEFAULT.jobtask' job:The job (DEFAULT.jobtask) referenced by the trigger does not exist. [See nested exception: org.quartz.JobPersistenceException: The job (DEFAULT.jobtask) referenced by the trigger does not exist.]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:301) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1186) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:537) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:475) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:302) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:229) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:298) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:193) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:706) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:762) ~[spring-context-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:482) ~[spring-context-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:125) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:60) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.delegateLoading(AbstractDelegatingSmartContextLoader.java:102) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.loadContext(AbstractDelegatingSmartContextLoader.java:248) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContextInternal(CacheAwareContextLoaderDelegate.java:69) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContext(CacheAwareContextLoaderDelegate.java:95) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	... 29 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: private org.quartz.Scheduler org.jeecgframework.core.quartz.SchedulerServiceImpl.scheduler; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'schedulerFactory' defined in URL [file:src/test/resource/spring-mvc-managerTimeTask.xml]: Invocation of init method failed; nested exception is org.quartz.JobPersistenceException: Couldn't store trigger 'DEFAULT.cronTrigger' for 'DEFAULT.jobtask' job:The job (DEFAULT.jobtask) referenced by the trigger does not exist. [See nested exception: org.quartz.JobPersistenceException: The job (DEFAULT.jobtask) referenced by the trigger does not exist.]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:522) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:88) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:298) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	... 45 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'schedulerFactory' defined in URL [file:src/test/resource/spring-mvc-managerTimeTask.xml]: Invocation of init method failed; nested exception is org.quartz.JobPersistenceException: Couldn't store trigger 'DEFAULT.cronTrigger' for 'DEFAULT.jobtask' job:The job (DEFAULT.jobtask) referenced by the trigger does not exist. [See nested exception: org.quartz.JobPersistenceException: The job (DEFAULT.jobtask) referenced by the trigger does not exist.]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1554) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:539) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:475) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:302) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:229) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:298) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:193) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1021) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:964) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:862) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:494) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	... 47 common frames omitted
+Caused by: org.quartz.JobPersistenceException: Couldn't store trigger 'DEFAULT.cronTrigger' for 'DEFAULT.jobtask' job:The job (DEFAULT.jobtask) referenced by the trigger does not exist.
+	at org.quartz.impl.jdbcjobstore.JobStoreSupport.storeTrigger(JobStoreSupport.java:1223) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.JobStoreSupport$4.executeVoid(JobStoreSupport.java:1159) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.JobStoreSupport$VoidTransactionCallback.execute(JobStoreSupport.java:3719) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.JobStoreSupport$VoidTransactionCallback.execute(JobStoreSupport.java:3717) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.JobStoreCMT.executeInLock(JobStoreCMT.java:245) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.JobStoreSupport.storeTrigger(JobStoreSupport.java:1155) ~[quartz-2.2.3.jar:na]
+	at org.quartz.core.QuartzScheduler.scheduleJob(QuartzScheduler.java:932) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.StdScheduler.scheduleJob(StdScheduler.java:258) ~[quartz-2.2.3.jar:na]
+	at org.springframework.scheduling.quartz.SchedulerAccessor.addTriggerToScheduler(SchedulerAccessor.java:366) ~[spring-context-support-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.scheduling.quartz.SchedulerAccessor.registerJobsAndTriggers(SchedulerAccessor.java:298) ~[spring-context-support-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.scheduling.quartz.SchedulerFactoryBean.afterPropertiesSet(SchedulerFactoryBean.java:513) ~[spring-context-support-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1613) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1550) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	... 57 common frames omitted
+Caused by: org.quartz.JobPersistenceException: The job (DEFAULT.jobtask) referenced by the trigger does not exist.
+	at org.quartz.impl.jdbcjobstore.JobStoreSupport.storeTrigger(JobStoreSupport.java:1208) ~[quartz-2.2.3.jar:na]
+	... 69 common frames omitted
+2017-06-26 14:19:37.426 [main] INFO  StdSchedulerFactory - Using default implementation for ThreadExecutor
+2017-06-26 14:19:37.429 [main] INFO  SimpleThreadPool - Job execution threads will use class loader of thread: main
+2017-06-26 14:19:37.439 [main] INFO  SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2017-06-26 14:19:37.440 [main] INFO  QuartzScheduler - Quartz Scheduler v.2.2.3 created.
+2017-06-26 14:19:37.440 [main] INFO  JobStoreTX - Using thread monitor-based data access locking (synchronization).
+2017-06-26 14:19:37.441 [main] INFO  JobStoreTX - JobStoreTX initialized.
+2017-06-26 14:19:37.441 [main] INFO  QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.2.3) 'DefaultQuartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.impl.jdbcjobstore.JobStoreTX' - which supports persistence. and is not clustered.
+
+2017-06-26 14:19:37.441 [main] INFO  StdSchedulerFactory - Quartz scheduler 'DefaultQuartzScheduler' initialized from default resource file in Quartz package: 'quartz.properties'
+2017-06-26 14:19:37.442 [main] INFO  StdSchedulerFactory - Quartz scheduler version: 2.2.3
+2017-06-26 14:19:37.672 [main] INFO  JobStoreTX - Freed 0 triggers from 'acquired' / 'blocked' state.
+2017-06-26 14:19:37.677 [main] INFO  JobStoreTX - Recovering 0 jobs that were in-progress at the time of the last shut-down.
+2017-06-26 14:19:37.677 [main] INFO  JobStoreTX - Recovery complete.
+2017-06-26 14:19:37.678 [main] INFO  JobStoreTX - Removed 0 'complete' triggers.
+2017-06-26 14:19:37.678 [main] INFO  JobStoreTX - Removed 0 stale fired job entries.
+2017-06-26 14:19:37.711 [main] ERROR JobStoreTX - Couldn't rollback jdbc connection. Can't call rollback when autocommit=true
+com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException: Can't call rollback when autocommit=true
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[na:1.8.0_45]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62) ~[na:1.8.0_45]
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[na:1.8.0_45]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:422) ~[na:1.8.0_45]
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411) ~[mysql-connector-java-5.1.27.jar:na]
+	at com.mysql.jdbc.Util.getInstance(Util.java:386) ~[mysql-connector-java-5.1.27.jar:na]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1015) ~[mysql-connector-java-5.1.27.jar:na]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:989) ~[mysql-connector-java-5.1.27.jar:na]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:975) ~[mysql-connector-java-5.1.27.jar:na]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:920) ~[mysql-connector-java-5.1.27.jar:na]
+	at com.mysql.jdbc.ConnectionImpl.rollback(ConnectionImpl.java:5056) ~[mysql-connector-java-5.1.27.jar:na]
+	at com.mchange.v2.c3p0.impl.NewProxyConnection.rollback(NewProxyConnection.java:855) ~[c3p0-0.9.1.1.jar:0.9.1.1]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[na:1.8.0_45]
+	at org.quartz.impl.jdbcjobstore.AttributeRestoringConnectionInvocationHandler.invoke(AttributeRestoringConnectionInvocationHandler.java:73) ~[quartz-2.2.3.jar:na]
+	at com.sun.proxy.$Proxy14.rollback(Unknown Source) ~[na:na]
+	at org.quartz.impl.jdbcjobstore.JobStoreSupport.rollbackConnection(JobStoreSupport.java:3666) [quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.JobStoreSupport.executeInNonManagedTXLock(JobStoreSupport.java:3807) [quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.JobStoreSupport.recoverJobs(JobStoreSupport.java:834) [quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.JobStoreSupport.schedulerStarted(JobStoreSupport.java:690) [quartz-2.2.3.jar:na]
+	at org.quartz.core.QuartzScheduler.start(QuartzScheduler.java:567) [quartz-2.2.3.jar:na]
+	at org.quartz.impl.StdScheduler.start(StdScheduler.java:142) [quartz-2.2.3.jar:na]
+	at org.jeecgframework.core.quartz.QuartzManager.startJobs(QuartzManager.java:157) [classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[na:1.8.0_45]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeCustomInitMethod(AbstractAutowireCapableBeanFactory.java:1682) [spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1621) [spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1550) [spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:539) [spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:475) [spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:302) [spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:229) [spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:298) [spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:193) [spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:706) [spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:762) [spring-context-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:482) [spring-context-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:125) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:60) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.delegateLoading(AbstractDelegatingSmartContextLoader.java:102) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.loadContext(AbstractDelegatingSmartContextLoader.java:248) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContextInternal(CacheAwareContextLoaderDelegate.java:69) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContext(CacheAwareContextLoaderDelegate.java:95) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.DefaultTestContext.getApplicationContext(DefaultTestContext.java:98) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:109) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:75) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:331) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:213) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:290) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15) [junit-4.7.jar:na]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:292) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:233) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:87) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:193) [junit-4.7.jar:na]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:52) [junit-4.7.jar:na]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:191) [junit-4.7.jar:na]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:42) [junit-4.7.jar:na]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:184) [junit-4.7.jar:na]
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:71) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:236) [junit-4.7.jar:na]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:176) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157) [junit-4.7.jar:na]
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:119) [junit-rt.jar:na]
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:42) [junit-rt.jar:na]
+	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:234) [junit-rt.jar:na]
+	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:74) [junit-rt.jar:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[na:1.8.0_45]
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:144) [idea_rt.jar:na]
+2017-06-26 14:19:37.717 [main] ERROR JobStoreTX - Couldn't rollback jdbc connection. Can't call rollback when autocommit=true
+com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException: Can't call rollback when autocommit=true
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[na:1.8.0_45]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62) ~[na:1.8.0_45]
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[na:1.8.0_45]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:422) ~[na:1.8.0_45]
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411) ~[mysql-connector-java-5.1.27.jar:na]
+	at com.mysql.jdbc.Util.getInstance(Util.java:386) ~[mysql-connector-java-5.1.27.jar:na]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1015) ~[mysql-connector-java-5.1.27.jar:na]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:989) ~[mysql-connector-java-5.1.27.jar:na]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:975) ~[mysql-connector-java-5.1.27.jar:na]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:920) ~[mysql-connector-java-5.1.27.jar:na]
+	at com.mysql.jdbc.ConnectionImpl.rollback(ConnectionImpl.java:5056) ~[mysql-connector-java-5.1.27.jar:na]
+	at com.mchange.v2.c3p0.impl.NewProxyConnection.rollback(NewProxyConnection.java:855) ~[c3p0-0.9.1.1.jar:0.9.1.1]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[na:1.8.0_45]
+	at org.quartz.impl.jdbcjobstore.AttributeRestoringConnectionInvocationHandler.invoke(AttributeRestoringConnectionInvocationHandler.java:73) ~[quartz-2.2.3.jar:na]
+	at com.sun.proxy.$Proxy14.rollback(Unknown Source) ~[na:na]
+	at org.quartz.impl.jdbcjobstore.JobStoreSupport.rollbackConnection(JobStoreSupport.java:3666) [quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.JobStoreSupport.executeInNonManagedTXLock(JobStoreSupport.java:3825) [quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.JobStoreSupport.recoverJobs(JobStoreSupport.java:834) [quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.JobStoreSupport.schedulerStarted(JobStoreSupport.java:690) [quartz-2.2.3.jar:na]
+	at org.quartz.core.QuartzScheduler.start(QuartzScheduler.java:567) [quartz-2.2.3.jar:na]
+	at org.quartz.impl.StdScheduler.start(StdScheduler.java:142) [quartz-2.2.3.jar:na]
+	at org.jeecgframework.core.quartz.QuartzManager.startJobs(QuartzManager.java:157) [classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[na:1.8.0_45]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeCustomInitMethod(AbstractAutowireCapableBeanFactory.java:1682) [spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1621) [spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1550) [spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:539) [spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:475) [spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:302) [spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:229) [spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:298) [spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:193) [spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:706) [spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:762) [spring-context-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:482) [spring-context-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:125) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:60) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.delegateLoading(AbstractDelegatingSmartContextLoader.java:102) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.loadContext(AbstractDelegatingSmartContextLoader.java:248) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContextInternal(CacheAwareContextLoaderDelegate.java:69) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContext(CacheAwareContextLoaderDelegate.java:95) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.DefaultTestContext.getApplicationContext(DefaultTestContext.java:98) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:109) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:75) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:331) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:213) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:290) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15) [junit-4.7.jar:na]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:292) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:233) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:87) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:193) [junit-4.7.jar:na]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:52) [junit-4.7.jar:na]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:191) [junit-4.7.jar:na]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:42) [junit-4.7.jar:na]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:184) [junit-4.7.jar:na]
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:71) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:236) [junit-4.7.jar:na]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:176) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157) [junit-4.7.jar:na]
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:119) [junit-rt.jar:na]
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:42) [junit-rt.jar:na]
+	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:234) [junit-rt.jar:na]
+	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:74) [junit-rt.jar:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[na:1.8.0_45]
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:144) [idea_rt.jar:na]
+2017-06-26 14:19:37.729 [main] ERROR TestContextManager - Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@5d9b7a8a] to prepare test instance [org.jeecgframework.test.quartz.TestQuartzManager@1e8ce150]
+java.lang.IllegalStateException: Failed to load ApplicationContext
+	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContext(CacheAwareContextLoaderDelegate.java:103) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.DefaultTestContext.getApplicationContext(DefaultTestContext.java:98) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:109) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:75) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:331) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:213) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:290) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15) [junit-4.7.jar:na]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:292) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:233) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:87) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:193) [junit-4.7.jar:na]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:52) [junit-4.7.jar:na]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:191) [junit-4.7.jar:na]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:42) [junit-4.7.jar:na]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:184) [junit-4.7.jar:na]
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:71) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:236) [junit-4.7.jar:na]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:176) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157) [junit-4.7.jar:na]
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:119) [junit-rt.jar:na]
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:42) [junit-rt.jar:na]
+	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:234) [junit-rt.jar:na]
+	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:74) [junit-rt.jar:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[na:1.8.0_45]
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:144) [idea_rt.jar:na]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'quartzManager' defined in URL [file:src/test/resource/spring-mvc-managerTimeTask.xml]: Invocation of init method failed; nested exception is java.lang.RuntimeException: org.quartz.SchedulerConfigException: Failure occured during job recovery. [See nested exception: org.quartz.JobPersistenceException: Couldn't commit jdbc connection. Can't call commit when autocommit=true [See nested exception: java.sql.SQLException: Can't call commit when autocommit=true]]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1554) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:539) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:475) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:302) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:229) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:298) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:193) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:706) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:762) ~[spring-context-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:482) ~[spring-context-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:125) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:60) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.delegateLoading(AbstractDelegatingSmartContextLoader.java:102) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.loadContext(AbstractDelegatingSmartContextLoader.java:248) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContextInternal(CacheAwareContextLoaderDelegate.java:69) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContext(CacheAwareContextLoaderDelegate.java:95) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	... 29 common frames omitted
+Caused by: java.lang.RuntimeException: org.quartz.SchedulerConfigException: Failure occured during job recovery. [See nested exception: org.quartz.JobPersistenceException: Couldn't commit jdbc connection. Can't call commit when autocommit=true [See nested exception: java.sql.SQLException: Can't call commit when autocommit=true]]
+	at org.jeecgframework.core.quartz.QuartzManager.startJobs(QuartzManager.java:159) ~[classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[na:1.8.0_45]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeCustomInitMethod(AbstractAutowireCapableBeanFactory.java:1682) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1621) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1550) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	... 44 common frames omitted
+Caused by: org.quartz.SchedulerConfigException: Failure occured during job recovery.
+	at org.quartz.impl.jdbcjobstore.JobStoreSupport.schedulerStarted(JobStoreSupport.java:692) ~[quartz-2.2.3.jar:na]
+	at org.quartz.core.QuartzScheduler.start(QuartzScheduler.java:567) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.StdScheduler.start(StdScheduler.java:142) ~[quartz-2.2.3.jar:na]
+	at org.jeecgframework.core.quartz.QuartzManager.startJobs(QuartzManager.java:157) ~[classes/:na]
+	... 51 common frames omitted
+Caused by: org.quartz.JobPersistenceException: Couldn't commit jdbc connection. Can't call commit when autocommit=true
+	at org.quartz.impl.jdbcjobstore.JobStoreSupport.commitConnection(JobStoreSupport.java:3688) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.JobStoreSupport.executeInNonManagedTXLock(JobStoreSupport.java:3805) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.JobStoreSupport.recoverJobs(JobStoreSupport.java:834) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.JobStoreSupport.schedulerStarted(JobStoreSupport.java:690) ~[quartz-2.2.3.jar:na]
+	... 54 common frames omitted
+Caused by: java.sql.SQLException: Can't call commit when autocommit=true
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:927) ~[mysql-connector-java-5.1.27.jar:na]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:924) ~[mysql-connector-java-5.1.27.jar:na]
+	at com.mysql.jdbc.ConnectionImpl.commit(ConnectionImpl.java:1731) ~[mysql-connector-java-5.1.27.jar:na]
+	at com.mchange.v2.c3p0.impl.NewProxyConnection.commit(NewProxyConnection.java:803) ~[c3p0-0.9.1.1.jar:0.9.1.1]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[na:1.8.0_45]
+	at org.quartz.impl.jdbcjobstore.AttributeRestoringConnectionInvocationHandler.invoke(AttributeRestoringConnectionInvocationHandler.java:73) ~[quartz-2.2.3.jar:na]
+	at com.sun.proxy.$Proxy14.commit(Unknown Source) ~[na:na]
+	at org.quartz.impl.jdbcjobstore.JobStoreSupport.commitConnection(JobStoreSupport.java:3686) ~[quartz-2.2.3.jar:na]
+	... 57 common frames omitted
+2017-06-26 14:22:30.199 [main] INFO  StdSchedulerFactory - Using default implementation for ThreadExecutor
+2017-06-26 14:22:30.203 [main] INFO  SimpleThreadPool - Job execution threads will use class loader of thread: main
+2017-06-26 14:22:30.212 [main] INFO  SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2017-06-26 14:22:30.212 [main] INFO  QuartzScheduler - Quartz Scheduler v.2.2.3 created.
+2017-06-26 14:22:30.213 [main] INFO  JobStoreTX - Using thread monitor-based data access locking (synchronization).
+2017-06-26 14:22:30.213 [main] INFO  JobStoreTX - JobStoreTX initialized.
+2017-06-26 14:22:30.214 [main] INFO  QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.2.3) 'DefaultQuartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.impl.jdbcjobstore.JobStoreTX' - which supports persistence. and is not clustered.
+
+2017-06-26 14:22:30.214 [main] INFO  StdSchedulerFactory - Quartz scheduler 'DefaultQuartzScheduler' initialized from default resource file in Quartz package: 'quartz.properties'
+2017-06-26 14:22:30.214 [main] INFO  StdSchedulerFactory - Quartz scheduler version: 2.2.3
+2017-06-26 14:22:30.452 [main] INFO  JobStoreTX - Freed 0 triggers from 'acquired' / 'blocked' state.
+2017-06-26 14:22:30.458 [main] INFO  JobStoreTX - Recovering 0 jobs that were in-progress at the time of the last shut-down.
+2017-06-26 14:22:30.458 [main] INFO  JobStoreTX - Recovery complete.
+2017-06-26 14:22:30.459 [main] INFO  JobStoreTX - Removed 0 'complete' triggers.
+2017-06-26 14:22:30.459 [main] INFO  JobStoreTX - Removed 0 stale fired job entries.
+2017-06-26 14:22:30.460 [main] INFO  QuartzScheduler - Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED started.
+2017-06-26 14:22:30.648 [main] INFO  StdSchedulerFactory - Using default implementation for ThreadExecutor
+2017-06-26 14:22:30.648 [main] INFO  SimpleThreadPool - Job execution threads will use class loader of thread: main
+2017-06-26 14:22:30.649 [main] INFO  SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2017-06-26 14:22:30.650 [main] INFO  QuartzScheduler - Quartz Scheduler v.2.2.3 created.
+2017-06-26 14:22:30.677 [main] INFO  QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.2.3) 'schedulerFactory' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.springframework.scheduling.quartz.LocalDataSourceJobStore' - which supports persistence. and is not clustered.
+
+2017-06-26 14:22:30.677 [main] INFO  StdSchedulerFactory - Quartz scheduler 'schedulerFactory' initialized from an externally provided properties instance.
+2017-06-26 14:22:30.677 [main] INFO  StdSchedulerFactory - Quartz scheduler version: 2.2.3
+2017-06-26 14:22:30.678 [main] INFO  QuartzScheduler - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@25bc0606
+2017-06-26 14:22:30.703 [main] ERROR TestContextManager - Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@58fe0499] to prepare test instance [org.jeecgframework.test.quartz.TestQuartzManager@686449f9]
+java.lang.IllegalStateException: Failed to load ApplicationContext
+	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContext(CacheAwareContextLoaderDelegate.java:103) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.DefaultTestContext.getApplicationContext(DefaultTestContext.java:98) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:109) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:75) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:331) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:213) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:290) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15) [junit-4.7.jar:na]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:292) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:233) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:87) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:193) [junit-4.7.jar:na]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:52) [junit-4.7.jar:na]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:191) [junit-4.7.jar:na]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:42) [junit-4.7.jar:na]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:184) [junit-4.7.jar:na]
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:71) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:236) [junit-4.7.jar:na]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:176) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157) [junit-4.7.jar:na]
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:119) [junit-rt.jar:na]
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:42) [junit-rt.jar:na]
+	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:234) [junit-rt.jar:na]
+	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:74) [junit-rt.jar:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[na:1.8.0_45]
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:144) [idea_rt.jar:na]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'schedulerService': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: private org.quartz.Scheduler org.jeecgframework.core.quartz.SchedulerServiceImpl.scheduler; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'schedulerFactory' defined in URL [file:src/test/resource/spring-mvc-managerTimeTask.xml]: Invocation of init method failed; nested exception is org.quartz.JobPersistenceException: Couldn't store job: JobDataMap values must be Strings when the 'useProperties' property is set.  Key of offending value: methodInvoker [See nested exception: java.io.IOException: JobDataMap values must be Strings when the 'useProperties' property is set.  Key of offending value: methodInvoker]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:301) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1186) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:537) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:475) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:302) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:229) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:298) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:193) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:706) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:762) ~[spring-context-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:482) ~[spring-context-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:125) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:60) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.delegateLoading(AbstractDelegatingSmartContextLoader.java:102) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.loadContext(AbstractDelegatingSmartContextLoader.java:248) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContextInternal(CacheAwareContextLoaderDelegate.java:69) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContext(CacheAwareContextLoaderDelegate.java:95) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	... 29 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: private org.quartz.Scheduler org.jeecgframework.core.quartz.SchedulerServiceImpl.scheduler; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'schedulerFactory' defined in URL [file:src/test/resource/spring-mvc-managerTimeTask.xml]: Invocation of init method failed; nested exception is org.quartz.JobPersistenceException: Couldn't store job: JobDataMap values must be Strings when the 'useProperties' property is set.  Key of offending value: methodInvoker [See nested exception: java.io.IOException: JobDataMap values must be Strings when the 'useProperties' property is set.  Key of offending value: methodInvoker]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:522) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:88) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:298) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	... 45 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'schedulerFactory' defined in URL [file:src/test/resource/spring-mvc-managerTimeTask.xml]: Invocation of init method failed; nested exception is org.quartz.JobPersistenceException: Couldn't store job: JobDataMap values must be Strings when the 'useProperties' property is set.  Key of offending value: methodInvoker [See nested exception: java.io.IOException: JobDataMap values must be Strings when the 'useProperties' property is set.  Key of offending value: methodInvoker]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1554) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:539) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:475) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:302) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:229) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:298) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:193) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1021) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:964) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:862) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:494) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	... 47 common frames omitted
+Caused by: org.quartz.JobPersistenceException: Couldn't store job: JobDataMap values must be Strings when the 'useProperties' property is set.  Key of offending value: methodInvoker
+	at org.quartz.impl.jdbcjobstore.JobStoreSupport.storeJob(JobStoreSupport.java:1115) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.JobStoreSupport$3.executeVoid(JobStoreSupport.java:1090) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.JobStoreSupport$VoidTransactionCallback.execute(JobStoreSupport.java:3719) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.JobStoreSupport$VoidTransactionCallback.execute(JobStoreSupport.java:3717) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.JobStoreCMT.executeInLock(JobStoreCMT.java:245) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.JobStoreSupport.storeJob(JobStoreSupport.java:1086) ~[quartz-2.2.3.jar:na]
+	at org.quartz.core.QuartzScheduler.addJob(QuartzScheduler.java:969) ~[quartz-2.2.3.jar:na]
+	at org.quartz.core.QuartzScheduler.addJob(QuartzScheduler.java:958) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.StdScheduler.addJob(StdScheduler.java:268) ~[quartz-2.2.3.jar:na]
+	at org.springframework.scheduling.quartz.SchedulerAccessor.addJobToScheduler(SchedulerAccessor.java:337) ~[spring-context-support-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.scheduling.quartz.SchedulerAccessor.registerJobsAndTriggers(SchedulerAccessor.java:279) ~[spring-context-support-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.scheduling.quartz.SchedulerFactoryBean.afterPropertiesSet(SchedulerFactoryBean.java:513) ~[spring-context-support-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1613) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1550) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	... 57 common frames omitted
+Caused by: java.io.IOException: JobDataMap values must be Strings when the 'useProperties' property is set.  Key of offending value: methodInvoker
+	at org.quartz.impl.jdbcjobstore.StdJDBCDelegate.convertToProperty(StdJDBCDelegate.java:3158) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.StdJDBCDelegate.serializeProperties(StdJDBCDelegate.java:3125) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.StdJDBCDelegate.serializeJobData(StdJDBCDelegate.java:3077) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.StdJDBCDelegate.insertJobDetail(StdJDBCDelegate.java:606) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.JobStoreSupport.storeJob(JobStoreSupport.java:1112) ~[quartz-2.2.3.jar:na]
+	... 70 common frames omitted
+2017-06-26 14:23:27.198 [main] INFO  StdSchedulerFactory - Using default implementation for ThreadExecutor
+2017-06-26 14:23:27.202 [main] INFO  SimpleThreadPool - Job execution threads will use class loader of thread: main
+2017-06-26 14:23:27.210 [main] INFO  SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2017-06-26 14:23:27.210 [main] INFO  QuartzScheduler - Quartz Scheduler v.2.2.3 created.
+2017-06-26 14:23:27.211 [main] INFO  JobStoreTX - Using thread monitor-based data access locking (synchronization).
+2017-06-26 14:23:27.211 [main] INFO  JobStoreTX - JobStoreTX initialized.
+2017-06-26 14:23:27.212 [main] INFO  QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.2.3) 'DefaultQuartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.impl.jdbcjobstore.JobStoreTX' - which supports persistence. and is not clustered.
+
+2017-06-26 14:23:27.212 [main] INFO  StdSchedulerFactory - Quartz scheduler 'DefaultQuartzScheduler' initialized from default resource file in Quartz package: 'quartz.properties'
+2017-06-26 14:23:27.212 [main] INFO  StdSchedulerFactory - Quartz scheduler version: 2.2.3
+2017-06-26 14:23:27.440 [main] INFO  JobStoreTX - Freed 0 triggers from 'acquired' / 'blocked' state.
+2017-06-26 14:23:27.448 [main] INFO  JobStoreTX - Recovering 0 jobs that were in-progress at the time of the last shut-down.
+2017-06-26 14:23:27.448 [main] INFO  JobStoreTX - Recovery complete.
+2017-06-26 14:23:27.449 [main] INFO  JobStoreTX - Removed 0 'complete' triggers.
+2017-06-26 14:23:27.449 [main] INFO  JobStoreTX - Removed 0 stale fired job entries.
+2017-06-26 14:23:27.450 [main] INFO  QuartzScheduler - Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED started.
+2017-06-26 14:23:27.601 [main] INFO  StdSchedulerFactory - Using default implementation for ThreadExecutor
+2017-06-26 14:23:27.601 [main] INFO  SimpleThreadPool - Job execution threads will use class loader of thread: main
+2017-06-26 14:23:27.602 [main] INFO  SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2017-06-26 14:23:27.602 [main] INFO  QuartzScheduler - Quartz Scheduler v.2.2.3 created.
+2017-06-26 14:23:27.627 [main] INFO  QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.2.3) 'schedulerFactory' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.springframework.scheduling.quartz.LocalDataSourceJobStore' - which supports persistence. and is not clustered.
+
+2017-06-26 14:23:27.627 [main] INFO  StdSchedulerFactory - Quartz scheduler 'schedulerFactory' initialized from an externally provided properties instance.
+2017-06-26 14:23:27.627 [main] INFO  StdSchedulerFactory - Quartz scheduler version: 2.2.3
+2017-06-26 14:23:27.628 [main] INFO  QuartzScheduler - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@4e70a728
+2017-06-26 14:23:27.650 [main] ERROR TestContextManager - Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@a202ccb] to prepare test instance [org.jeecgframework.test.quartz.TestQuartzManager@20f12539]
+java.lang.IllegalStateException: Failed to load ApplicationContext
+	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContext(CacheAwareContextLoaderDelegate.java:103) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.DefaultTestContext.getApplicationContext(DefaultTestContext.java:98) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:109) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:75) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:331) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:213) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:290) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15) [junit-4.7.jar:na]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:292) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:233) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:87) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:193) [junit-4.7.jar:na]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:52) [junit-4.7.jar:na]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:191) [junit-4.7.jar:na]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:42) [junit-4.7.jar:na]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:184) [junit-4.7.jar:na]
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:71) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:236) [junit-4.7.jar:na]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:176) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157) [junit-4.7.jar:na]
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:119) [junit-rt.jar:na]
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:42) [junit-rt.jar:na]
+	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:234) [junit-rt.jar:na]
+	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:74) [junit-rt.jar:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[na:1.8.0_45]
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:144) [idea_rt.jar:na]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'schedulerFactory' defined in URL [file:src/test/resource/spring-mvc-managerTimeTask.xml]: Invocation of init method failed; nested exception is org.quartz.JobPersistenceException: Couldn't store job: JobDataMap values must be Strings when the 'useProperties' property is set.  Key of offending value: methodInvoker [See nested exception: java.io.IOException: JobDataMap values must be Strings when the 'useProperties' property is set.  Key of offending value: methodInvoker]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1554) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:539) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:475) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:302) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:229) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:298) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:193) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:687) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:762) ~[spring-context-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:482) ~[spring-context-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:125) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:60) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.delegateLoading(AbstractDelegatingSmartContextLoader.java:102) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.loadContext(AbstractDelegatingSmartContextLoader.java:248) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContextInternal(CacheAwareContextLoaderDelegate.java:69) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContext(CacheAwareContextLoaderDelegate.java:95) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	... 29 common frames omitted
+Caused by: org.quartz.JobPersistenceException: Couldn't store job: JobDataMap values must be Strings when the 'useProperties' property is set.  Key of offending value: methodInvoker
+	at org.quartz.impl.jdbcjobstore.JobStoreSupport.storeJob(JobStoreSupport.java:1115) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.JobStoreSupport$3.executeVoid(JobStoreSupport.java:1090) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.JobStoreSupport$VoidTransactionCallback.execute(JobStoreSupport.java:3719) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.JobStoreSupport$VoidTransactionCallback.execute(JobStoreSupport.java:3717) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.JobStoreCMT.executeInLock(JobStoreCMT.java:245) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.JobStoreSupport.storeJob(JobStoreSupport.java:1086) ~[quartz-2.2.3.jar:na]
+	at org.quartz.core.QuartzScheduler.addJob(QuartzScheduler.java:969) ~[quartz-2.2.3.jar:na]
+	at org.quartz.core.QuartzScheduler.addJob(QuartzScheduler.java:958) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.StdScheduler.addJob(StdScheduler.java:268) ~[quartz-2.2.3.jar:na]
+	at org.springframework.scheduling.quartz.SchedulerAccessor.addJobToScheduler(SchedulerAccessor.java:337) ~[spring-context-support-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.scheduling.quartz.SchedulerAccessor.registerJobsAndTriggers(SchedulerAccessor.java:279) ~[spring-context-support-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.scheduling.quartz.SchedulerFactoryBean.afterPropertiesSet(SchedulerFactoryBean.java:513) ~[spring-context-support-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1613) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1550) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	... 44 common frames omitted
+Caused by: java.io.IOException: JobDataMap values must be Strings when the 'useProperties' property is set.  Key of offending value: methodInvoker
+	at org.quartz.impl.jdbcjobstore.StdJDBCDelegate.convertToProperty(StdJDBCDelegate.java:3158) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.StdJDBCDelegate.serializeProperties(StdJDBCDelegate.java:3125) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.StdJDBCDelegate.serializeJobData(StdJDBCDelegate.java:3077) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.StdJDBCDelegate.insertJobDetail(StdJDBCDelegate.java:606) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.JobStoreSupport.storeJob(JobStoreSupport.java:1112) ~[quartz-2.2.3.jar:na]
+	... 57 common frames omitted
+2017-06-26 14:24:56.760 [main] INFO  StdSchedulerFactory - Using default implementation for ThreadExecutor
+2017-06-26 14:24:56.763 [main] INFO  SimpleThreadPool - Job execution threads will use class loader of thread: main
+2017-06-26 14:24:56.772 [main] INFO  SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2017-06-26 14:24:56.772 [main] INFO  QuartzScheduler - Quartz Scheduler v.2.2.3 created.
+2017-06-26 14:24:56.773 [main] INFO  JobStoreTX - Using thread monitor-based data access locking (synchronization).
+2017-06-26 14:24:56.773 [main] INFO  JobStoreTX - JobStoreTX initialized.
+2017-06-26 14:24:56.774 [main] INFO  QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.2.3) 'DefaultQuartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.impl.jdbcjobstore.JobStoreTX' - which supports persistence. and is not clustered.
+
+2017-06-26 14:24:56.774 [main] INFO  StdSchedulerFactory - Quartz scheduler 'DefaultQuartzScheduler' initialized from default resource file in Quartz package: 'quartz.properties'
+2017-06-26 14:24:56.774 [main] INFO  StdSchedulerFactory - Quartz scheduler version: 2.2.3
+2017-06-26 14:24:56.998 [main] INFO  JobStoreTX - Freed 0 triggers from 'acquired' / 'blocked' state.
+2017-06-26 14:24:57.006 [main] INFO  JobStoreTX - Recovering 0 jobs that were in-progress at the time of the last shut-down.
+2017-06-26 14:24:57.006 [main] INFO  JobStoreTX - Recovery complete.
+2017-06-26 14:24:57.007 [main] INFO  JobStoreTX - Removed 0 'complete' triggers.
+2017-06-26 14:24:57.007 [main] INFO  JobStoreTX - Removed 0 stale fired job entries.
+2017-06-26 14:24:57.008 [main] INFO  QuartzScheduler - Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED started.
+2017-06-26 14:24:57.171 [main] INFO  StdSchedulerFactory - Using default implementation for ThreadExecutor
+2017-06-26 14:24:57.171 [main] INFO  SimpleThreadPool - Job execution threads will use class loader of thread: main
+2017-06-26 14:24:57.172 [main] INFO  SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2017-06-26 14:24:57.172 [main] INFO  QuartzScheduler - Quartz Scheduler v.2.2.3 created.
+2017-06-26 14:24:57.195 [main] INFO  QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.2.3) 'schedulerFactory' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.springframework.scheduling.quartz.LocalDataSourceJobStore' - which supports persistence. and is not clustered.
+
+2017-06-26 14:24:57.195 [main] INFO  StdSchedulerFactory - Quartz scheduler 'schedulerFactory' initialized from an externally provided properties instance.
+2017-06-26 14:24:57.195 [main] INFO  StdSchedulerFactory - Quartz scheduler version: 2.2.3
+2017-06-26 14:24:57.196 [main] INFO  QuartzScheduler - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@19553973
+2017-06-26 14:24:57.244 [main] ERROR TestContextManager - Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@2453f95d] to prepare test instance [org.jeecgframework.test.quartz.TestQuartzManager@44828f6b]
+java.lang.IllegalStateException: Failed to load ApplicationContext
+	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContext(CacheAwareContextLoaderDelegate.java:103) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.DefaultTestContext.getApplicationContext(DefaultTestContext.java:98) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:109) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:75) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:331) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:213) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:290) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15) [junit-4.7.jar:na]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:292) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:233) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:87) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:193) [junit-4.7.jar:na]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:52) [junit-4.7.jar:na]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:191) [junit-4.7.jar:na]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:42) [junit-4.7.jar:na]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:184) [junit-4.7.jar:na]
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:71) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:236) [junit-4.7.jar:na]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:176) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157) [junit-4.7.jar:na]
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:119) [junit-rt.jar:na]
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:42) [junit-rt.jar:na]
+	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:234) [junit-rt.jar:na]
+	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:74) [junit-rt.jar:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[na:1.8.0_45]
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:144) [idea_rt.jar:na]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'schedulerFactory' defined in URL [file:src/test/resource/spring-mvc-managerTimeTask.xml]: Invocation of init method failed; nested exception is org.quartz.JobPersistenceException: Couldn't store job: Unable to serialize JobDataMap for insertion into database because the value of property 'methodInvoker' is not serializable: org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean [See nested exception: java.io.NotSerializableException: Unable to serialize JobDataMap for insertion into database because the value of property 'methodInvoker' is not serializable: org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1554) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:539) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:475) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:302) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:229) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:298) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:193) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:687) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:762) ~[spring-context-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:482) ~[spring-context-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:125) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:60) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.delegateLoading(AbstractDelegatingSmartContextLoader.java:102) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.loadContext(AbstractDelegatingSmartContextLoader.java:248) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContextInternal(CacheAwareContextLoaderDelegate.java:69) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContext(CacheAwareContextLoaderDelegate.java:95) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	... 29 common frames omitted
+Caused by: org.quartz.JobPersistenceException: Couldn't store job: Unable to serialize JobDataMap for insertion into database because the value of property 'methodInvoker' is not serializable: org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean
+	at org.quartz.impl.jdbcjobstore.JobStoreSupport.storeJob(JobStoreSupport.java:1115) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.JobStoreSupport$3.executeVoid(JobStoreSupport.java:1090) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.JobStoreSupport$VoidTransactionCallback.execute(JobStoreSupport.java:3719) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.JobStoreSupport$VoidTransactionCallback.execute(JobStoreSupport.java:3717) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.JobStoreCMT.executeInLock(JobStoreCMT.java:245) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.JobStoreSupport.storeJob(JobStoreSupport.java:1086) ~[quartz-2.2.3.jar:na]
+	at org.quartz.core.QuartzScheduler.addJob(QuartzScheduler.java:969) ~[quartz-2.2.3.jar:na]
+	at org.quartz.core.QuartzScheduler.addJob(QuartzScheduler.java:958) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.StdScheduler.addJob(StdScheduler.java:268) ~[quartz-2.2.3.jar:na]
+	at org.springframework.scheduling.quartz.SchedulerAccessor.addJobToScheduler(SchedulerAccessor.java:337) ~[spring-context-support-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.scheduling.quartz.SchedulerAccessor.registerJobsAndTriggers(SchedulerAccessor.java:279) ~[spring-context-support-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.scheduling.quartz.SchedulerFactoryBean.afterPropertiesSet(SchedulerFactoryBean.java:513) ~[spring-context-support-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1613) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1550) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	... 44 common frames omitted
+Caused by: java.io.NotSerializableException: Unable to serialize JobDataMap for insertion into database because the value of property 'methodInvoker' is not serializable: org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean
+	at org.quartz.impl.jdbcjobstore.StdJDBCDelegate.serializeJobData(StdJDBCDelegate.java:3083) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.StdJDBCDelegate.insertJobDetail(StdJDBCDelegate.java:606) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.JobStoreSupport.storeJob(JobStoreSupport.java:1112) ~[quartz-2.2.3.jar:na]
+	... 57 common frames omitted
+2017-06-26 14:25:17.854 [main] INFO  StdSchedulerFactory - Using default implementation for ThreadExecutor
+2017-06-26 14:25:17.857 [main] INFO  SimpleThreadPool - Job execution threads will use class loader of thread: main
+2017-06-26 14:25:17.866 [main] INFO  SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2017-06-26 14:25:17.867 [main] INFO  QuartzScheduler - Quartz Scheduler v.2.2.3 created.
+2017-06-26 14:25:17.867 [main] INFO  JobStoreTX - Using thread monitor-based data access locking (synchronization).
+2017-06-26 14:25:17.868 [main] INFO  JobStoreTX - JobStoreTX initialized.
+2017-06-26 14:25:17.868 [main] INFO  QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.2.3) 'DefaultQuartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.impl.jdbcjobstore.JobStoreTX' - which supports persistence. and is not clustered.
+
+2017-06-26 14:25:17.868 [main] INFO  StdSchedulerFactory - Quartz scheduler 'DefaultQuartzScheduler' initialized from default resource file in Quartz package: 'quartz.properties'
+2017-06-26 14:25:17.868 [main] INFO  StdSchedulerFactory - Quartz scheduler version: 2.2.3
+2017-06-26 14:25:18.107 [main] INFO  JobStoreTX - Freed 0 triggers from 'acquired' / 'blocked' state.
+2017-06-26 14:25:18.113 [main] INFO  JobStoreTX - Recovering 0 jobs that were in-progress at the time of the last shut-down.
+2017-06-26 14:25:18.113 [main] INFO  JobStoreTX - Recovery complete.
+2017-06-26 14:25:18.113 [main] INFO  JobStoreTX - Removed 0 'complete' triggers.
+2017-06-26 14:25:18.114 [main] INFO  JobStoreTX - Removed 0 stale fired job entries.
+2017-06-26 14:25:18.115 [main] INFO  QuartzScheduler - Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED started.
+2017-06-26 14:25:18.282 [main] INFO  StdSchedulerFactory - Using default implementation for ThreadExecutor
+2017-06-26 14:25:18.282 [main] INFO  SimpleThreadPool - Job execution threads will use class loader of thread: main
+2017-06-26 14:25:18.283 [main] INFO  SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2017-06-26 14:25:18.283 [main] INFO  QuartzScheduler - Quartz Scheduler v.2.2.3 created.
+2017-06-26 14:25:18.309 [main] INFO  QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.2.3) 'schedulerFactory' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.springframework.scheduling.quartz.LocalDataSourceJobStore' - which supports persistence. and is not clustered.
+
+2017-06-26 14:25:18.309 [main] INFO  StdSchedulerFactory - Quartz scheduler 'schedulerFactory' initialized from an externally provided properties instance.
+2017-06-26 14:25:18.309 [main] INFO  StdSchedulerFactory - Quartz scheduler version: 2.2.3
+2017-06-26 14:25:18.310 [main] INFO  QuartzScheduler - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@19553973
+2017-06-26 14:25:18.332 [main] ERROR TestContextManager - Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@3f0846c6] to prepare test instance [org.jeecgframework.test.quartz.TestQuartzManager@77a98a6a]
+java.lang.IllegalStateException: Failed to load ApplicationContext
+	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContext(CacheAwareContextLoaderDelegate.java:103) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.DefaultTestContext.getApplicationContext(DefaultTestContext.java:98) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:109) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:75) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:331) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:213) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:290) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15) [junit-4.7.jar:na]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:292) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:233) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:87) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:193) [junit-4.7.jar:na]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:52) [junit-4.7.jar:na]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:191) [junit-4.7.jar:na]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:42) [junit-4.7.jar:na]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:184) [junit-4.7.jar:na]
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:71) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:236) [junit-4.7.jar:na]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:176) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157) [junit-4.7.jar:na]
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:119) [junit-rt.jar:na]
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:42) [junit-rt.jar:na]
+	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:234) [junit-rt.jar:na]
+	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:74) [junit-rt.jar:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[na:1.8.0_45]
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:144) [idea_rt.jar:na]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'schedulerFactory' defined in URL [file:src/test/resource/spring-mvc-managerTimeTask.xml]: Invocation of init method failed; nested exception is org.quartz.JobPersistenceException: Couldn't store job: JobDataMap values must be Strings when the 'useProperties' property is set.  Key of offending value: methodInvoker [See nested exception: java.io.IOException: JobDataMap values must be Strings when the 'useProperties' property is set.  Key of offending value: methodInvoker]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1554) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:539) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:475) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:302) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:229) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:298) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:193) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:687) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:762) ~[spring-context-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:482) ~[spring-context-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:125) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:60) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.delegateLoading(AbstractDelegatingSmartContextLoader.java:102) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.loadContext(AbstractDelegatingSmartContextLoader.java:248) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContextInternal(CacheAwareContextLoaderDelegate.java:69) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContext(CacheAwareContextLoaderDelegate.java:95) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	... 29 common frames omitted
+Caused by: org.quartz.JobPersistenceException: Couldn't store job: JobDataMap values must be Strings when the 'useProperties' property is set.  Key of offending value: methodInvoker
+	at org.quartz.impl.jdbcjobstore.JobStoreSupport.storeJob(JobStoreSupport.java:1115) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.JobStoreSupport$3.executeVoid(JobStoreSupport.java:1090) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.JobStoreSupport$VoidTransactionCallback.execute(JobStoreSupport.java:3719) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.JobStoreSupport$VoidTransactionCallback.execute(JobStoreSupport.java:3717) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.JobStoreCMT.executeInLock(JobStoreCMT.java:245) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.JobStoreSupport.storeJob(JobStoreSupport.java:1086) ~[quartz-2.2.3.jar:na]
+	at org.quartz.core.QuartzScheduler.addJob(QuartzScheduler.java:969) ~[quartz-2.2.3.jar:na]
+	at org.quartz.core.QuartzScheduler.addJob(QuartzScheduler.java:958) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.StdScheduler.addJob(StdScheduler.java:268) ~[quartz-2.2.3.jar:na]
+	at org.springframework.scheduling.quartz.SchedulerAccessor.addJobToScheduler(SchedulerAccessor.java:337) ~[spring-context-support-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.scheduling.quartz.SchedulerAccessor.registerJobsAndTriggers(SchedulerAccessor.java:279) ~[spring-context-support-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.scheduling.quartz.SchedulerFactoryBean.afterPropertiesSet(SchedulerFactoryBean.java:513) ~[spring-context-support-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1613) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1550) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	... 44 common frames omitted
+Caused by: java.io.IOException: JobDataMap values must be Strings when the 'useProperties' property is set.  Key of offending value: methodInvoker
+	at org.quartz.impl.jdbcjobstore.StdJDBCDelegate.convertToProperty(StdJDBCDelegate.java:3158) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.StdJDBCDelegate.serializeProperties(StdJDBCDelegate.java:3125) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.StdJDBCDelegate.serializeJobData(StdJDBCDelegate.java:3077) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.StdJDBCDelegate.insertJobDetail(StdJDBCDelegate.java:606) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.JobStoreSupport.storeJob(JobStoreSupport.java:1112) ~[quartz-2.2.3.jar:na]
+	... 57 common frames omitted
+2017-06-26 14:26:11.386 [main] INFO  StdSchedulerFactory - Using default implementation for ThreadExecutor
+2017-06-26 14:26:11.390 [main] INFO  SimpleThreadPool - Job execution threads will use class loader of thread: main
+2017-06-26 14:26:11.400 [main] INFO  SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2017-06-26 14:26:11.400 [main] INFO  QuartzScheduler - Quartz Scheduler v.2.2.3 created.
+2017-06-26 14:26:11.401 [main] INFO  JobStoreTX - Using thread monitor-based data access locking (synchronization).
+2017-06-26 14:26:11.401 [main] INFO  JobStoreTX - JobStoreTX initialized.
+2017-06-26 14:26:11.402 [main] INFO  QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.2.3) 'DefaultQuartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.impl.jdbcjobstore.JobStoreTX' - which supports persistence. and is not clustered.
+
+2017-06-26 14:26:11.402 [main] INFO  StdSchedulerFactory - Quartz scheduler 'DefaultQuartzScheduler' initialized from default resource file in Quartz package: 'quartz.properties'
+2017-06-26 14:26:11.402 [main] INFO  StdSchedulerFactory - Quartz scheduler version: 2.2.3
+2017-06-26 14:26:11.642 [main] INFO  JobStoreTX - Freed 0 triggers from 'acquired' / 'blocked' state.
+2017-06-26 14:26:11.648 [main] INFO  JobStoreTX - Recovering 0 jobs that were in-progress at the time of the last shut-down.
+2017-06-26 14:26:11.648 [main] INFO  JobStoreTX - Recovery complete.
+2017-06-26 14:26:11.649 [main] INFO  JobStoreTX - Removed 0 'complete' triggers.
+2017-06-26 14:26:11.649 [main] INFO  JobStoreTX - Removed 0 stale fired job entries.
+2017-06-26 14:26:11.650 [main] INFO  QuartzScheduler - Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED started.
+2017-06-26 14:26:11.813 [main] INFO  StdSchedulerFactory - Using default implementation for ThreadExecutor
+2017-06-26 14:26:11.814 [main] INFO  SimpleThreadPool - Job execution threads will use class loader of thread: main
+2017-06-26 14:26:11.815 [main] INFO  SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2017-06-26 14:26:11.815 [main] INFO  QuartzScheduler - Quartz Scheduler v.2.2.3 created.
+2017-06-26 14:26:11.843 [main] INFO  QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.2.3) 'schedulerFactory' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.springframework.scheduling.quartz.LocalDataSourceJobStore' - which supports persistence. and is not clustered.
+
+2017-06-26 14:26:11.843 [main] INFO  StdSchedulerFactory - Quartz scheduler 'schedulerFactory' initialized from an externally provided properties instance.
+2017-06-26 14:26:11.844 [main] INFO  StdSchedulerFactory - Quartz scheduler version: 2.2.3
+2017-06-26 14:26:11.845 [main] INFO  QuartzScheduler - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@19553973
+2017-06-26 14:26:11.868 [main] ERROR TestContextManager - Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@3f0846c6] to prepare test instance [org.jeecgframework.test.quartz.TestQuartzManager@77a98a6a]
+java.lang.IllegalStateException: Failed to load ApplicationContext
+	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContext(CacheAwareContextLoaderDelegate.java:103) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.DefaultTestContext.getApplicationContext(DefaultTestContext.java:98) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:109) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:75) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:331) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:213) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:290) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15) [junit-4.7.jar:na]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:292) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:233) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:87) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:193) [junit-4.7.jar:na]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:52) [junit-4.7.jar:na]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:191) [junit-4.7.jar:na]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:42) [junit-4.7.jar:na]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:184) [junit-4.7.jar:na]
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:71) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:236) [junit-4.7.jar:na]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:176) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157) [junit-4.7.jar:na]
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:119) [junit-rt.jar:na]
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:42) [junit-rt.jar:na]
+	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:234) [junit-rt.jar:na]
+	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:74) [junit-rt.jar:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[na:1.8.0_45]
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:144) [idea_rt.jar:na]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'schedulerFactory' defined in URL [file:src/test/resource/spring-mvc-managerTimeTask.xml]: Invocation of init method failed; nested exception is org.quartz.JobPersistenceException: Couldn't store job: JobDataMap values must be Strings when the 'useProperties' property is set.  Key of offending value: methodInvoker [See nested exception: java.io.IOException: JobDataMap values must be Strings when the 'useProperties' property is set.  Key of offending value: methodInvoker]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1554) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:539) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:475) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:302) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:229) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:298) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:193) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:687) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:762) ~[spring-context-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:482) ~[spring-context-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:125) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:60) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.delegateLoading(AbstractDelegatingSmartContextLoader.java:102) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.loadContext(AbstractDelegatingSmartContextLoader.java:248) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContextInternal(CacheAwareContextLoaderDelegate.java:69) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContext(CacheAwareContextLoaderDelegate.java:95) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	... 29 common frames omitted
+Caused by: org.quartz.JobPersistenceException: Couldn't store job: JobDataMap values must be Strings when the 'useProperties' property is set.  Key of offending value: methodInvoker
+	at org.quartz.impl.jdbcjobstore.JobStoreSupport.storeJob(JobStoreSupport.java:1115) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.JobStoreSupport$3.executeVoid(JobStoreSupport.java:1090) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.JobStoreSupport$VoidTransactionCallback.execute(JobStoreSupport.java:3719) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.JobStoreSupport$VoidTransactionCallback.execute(JobStoreSupport.java:3717) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.JobStoreCMT.executeInLock(JobStoreCMT.java:245) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.JobStoreSupport.storeJob(JobStoreSupport.java:1086) ~[quartz-2.2.3.jar:na]
+	at org.quartz.core.QuartzScheduler.addJob(QuartzScheduler.java:969) ~[quartz-2.2.3.jar:na]
+	at org.quartz.core.QuartzScheduler.addJob(QuartzScheduler.java:958) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.StdScheduler.addJob(StdScheduler.java:268) ~[quartz-2.2.3.jar:na]
+	at org.springframework.scheduling.quartz.SchedulerAccessor.addJobToScheduler(SchedulerAccessor.java:337) ~[spring-context-support-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.scheduling.quartz.SchedulerAccessor.registerJobsAndTriggers(SchedulerAccessor.java:279) ~[spring-context-support-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.scheduling.quartz.SchedulerFactoryBean.afterPropertiesSet(SchedulerFactoryBean.java:513) ~[spring-context-support-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1613) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1550) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	... 44 common frames omitted
+Caused by: java.io.IOException: JobDataMap values must be Strings when the 'useProperties' property is set.  Key of offending value: methodInvoker
+	at org.quartz.impl.jdbcjobstore.StdJDBCDelegate.convertToProperty(StdJDBCDelegate.java:3158) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.StdJDBCDelegate.serializeProperties(StdJDBCDelegate.java:3125) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.StdJDBCDelegate.serializeJobData(StdJDBCDelegate.java:3077) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.StdJDBCDelegate.insertJobDetail(StdJDBCDelegate.java:606) ~[quartz-2.2.3.jar:na]
+	at org.quartz.impl.jdbcjobstore.JobStoreSupport.storeJob(JobStoreSupport.java:1112) ~[quartz-2.2.3.jar:na]
+	... 57 common frames omitted
+2017-06-26 14:34:46.073 [main] INFO  StdSchedulerFactory - Using default implementation for ThreadExecutor
+2017-06-26 14:34:46.078 [main] INFO  SimpleThreadPool - Job execution threads will use class loader of thread: main
+2017-06-26 14:34:46.088 [main] INFO  SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2017-06-26 14:34:46.088 [main] INFO  QuartzScheduler - Quartz Scheduler v.2.2.3 created.
+2017-06-26 14:34:46.274 [main] INFO  QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.2.3) 'schedulerFactory' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.springframework.scheduling.quartz.LocalDataSourceJobStore' - which supports persistence. and is not clustered.
+
+2017-06-26 14:34:46.275 [main] INFO  StdSchedulerFactory - Quartz scheduler 'schedulerFactory' initialized from an externally provided properties instance.
+2017-06-26 14:34:46.275 [main] INFO  StdSchedulerFactory - Quartz scheduler version: 2.2.3
+2017-06-26 14:34:46.317 [main] INFO  QuartzScheduler - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@23e44287
+2017-06-26 14:34:47.018 [main] WARN  RMICacheManagerPeerListener - Explicitly setting the listener hostname to 'localhost' is not recommended. It will only work if all CacheManager peers are on the same machine.
+2017-06-26 14:34:48.200 [main] INFO  Version - Hibernate Validator 4.2.0.Final
+2017-06-26 14:34:48.882 [main] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED started.
+2017-06-26 14:34:49.007 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED paused.
+2017-06-26 14:34:49.019 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED shutting down.
+2017-06-26 14:34:49.019 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED paused.
+2017-06-26 14:34:49.020 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED shutdown complete.
+2017-06-26 14:54:28.396 [main] INFO  StdSchedulerFactory - Using default implementation for ThreadExecutor
+2017-06-26 14:54:28.400 [main] INFO  SimpleThreadPool - Job execution threads will use class loader of thread: main
+2017-06-26 14:54:28.409 [main] INFO  SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2017-06-26 14:54:28.409 [main] INFO  QuartzScheduler - Quartz Scheduler v.2.2.3 created.
+2017-06-26 14:54:28.579 [main] INFO  QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.2.3) 'schedulerFactory' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.springframework.scheduling.quartz.LocalDataSourceJobStore' - which supports persistence. and is not clustered.
+
+2017-06-26 14:54:28.580 [main] INFO  StdSchedulerFactory - Quartz scheduler 'schedulerFactory' initialized from an externally provided properties instance.
+2017-06-26 14:54:28.580 [main] INFO  StdSchedulerFactory - Quartz scheduler version: 2.2.3
+2017-06-26 14:54:28.581 [main] INFO  QuartzScheduler - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@5cbe877d
+2017-06-26 14:54:29.286 [main] WARN  RMICacheManagerPeerListener - Explicitly setting the listener hostname to 'localhost' is not recommended. It will only work if all CacheManager peers are on the same machine.
+2017-06-26 14:54:30.461 [main] INFO  Version - Hibernate Validator 4.2.0.Final
+2017-06-26 14:54:31.027 [main] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED started.
+2017-06-26 14:54:31.336 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED paused.
+2017-06-26 14:54:31.347 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED shutting down.
+2017-06-26 14:54:31.348 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED paused.
+2017-06-26 14:54:31.348 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED shutdown complete.
+2017-06-26 14:55:50.410 [main] INFO  StdSchedulerFactory - Using default implementation for ThreadExecutor
+2017-06-26 14:55:50.414 [main] INFO  SimpleThreadPool - Job execution threads will use class loader of thread: main
+2017-06-26 14:55:50.424 [main] INFO  SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2017-06-26 14:55:50.424 [main] INFO  QuartzScheduler - Quartz Scheduler v.2.2.3 created.
+2017-06-26 14:55:50.597 [main] INFO  QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.2.3) 'schedulerFactory' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.springframework.scheduling.quartz.LocalDataSourceJobStore' - which supports persistence. and is not clustered.
+
+2017-06-26 14:55:50.597 [main] INFO  StdSchedulerFactory - Quartz scheduler 'schedulerFactory' initialized from an externally provided properties instance.
+2017-06-26 14:55:50.597 [main] INFO  StdSchedulerFactory - Quartz scheduler version: 2.2.3
+2017-06-26 14:55:50.598 [main] INFO  QuartzScheduler - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@5cbe877d
+2017-06-26 14:55:50.617 [main] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED shutting down.
+2017-06-26 14:55:50.617 [main] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED paused.
+2017-06-26 14:55:50.617 [main] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED shutdown complete.
+2017-06-26 14:55:50.623 [main] ERROR TestContextManager - Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@2f05be7f] to prepare test instance [org.jeecgframework.test.quartz.TestQuartz@640f11a1]
+java.lang.IllegalStateException: Failed to load ApplicationContext
+	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContext(CacheAwareContextLoaderDelegate.java:103) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.DefaultTestContext.getApplicationContext(DefaultTestContext.java:98) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:109) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:75) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:331) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:213) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:290) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15) [junit-4.7.jar:na]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:292) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:233) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:87) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:193) [junit-4.7.jar:na]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:52) [junit-4.7.jar:na]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:191) [junit-4.7.jar:na]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:42) [junit-4.7.jar:na]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:184) [junit-4.7.jar:na]
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:71) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:236) [junit-4.7.jar:na]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:176) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157) [junit-4.7.jar:na]
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:119) [junit-rt.jar:na]
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:42) [junit-rt.jar:na]
+	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:234) [junit-rt.jar:na]
+	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:74) [junit-rt.jar:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[na:1.8.0_45]
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:144) [idea_rt.jar:na]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'schedulerService': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: private org.quartz.JobDetail org.jeecgframework.core.quartz.SchedulerServiceImpl.jobDetail; nested exception is org.springframework.beans.factory.NoUniqueBeanDefinitionException: No qualifying bean of type [org.quartz.JobDetail] is defined: expected single matching bean but found 2: jobDetail0,jobDetail1
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:301) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1186) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:537) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:475) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:302) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:229) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:298) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:193) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:706) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:762) ~[spring-context-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:482) ~[spring-context-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:125) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:60) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.delegateLoading(AbstractDelegatingSmartContextLoader.java:102) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.loadContext(AbstractDelegatingSmartContextLoader.java:248) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContextInternal(CacheAwareContextLoaderDelegate.java:69) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContext(CacheAwareContextLoaderDelegate.java:95) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	... 29 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: private org.quartz.JobDetail org.jeecgframework.core.quartz.SchedulerServiceImpl.jobDetail; nested exception is org.springframework.beans.factory.NoUniqueBeanDefinitionException: No qualifying bean of type [org.quartz.JobDetail] is defined: expected single matching bean but found 2: jobDetail0,jobDetail1
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:522) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:88) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:298) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	... 45 common frames omitted
+Caused by: org.springframework.beans.factory.NoUniqueBeanDefinitionException: No qualifying bean of type [org.quartz.JobDetail] is defined: expected single matching bean but found 2: jobDetail0,jobDetail1
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:974) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:862) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:494) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	... 47 common frames omitted
+2017-06-26 15:36:38.378 [main] ERROR TestContextManager - Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@645aa696] to prepare test instance [org.jeecgframework.test.quartz.TestQuartz@6caf0677]
+java.lang.IllegalStateException: Failed to load ApplicationContext
+	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContext(CacheAwareContextLoaderDelegate.java:103) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.DefaultTestContext.getApplicationContext(DefaultTestContext.java:98) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:109) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:75) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:331) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:213) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:290) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15) [junit-4.7.jar:na]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:292) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:233) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:87) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:193) [junit-4.7.jar:na]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:52) [junit-4.7.jar:na]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:191) [junit-4.7.jar:na]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:42) [junit-4.7.jar:na]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:184) [junit-4.7.jar:na]
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:71) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:236) [junit-4.7.jar:na]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:176) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157) [junit-4.7.jar:na]
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:119) [junit-rt.jar:na]
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:42) [junit-rt.jar:na]
+	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:234) [junit-rt.jar:na]
+	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:74) [junit-rt.jar:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[na:1.8.0_45]
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:144) [idea_rt.jar:na]
+Caused by: org.springframework.beans.factory.parsing.BeanDefinitionParsingException: Configuration problem: Cannot locate BeanDefinitionDecorator for element [list]
+Offending resource: URL [file:src/test/resource/spring-mvc-timeTask.xml]
+	at org.springframework.beans.factory.parsing.FailFastProblemReporter.fatal(FailFastProblemReporter.java:60) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.parsing.ReaderContext.fatal(ReaderContext.java:68) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.parsing.ReaderContext.fatal(ReaderContext.java:55) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.xml.NamespaceHandlerSupport.findDecoratorForNode(NamespaceHandlerSupport.java:121) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.xml.NamespaceHandlerSupport.decorate(NamespaceHandlerSupport.java:99) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.xml.BeanDefinitionParserDelegate.decorateIfRequired(BeanDefinitionParserDelegate.java:1463) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.xml.BeanDefinitionParserDelegate.decorateBeanDefinitionIfRequired(BeanDefinitionParserDelegate.java:1450) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.xml.BeanDefinitionParserDelegate.decorateBeanDefinitionIfRequired(BeanDefinitionParserDelegate.java:1430) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader.processBeanDefinition(DefaultBeanDefinitionDocumentReader.java:308) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader.parseDefaultElement(DefaultBeanDefinitionDocumentReader.java:197) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader.parseBeanDefinitions(DefaultBeanDefinitionDocumentReader.java:176) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader.doRegisterBeanDefinitions(DefaultBeanDefinitionDocumentReader.java:149) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader.registerBeanDefinitions(DefaultBeanDefinitionDocumentReader.java:103) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.registerBeanDefinitions(XmlBeanDefinitionReader.java:510) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.doLoadBeanDefinitions(XmlBeanDefinitionReader.java:392) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:336) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:304) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:180) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:216) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:187) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:251) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadBeanDefinitions(AbstractGenericContextLoader.java:253) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:122) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:60) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.delegateLoading(AbstractDelegatingSmartContextLoader.java:102) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.loadContext(AbstractDelegatingSmartContextLoader.java:248) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContextInternal(CacheAwareContextLoaderDelegate.java:69) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContext(CacheAwareContextLoaderDelegate.java:95) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	... 29 common frames omitted
+2017-06-26 15:38:22.902 [main] INFO  StdSchedulerFactory - Using default implementation for ThreadExecutor
+2017-06-26 15:38:22.906 [main] INFO  SimpleThreadPool - Job execution threads will use class loader of thread: main
+2017-06-26 15:38:22.916 [main] INFO  SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2017-06-26 15:38:22.916 [main] INFO  QuartzScheduler - Quartz Scheduler v.2.2.3 created.
+2017-06-26 15:38:23.082 [main] INFO  QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.2.3) 'schedulerFactory' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.springframework.scheduling.quartz.LocalDataSourceJobStore' - which supports persistence. and is not clustered.
+
+2017-06-26 15:38:23.082 [main] INFO  StdSchedulerFactory - Quartz scheduler 'schedulerFactory' initialized from an externally provided properties instance.
+2017-06-26 15:38:23.082 [main] INFO  StdSchedulerFactory - Quartz scheduler version: 2.2.3
+2017-06-26 15:38:23.083 [main] INFO  QuartzScheduler - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@4cf8b2dc
+2017-06-26 15:38:23.789 [main] WARN  RMICacheManagerPeerListener - Explicitly setting the listener hostname to 'localhost' is not recommended. It will only work if all CacheManager peers are on the same machine.
+2017-06-26 15:38:24.930 [main] INFO  Version - Hibernate Validator 4.2.0.Final
+2017-06-26 15:38:25.472 [main] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED started.
+2017-06-26 15:38:25.488 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED paused.
+2017-06-26 15:38:25.504 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED shutting down.
+2017-06-26 15:38:25.505 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED paused.
+2017-06-26 15:38:25.505 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED shutdown complete.
+2017-06-26 15:54:03.158 [main] INFO  StdSchedulerFactory - Using default implementation for ThreadExecutor
+2017-06-26 15:54:03.162 [main] INFO  SimpleThreadPool - Job execution threads will use class loader of thread: main
+2017-06-26 15:54:03.171 [main] INFO  SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2017-06-26 15:54:03.172 [main] INFO  QuartzScheduler - Quartz Scheduler v.2.2.3 created.
+2017-06-26 15:54:03.344 [main] INFO  QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.2.3) 'schedulerFactory' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.springframework.scheduling.quartz.LocalDataSourceJobStore' - which supports persistence. and is not clustered.
+
+2017-06-26 15:54:03.344 [main] INFO  StdSchedulerFactory - Quartz scheduler 'schedulerFactory' initialized from an externally provided properties instance.
+2017-06-26 15:54:03.344 [main] INFO  StdSchedulerFactory - Quartz scheduler version: 2.2.3
+2017-06-26 15:54:03.345 [main] INFO  QuartzScheduler - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@708400f6
+2017-06-26 15:54:03.355 [main] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED shutting down.
+2017-06-26 15:54:03.356 [main] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED paused.
+2017-06-26 15:54:03.356 [main] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED shutdown complete.
+2017-06-26 15:54:03.361 [main] ERROR TestContextManager - Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@4b9df8a] to prepare test instance [org.jeecgframework.test.quartz.TestSchedulerManager@5e8ac0e1]
+java.lang.IllegalStateException: Failed to load ApplicationContext
+	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContext(CacheAwareContextLoaderDelegate.java:103) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.DefaultTestContext.getApplicationContext(DefaultTestContext.java:98) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:109) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:75) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:331) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:213) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:290) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15) [junit-4.7.jar:na]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:292) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:233) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:87) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:193) [junit-4.7.jar:na]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:52) [junit-4.7.jar:na]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:191) [junit-4.7.jar:na]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:42) [junit-4.7.jar:na]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:184) [junit-4.7.jar:na]
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:71) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:236) [junit-4.7.jar:na]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:176) [spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157) [junit-4.7.jar:na]
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:119) [junit-rt.jar:na]
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:42) [junit-rt.jar:na]
+	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:234) [junit-rt.jar:na]
+	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:74) [junit-rt.jar:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[na:1.8.0_45]
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:144) [idea_rt.jar:na]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'schedulerManager': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: private java.util.List org.jeecgframework.core.quartz.SchedulerManager.jobDetails; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type [org.quartz.JobDetail] found for dependency [collection of org.quartz.JobDetail]: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true), @org.springframework.beans.factory.annotation.Qualifier(value=jobDetails)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:301) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1186) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:537) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:475) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:302) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:229) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:298) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:193) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:706) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:762) ~[spring-context-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:482) ~[spring-context-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:125) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:60) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.delegateLoading(AbstractDelegatingSmartContextLoader.java:102) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.loadContext(AbstractDelegatingSmartContextLoader.java:248) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContextInternal(CacheAwareContextLoaderDelegate.java:69) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContext(CacheAwareContextLoaderDelegate.java:95) ~[spring-test-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	... 29 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: private java.util.List org.jeecgframework.core.quartz.SchedulerManager.jobDetails; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type [org.quartz.JobDetail] found for dependency [collection of org.quartz.JobDetail]: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true), @org.springframework.beans.factory.annotation.Qualifier(value=jobDetails)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:522) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:88) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:298) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	... 45 common frames omitted
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type [org.quartz.JobDetail] found for dependency [collection of org.quartz.JobDetail]: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true), @org.springframework.beans.factory.annotation.Qualifier(value=jobDetails)}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoSuchBeanDefinitionException(DefaultListableBeanFactory.java:1118) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:919) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:862) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:494) ~[spring-beans-4.0.9.RELEASE.jar:4.0.9.RELEASE]
+	... 47 common frames omitted
+2017-06-26 16:27:46.724 [main] INFO  StdSchedulerFactory - Using default implementation for ThreadExecutor
+2017-06-26 16:27:46.728 [main] INFO  SimpleThreadPool - Job execution threads will use class loader of thread: main
+2017-06-26 16:27:46.739 [main] INFO  SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2017-06-26 16:27:46.739 [main] INFO  QuartzScheduler - Quartz Scheduler v.2.2.3 created.
+2017-06-26 16:27:46.906 [main] INFO  QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.2.3) 'schedulerFactory' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.springframework.scheduling.quartz.LocalDataSourceJobStore' - which supports persistence. and is not clustered.
+
+2017-06-26 16:27:46.907 [main] INFO  StdSchedulerFactory - Quartz scheduler 'schedulerFactory' initialized from an externally provided properties instance.
+2017-06-26 16:27:46.907 [main] INFO  StdSchedulerFactory - Quartz scheduler version: 2.2.3
+2017-06-26 16:27:46.908 [main] INFO  QuartzScheduler - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@4cf8b2dc
+2017-06-26 16:27:47.631 [main] WARN  RMICacheManagerPeerListener - Explicitly setting the listener hostname to 'localhost' is not recommended. It will only work if all CacheManager peers are on the same machine.
+2017-06-26 16:27:48.785 [main] INFO  Version - Hibernate Validator 4.2.0.Final
+2017-06-26 16:27:49.330 [main] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED started.
+2017-06-26 16:27:49.840 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED paused.
+2017-06-26 16:27:49.850 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED shutting down.
+2017-06-26 16:27:49.850 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED paused.
+2017-06-26 16:27:49.850 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED shutdown complete.
+2017-06-26 16:29:41.202 [main] INFO  StdSchedulerFactory - Using default implementation for ThreadExecutor
+2017-06-26 16:29:41.205 [main] INFO  SimpleThreadPool - Job execution threads will use class loader of thread: main
+2017-06-26 16:29:41.214 [main] INFO  SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2017-06-26 16:29:41.214 [main] INFO  QuartzScheduler - Quartz Scheduler v.2.2.3 created.
+2017-06-26 16:29:41.387 [main] INFO  QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.2.3) 'schedulerFactory' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.springframework.scheduling.quartz.LocalDataSourceJobStore' - which supports persistence. and is not clustered.
+
+2017-06-26 16:29:41.387 [main] INFO  StdSchedulerFactory - Quartz scheduler 'schedulerFactory' initialized from an externally provided properties instance.
+2017-06-26 16:29:41.387 [main] INFO  StdSchedulerFactory - Quartz scheduler version: 2.2.3
+2017-06-26 16:29:41.388 [main] INFO  QuartzScheduler - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@4cf8b2dc
+2017-06-26 16:29:42.087 [main] WARN  RMICacheManagerPeerListener - Explicitly setting the listener hostname to 'localhost' is not recommended. It will only work if all CacheManager peers are on the same machine.
+2017-06-26 16:29:43.257 [main] INFO  Version - Hibernate Validator 4.2.0.Final
+2017-06-26 16:29:43.802 [main] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED started.
+2017-06-26 16:29:44.330 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED paused.
+2017-06-26 16:29:44.342 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED shutting down.
+2017-06-26 16:29:44.342 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED paused.
+2017-06-26 16:29:44.342 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED shutdown complete.
+2017-06-26 16:32:52.804 [main] INFO  StdSchedulerFactory - Using default implementation for ThreadExecutor
+2017-06-26 16:32:52.809 [main] INFO  SimpleThreadPool - Job execution threads will use class loader of thread: main
+2017-06-26 16:32:52.817 [main] INFO  SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2017-06-26 16:32:52.818 [main] INFO  QuartzScheduler - Quartz Scheduler v.2.2.3 created.
+2017-06-26 16:32:52.993 [main] INFO  QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.2.3) 'schedulerFactory' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.springframework.scheduling.quartz.LocalDataSourceJobStore' - which supports persistence. and is not clustered.
+
+2017-06-26 16:32:52.993 [main] INFO  StdSchedulerFactory - Quartz scheduler 'schedulerFactory' initialized from an externally provided properties instance.
+2017-06-26 16:32:52.993 [main] INFO  StdSchedulerFactory - Quartz scheduler version: 2.2.3
+2017-06-26 16:32:52.994 [main] INFO  QuartzScheduler - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@4cf8b2dc
+2017-06-26 16:32:53.706 [main] WARN  RMICacheManagerPeerListener - Explicitly setting the listener hostname to 'localhost' is not recommended. It will only work if all CacheManager peers are on the same machine.
+2017-06-26 16:32:54.858 [main] INFO  Version - Hibernate Validator 4.2.0.Final
+2017-06-26 16:32:55.413 [main] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED started.
+2017-06-26 16:32:55.886 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED paused.
+2017-06-26 16:32:55.912 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED shutting down.
+2017-06-26 16:32:55.912 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED paused.
+2017-06-26 16:32:55.913 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED shutdown complete.
+2017-06-26 16:34:05.232 [main] INFO  StdSchedulerFactory - Using default implementation for ThreadExecutor
+2017-06-26 16:34:05.236 [main] INFO  SimpleThreadPool - Job execution threads will use class loader of thread: main
+2017-06-26 16:34:05.244 [main] INFO  SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2017-06-26 16:34:05.245 [main] INFO  QuartzScheduler - Quartz Scheduler v.2.2.3 created.
+2017-06-26 16:34:05.411 [main] INFO  QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.2.3) 'schedulerFactory' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.springframework.scheduling.quartz.LocalDataSourceJobStore' - which supports persistence. and is not clustered.
+
+2017-06-26 16:34:05.411 [main] INFO  StdSchedulerFactory - Quartz scheduler 'schedulerFactory' initialized from an externally provided properties instance.
+2017-06-26 16:34:05.411 [main] INFO  StdSchedulerFactory - Quartz scheduler version: 2.2.3
+2017-06-26 16:34:05.412 [main] INFO  QuartzScheduler - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@4cf8b2dc
+2017-06-26 16:34:06.122 [main] WARN  RMICacheManagerPeerListener - Explicitly setting the listener hostname to 'localhost' is not recommended. It will only work if all CacheManager peers are on the same machine.
+2017-06-26 16:34:07.280 [main] INFO  Version - Hibernate Validator 4.2.0.Final
+2017-06-26 16:34:07.840 [main] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED started.
+2017-06-26 16:34:08.380 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED paused.
+2017-06-26 16:34:08.401 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED shutting down.
+2017-06-26 16:34:08.401 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED paused.
+2017-06-26 16:34:08.401 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED shutdown complete.
+2017-06-26 16:43:48.048 [main] INFO  StdSchedulerFactory - Using default implementation for ThreadExecutor
+2017-06-26 16:43:48.051 [main] INFO  SimpleThreadPool - Job execution threads will use class loader of thread: main
+2017-06-26 16:43:48.059 [main] INFO  SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2017-06-26 16:43:48.060 [main] INFO  QuartzScheduler - Quartz Scheduler v.2.2.3 created.
+2017-06-26 16:43:48.228 [main] INFO  QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.2.3) 'schedulerFactory' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.springframework.scheduling.quartz.LocalDataSourceJobStore' - which supports persistence. and is not clustered.
+
+2017-06-26 16:43:48.228 [main] INFO  StdSchedulerFactory - Quartz scheduler 'schedulerFactory' initialized from an externally provided properties instance.
+2017-06-26 16:43:48.228 [main] INFO  StdSchedulerFactory - Quartz scheduler version: 2.2.3
+2017-06-26 16:43:48.229 [main] INFO  QuartzScheduler - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@4cf8b2dc
+2017-06-26 16:43:48.921 [main] WARN  RMICacheManagerPeerListener - Explicitly setting the listener hostname to 'localhost' is not recommended. It will only work if all CacheManager peers are on the same machine.
+2017-06-26 16:43:50.120 [main] INFO  Version - Hibernate Validator 4.2.0.Final
+2017-06-26 16:43:50.666 [main] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED started.
+2017-06-26 16:43:51.301 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED paused.
+2017-06-26 16:43:51.335 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED shutting down.
+2017-06-26 16:43:51.335 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED paused.
+2017-06-26 16:43:51.336 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED shutdown complete.
+2017-06-26 16:46:18.523 [main] INFO  StdSchedulerFactory - Using default implementation for ThreadExecutor
+2017-06-26 16:46:18.528 [main] INFO  SimpleThreadPool - Job execution threads will use class loader of thread: main
+2017-06-26 16:46:18.537 [main] INFO  SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2017-06-26 16:46:18.537 [main] INFO  QuartzScheduler - Quartz Scheduler v.2.2.3 created.
+2017-06-26 16:46:18.704 [main] INFO  QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.2.3) 'schedulerFactory' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.springframework.scheduling.quartz.LocalDataSourceJobStore' - which supports persistence. and is not clustered.
+
+2017-06-26 16:46:18.704 [main] INFO  StdSchedulerFactory - Quartz scheduler 'schedulerFactory' initialized from an externally provided properties instance.
+2017-06-26 16:46:18.704 [main] INFO  StdSchedulerFactory - Quartz scheduler version: 2.2.3
+2017-06-26 16:46:18.705 [main] INFO  QuartzScheduler - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@4cf8b2dc
+2017-06-26 16:46:19.394 [main] WARN  RMICacheManagerPeerListener - Explicitly setting the listener hostname to 'localhost' is not recommended. It will only work if all CacheManager peers are on the same machine.
+2017-06-26 16:46:20.569 [main] INFO  Version - Hibernate Validator 4.2.0.Final
+2017-06-26 16:46:21.061 [main] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED started.
+2017-06-26 16:46:21.493 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED paused.
+2017-06-26 16:46:21.507 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED shutting down.
+2017-06-26 16:46:21.507 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED paused.
+2017-06-26 16:46:21.507 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED shutdown complete.

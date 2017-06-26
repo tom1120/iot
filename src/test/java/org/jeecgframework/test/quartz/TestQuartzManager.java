@@ -40,7 +40,6 @@ public class TestQuartzManager {
     @Autowired
     private QuartzManager quartzManager;
 
-
     @Test
     public void test() throws SchedulerException {//,Exception,ParseException
         String jobname="job1";

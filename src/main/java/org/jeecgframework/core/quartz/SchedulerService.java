@@ -1,6 +1,9 @@
 package org.jeecgframework.core.quartz;
 
 import org.quartz.CronExpression;
+import org.quartz.CronTrigger;
+import org.quartz.JobDetail;
+import org.quartz.impl.triggers.CronTriggerImpl;
 
 import java.util.Date;
 
@@ -9,6 +12,10 @@ import java.util.Date;
  * Created by zhaoyipc on 2017/6/24.
  */
 public interface SchedulerService {
+
+    void setJobDetail(JobDetail jobDetail);
+    JobDetail getJobDetail();
+
     /**
      * 根据quartz cron express 调试任务
      * @param cronExpression Quartz Cron 表达式，如 "0/10 * * ? * * *"等
@@ -55,6 +62,12 @@ public interface SchedulerService {
      * @param cronExpression Quartz CronExpression
      */
     void schedule(String name, String group, CronExpression cronExpression);
+
+    /**
+     * CronTriggerImpl设置cronTrigger触发器参数
+     * @param cronTrigger
+     */
+    void schedule(CronTriggerImpl cronTrigger);
 
     /**
      * 在startTime时执行调试一次

@@ -2,11 +2,12 @@ package org.jeecgframework.test.quartz;/**
  * Created by zhaoyipc on 2017/6/24.
  */
 
+import org.jeecgframework.core.quartz.JobDetailList;
+import org.jeecgframework.core.quartz.SchedulerManager;
 import org.jeecgframework.core.quartz.SchedulerService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.quartz.SchedulerException;
-import org.quartz.SchedulerFactory;
+import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,8 +16,10 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author zhaoyi
@@ -28,13 +31,13 @@ import java.util.Date;
 //使用测试环境的配置文件测试
 @ContextConfiguration(locations = {"file:src/test/resource/spring-mvc-timeTask.xml","file:src/test/resource/spring-mvc-hibernate.xml"})
 @ActiveProfiles("production")
-public class TestQuartz {
+public class TestSchedulerManager {
     private static Logger LOGGER = LoggerFactory.getLogger(Test.class);
     private static String JOB_GROUP_NAME = "zydGroup";
     private static String TRIGGER_GROUP_NAME = "zydTriggerGroup";
-//    private static SchedulerFactory sf = new StdSchedulerFactory();
+    //    private static SchedulerFactory sf = new StdSchedulerFactory();
     @Autowired
-    private SchedulerService schedulerService;
+    private SchedulerManager schedulerManager;
 
 
     @Test
@@ -47,7 +50,36 @@ public class TestQuartz {
         /**
          * 持久化此任务到数据库中
          */
-        schedulerService.schedule("0 45 10 * * ? *");
+//        schedulerService.schedule("0 45 10 * * ? *");
+        String name="test1";
+        String group="test1";
+        String name1="test2";
+        String group1="test2";
+        CronExpression cronExpression=null;
+        CronExpression cronExpression1=null;
+
+        try {
+            cronExpression= new CronExpression("0 45 10 * * ? *");
+            cronExpression1= new CronExpression("0 11 10 * * ? *");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        // 任务名，任务组，任务执行类
+        List<JobDetail> jobDetails= schedulerManager.getJobDetails();
+
+        for(JobDetail jobDetail:jobDetails){
+
+//            JobDetail jobDetail= JobBuilder.newJob(jobClass).withIdentity(jobName, jobGroupName).build();
+            if(jobDetail.getKey().getName().equals("jobDetail0")){
+                schedulerManager.schedule(name,group,cronExpression,jobDetail);
+            }else{
+                schedulerManager.schedule(name1,group1,cronExpression1,jobDetail);
+            }
+
+        }
+
+
+
 //        schedulerService.schedule("0fa05274-1c9b-49e5-b2ac-b43f90451226","0/3 42 11 * * ? *");
 //        schedulerService.pauseTrigger("0fa05274-1c9b-49e5-b2ac-b43f90451226");
 //        schedulerService.resumeTrigger("0fa05274-1c9b-49e5-b2ac-b43f90451226");

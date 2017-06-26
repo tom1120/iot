@@ -1,6 +1,8 @@
-package org.jeecgframework.core.quartz;/**
+package org.jeecgframework.core.quartz;
+/**
  * Created by zhaoyipc on 2017/6/24.
  */
+
 
 import org.quartz.*;
 import org.quartz.impl.triggers.CronTriggerImpl;
@@ -14,8 +16,9 @@ import java.util.UUID;
 
 /**
  * @author zhaoyi
- * @date 2017-06-2017/6/24-8:39
- */
+ * @date 2017-06-2017/6/24-8:39*/
+
+
 @Service("schedulerService")
 public class SchedulerServiceImpl implements SchedulerService {
     private static final String NULLSTRING = null;
@@ -23,8 +26,18 @@ public class SchedulerServiceImpl implements SchedulerService {
 
     @Autowired
     private Scheduler scheduler;
-    @Autowired
+/*    @Autowired
+    private JobDetail jobDetail;*/
+
     private JobDetail jobDetail;
+
+    public JobDetail getJobDetail() {
+        return jobDetail;
+    }
+
+    public void setJobDetail(JobDetail jobDetail) {
+        this.jobDetail = jobDetail;
+    }
 
     @Override
     public void schedule(String cronExpression) {
@@ -87,6 +100,19 @@ public class SchedulerServiceImpl implements SchedulerService {
                 throw new IllegalArgumentException(e);
             }
         }
+    }
+
+    @Override
+    public void schedule(CronTriggerImpl cronTrigger){
+        CronExpression cronExpression= null;
+        try {
+            cronExpression = new CronExpression(cronTrigger.getCronExpression());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        String name=cronTrigger.getName();
+        String group=cronTrigger.getGroup();
+        schedule(name, group, cronExpression);
     }
 
     @Override
