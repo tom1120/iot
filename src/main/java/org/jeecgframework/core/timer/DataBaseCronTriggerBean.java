@@ -1,3 +1,4 @@
+/*
 package org.jeecgframework.core.timer;
 
 import java.text.ParseException;
@@ -10,21 +11,25 @@ import org.springframework.scheduling.quartz.CronTriggerFactoryBean;
 import org.springframework.scheduling.quartz.JobDetailAwareTrigger;
 //import org.springframework.scheduling.quartz.CronTriggerBean;
 
+*/
 /**
  * 在原有功能的基础上面增加数据库的读取
  * @author JueYue
  * @date 2013-9-22
  * @version 1.0
- */
+ *//*
+
 public class DataBaseCronTriggerBean extends CronTriggerFactoryBean{
 
 	private static final long serialVersionUID = 1L;
 	
 	@Autowired
 	private TimeTaskServiceI timeTaskService;
-	/**
+	*/
+/**
 	 * 读取数据库更新文件
-	 */
+	 *//*
+
 	public void afterPropertiesSet() {
 		super.afterPropertiesSet();
 
@@ -44,3 +49,4 @@ public class DataBaseCronTriggerBean extends CronTriggerFactoryBean{
 	}
 
 }
+*/

@@ -4,19 +4,47 @@
 	<!-- 定时任务配置 scheduler 方式 注解 暂时不支持动态更新 -->
 	<context:component-scan base-package="org.jeecgframework.core.quartz"/>
 
+	<!-- 这个类用来做需要完成的业务，也可以使用component-scan-->
+	<!--<bean id="myJob2" class="org.jeecgframework.core.quartz.SimpleService"></bean>-->
 
-	<bean id="jobDetail" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
-		<property name="jobClass">
-			<value>org.jeecgframework.core.quartz.MyQuartzJobBean</value>
-		</property>
-		<property name="durability" value="true"/>
+	<!-- 定时任务 -->
+	<!-- 定义调用对象和调用对象的方法，这个配置和普通的一样的,id是JobDetail的名字  -->
+	<bean id="jobtask" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类  -->
+		<property name="targetObject" ref="simpleService" />
+		<!-- 调用类中的方法  -->
+		<property name="targetMethod" value="testMethod" />
+		<property name="arguments" value="ssssssssss"/>
+		<!-- 是否并发  -->
+		<property name ="concurrent" value ="false"  />
+	</bean>
+
+
+	<!-- 定义触发时间 ，这边就不同了，这里必须将时间设置成无限长，因为我们要去读取数据库的时间来做为定时器的触发时间-->
+	<bean id="cronTrigger" class="org.jeecgframework.core.quartz.MyCronTriggerFactoryBean ">
+		<property name="jobDetail" ref="jobtask" />
+		<!-- cron表达式  -->
+		<property name="cronExpression" value="0/1 * * * * ?" />
 	</bean>
 
 	<!--<bean id="schedulerFactory" lazy-init="false" autowire="no" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">-->
 	<bean id="schedulerFactory" autowire="no" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="cronTrigger" />
+			</list>
+		</property>
 		<property name="autoStartup" value="true"/>
 		<property name="dataSource"><ref bean="dataSource"/> </property>
 		<property name="configLocation" value="classpath:quartz.properties"/>
 		<property name="applicationContextSchedulerContextKey"  value="applicationContextKey" />
 	</bean>
+
+	<!--这个类是用来设置触发时间的， startJobs方法启动调度容器，然后按照上面触发器每隔1s执行所配置的myJob2.doSomething()方法 -->
+	<bean id="quartzManager" class="org.jeecgframework.core.quartz.QuartzManager" lazy-init="false" init-method="startJobs" >
+		<!--这个对象一定要注入，这样类才能进行管理，还有在类型要用get set方法，不然会报错。-->
+		<!--<property name="schedulerFactory" ref="schedulerFactory" />-->
+	</bean>
+
+
 </beans>

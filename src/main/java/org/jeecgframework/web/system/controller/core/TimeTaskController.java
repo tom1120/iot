@@ -1,3 +1,4 @@
+/*
 package org.jeecgframework.web.system.controller.core;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -33,14 +34,16 @@ import org.springframework.web.servlet.ModelAndView;
 import test.testCron.CronTest;
 
 
-/**   
+*/
+/**
  * @Title: Controller
  * @Description: 定时任务管理
  * @author jueyue
  * @date 2013-09-21 20:47:43
  * @version V1.0   
  *
- */
+ *//*
+
 //@Scope("prototype")
 @Controller
 @RequestMapping("/timeTaskController")
@@ -54,22 +57,26 @@ public class TimeTaskController extends BaseController {
 	private SystemService systemService;
 
 
-	/**
+	*/
+/**
 	 * 定时任务管理列表 页面跳转
 	 * 
 	 * @return
-	 */
+	 *//*
+
 	@RequestMapping(params = "timeTask")
 	public ModelAndView timeTask(HttpServletRequest request) {
 		return new ModelAndView("system/timetask/timeTaskList");
 	}
 
-	/**
+	*/
+/**
 	 * 更新cron表达式，cron在线编辑器编辑更新
 	 * @param cronExpression
 	 * @param cronid
      * @return
-     */
+     *//*
+
 	@RequestMapping(params = "updateCronExpression")
 	@ResponseBody
 	public AjaxJson updateCronExpression(@RequestParam("cronExpression") String cronExpression,
@@ -95,9 +102,11 @@ public class TimeTaskController extends BaseController {
 		return ajaxJson;
 	}
 
-	/**
+	*/
+/**
 	 * 解析cron最近几次的表达式
-	 */
+	 *//*
+
 	@RequestMapping(params = "preview")
 	public void previewExpression(@RequestParam("CronExpression") String cronExpression,HttpServletResponse response) throws ParseException {
 		JSONObject jsonObject=new JSONObject();
@@ -110,14 +119,16 @@ public class TimeTaskController extends BaseController {
 
 
 
-	/**
+	*/
+/**
 	 * easyui AJAX请求数据
 	 * 
 	 * @param request
 	 * @param response
 	 * @param dataGrid
 	 * @param user
-	 */
+	 *//*
+
 
 	@RequestMapping(params = "datagrid")
 	public void datagrid(TSTimeTaskEntity timeTask,HttpServletRequest request, HttpServletResponse response, DataGrid dataGrid) {
@@ -128,11 +139,13 @@ public class TimeTaskController extends BaseController {
 		TagUtil.datagrid(response, dataGrid);
 	}
 
-	/**
+	*/
+/**
 	 * 删除定时任务管理
 	 * 
 	 * @return
-	 */
+	 *//*
+
 	@RequestMapping(params = "del")
 	@ResponseBody
 	public AjaxJson del(TSTimeTaskEntity timeTask, HttpServletRequest request) {
@@ -147,12 +160,14 @@ public class TimeTaskController extends BaseController {
 	}
 
 
-	/**
+	*/
+/**
 	 * 添加定时任务管理
 	 * 
 	 * @param ids
 	 * @return
-	 */
+	 *//*
+
 	@RequestMapping(params = "save")
 	@ResponseBody
 	public AjaxJson save(TSTimeTaskEntity timeTask, HttpServletRequest request) {
@@ -199,11 +214,13 @@ public class TimeTaskController extends BaseController {
 		return j;
 	}
 
-	/**
+	*/
+/**
 	 * 定时任务管理列表页面跳转
 	 * 
 	 * @return
-	 */
+	 *//*
+
 	@RequestMapping(params = "addorupdate")
 	public ModelAndView addorupdate(TSTimeTaskEntity timeTask, HttpServletRequest req) {
 		if (StringUtil.isNotEmpty(timeTask.getId())) {
@@ -213,9 +230,11 @@ public class TimeTaskController extends BaseController {
 		return new ModelAndView("system/timetask/timeTask");
 	}
 	
-	/**
+	*/
+/**
 	 * 更新任务时间使之生效
-	 */
+	 *//*
+
 	@RequestMapping(params = "updateTime")
 	@ResponseBody
 	public AjaxJson updateTime(TSTimeTaskEntity timeTask, HttpServletRequest request) {
@@ -230,9 +249,11 @@ public class TimeTaskController extends BaseController {
 		j.setMsg(isUpdate?"定时任务管理更新成功":"定时任务管理更新失败");
 		return j;
 	}
-	/**
+	*/
+/**
 	 * 启动或者停止任务
-	 */
+	 *//*
+
 	@RequestMapping(params = "startOrStopTask")
 	@ResponseBody
 	public AjaxJson startOrStopTask(TSTimeTaskEntity timeTask, HttpServletRequest request) {
@@ -256,3 +277,4 @@ public class TimeTaskController extends BaseController {
 	}
 	
 }
+*/

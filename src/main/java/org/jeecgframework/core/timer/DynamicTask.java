@@ -1,3 +1,4 @@
+/*
 package org.jeecgframework.core.timer;
 
 import java.io.File;
@@ -20,12 +21,14 @@ import org.dom4j.io.XMLWriter;
 import org.quartz.*;
 import org.springframework.stereotype.Service;
 
+*/
 /**
  * 动态任务,用以动态调整Spring的任务
  * @author JueYue
  * @date 2013-9-20
  * @version 1.0
- */
+ *//*
+
 @Service(value="dynamicTask")
 public class DynamicTask {
 	
@@ -34,7 +37,8 @@ public class DynamicTask {
 	@Resource
 	private Scheduler schedulerFactory;
 	
-	/**
+	*/
+/**
 	 * 更新定时任务的触发表达式
 	 * 
 	 * @param triggerName
@@ -42,7 +46,8 @@ public class DynamicTask {
 	 * @param start
 	 *            触发表达式
 	 * @return 成功则返回true，否则返回false
-	 */
+	 *//*
+
 	public boolean startOrStop(String triggerName,
 			boolean start) {
 		try {
@@ -53,7 +58,8 @@ public class DynamicTask {
 
 				//恢复触发
 //				schedulerFactory.resumeTrigger(trigger.getName(), trigger.getGroup());
-				/**
+				*/
+/**
 				 *
 				 state的值代表该任务触发器的状态：
 				 STATE_BLOCKED   4 // 运行
@@ -62,7 +68,8 @@ public class DynamicTask {
 				 STATE_NONE  -1      //未知
 				 STATE_NORMAL    0   //正常无任务，用这个判断Job是否在运行
 				 STATE_PAUSED    1   //暂停状态
-				 */
+				 *//*
+
 				Trigger.TriggerState state=schedulerFactory.getTriggerState(triggerKey);
 				schedulerFactory.resumeTrigger(triggerKey);
 				logger.info("trigger the resume successfully!!");
@@ -80,7 +87,8 @@ public class DynamicTask {
 		}
 	}
 
-	/**
+	*/
+/**
 	 * 更新定时任务的触发表达式
 	 * 
 	 * @param triggerName
@@ -88,7 +96,8 @@ public class DynamicTask {
 	 * @param cronExpression
 	 *            触发表达式
 	 * @return 成功则返回true，否则返回false
-	 */
+	 *//*
+
 	public boolean updateCronExpression(String triggerName,
 			String cronExpression) {
 		try {
@@ -104,7 +113,9 @@ public class DynamicTask {
 //			trigger.setCronExpression(cronExpression);
 
 
-			/** 方式一 ：调用 rescheduleJob 开始 */
+			*/
+/** 方式一 ：调用 rescheduleJob 开始 *//*
+
 			// 触发器
 			TriggerBuilder<Trigger> triggerBuilder = TriggerBuilder.newTrigger();
 			// 触发器名,触发器组
@@ -117,14 +128,20 @@ public class DynamicTask {
 			TriggerKey triggerKey = TriggerKey.triggerKey(triggerName,Scheduler.DEFAULT_GROUP);
 			// 方式一 ：修改一个任务的触发时间
 			schedulerFactory.rescheduleJob(triggerKey, trigger);
-			/** 方式一 ：调用 rescheduleJob 结束 */
+			*/
+/** 方式一 ：调用 rescheduleJob 结束 *//*
 
-			/** 方式二：先删除，然后在创建一个新的Job  */
+
+			*/
+/** 方式二：先删除，然后在创建一个新的Job  *//*
+
 			//JobDetail jobDetail = scheduler.getJobDetail(JobKey.jobKey(jobName, jobGroupName));
 			//Class<? extends Job> jobClass = jobDetail.getJobClass();
 			//removeJob(jobName, jobGroupName, triggerName, triggerGroupName);
 			//addJob(jobName, jobGroupName, triggerName, triggerGroupName, jobClass, cron);
-			/** 方式二 ：先删除，然后在创建一个新的Job */
+			*/
+/** 方式二 ：先删除，然后在创建一个新的Job *//*
+
 
 			updateSpringMvcTaskXML(trigger,cronExpression);
 			logger.info("Update the cronExpression successfully!!");
@@ -137,7 +154,8 @@ public class DynamicTask {
 
 	}
 
-	/**
+	*/
+/**
 	 * 获取触发器
 	 * 
 	 * @param triggerName
@@ -145,7 +163,8 @@ public class DynamicTask {
 	 * @param groupName
 	 *            触发器组名字
 	 * @return 对应Trigger
-	 */
+	 *//*
+
 	public Trigger getTrigger(String triggerName, String groupName) {
 		Trigger trigger = null;
 		if (StringUtils.isBlank(groupName)) {
@@ -171,11 +190,13 @@ public class DynamicTask {
 		}
 		return trigger;
 	}
-	/**
+	*/
+/**
 	 * 更新spring-mvc-timeTask.xml 配置文件
 	 * @param trigger
 	 * @param cronExpression 
-	 */
+	 *//*
+
 	@SuppressWarnings("unchecked")
 	public synchronized static void updateSpringMvcTaskXML(CronTrigger trigger, String cronExpression) {
 		Document document = null;
@@ -224,3 +245,4 @@ public class DynamicTask {
 	}
 
 }
+*/

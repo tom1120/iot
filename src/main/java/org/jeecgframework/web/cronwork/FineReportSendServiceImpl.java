@@ -3,19 +3,31 @@ package org.jeecgframework.web.cronwork;/**
  */
 
 import org.codehaus.xfire.client.Client;
-import org.springframework.stereotype.Service;
+import org.quartz.*;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * @author zhaoyi
  * @date 2017-06-2017/6/16-16:03
  */
-@Service("fineReportSendService")
-public class FineReportSendServiceImpl implements FineReportSendService {
 
-    private boolean execute(String url,String method){
+public class FineReportSendServiceImpl implements FineReportSendService,Job {
+
+    @Override
+    public void execute(JobExecutionContext context) throws JobExecutionException {
+        JobKey key = context.getJobDetail().getKey();
+        JobDataMap dataMap = context.getJobDetail().getJobDataMap();
+        System.err.println("Instance " + key);
+        System.err.println("dataMap " + dataMap.toString());
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+        System.out.println("在" + sdf.format(new Date()) + "执行任务");
+    }
+
+    private boolean execute(String url, String method){
         boolean b=false;
         try {
             System.out.println("================================execute()========================");
