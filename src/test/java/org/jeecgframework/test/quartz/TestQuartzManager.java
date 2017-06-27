@@ -1,6 +1,9 @@
-package org.jeecgframework.test.quartz;/**
+/*
+package org.jeecgframework.test.quartz;*/
+/**
  * Created by zhaoyipc on 2017/6/24.
- */
+ *//*
+
 
 import org.jeecgframework.core.quartz.QuartzManager;
 import org.jeecgframework.core.quartz.SchedulerService;
@@ -22,10 +25,12 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+*/
 /**
  * @author zhaoyi
  * @date 2017-06-2017/6/24-9:00
- */
+ *//*
+
 @RunWith(SpringJUnit4ClassRunner.class)
 //使用正式环境的配置文件测试
 //@ContextConfiguration(locations = {"classpath*:spring-mvc-timeTask.xml","classpath*:spring-mvc-hibernate.xml"})
@@ -72,3 +77,4 @@ public class TestQuartzManager {
 
 
 }
+*/

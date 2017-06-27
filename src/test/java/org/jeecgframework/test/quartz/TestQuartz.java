@@ -26,7 +26,8 @@ import java.util.Date;
 //使用正式环境的配置文件测试
 //@ContextConfiguration(locations = {"classpath*:spring-mvc-timeTask.xml","classpath*:spring-mvc-hibernate.xml"})
 //使用测试环境的配置文件测试
-@ContextConfiguration(locations = {"file:src/test/resource/spring-mvc-timeTask.xml","file:src/test/resource/spring-mvc-hibernate.xml"})
+@ContextConfiguration(locations = {"file:src/test/resource/spring-mvc-timeTask.xml","file:src/test/resource/spring-mvc-hibernate.xml"
+                        ,"file:src/test/resource/spring-minidao.xml"})
 @ActiveProfiles("production")
 public class TestQuartz {
     private static Logger LOGGER = LoggerFactory.getLogger(Test.class);
@@ -47,7 +48,10 @@ public class TestQuartz {
         /**
          * 持久化此任务到数据库中
          */
-        schedulerService.schedule("0 45 10 * * ? *");
+
+
+
+//        schedulerService.schedule("0 45 10 * * ? *");
 //        schedulerService.schedule("0fa05274-1c9b-49e5-b2ac-b43f90451226","0/3 42 11 * * ? *");
 //        schedulerService.pauseTrigger("0fa05274-1c9b-49e5-b2ac-b43f90451226");
 //        schedulerService.resumeTrigger("0fa05274-1c9b-49e5-b2ac-b43f90451226");

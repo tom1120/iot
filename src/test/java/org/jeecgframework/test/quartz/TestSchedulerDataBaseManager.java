@@ -35,7 +35,7 @@ import java.util.Set;
 //使用正式环境的配置文件测试
 //@ContextConfiguration(locations = {"classpath*:spring-mvc-timeTask.xml","classpath*:spring-mvc-hibernate.xml"})
 //使用测试环境的配置文件测试
-@ContextConfiguration(locations = {"file:src/test/resource/spring-mvc-timeTask.xml","file:src/test/resource/spring-minidao.xml",
+@ContextConfiguration(locations = {"file:src/test/resource/spring-mvc-dataBasetimeTask.xml","file:src/test/resource/spring-minidao.xml",
         "file:src/test/resource/spring-mvc-hibernate.xml"})
 @ActiveProfiles("production")
 public class TestSchedulerDataBaseManager {

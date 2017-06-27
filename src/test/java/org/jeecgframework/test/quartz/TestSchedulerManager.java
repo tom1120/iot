@@ -1,6 +1,9 @@
-package org.jeecgframework.test.quartz;/**
+/*
+package org.jeecgframework.test.quartz;*/
+/**
  * Created by zhaoyipc on 2017/6/24.
- */
+ *//*
+
 
 import org.jeecgframework.core.quartz.JobDetailList;
 import org.jeecgframework.core.quartz.SchedulerManager;
@@ -21,10 +24,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+*/
 /**
  * @author zhaoyi
  * @date 2017-06-2017/6/24-9:00
- */
+ *//*
+
 @RunWith(SpringJUnit4ClassRunner.class)
 //使用正式环境的配置文件测试
 //@ContextConfiguration(locations = {"classpath*:spring-mvc-timeTask.xml","classpath*:spring-mvc-hibernate.xml"})
@@ -47,9 +52,11 @@ public class TestSchedulerManager {
 //        Date endTime = parse("2017-06-26 15:15:00");
 // schedulerService.resumeTrigger("f64eee37-62f4-473f-b5b9-d7a76d86c443");
 
-        /**
+        */
+/**
          * 持久化此任务到数据库中
-         */
+         *//*
+
 //        schedulerService.schedule("0 45 10 * * ? *");
         String name="test1";
         String group="test1";
@@ -104,6 +111,7 @@ public class TestSchedulerManager {
 // schedulerService.schedule(name, startTime, endTime, repeatCount, repeatInterval);
 
 
+*/
 /* schedulerService.schedule("0/10 * * ? * * *");
 
 
@@ -114,7 +122,8 @@ schedulerService.schedule(startTime);
 schedulerService.schedule(startTime, endTime);
 
 // 2014-08-19 16:33:00开始执行调度，执行5次结束
-schedulerService.schedule(startTime, 5);*/
+schedulerService.schedule(startTime, 5);*//*
+
 
 // 2014-08-19 16:33:00开始执行调度，每隔20秒执行一次，执行5次结束
 // schedulerService.schedule(startTime, 5, 20);
@@ -125,6 +134,7 @@ schedulerService.schedule(startTime, 5);*/
 
 
 
+*/
 /*
 
 try {
@@ -171,7 +181,8 @@ schedulerService.schedule(startTime, 5);
 schedulerService.schedule(startTime, 5, 20);
 
 
-*/
+*//*
+
 
 // schedulerService.schedule("quartz1", "ZYD", "0/2 * * ? * * *");
 
@@ -189,3 +200,4 @@ schedulerService.schedule(startTime, 5, 20);
 
 
 }
+*/
