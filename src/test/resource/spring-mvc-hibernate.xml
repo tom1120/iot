@@ -118,6 +118,7 @@
 				<value>org.jeecgframework.web.graphreport.entity.*</value>
 				<value>org.jeecgframework.web.system.sms.*</value>
 				<value>com.jeecg.*</value>
+				<value>org.jeecgframework.core.quartz.*</value>
 			</list>
 		</property>
 	</bean>

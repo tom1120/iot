@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+
+    <persistence-unit name="persistenceUnit">
+        <class>org.jeecgframework.core.quartz.pojo.QrtzBlobTriggers</class>
+        <class>org.jeecgframework.core.quartz.pojo.QrtzCalendars</class>
+        <class>org.jeecgframework.core.quartz.pojo.QrtzCronTriggers</class>
+        <class>org.jeecgframework.core.quartz.pojo.QrtzFiredTriggers</class>
+        <class>org.jeecgframework.core.quartz.pojo.QrtzJobDetails</class>
+        <class>org.jeecgframework.core.quartz.pojo.QrtzLocks</class>
+        <class>org.jeecgframework.core.quartz.pojo.QrtzPausedTriggerGrps</class>
+        <class>org.jeecgframework.core.quartz.pojo.QrtzSchedulerState</class>
+        <class>org.jeecgframework.core.quartz.pojo.QrtzSimpleTriggers</class>
+        <class>org.jeecgframework.core.quartz.pojo.QrtzSimpropTriggers</class>
+        <class>org.jeecgframework.core.quartz.pojo.QrtzTriggers</class>
+        <properties>
+            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/jeecg"/>
+            <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
+            <property name="hibernate.connection.username"/>
+            <property name="hibernate.connection.password"/>
+        </properties>
+    </persistence-unit>
+</persistence>

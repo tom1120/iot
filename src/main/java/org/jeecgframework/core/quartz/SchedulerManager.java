@@ -25,7 +25,6 @@ public class SchedulerManager {
     @Autowired
     private SchedulerService schedulerService;
 
-
 /*
     //spring注入List<JobDetail>
     @Autowired
@@ -47,12 +46,13 @@ public class SchedulerManager {
     public void setJobDetails(List<JobDetail> jobDetails) {
         this.jobDetails = jobDetails;
     }
-    //初始化获取数据库中数据
-    static {
 
+    public SchedulerManager(List<JobDetail> jobDetails) {
+        this.jobDetails = jobDetails;
     }
 
-
+    public SchedulerManager() {
+    }
 
     /**
      * 对job持久化调度
