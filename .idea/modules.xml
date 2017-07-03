@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/jeecgos.iml" filepath="$PROJECT_DIR$/jeecgos.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jeecg.iml" filepath="$PROJECT_DIR$/jeecg.iml" />
     </modules>
   </component>
 </project>

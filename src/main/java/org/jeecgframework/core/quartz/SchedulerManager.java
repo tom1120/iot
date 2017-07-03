@@ -2,17 +2,15 @@ package org.jeecgframework.core.quartz;/**
  * Created by zhaoyipc on 2017/6/26.
  */
 
-import org.jeecgframework.web.system.service.UserService;
+import org.jeecgframework.core.quartz.service.SchedulerService;
 import org.quartz.*;
 import org.quartz.impl.triggers.CronTriggerImpl;
 import org.quartz.impl.triggers.SimpleTriggerImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 /**
  * @author zhaoyi
@@ -24,16 +22,14 @@ public class SchedulerManager {
     private Scheduler scheduler;
     @Autowired
     private SchedulerService schedulerService;
-
-/*
+/*  TestSchedulerManager测试类需要放开注释
     //spring注入List<JobDetail>
     @Autowired
 //    @Qualifier("jobDetails") 加入这个反而无法找到
     private List<JobDetail> jobDetails;
     public List<JobDetail> getJobDetails() {
         return jobDetails;
-    }
-*/
+    }*/
 
 
     //改为读取数据数据注入
@@ -46,6 +42,10 @@ public class SchedulerManager {
     public void setJobDetails(List<JobDetail> jobDetails) {
         this.jobDetails = jobDetails;
     }
+
+
+
+
 
     public SchedulerManager(List<JobDetail> jobDetails) {
         this.jobDetails = jobDetails;

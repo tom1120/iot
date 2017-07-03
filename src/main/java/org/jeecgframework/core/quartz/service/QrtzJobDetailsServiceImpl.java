@@ -3,7 +3,11 @@ package org.jeecgframework.core.quartz.service;/**
  */
 
 import org.jeecgframework.core.common.service.impl.CommonServiceImpl;
+import org.jeecgframework.core.quartz.pojo.QrtzJobDetails;
+import org.jeecgframework.core.quartz.pojo.QrtzTriggers;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author zhaoyi
@@ -11,4 +15,5 @@ import org.springframework.stereotype.Service;
  */
 @Service("qrtzJobDetailsService")
 public class QrtzJobDetailsServiceImpl extends CommonServiceImpl implements QrtzJobDetailsService{
+
 }

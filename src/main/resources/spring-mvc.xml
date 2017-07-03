@@ -16,6 +16,8 @@
 		<context:exclude-filter type="annotation"
 			expression="org.springframework.stereotype.Service" />
 	</context:component-scan>
+	<!--扫描放在mvc:annotation-driven之前，否则会出现maped uri，但是还是找不到情况-->
+	<context:component-scan base-package="org.jeecgframework.core.quartz"/>
 	<context:component-scan base-package="org.activiti.rest.editor" />
 	<context:component-scan base-package="org.activiti.rest.diagram" />
 

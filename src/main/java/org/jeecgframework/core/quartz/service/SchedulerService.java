@@ -1,8 +1,9 @@
-package org.jeecgframework.core.quartz;
+package org.jeecgframework.core.quartz.service;
 
 import org.quartz.CronExpression;
 import org.quartz.CronTrigger;
 import org.quartz.JobDetail;
+import org.quartz.JobKey;
 import org.quartz.impl.triggers.CronTriggerImpl;
 
 import java.util.Date;
@@ -68,6 +69,14 @@ public interface SchedulerService {
      * @param cronTrigger
      */
     void schedule(CronTriggerImpl cronTrigger);
+
+
+
+    /**
+     * CronTriggerImpl设置cronTrigger触发器参数
+     * @param cronTrigger
+     */
+    void schedule(CronTriggerImpl cronTrigger,JobDetail jobDetail);
 
     /**
      * 在startTime时执行调试一次
@@ -218,5 +227,65 @@ public interface SchedulerService {
      * @return
      */
     boolean removeTrigdger(String triggerName, String group);
+
+    /**
+     * 删除job及相关触发器
+     * @param jobKey
+     * @return
+     */
+    boolean deleteJob(JobKey jobKey);
+
+    /**
+     * 删除job及相关的触发器
+     * @param jobName
+     * @param jobGroup
+     * @return
+     */
+    boolean deleteJob(String jobName,String jobGroup);
+
+    /**
+     * 暂停该任务的所有当前正在触发的任务触发器
+     * @param jobName
+     * @param jobGroup
+     * @return
+     */
+    boolean pauseJob(String jobName,String jobGroup);
+
+    /**
+     * 暂停该任务的所有当前正在触发的任务触发器
+     * @param jobKey
+     * @return
+     */
+    boolean pauseJob(JobKey jobKey);
+
+    /**
+     * 恢复任务到触发状态
+     * @param jobName
+     * @param jobGroup
+     * @return
+     */
+    boolean resumeJob(String jobName,String jobGroup);
+
+    /**
+     * 恢复任务到触发状态
+     * @param jobKey
+     * @return
+     */
+    boolean resumeJob(JobKey jobKey);
+
+    /**
+     * 立即运行任务
+     * @param jobName
+     * @param jobGroup
+     * @return
+     */
+    boolean triggeringJob(String jobName,String jobGroup);
+
+    /**
+     * 立即运行任务
+     * @param jobKey
+     * @return
+     */
+    boolean triggeringJob(JobKey jobKey);
 
 }

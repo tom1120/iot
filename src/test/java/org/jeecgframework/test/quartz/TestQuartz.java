@@ -2,12 +2,10 @@ package org.jeecgframework.test.quartz;/**
  * Created by zhaoyipc on 2017/6/24.
  */
 
-import org.jeecgframework.core.quartz.SchedulerService;
+import org.jeecgframework.core.quartz.service.SchedulerService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.quartz.SchedulerException;
-import org.quartz.SchedulerFactory;
-import org.quartz.impl.StdSchedulerFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

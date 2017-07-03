@@ -4,14 +4,16 @@ package org.jeecgframework.core.quartz;/**
 
 import org.quartz.JobDetail;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * @author zhaoyi
  * @date 2017-06-2017/6/26-15:34
  */
-public class JobDetailList {
-    private List<JobDetail> detailList;
+public class JobDetailList implements Serializable{
+    private List<JobDetail> detailList=new ArrayList<>();
 
     public List<JobDetail> getDetailList() {
         return detailList;

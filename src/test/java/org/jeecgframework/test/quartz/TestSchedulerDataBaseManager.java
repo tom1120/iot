@@ -1,6 +1,9 @@
-package org.jeecgframework.test.quartz;/**
+/*
+package org.jeecgframework.test.quartz;*/
+/**
  * Created by zhaoyipc on 2017/6/24.
- */
+ *//*
+
 
 import org.jeecgframework.core.quartz.pojo.QrtzJobDetails;
 import org.jeecgframework.core.quartz.pojo.QrtzTriggers;
@@ -27,10 +30,12 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
+*/
 /**
  * @author zhaoyi
  * @date 2017-06-2017/6/24-9:00
- */
+ *//*
+
 @RunWith(SpringJUnit4ClassRunner.class)
 //使用正式环境的配置文件测试
 //@ContextConfiguration(locations = {"classpath*:spring-mvc-timeTask.xml","classpath*:spring-mvc-hibernate.xml"})
@@ -52,14 +57,18 @@ public class TestSchedulerDataBaseManager {
     @Test
     public void test() throws SchedulerException {//,Exception,ParseException
 
-        /**
+        */
+/**
          * 持久化此任务到数据库中
-         */
+         *//*
+
 //        schedulerService.schedule("0 45 10 * * ? *");
 
-        /**
+        */
+/**
          * 获取当前数据库Job数据
-         */
+         *//*
+
         List<QrtzJobDetails> qrtzJobDetailsList=qrtzJobDetailsService.findByQueryString("from QrtzJobDetails");
 
         for(QrtzJobDetails qrtzJobDetails:qrtzJobDetailsList){
@@ -95,3 +104,4 @@ public class TestSchedulerDataBaseManager {
 
 
 }
+*/

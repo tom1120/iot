@@ -3,6 +3,7 @@ package org.jeecgframework.core.quartz.pojo;/**
  */
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * @author zhaoyi
@@ -12,7 +13,7 @@ import javax.persistence.*;
 @Table(name = "qrtz_cron_triggers", schema = "jeecg", catalog = "")
 //@IdClass(QrtzCronTriggersPK.class)
 @IdClass(QrtzTriggersPK.class)
-public class QrtzCronTriggers {
+public class QrtzCronTriggers implements Serializable{
     private String schedName;
     private String triggerName;
     private String triggerGroup;

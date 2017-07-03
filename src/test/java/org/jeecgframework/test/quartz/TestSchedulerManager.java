@@ -1,13 +1,12 @@
-/*
-package org.jeecgframework.test.quartz;*/
+package org.jeecgframework.test.quartz;
 /**
  * Created by zhaoyipc on 2017/6/24.
- *//*
+ */
 
 
 import org.jeecgframework.core.quartz.JobDetailList;
 import org.jeecgframework.core.quartz.SchedulerManager;
-import org.jeecgframework.core.quartz.SchedulerService;
+import org.jeecgframework.core.quartz.service.SchedulerService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.quartz.*;
@@ -24,17 +23,16 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-*/
 /**
  * @author zhaoyi
  * @date 2017-06-2017/6/24-9:00
- *//*
+ */
 
 @RunWith(SpringJUnit4ClassRunner.class)
 //使用正式环境的配置文件测试
 //@ContextConfiguration(locations = {"classpath*:spring-mvc-timeTask.xml","classpath*:spring-mvc-hibernate.xml"})
 //使用测试环境的配置文件测试
-@ContextConfiguration(locations = {"file:src/test/resource/spring-mvc-springTimeTask.xml","file:src/test/resource/spring-mvc-hibernate.xml"})
+@ContextConfiguration(locations = {"file:src/test/resource/spring-mvc-springTimeTask.xml","file:src/test/resource/spring-mvc-hibernate.xml","file:src/test/resource/spring-minidao.xml"})
 @ActiveProfiles("production")
 public class TestSchedulerManager {
     private static Logger LOGGER = LoggerFactory.getLogger(Test.class);
@@ -52,10 +50,9 @@ public class TestSchedulerManager {
 //        Date endTime = parse("2017-06-26 15:15:00");
 // schedulerService.resumeTrigger("f64eee37-62f4-473f-b5b9-d7a76d86c443");
 
-        */
 /**
          * 持久化此任务到数据库中
-         *//*
+         */
 
 //        schedulerService.schedule("0 45 10 * * ? *");
         String name="test1";
@@ -111,18 +108,17 @@ public class TestSchedulerManager {
 // schedulerService.schedule(name, startTime, endTime, repeatCount, repeatInterval);
 
 
-*/
-/* schedulerService.schedule("0/10 * * ? * * *");
+// schedulerService.schedule("0/10 * * ? * * *");
 
 
 // 2014-08-19 16:33:00开始执行调度
-schedulerService.schedule(startTime);
+//schedulerService.schedule(startTime);
 
 // 2014-08-19 16:33:00开始执行调度，2014-08-22 21:10:00结束执行调试
-schedulerService.schedule(startTime, endTime);
+//schedulerService.schedule(startTime, endTime);
 
 // 2014-08-19 16:33:00开始执行调度，执行5次结束
-schedulerService.schedule(startTime, 5);*//*
+//schedulerService.schedule(startTime, 5);
 
 
 // 2014-08-19 16:33:00开始执行调度，每隔20秒执行一次，执行5次结束
@@ -134,33 +130,31 @@ schedulerService.schedule(startTime, 5);*//*
 
 
 
-*/
-/*
 
-try {
-LOGGER.info("33333333333");
-Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
-LOGGER.info("Scheduler starting up...");
-System.out.print("4444444444");
-scheduler.start();
-} catch (Exception exception) {
-
-System.out.print(exception);
-}
+//try {
+//LOGGER.info("33333333333");
+//Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
+//LOGGER.info("Scheduler starting up...");
+//System.out.print("4444444444");
+//scheduler.start();
+//} catch (Exception exception) {
+//
+//System.out.print(exception);
+//}
 
 
-schedulerService.schedule("0/2 * * ? * * *");
-Date startTime = parse("2015-08-05 10:15:00");
-Date endTime = parse("2015-08-05 15:15:00");
-int repeatCount=10;
-long repeatInterval=2;
+//schedulerService.schedule("0/2 * * ? * * *");
+//Date startTime = parse("2015-08-05 10:15:00");
+//Date endTime = parse("2015-08-05 15:15:00");
+//int repeatCount=10;
+//long repeatInterval=2;
 // String name="b870cf9b-c313-4fd6-87ad-e99de7580290";
 
 // schedulerService.schedule(name, startTime, endTime, repeatCount, repeatInterval);
 
 
 
-schedulerService.schedule("0/10 * * ? * * *");
+//schedulerService.schedule("0/10 * * ? * * *");
 
 
 
@@ -169,19 +163,19 @@ schedulerService.schedule("0/10 * * ? * * *");
 
 
 // 2014-08-19 16:33:00开始执行调度
-schedulerService.schedule(startTime);
+//schedulerService.schedule(startTime);
 
 // 2014-08-19 16:33:00开始执行调度，2014-08-22 21:10:00结束执行调试
-schedulerService.schedule(startTime, endTime);
+//schedulerService.schedule(startTime, endTime);
 
 // 2014-08-19 16:33:00开始执行调度，执行5次结束
-schedulerService.schedule(startTime, 5);
+//schedulerService.schedule(startTime, 5);
 
 // 2014-08-19 16:33:00开始执行调度，每隔20秒执行一次，执行5次结束
-schedulerService.schedule(startTime, 5, 20);
+//schedulerService.schedule(startTime, 5, 20);
 
 
-*//*
+
 
 
 // schedulerService.schedule("quartz1", "ZYD", "0/2 * * ? * * *");
@@ -200,4 +194,3 @@ schedulerService.schedule(startTime, 5, 20);
 
 
 }
-*/

@@ -6,7 +6,7 @@ package org.jeecgframework.test.quartz;*/
 
 
 import org.jeecgframework.core.quartz.QuartzManager;
-import org.jeecgframework.core.quartz.SchedulerService;
+import org.jeecgframework.core.quartz.service.SchedulerService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.quartz.Job;

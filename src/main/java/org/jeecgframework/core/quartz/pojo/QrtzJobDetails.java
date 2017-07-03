@@ -3,6 +3,7 @@ package org.jeecgframework.core.quartz.pojo;/**
  */
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
@@ -10,14 +11,16 @@ import java.util.Set;
 /**
  * @author zhaoyi
  * @date 2017-06-2017/6/26-21:25
+ * //@IdClass(QrtzJobDetailsPK.class)
  */
 @Entity
-@Table(name = "qrtz_job_details", schema = "jeecg", catalog = "")
+@Table(name = "qrtz_job_details")
 @IdClass(QrtzJobDetailsPK.class)
-public class QrtzJobDetails {
+public class QrtzJobDetails implements Serializable{
     private String schedName;
     private String jobName;
     private String jobGroup;
+    private QrtzJobDetailsPK id;
     private String description;
     private String jobClassName;
     private String isDurable;
@@ -26,10 +29,10 @@ public class QrtzJobDetails {
     private String requestsRecovery;
     private byte[] jobData;
     //触发器，一个任务可以有多个触发器
-    private Set<QrtzTriggers> triggersSet;
+//    private Set<QrtzTriggers> triggersSet;
 
 
-    @Id
+        @Id
     @Column(name = "SCHED_NAME", nullable = false, length = 120)
     public String getSchedName() {
         return schedName;
@@ -129,50 +132,60 @@ public class QrtzJobDetails {
         this.jobData = jobData;
     }
 
-    @OneToMany(mappedBy = "qrtzJobDetails",fetch = FetchType.EAGER)
+/*    @OneToMany(mappedBy = "qrtzJobDetails",fetch = FetchType.EAGER)
     public Set<QrtzTriggers> getTriggersSet() {
         return triggersSet;
     }
 
     public void setTriggersSet(Set<QrtzTriggers> triggersSet) {
         this.triggersSet = triggersSet;
-    }
+    }*/
+
 
     @Override
     public boolean equals(Object o) {
+
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
         QrtzJobDetails that = (QrtzJobDetails) o;
 
-        if (schedName != null ? !schedName.equals(that.schedName) : that.schedName != null) return false;
-        if (jobName != null ? !jobName.equals(that.jobName) : that.jobName != null) return false;
-        if (jobGroup != null ? !jobGroup.equals(that.jobGroup) : that.jobGroup != null) return false;
-        if (description != null ? !description.equals(that.description) : that.description != null) return false;
-        if (jobClassName != null ? !jobClassName.equals(that.jobClassName) : that.jobClassName != null) return false;
-        if (isDurable != null ? !isDurable.equals(that.isDurable) : that.isDurable != null) return false;
-        if (isNonconcurrent != null ? !isNonconcurrent.equals(that.isNonconcurrent) : that.isNonconcurrent != null)
+        if (getSchedName() != null ? !getSchedName().equals(that.getSchedName()) : that.getSchedName() != null)
             return false;
-        if (isUpdateData != null ? !isUpdateData.equals(that.isUpdateData) : that.isUpdateData != null) return false;
-        if (requestsRecovery != null ? !requestsRecovery.equals(that.requestsRecovery) : that.requestsRecovery != null)
+        if (getJobName() != null ? !getJobName().equals(that.getJobName()) : that.getJobName() != null) return false;
+        if (getJobGroup() != null ? !getJobGroup().equals(that.getJobGroup()) : that.getJobGroup() != null)
             return false;
-        if (!Arrays.equals(jobData, that.jobData)) return false;
+        if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        if (getDescription() != null ? !getDescription().equals(that.getDescription()) : that.getDescription() != null)
+            return false;
+        if (getJobClassName() != null ? !getJobClassName().equals(that.getJobClassName()) : that.getJobClassName() != null)
+            return false;
+        if (getIsDurable() != null ? !getIsDurable().equals(that.getIsDurable()) : that.getIsDurable() != null)
+            return false;
+        if (getIsNonconcurrent() != null ? !getIsNonconcurrent().equals(that.getIsNonconcurrent()) : that.getIsNonconcurrent() != null)
+            return false;
+        if (getIsUpdateData() != null ? !getIsUpdateData().equals(that.getIsUpdateData()) : that.getIsUpdateData() != null)
+            return false;
+        if (getRequestsRecovery() != null ? !getRequestsRecovery().equals(that.getRequestsRecovery()) : that.getRequestsRecovery() != null)
+            return false;
+        if (!Arrays.equals(getJobData(), that.getJobData())) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = schedName != null ? schedName.hashCode() : 0;
-        result = 31 * result + (jobName != null ? jobName.hashCode() : 0);
-        result = 31 * result + (jobGroup != null ? jobGroup.hashCode() : 0);
-        result = 31 * result + (description != null ? description.hashCode() : 0);
-        result = 31 * result + (jobClassName != null ? jobClassName.hashCode() : 0);
-        result = 31 * result + (isDurable != null ? isDurable.hashCode() : 0);
-        result = 31 * result + (isNonconcurrent != null ? isNonconcurrent.hashCode() : 0);
-        result = 31 * result + (isUpdateData != null ? isUpdateData.hashCode() : 0);
-        result = 31 * result + (requestsRecovery != null ? requestsRecovery.hashCode() : 0);
-        result = 31 * result + Arrays.hashCode(jobData);
+        int result = getSchedName() != null ? getSchedName().hashCode() : 0;
+        result = 31 * result + (getJobName() != null ? getJobName().hashCode() : 0);
+        result = 31 * result + (getJobGroup() != null ? getJobGroup().hashCode() : 0);
+        result = 31 * result + (id != null ? id.hashCode() : 0);
+        result = 31 * result + (getDescription() != null ? getDescription().hashCode() : 0);
+        result = 31 * result + (getJobClassName() != null ? getJobClassName().hashCode() : 0);
+        result = 31 * result + (getIsDurable() != null ? getIsDurable().hashCode() : 0);
+        result = 31 * result + (getIsNonconcurrent() != null ? getIsNonconcurrent().hashCode() : 0);
+        result = 31 * result + (getIsUpdateData() != null ? getIsUpdateData().hashCode() : 0);
+        result = 31 * result + (getRequestsRecovery() != null ? getRequestsRecovery().hashCode() : 0);
+        result = 31 * result + Arrays.hashCode(getJobData());
         return result;
     }
 }

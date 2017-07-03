@@ -3,6 +3,7 @@ package org.jeecgframework.core.quartz.pojo;/**
  */
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Arrays;
 
 /**
@@ -12,7 +13,7 @@ import java.util.Arrays;
 @Entity
 @Table(name = "qrtz_triggers", schema = "jeecg", catalog = "")
 @IdClass(QrtzTriggersPK.class)
-public class QrtzTriggers {
+public class QrtzTriggers implements Serializable{
     private String schedName;
     private String triggerName;
     private String triggerGroup;
@@ -30,11 +31,9 @@ public class QrtzTriggers {
     private Short misfireInstr;
     private byte[] jobData;
     //任务，一个触发器只能有一个Job
-    private QrtzJobDetails qrtzJobDetails;
+//    private QrtzJobDetails qrtzJobDetails;
     //任务表达式
     private QrtzCronTriggers qrtzCronTriggers;
-
-
     @Id
     @Column(name = "SCHED_NAME", nullable = false, length = 120)
     public String getSchedName() {
@@ -123,7 +122,8 @@ public class QrtzTriggers {
     }
 
     @Basic
-    @Column(name = "TRIGGER_STATE", nullable = false, length = 16)
+//    @Column(name = "TRIGGER_STATE", nullable = false, length = 16)
+    @Column(name = "TRIGGER_STATE", nullable = true, length = 16)
     public String getTriggerState() {
         return triggerState;
     }
@@ -133,7 +133,8 @@ public class QrtzTriggers {
     }
 
     @Basic
-    @Column(name = "TRIGGER_TYPE", nullable = false, length = 8)
+//    @Column(name = "TRIGGER_TYPE", nullable = false, length = 8)
+    @Column(name = "TRIGGER_TYPE", nullable = true, length = 8)
     public String getTriggerType() {
         return triggerType;
     }
@@ -143,7 +144,8 @@ public class QrtzTriggers {
     }
 
     @Basic
-    @Column(name = "START_TIME", nullable = false)
+//    @Column(name = "START_TIME", nullable = false)
+    @Column(name = "START_TIME", nullable = true)
     public long getStartTime() {
         return startTime;
     }
@@ -192,8 +194,9 @@ public class QrtzTriggers {
         this.jobData = jobData;
     }
 
-    @ManyToOne
+ /*   @ManyToOne
     @JoinColumns({
+
             @JoinColumn(name="SCHED_NAME",referencedColumnName="SCHED_NAME",insertable = false,updatable = false),
             @JoinColumn(name="JOB_NAME",referencedColumnName="JOB_NAME",insertable = false,updatable = false),
             @JoinColumn(name="JOB_GROUP",referencedColumnName="JOB_GROUP",insertable = false,updatable = false),
@@ -204,7 +207,7 @@ public class QrtzTriggers {
 
     public void setQrtzJobDetails(QrtzJobDetails qrtzJobDetails) {
         this.qrtzJobDetails = qrtzJobDetails;
-    }
+    }*/
 
     @OneToOne
     @JoinColumns({
@@ -255,8 +258,6 @@ public class QrtzTriggers {
         if (getMisfireInstr() != null ? !getMisfireInstr().equals(that.getMisfireInstr()) : that.getMisfireInstr() != null)
             return false;
         if (!Arrays.equals(getJobData(), that.getJobData())) return false;
-        if (getQrtzJobDetails() != null ? !getQrtzJobDetails().equals(that.getQrtzJobDetails()) : that.getQrtzJobDetails() != null)
-            return false;
         return getQrtzCronTriggers() != null ? getQrtzCronTriggers().equals(that.getQrtzCronTriggers()) : that.getQrtzCronTriggers() == null;
 
     }
@@ -279,7 +280,6 @@ public class QrtzTriggers {
         result = 31 * result + (getCalendarName() != null ? getCalendarName().hashCode() : 0);
         result = 31 * result + (getMisfireInstr() != null ? getMisfireInstr().hashCode() : 0);
         result = 31 * result + Arrays.hashCode(getJobData());
-        result = 31 * result + (getQrtzJobDetails() != null ? getQrtzJobDetails().hashCode() : 0);
         result = 31 * result + (getQrtzCronTriggers() != null ? getQrtzCronTriggers().hashCode() : 0);
         return result;
     }

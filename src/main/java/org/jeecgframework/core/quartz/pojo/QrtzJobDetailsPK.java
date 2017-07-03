@@ -2,8 +2,7 @@ package org.jeecgframework.core.quartz.pojo;/**
  * Created by zhaoyipc on 2017/6/26.
  */
 
-import javax.persistence.Column;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
@@ -15,7 +14,8 @@ public class QrtzJobDetailsPK implements Serializable {
     private String jobName;
     private String jobGroup;
 
-
+    public QrtzJobDetailsPK() {
+    }
     @Column(name = "SCHED_NAME", nullable = false, length = 120)
     @Id
     public String getSchedName() {

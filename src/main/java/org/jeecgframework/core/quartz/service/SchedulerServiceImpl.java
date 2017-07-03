@@ -1,4 +1,4 @@
-package org.jeecgframework.core.quartz;
+package org.jeecgframework.core.quartz.service;
 /**
  * Created by zhaoyipc on 2017/6/24.
  */
@@ -9,6 +9,7 @@ import org.quartz.impl.triggers.CronTriggerImpl;
 import org.quartz.impl.triggers.SimpleTriggerImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.text.ParseException;
 import java.util.Date;
@@ -20,6 +21,7 @@ import java.util.UUID;
 
 
 @Service("schedulerService")
+@Transactional
 public class SchedulerServiceImpl implements SchedulerService {
     private static final String NULLSTRING = null;
     private static final Date NULLDATE = null;
@@ -112,7 +114,43 @@ public class SchedulerServiceImpl implements SchedulerService {
         }
         String name=cronTrigger.getName();
         String group=cronTrigger.getGroup();
-        schedule(name, group, cronExpression);
+//        schedule(name, group, cronExpression);
+
+        if (isValidExpression(cronExpression)) {
+
+            if (name == null || name.trim().equals("")) {
+                name = UUID.randomUUID().toString();
+            }
+            TriggerKey triggerKey = new TriggerKey(name, group);
+
+            try {
+//                scheduler.addJob(jobDetail, true);
+                if(scheduler.checkExists(jobDetail.getKey())){
+                    //移除job
+//                    scheduler.deleteJob(jobDetail.getKey());
+                    scheduler.addJob(jobDetail,true);
+                }else{
+                    scheduler.addJob(jobDetail, true);
+                }
+
+
+                if (scheduler.checkExists(triggerKey)) {
+                    scheduler.rescheduleJob(triggerKey, cronTrigger);
+                } else {
+                    scheduler.scheduleJob(cronTrigger);
+                }
+            } catch (SchedulerException e) {
+                throw new IllegalArgumentException(e);
+            }
+        }
+
+    }
+
+
+    @Override
+    public void schedule(CronTriggerImpl cronTrigger, JobDetail jobDetail) {
+        setJobDetail(jobDetail);
+        schedule(cronTrigger);
     }
 
     @Override
@@ -277,7 +315,91 @@ public class SchedulerServiceImpl implements SchedulerService {
         }
     }
 
-    private boolean isValidExpression(final CronExpression cronExpression) {
+
+    @Override
+    public boolean deleteJob(JobKey jobKey) {
+        boolean b=false;
+
+        try {
+            b=scheduler.deleteJob(jobKey);
+        } catch (SchedulerException e) {
+            e.printStackTrace();
+        }
+
+        return b;
+    }
+
+    @Override
+    public boolean deleteJob(String jobName, String jobGroup) {
+        boolean b=false;
+        JobKey jobKey=new JobKey(jobName,jobGroup);
+        b=deleteJob(jobKey);
+        return b;
+    }
+
+
+    @Override
+    public boolean pauseJob(String jobName, String jobGroup) {
+        boolean b=false;
+        JobKey jobKey=new JobKey(jobName,jobGroup);
+        b=pauseJob(jobKey);
+
+        return b;
+    }
+
+    @Override
+    public boolean pauseJob(JobKey jobKey) {
+        boolean b=false;
+
+        try {
+            scheduler.pauseJob(jobKey);
+            b=true;
+        } catch (SchedulerException e) {
+            e.printStackTrace();
+        }
+
+        return b;
+    }
+
+    @Override
+    public boolean resumeJob(String jobName, String jobGroup) {
+        boolean b=false;
+        b=resumeJob(new JobKey(jobName,jobGroup));
+        return b;
+    }
+
+    @Override
+    public boolean resumeJob(JobKey jobKey) {
+        boolean b=false;
+        try {
+            scheduler.resumeJob(jobKey);
+            b=true;
+        } catch (SchedulerException e) {
+            e.printStackTrace();
+        }
+        return b;
+    }
+
+    @Override
+    public boolean triggeringJob(String jobName, String jobGroup) {
+        boolean b=false;
+        b=triggeringJob(new JobKey(jobName,jobGroup));
+        return b;
+    }
+
+    @Override
+    public boolean triggeringJob(JobKey jobKey) {
+        boolean b=false;
+        try {
+            scheduler.triggerJob(jobKey);
+            b=true;
+        } catch (SchedulerException e) {
+            e.printStackTrace();
+        }
+        return b;
+    }
+
+    public boolean isValidExpression(final CronExpression cronExpression) {
 
         CronTriggerImpl trigger = new CronTriggerImpl();
         trigger.setCronExpression(cronExpression);
@@ -287,7 +409,7 @@ public class SchedulerServiceImpl implements SchedulerService {
         return date != null && date.after(new Date());
     }
 
-    private boolean isValidExpression(final Date startTime) {
+    public boolean isValidExpression(final Date startTime) {
 
         SimpleTriggerImpl trigger = new SimpleTriggerImpl();
         trigger.setStartTime(startTime);
@@ -296,4 +418,6 @@ public class SchedulerServiceImpl implements SchedulerService {
 
         return date != null && date.after(new Date());
     }
+
+
 }
