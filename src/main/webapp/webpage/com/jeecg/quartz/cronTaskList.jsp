@@ -14,6 +14,14 @@
     $('#delBtn').linkbutton({
         iconCls: 'icon-remove'
     });
+    $('#pauseBtn').linkbutton({
+        iconCls: 'icon-pause'
+    });
+    $('#resumeBtn').linkbutton({
+        iconCls: 'icon-resume'
+    });
+
+
     $('#addBtn').bind('click', function(){
         var tr =  $("#add_cronTask_table_template tr").clone();
         $("#add_cronTask_table").append(tr);
@@ -23,6 +31,96 @@
         $("#add_cronTask_table").find("input:checked").parent().parent().remove();
         resetTrNum('add_cronTask_table');
     });
+
+
+    $("#pauseBtn").bind('click',function () {
+//        var selectRow=$("#add_cronTask_table").find("input:checked").parent().parent();
+
+
+
+        var ids = '';
+        $('input[type="checkbox"]:checked').each(function(){
+            ids += $(this).val() + ',';
+        })
+        ids = ids.substring(0,ids.length-1);
+
+        $.ajax({
+            url:'quartzTaskController.do?pauseTrigger',
+            type:'post',
+            data:{'ids':ids},
+            async:false,
+            dataType:'json',
+            success:function (data,textStatus) {
+                var d=$.parseJSON(data);
+                if(d==null||undefined==typeof data){d=data};
+
+                if(d.success){
+                    refreshTabs();
+                    tip(d.msg);
+                }else{
+                    tip(d.msg);
+                }
+            },
+            error:function (xmlHttpRequest,textStatus,errorThrow) {
+
+            }
+        });
+
+    })
+
+
+    $("#resumeBtn").bind('click',function () {
+//        var selectRow=$("#add_cronTask_table").find("input:checked").parent().parent();
+
+
+
+        var ids = '';
+        $('input[type="checkbox"]:checked').each(function(){
+            ids += $(this).val() + ',';
+        })
+        ids = ids.substring(0,ids.length-1);
+
+        $.ajax({
+            url:'quartzTaskController.do?resumeTrigger',
+            type:'post',
+            data:{'ids':ids},
+            async:false,
+            dataType:'json',
+            success:function (data,textStatus) {
+                var d=$.parseJSON(data);
+                if(d==null||undefined==typeof data){d=data};
+
+                if(d.success){
+                    refreshTabs();
+                    tip(d.msg);
+                }else{
+                    tip(d.msg);
+                }
+            },
+            error:function (xmlHttpRequest,textStatus,errorThrow) {
+
+            }
+        });
+
+    })
+
+    //easyUI刷新tab
+    function refreshTabs(){
+        var selectTab = $('#tt').tabs('getSelected');
+
+        var url =$(selectTab.panel('options').content).attr('src');
+
+        $('#tt').tabs('update', {
+            tab: selectTab,
+            options: {
+                href: url
+            }
+        })
+    }
+
+
+
+
     $(document).ready(function(){
         $(".datagrid-toolbar").parent().css("width","auto");
         //将表格的表头固定
@@ -41,7 +139,12 @@
     });
 </script>
 
-<div style="padding: 3px; height: 25px; width: width: 900px;" class="datagrid-toolbar"><a id="addBtn" href="#">添加</a> <a id="delBtn" href="#">删除</a></div>
+<div style="padding: 3px; height: 25px; width:900px;" class="datagrid-toolbar">
+    <a id="addBtn" href="#">添加</a>
+    <a id="delBtn" href="#">删除</a>
+    <a id="pauseBtn" href="#">暂停</a>
+    <a id="resumeBtn" href="#">恢复</a>
+</div>
 <table border="0" cellpadding="2" cellspacing="0" id="cronTask_table">
     <tr bgcolor="#E6E6E6">
         <td align="center" bgcolor="#EEEEEE">序号</td>
@@ -69,7 +172,7 @@
     <tbody id="add_cronTask_table">
     <c:if test="${fn:length(cronTaskList)  <= 0 }">
         <tr>
-            <td align="center"><input style="width: 20px;" type="checkbox" name="ck" /></td>
+            <td align="center"><input style="width: 20px;" type="checkbox" name="ck"/></td>
             <td align="left" style="display:none;"><input nullmsg="请输入任务触发器调度器名称！" datatype="s1-50" errormsg="任务触发器名称为1到50位" name="cronTaskList[0].schedName" maxlength="50" type="text"
                                     value="schedulerFactory"
                                     style="width: 220px;"></td>
@@ -129,7 +232,7 @@
     <c:if test="${fn:length(cronTaskList)  > 0 }">
         <c:forEach items="${cronTaskList}" var="poVal" varStatus="stuts">
             <tr>
-                <td align="center"><input style="width: 20px;" type="checkbox" name="ck" /></td>
+                <td align="center"><input style="width: 20px;" type="checkbox" name="ck" value="${poVal.schedName}$${poVal.triggerName}$${poVal.triggerGroup}"/></td>
                 <td align="left" style="display:none;"><input nullmsg="请输入任务触发器调度器名称！" datatype="s1-50" errormsg="任务触发器名称为1到50位" name="cronTaskList[${stuts.index }].schedName" maxlength="50" type="text"
                                         value="${poVal.schedName}"
                                         style="width: 220px;"></td>

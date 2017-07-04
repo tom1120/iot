@@ -43,7 +43,7 @@
 	<logger name="java.sql" level="ERROR" />
     <logger name="org.springframework" level="ERROR" />
 	<!--调试hibernate-->
-    <logger name="org.springframework.orm.hibernate4.LocalSessionFactoryBean" level="DEBUG" />
+    <!--<logger name="org.springframework.orm.hibernate4.LocalSessionFactoryBean" level="DEBUG" />-->
     <logger name="org.apache.cxf.jaxb" level="ERROR" />
     
 	<root level="INFO">

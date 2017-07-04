@@ -1,9 +1,6 @@
 package org.jeecgframework.core.quartz.service;
 
-import org.quartz.CronExpression;
-import org.quartz.CronTrigger;
-import org.quartz.JobDetail;
-import org.quartz.JobKey;
+import org.quartz.*;
 import org.quartz.impl.triggers.CronTriggerImpl;
 
 import java.util.Date;
@@ -196,7 +193,14 @@ public interface SchedulerService {
      * @param triggerName 触发器名称
      * @param group 触发器组
      */
-    void pauseTrigger(String triggerName, String group);
+    boolean pauseTrigger(String triggerName, String group);
+
+    /**
+     * 暂停触发器
+     * @param triggerKey
+     */
+    boolean pauseTrigger(TriggerKey triggerKey);
+
 
     /**
      * 恢复触发器
@@ -211,14 +215,23 @@ public interface SchedulerService {
      * @param triggerName 触发器名称
      * @param group 触发器组
      */
-    void resumeTrigger(String triggerName, String group);
+    boolean resumeTrigger(String triggerName, String group);
+
+    /**
+     * 恢复触发器
+     *
+     * @param triggerKey
+     */
+    boolean resumeTrigger(TriggerKey triggerKey);
+
+
     /**
      * 删除触发器
      *
      * @param triggerName 触发器名称
      * @return
      */
-    boolean removeTrigdger(String triggerName);
+    boolean removeTrigger(String triggerName);
     /**
      * 删除触发器
      *
@@ -226,7 +239,16 @@ public interface SchedulerService {
      * @param group 触发器组
      * @return
      */
-    boolean removeTrigdger(String triggerName, String group);
+    boolean removeTrigger(String triggerName, String group);
+
+    /**
+     * 删除触发器
+     *@param triggerKey 触发器封装类
+     * @return
+     */
+    boolean removeTrigger(TriggerKey triggerKey);
+
+
 
     /**
      * 删除job及相关触发器

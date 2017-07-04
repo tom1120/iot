@@ -356,9 +356,40 @@ public class QuartzTaskController {
 					.withDescription(qrtzJobDetails.getDescription()).storeDurably().build();
 			//必须要持久化，否则会报异常
 			jobDetail.isDurable();
-			//任务触发器列表
+
+			//编辑前任务触发器列表
+			String[] strings={qrtzJobDetails.getSchedName(),qrtzJobDetails.getJobName(),qrtzJobDetails.getJobGroup()};
+			List<QrtzTriggers> beforeQrtzTriggeres=qrtzJobDetailsService.findHql("from QrtzTriggers where schedName=? and jobName=? and jobGroup=?",strings);
+
+			//编辑后任务触发器列表
 			List<QrtzTriggers> qrtzTriggerses =  qrtzTriggersList.getCronTaskList();
 
+			//查出非当前任务的所有触发器来比较，避免修改出现串到别的触发器上
+			List<QrtzTriggers> exceptSelfQrtzTriggeres=qrtzJobDetailsService.findHql("from QrtzTriggers where schedName!=? or jobName!=? or jobGroup!=?",strings);
+
+			//判断现有job添加触发器是否存在非现有job其他触发器中,如存在则更新失败，否则继续更新过程
+
+			for(QrtzTriggers qrtzTriggers:qrtzTriggerses){
+				for(QrtzTriggers eqrtzTriggers:exceptSelfQrtzTriggeres){
+					if(qrtzTriggers.getSchedName().equals(eqrtzTriggers.getSchedName())
+							&&qrtzTriggers.getTriggerName().equals(eqrtzTriggers.getTriggerName())
+							&&qrtzTriggers.getTriggerGroup().equals(eqrtzTriggers.getTriggerGroup())){
+						j.setMsg("更新失败，触发器："+qrtzTriggers.getTriggerGroup()+"-"+qrtzTriggers.getTriggerName()+"已经在job："+
+								eqrtzTriggers.getJobGroup()+"-"+eqrtzTriggers.getJobName()+"中定义！");
+						j.setSuccess(false);
+						return j;
+					}
+
+
+				}
+
+			}
+
+			//删除原有的触发器列表
+			for(QrtzTriggers qrtzTriggers:beforeQrtzTriggeres) {
+				schedulerService.removeTrigger(qrtzTriggers.getTriggerName(), qrtzTriggers.getTriggerGroup());
+			}
+			//添加job及关联触发器
 			for(QrtzTriggers qrtzTriggers:qrtzTriggerses){
 				CronTriggerImpl cronTrigger=new CronTriggerImpl();
 				cronTrigger.setJobGroup(qrtzJobDetails.getJobGroup());
@@ -373,6 +404,8 @@ public class QuartzTaskController {
 				//添加更新job
 				schedulerService.schedule(cronTrigger,jobDetail);
 			}
+
+
 			j.setSuccess(true);
 			message="更新成功！";
 			systemService.addLog(message, Globals.Log_Type_DEL, Globals.Log_Leavel_INFO);
@@ -384,18 +417,49 @@ public class QuartzTaskController {
 		return j;
 	}
 
-
-/*	@RequestMapping(params = "save")
+	@RequestMapping(params = "pauseTrigger")
 	@ResponseBody
-	public AjaxJson save(QrtzJobDetails qrtzJobDetails,QrtzTriggersList qrtzTriggersList,HttpServletRequest request) {
-		AjaxJson j=new AjaxJson();
-		String message = "更新失败！";
-		j.setSuccess(false);
-		j.setMsg(message);
-		return j;
-	}*/
+	public AjaxJson pauseTrigger(@RequestParam("ids") String ids,HttpServletRequest request){
+		AjaxJson ajaxJson=new AjaxJson();
+		ajaxJson.setSuccess(false);
+		ajaxJson.setMsg("暂停触发器失败");
+
+		String[] strings=ids.split(",");
+
+		for(String s:strings){
+			String[] s1=s.split("\\$");
+			boolean b=schedulerService.pauseTrigger(s1[1],s1[2]);
+			if(b){
+				ajaxJson.setMsg("暂停触发器成功");
+				ajaxJson.setSuccess(true);
+			}
+		}
 
 
+		return ajaxJson;
+	}
+
+	@RequestMapping(params = "resumeTrigger")
+	@ResponseBody
+	public AjaxJson resumeTrigger(@RequestParam("ids") String ids,HttpServletRequest request){
+		AjaxJson ajaxJson=new AjaxJson();
+		ajaxJson.setSuccess(false);
+		ajaxJson.setMsg("恢复触发器失败");
+
+		String[] strings=ids.split(",");
+
+		for(String s:strings){
+			String[] s1=s.split("\\$");
+			boolean b=schedulerService.resumeTrigger(s1[1],s1[2]);
+			if(b){
+				ajaxJson.setMsg("恢复触发器成功");
+				ajaxJson.setSuccess(true);
+			}
+		}
+
+
+		return ajaxJson;
+	}
 
 
 /**

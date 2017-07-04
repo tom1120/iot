@@ -277,12 +277,21 @@ public class SchedulerServiceImpl implements SchedulerService {
     }
 
     @Override
-    public void pauseTrigger(String triggerName, String group) {
+    public boolean pauseTrigger(String triggerName, String group) {
+        TriggerKey triggerKey=new TriggerKey(triggerName, group);
+        return pauseTrigger(triggerKey);
+    }
+
+    @Override
+    public boolean pauseTrigger(TriggerKey triggerKey) {
+        boolean b=false;
         try {
-            scheduler.pauseTrigger(new TriggerKey(triggerName, group));// 停止触发器
+            scheduler.pauseTrigger(triggerKey);// 停止触发器
+            b=true;
         } catch (SchedulerException e) {
             throw new RuntimeException(e);
         }
+        return b;
     }
 
     @Override
@@ -291,30 +300,47 @@ public class SchedulerServiceImpl implements SchedulerService {
     }
 
     @Override
-    public void resumeTrigger(String triggerName, String group) {
+    public boolean resumeTrigger(String triggerName, String group) {
+        TriggerKey triggerKey=new TriggerKey(triggerName, group);
+        return resumeTrigger(triggerKey);
+    }
+
+    @Override
+    public boolean resumeTrigger(TriggerKey triggerKey) {
+        boolean b=false;
         try {
-            scheduler.resumeTrigger(new TriggerKey(triggerName, group));// 重启触发器
+            scheduler.resumeTrigger(triggerKey);// 重启触发器
+            b=true;
         } catch (SchedulerException e) {
             throw new RuntimeException(e);
         }
+        return b;
+    }
+
+
+    @Override
+    public boolean removeTrigger(String triggerName) {
+        return removeTrigger(triggerName, NULLSTRING);
     }
 
     @Override
-    public boolean removeTrigdger(String triggerName) {
-        return removeTrigdger(triggerName, NULLSTRING);
-    }
-
-    @Override
-    public boolean removeTrigdger(String triggerName, String group) {
+    public boolean removeTrigger(String triggerName, String group) {
         TriggerKey triggerKey = new TriggerKey(triggerName, group);
+        return removeTrigger(triggerKey);
+
+    }
+
+    @Override
+    public boolean removeTrigger(TriggerKey triggerKey) {
+        boolean b=false;
         try {
             scheduler.pauseTrigger(triggerKey);// 停止触发器
-            return scheduler.unscheduleJob(triggerKey);// 移除触发器
+            b= scheduler.unscheduleJob(triggerKey);// 移除触发器
         } catch (SchedulerException e) {
             throw new RuntimeException(e);
         }
+        return b;
     }
-
 
     @Override
     public boolean deleteJob(JobKey jobKey) {
