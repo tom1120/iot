@@ -53,7 +53,13 @@ public class PageValueConvertRuleEnum {
 //		if(rule==null&&ResourceUtil.fuzzySearch){
 //			rule = HqlRuleEnum.LIKE;
 //		}
-		return rule != null ? rule : HqlRuleEnum.EQ;
+
+		//默认完全匹配
+//		return rule != null ? rule : HqlRuleEnum.EQ;
+
+		//改为模糊检索
+		return rule!=null?rule:HqlRuleEnum.LIKE;
+
 	}
 
 	/**
@@ -72,7 +78,8 @@ public class PageValueConvertRuleEnum {
 		}
 		String val = (value + "").toString().trim();
 		if (rule == HqlRuleEnum.LIKE) {
-			value = val.substring(1, val.length() - 1);
+			//默认截取左右两边的**字符串
+//			value = val.substring(1, val.length() - 1);
 		} else if (rule == HqlRuleEnum.LEFT_LIKE || rule == HqlRuleEnum.NE) {
 			value = val.substring(1);
 		} else if (rule == HqlRuleEnum.RIGHT_LIKE) {
