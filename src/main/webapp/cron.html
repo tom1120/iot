@@ -555,7 +555,8 @@ li {
 			if(typeof cronValue!=undefined&&cronValue!=null&&cronValue!=''){
 
 				$.ajax({
-					url:'timeTaskController.do?updateCronExpression&cronExpression='+cronValue+'&cronid='+cronid,
+//					url:'timeTaskController.do?updateCronExpression&cronExpression='+cronValue+'&cronid='+cronid,
+					url:'quartzTaskController.do?updateCronExpression&cronExpression='+cronValue+'&cronid='+cronid,
 //					data:{cronExpression:cronValue,cronid:cronid},
 					type:'post',
 					async:true,
@@ -570,8 +571,8 @@ li {
 
 							//刷新网格
 //							$('#timeTaskList', window.parent.document).datagrid('reload');
-//							console.log(window.parent[1]);
-							window.parent[1].reloadTable();
+//							console.debug(window.parent);
+							window.parent[2].refreshTabs();
 
 //							第一种关闭方法：
 							frameElement.api.close();

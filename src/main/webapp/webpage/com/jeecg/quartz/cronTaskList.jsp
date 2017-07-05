@@ -20,6 +20,14 @@
     $('#resumeBtn').linkbutton({
         iconCls: 'icon-resume'
     });
+    $('#updateCronBtn').linkbutton({
+        iconCls: 'icon-updateCronBtn'
+    });
+
+
+
+
+
 
 
     $('#addBtn').bind('click', function(){
@@ -28,6 +36,11 @@
         resetTrNum('add_cronTask_table');
     });
     $('#delBtn').bind('click', function(){
+        var selectRows=$('input[type="checkbox"]:checked');
+        if(selectRows.length==0){
+            tip("至少选取一行记录!");
+        }
+
         $("#add_cronTask_table").find("input:checked").parent().parent().remove();
         resetTrNum('add_cronTask_table');
     });
@@ -36,10 +49,13 @@
     $("#pauseBtn").bind('click',function () {
 //        var selectRow=$("#add_cronTask_table").find("input:checked").parent().parent();
 
-
+        var selectRows=$('input[type="checkbox"]:checked');
+        if(selectRows.length==0){
+            tip("至少选取一行记录!");
+        }
 
         var ids = '';
-        $('input[type="checkbox"]:checked').each(function(){
+        selectRows.each(function(){
             ids += $(this).val() + ',';
         })
         ids = ids.substring(0,ids.length-1);
@@ -71,11 +87,14 @@
 
     $("#resumeBtn").bind('click',function () {
 //        var selectRow=$("#add_cronTask_table").find("input:checked").parent().parent();
-
+        var selectRows=$('input[type="checkbox"]:checked');
+        if(selectRows.length==0){
+            tip("至少选取一行记录!");
+        }
 
 
         var ids = '';
-        $('input[type="checkbox"]:checked').each(function(){
+        selectRows.each(function(){
             ids += $(this).val() + ',';
         })
         ids = ids.substring(0,ids.length-1);
@@ -119,6 +138,35 @@
     }
 
 
+    //更新cron表达式
+    $("#updateCronBtn").bind('click',function () {
+        //获取选取的记录行
+        var selectRows=$('input[type="checkbox"]:checked');
+        if(selectRows.length>1||selectRows.length==0){
+            tip("必须选取一行记录!");
+        }
+
+        var ids = '';
+        selectRows.each(function(){
+            ids += $(this).val() + ',';
+        })
+        ids = ids.substring(0,ids.length-1);
+        var arrayid=ids.split('\\$');
+        var cronExpression=arrayid[3];
+        //打开cron在线表达式界面
+        editCron(cronExpression,ids,'SPECIALCHAR#cronExpression');
+
+
+    });
+
+    function editCron(cronExpression,id,SPECIALCHAR) {
+//		console.log(unescape(cronExpression));
+//        add("cron表达式","cron.html?cronExpression="+unescape(cronExpression)+"&id="+id,"timeTaskList",'1000','800');
+
+        createwindow("cron表达式","cron.html?cronExpression="+unescape(cronExpression)+"&id="+id,'1000','400');
+    }
+
+
 
 
     $(document).ready(function(){
@@ -144,6 +192,7 @@
     <a id="delBtn" href="#">删除</a>
     <a id="pauseBtn" href="#">暂停</a>
     <a id="resumeBtn" href="#">恢复</a>
+    <a id="updateCronBtn" href="#">更新cron表达式</a>
 </div>
 <table border="0" cellpadding="2" cellspacing="0" id="cronTask_table">
     <tr bgcolor="#E6E6E6">
@@ -232,7 +281,7 @@
     <c:if test="${fn:length(cronTaskList)  > 0 }">
         <c:forEach items="${cronTaskList}" var="poVal" varStatus="stuts">
             <tr>
-                <td align="center"><input style="width: 20px;" type="checkbox" name="ck" value="${poVal.schedName}$${poVal.triggerName}$${poVal.triggerGroup}"/></td>
+                <td align="center"><input style="width: 20px;" type="checkbox" name="ck" value="${poVal.schedName}$${poVal.triggerName}$${poVal.triggerGroup}$${poVal.qrtzCronTriggers.cronExpression}"/></td>
                 <td align="left" style="display:none;"><input nullmsg="请输入任务触发器调度器名称！" datatype="s1-50" errormsg="任务触发器名称为1到50位" name="cronTaskList[${stuts.index }].schedName" maxlength="50" type="text"
                                         value="${poVal.schedName}"
                                         style="width: 220px;"></td>

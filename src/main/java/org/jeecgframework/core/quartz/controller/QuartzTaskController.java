@@ -19,6 +19,7 @@ import org.jeecgframework.web.system.service.SystemService;
 import org.quartz.Job;
 import org.quartz.JobBuilder;
 import org.quartz.JobDetail;
+import org.quartz.JobKey;
 import org.quartz.impl.triggers.CronTriggerImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -71,72 +72,34 @@ public class QuartzTaskController {
  * @return
  */
 
-	@RequestMapping(params = "updateCronExpression")
-	@ResponseBody
-	public AjaxJson updateCronExpression(@RequestParam("cronExpression") String cronExpression,
-                                         @RequestParam("jobName") String jobName,
-                                         @RequestParam("jobGroup") String jobGroup,
-                                         @RequestParam("scheName") String scheName,
-                                         @RequestParam("triggerName") String triggerName,
-                                         @RequestParam("triggerGroup") String triggerGroup,
-                                         @RequestParam("jobClass") String jobClass,
+@RequestMapping(params = "updateCronExpression")
+@ResponseBody
+public AjaxJson updateCronExpression(@RequestParam("cronExpression") String cronExpression,
+									 @RequestParam("cronid") String cronid,HttpServletRequest request){
+	AjaxJson ajaxJson=new AjaxJson();
+	ajaxJson.setSuccess(false);
+	ajaxJson.setMsg("更新cron表达式失败！");
 
-
-                                         HttpServletRequest request){
-//		String s=request.getParameter("cronExpression");
-		AjaxJson ajaxJson=new AjaxJson();
-		ajaxJson.setMsg("更新失败！");
-		ajaxJson.setSuccess(false);
-
-/*		if(cronExpression!=null&&!cronExpression.equals("")){
-//			TSTimeTaskEntity timeTask = timeTaskService.get(TSTimeTaskEntity.class, cronid);
-            QrtzJobDetailsPK qrtzJobDetailsPK=new QrtzJobDetailsPK();
-            qrtzJobDetailsPK.setJobGroup(jobGroup);
-            qrtzJobDetailsPK.setJobName(jobName);
-            //区分分布式调度
-            qrtzJobDetailsPK.setSchedName(scheName);
-            QrtzJobDetails qrtzJobDetails=qrtzJobDetailsService.get(QrtzJobDetails.class,qrtzJobDetailsPK);
-            //去除空格
-			cronExpression=cronExpression.trim();
-            //更新对应触发器的cron表达式
-            Set<QrtzTriggers> qrtzTriggersSet=qrtzJobDetails.getTriggersSet();
-            for(QrtzTriggers qrtzTriggers:qrtzTriggersSet){
-                if(qrtzTriggers.getTriggerName().equals(triggerName)
-                        &&qrtzTriggers.getTriggerGroup().equals(triggerGroup)){
-                    QrtzCronTriggers qrtzCronTriggers=qrtzTriggers.getQrtzCronTriggers();
-                    qrtzCronTriggers.setCronExpression(cronExpression);
-                }
-            }
-
-            CronTriggerImpl cronTrigger=new CronTriggerImpl();
-            Class aClass=null;
-            try {
-                aClass=Class.forName(jobClass);
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
-            JobDetail jobDetail= JobBuilder.newJob(aClass).withIdentity(qrtzJobDetails.getId().getJobName(),qrtzJobDetails.getId().getJobGroup()).build();
-
-            boolean isUpdate=false;
-            //开启调度，API自动更新任务
-            try{
-                schedulerService.schedule(cronTrigger,jobDetail);
-                isUpdate=true;
-
-            }catch (Exception e){
-//                e.printStackTrace();
-            }
-
-
-
-            //更新任务
-//            qrtzJobDetailsService.updateEntitie(qrtzJobDetails);
-
-			ajaxJson.setMsg(isUpdate?"定时任务管理更新成功":"定时任务管理更新失败");
-			ajaxJson.setSuccess(true);
-		}*/
-		return ajaxJson;
+	String[] cronids=cronid.split("\\$");
+	cronExpression=cronExpression.trim();
+	CronTriggerImpl cronTrigger=new CronTriggerImpl();
+	try {
+		cronTrigger.setCronExpression(cronExpression);
+	} catch (ParseException e) {
+		e.printStackTrace();
 	}
+	cronTrigger.setName(cronids[1]);
+	cronTrigger.setGroup(cronids[2]);
+
+	String[] strings={cronids[0],cronids[1],cronids[2]};
+	List<QrtzTriggers> qrtzTriggersList=qrtzJobDetailsService.findHql("from QrtzTriggers where schedName=? and triggerName=? and triggerGroup=?",strings);
+	JobKey jobKey=new JobKey(qrtzTriggersList.get(0).getJobName(),qrtzTriggersList.get(0).getJobGroup());
+	if(schedulerService.updateCronExpression(cronTrigger,jobKey)){
+		ajaxJson.setMsg("更新cron表达式成功！");
+		ajaxJson.setSuccess(true);
+	}
+	return ajaxJson;
+}
 
 
 /**

@@ -310,4 +310,11 @@ public interface SchedulerService {
      */
     boolean triggeringJob(JobKey jobKey);
 
+    /**
+     * 更新cron表达式
+     * @param cronTrigger
+     * @param jobKey
+     */
+    boolean updateCronExpression(CronTriggerImpl cronTrigger,JobKey jobKey);
+
 }

@@ -124,16 +124,7 @@ public class SchedulerServiceImpl implements SchedulerService {
             TriggerKey triggerKey = new TriggerKey(name, group);
 
             try {
-//                scheduler.addJob(jobDetail, true);
-                if(scheduler.checkExists(jobDetail.getKey())){
-                    //移除job
-//                    scheduler.deleteJob(jobDetail.getKey());
                     scheduler.addJob(jobDetail,true);
-                }else{
-                    scheduler.addJob(jobDetail, true);
-                }
-
-
                 if (scheduler.checkExists(triggerKey)) {
                     scheduler.rescheduleJob(triggerKey, cronTrigger);
                 } else {
@@ -418,6 +409,19 @@ public class SchedulerServiceImpl implements SchedulerService {
         boolean b=false;
         try {
             scheduler.triggerJob(jobKey);
+            b=true;
+        } catch (SchedulerException e) {
+            e.printStackTrace();
+        }
+        return b;
+    }
+
+    @Override
+    public boolean updateCronExpression(CronTriggerImpl cronTrigger, JobKey jobKey) {
+        boolean b=false;
+        try {
+            JobDetail jobDetail=scheduler.getJobDetail(jobKey);
+            schedule(cronTrigger,jobDetail);
             b=true;
         } catch (SchedulerException e) {
             e.printStackTrace();
