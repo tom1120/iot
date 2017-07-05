@@ -309,7 +309,7 @@ $(function() {
 		btnFan();
 		$.ajax({
 			type: "get",
-			url: "timeTaskController.do?preview",
+			url: "quartzTaskController.do?preview",//解析cron表达式并显示出最近5次执行的时间
 			dataType: "json",
 			data: {
 				"CronExpression": $("#cron").val()
