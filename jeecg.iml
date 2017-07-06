@@ -225,6 +225,24 @@
     <orderEntry type="library" name="Maven: com.baidu.ueditor.jeecg:ueditor:1.1.1" level="project" />
     <orderEntry type="library" name="Maven: com.baidu.ueditor.jeecg:json:1.0" level="project" />
     <orderEntry type="library" name="Maven: org.jsoup:jsoup:1.8.3" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.cxf:cxf-rt-frontend-jaxws:2.7.18" level="project" />
+    <orderEntry type="library" name="Maven: xml-resolver:xml-resolver:1.2" level="project" />
+    <orderEntry type="library" name="Maven: asm:asm:3.3.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.cxf:cxf-api:2.7.18" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.woodstox:woodstox-core-asl:4.4.1" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.woodstox:stax2-api:3.1.4" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.ws.xmlschema:xmlschema-core:2.1.0" level="project" />
+    <orderEntry type="library" name="Maven: wsdl4j:wsdl4j:1.6.3" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.cxf:cxf-rt-core:2.7.18" level="project" />
+    <orderEntry type="library" name="Maven: com.sun.xml.bind:jaxb-impl:2.1.13" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.cxf:cxf-rt-bindings-soap:2.7.18" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.cxf:cxf-rt-databinding-jaxb:2.7.18" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.cxf:cxf-rt-bindings-xml:2.7.18" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.cxf:cxf-rt-frontend-simple:2.7.18" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.cxf:cxf-rt-ws-addr:2.7.18" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.cxf:cxf-rt-ws-policy:2.7.18" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.neethi:neethi:3.0.3" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.cxf:cxf-rt-transports-http:2.7.18" level="project" />
     <orderEntry type="library" name="Maven: org.codehaus.xfire:xfire-jaxb2:1.1.1" level="project" />
     <orderEntry type="library" name="Maven: org.codehaus.xfire:xfire-aegis:1.1.1" level="project" />
     <orderEntry type="library" name="Maven: org.codehaus.xfire:xfire-core:1.1.1" level="project" />
@@ -233,11 +251,6 @@
     <orderEntry type="library" name="Maven: org.codehaus.xfire:xfire-annotations:1.1.1" level="project" />
     <orderEntry type="library" name="Maven: commons-attributes:commons-attributes-api:2.1" level="project" />
     <orderEntry type="library" name="Maven: qdox:qdox:1.5" level="project" />
-    <orderEntry type="library" name="Maven: com.sun.xml.bind:jaxb-xjc:2.0.1" level="project" />
-    <orderEntry type="library" name="Maven: com.sun.xml.bind:jaxb-impl:2.0.1" level="project" />
-    <orderEntry type="library" name="Maven: javax.xml.bind:jaxb-api:2.0" level="project" />
-    <orderEntry type="library" name="Maven: javax.xml.bind:jsr173_api:1.0" level="project" />
-    <orderEntry type="library" name="Maven: wsdl4j:wsdl4j:1.5.2" level="project" />
     <orderEntry type="library" name="Maven: jaxen:jaxen:1.1-beta-9" level="project" />
     <orderEntry type="library" name="Maven: jdom:jdom:1.0" level="project" />
     <orderEntry type="library" name="Maven: xerces:xmlParserAPIs:2.6.2" level="project" />
@@ -261,7 +274,6 @@
     <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpcore-nio:4.1.3" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.retry:spring-retry:1.1.2.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: cglib:cglib:2.2" level="project" />
-    <orderEntry type="library" name="Maven: asm:asm:3.1" level="project" />
     <orderEntry type="library" name="Maven: org.p3framework:jeecg-p3-ui:1.1.2" level="project" />
     <orderEntry type="library" name="Maven: org.p3framework:jeecg-p3-bizcore:1.0-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: org.jeecgframework:freemarker-null:2.3.19" level="project" />

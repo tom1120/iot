@@ -98,7 +98,8 @@
 		<groovy.version>2.3.3</groovy.version>
         <!--poi 工具类 -->
         <easypoi.version>2.1.4</easypoi.version>
-		<cxf.version>3.0.2</cxf.version>
+		<!--<cxf.version>3.0.2</cxf.version>-->
+		<cxf.version>2.7.18</cxf.version>
 		<!--maven插件变量-->
 		<tomcat.version>2.2</tomcat.version>
 		<jetty.version>7.6.14.v20131031</jetty.version>
@@ -1037,19 +1038,18 @@
 			<artifactId>guava</artifactId>
 			<version>${guava.version}</version>
 		</dependency>
-		<!-- huangzq add cxf webservice 20151231
+		<!-- webservice-->
 		<dependency> 
 			<groupId>org.apache.cxf</groupId> 
 			<artifactId>cxf-rt-frontend-jaxws</artifactId> 
-			<version>${cxf.version}</version> 
+			<version>${cxf.version}</version>
 		</dependency> 
 		<dependency> 
 			<groupId>org.apache.cxf</groupId> 
 			<artifactId>cxf-rt-transports-http</artifactId> 
-			<version>${cxf.version}</version> 
+			<version>${cxf.version}</version>
 		</dependency>
--->
-
+		<!-- webservice-->
 
 
 
@@ -1061,6 +1061,11 @@
 				<exclusion>
 					<groupId>org.springframework</groupId>
 					<artifactId>spring</artifactId>
+				</exclusion>
+				<!--此包与cxf包存在冲突 导致动态调用出现空指针-->
+				<exclusion>
+					<artifactId>jaxb-xjc</artifactId>
+					<groupId>com.sun.xml.bind</groupId>
 				</exclusion>
 			</exclusions>
 		</dependency>
