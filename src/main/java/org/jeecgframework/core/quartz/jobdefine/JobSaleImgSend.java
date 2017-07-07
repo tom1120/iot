@@ -1,7 +1,9 @@
-package org.jeecgframework.core.quartz;/**
- * Created by zhaoyipc on 2017/6/24.
+package org.jeecgframework.core.quartz.jobdefine;/**
+ * Created by zhaoyipc on 2017/7/7.
  */
 
+import org.jeecgframework.core.quartz.jobservice.FineReportSendService;
+import org.jeecgframework.core.quartz.jobservice.FineReportSendServiceImpl;
 import org.jeecgframework.core.quartz.jobservice.SimpleService;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
@@ -10,19 +12,18 @@ import org.quartz.Trigger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.scheduling.quartz.QuartzJobBean;
 
-
 /**
  * @author zhaoyi
- * @date 2017-06-2017/6/24-8:44
+ * @date 2017-07-2017/7/7-10:39
  */
-public class MyQuartzJobBean extends QuartzJobBean {
+public class JobSaleImgSend extends QuartzJobBean{
     @Override
     protected void executeInternal(JobExecutionContext jobexecutioncontext) throws JobExecutionException {
         Trigger trigger = jobexecutioncontext.getTrigger();
         String triggerName = trigger.getKey().getName();
-        SimpleService simpleService = getApplicationContext(jobexecutioncontext).getBean("simpleService",
-                SimpleService.class);
-        simpleService.testMethod(triggerName);
+        FineReportSendServiceImpl fineReportSendService = getApplicationContext(jobexecutioncontext).getBean("fineReportSendServiceImpl",
+                FineReportSendServiceImpl.class);
+        fineReportSendService.executeSaleImgSend();
     }
     private ApplicationContext getApplicationContext(final JobExecutionContext jobexecutioncontext) {
         try {

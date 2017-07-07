@@ -5,7 +5,7 @@
 	<context:component-scan base-package="org.jeecgframework.core.quartz"/>
 
 	<!-- 这个类用来做需要完成的业务，也可以使用component-scan-->
-	<!--<bean id="myJob2" class="org.jeecgframework.core.quartz.SimpleService"></bean>-->
+	<!--<bean id="myJob2" class="org.jeecgframework.core.quartz.jobservice.SimpleService"></bean>-->
 
 	<!-- 定时任务 -->
 	<!-- 定义调用对象和调用对象的方法，这个配置和普通的一样的,id是JobDetail的名字  -->

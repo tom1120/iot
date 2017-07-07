@@ -1,4 +1,4 @@
-package org.jeecgframework.web.cronwork;
+package org.jeecgframework.core.quartz.jobservice;
 
 /**
  * Created by zhaoyipc on 2017/6/16.

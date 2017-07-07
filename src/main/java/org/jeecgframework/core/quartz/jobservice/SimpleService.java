@@ -1,4 +1,4 @@
-package org.jeecgframework.core.quartz;/**
+package org.jeecgframework.core.quartz.jobservice;/**
  * Created by zhaoyipc on 2017/6/24.
  */
 

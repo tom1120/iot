@@ -1,12 +1,15 @@
-package org.jeecgframework.web.cronwork;/**
+package org.jeecgframework.core.quartz.jobservice;/**
  * Created by zhaoyipc on 2017/6/16.
  */
 
-import org.codehaus.xfire.client.Client;
+import org.apache.cxf.endpoint.Client;
+import org.apache.cxf.jaxws.endpoint.dynamic.JaxWsDynamicClientFactory;
 import org.quartz.*;
+import org.springframework.context.ApplicationContext;
+import org.springframework.scheduling.quartz.QuartzJobBean;
+import org.springframework.stereotype.Service;
 
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -14,24 +17,14 @@ import java.util.Date;
  * @author zhaoyi
  * @date 2017-06-2017/6/16-16:03
  */
-
-public class FineReportSendServiceImpl implements FineReportSendService,Job {
-
-    @Override
-    public void execute(JobExecutionContext context) throws JobExecutionException {
-        JobKey key = context.getJobDetail().getKey();
-        JobDataMap dataMap = context.getJobDetail().getJobDataMap();
-        System.err.println("Instance " + key);
-        System.err.println("dataMap " + dataMap.toString());
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
-        System.out.println("在" + sdf.format(new Date()) + "执行任务");
-    }
+@Service("fineReportSendServiceImpl")
+public class FineReportSendServiceImpl implements FineReportSendService,Serializable {
 
     private boolean execute(String url, String method){
         boolean b=false;
-        try {
+//        原xfire调用方式
+/*        try {
             System.out.println("================================execute()========================");
-//            URL url = new URL("http://localhost:8080/kito/services/FineReportSendService?wsdl");
             URL urlService = new URL(url);
             Client client = new Client(urlService);
             Object[] results = new Object[1];
@@ -42,8 +35,20 @@ public class FineReportSendServiceImpl implements FineReportSendService,Job {
             e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
 
+
+        JaxWsDynamicClientFactory clientFactory=JaxWsDynamicClientFactory.newInstance();
+        Client client=clientFactory.createClient(url);
+        Object[] result = new Object[0];
+        try {
+            //result = client.invoke(method,null);//空参数不能传
+            result = client.invoke(method);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println(result[0]);
+        b=(boolean)result[0];
         return b;
 
     }
