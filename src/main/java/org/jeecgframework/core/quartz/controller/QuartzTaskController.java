@@ -307,18 +307,12 @@ public AjaxJson updateCronExpression(@RequestParam("cronExpression") String cron
 
 	@RequestMapping(params = "save")
 	@ResponseBody
-	public AjaxJson save(QrtzJobDetails qrtzJobDetails, QrtzTriggersList qrtzTriggersList, HttpServletRequest request) {
+	public AjaxJson save(@RequestParam("id") String id,QrtzJobDetails qrtzJobDetails, QrtzTriggersList qrtzTriggersList, HttpServletRequest request) {
 		AjaxJson j=new AjaxJson();
 		String message = "更新失败！";
 		j.setSuccess(false);
 		try {
 			String jobClassName=qrtzJobDetails.getJobClassName();
-
-			JobDetail jobDetail=JobBuilder.newJob((Class<? extends Job>) Class.forName(jobClassName)).withIdentity(qrtzJobDetails.getSchedName())
-					.withIdentity(qrtzJobDetails.getJobName(),qrtzJobDetails.getJobGroup())
-					.withDescription(qrtzJobDetails.getDescription()).storeDurably().build();
-			//必须要持久化，否则会报异常
-			jobDetail.isDurable();
 
 			//编辑前任务触发器列表
 			String[] strings={qrtzJobDetails.getSchedName(),qrtzJobDetails.getJobName(),qrtzJobDetails.getJobGroup()};
@@ -327,10 +321,12 @@ public AjaxJson updateCronExpression(@RequestParam("cronExpression") String cron
 			//编辑后任务触发器列表
 			List<QrtzTriggers> qrtzTriggerses =  qrtzTriggersList.getCronTaskList();
 
-			//查出非当前任务的所有触发器来比较，避免修改出现串到别的触发器上
-			List<QrtzTriggers> exceptSelfQrtzTriggeres=qrtzJobDetailsService.findHql("from QrtzTriggers where schedName!=? or jobName!=? or jobGroup!=?",strings);
 
-			//判断现有job添加触发器是否存在非现有job其他触发器中,如存在则更新失败，否则继续更新过程
+			String[] strings1=id.split("\\$");
+			String[] stringsbefore={strings1[0],strings1[1],strings1[2]};
+			//查出编辑前除当前job的所有触发器来比较，避免修改出现串到别的触发器上
+			List<QrtzTriggers> exceptSelfQrtzTriggeres=qrtzJobDetailsService.findHql("from QrtzTriggers where schedName!=? or jobName!=? or jobGroup!=?",stringsbefore);
+
 
 			for(QrtzTriggers qrtzTriggers:qrtzTriggerses){
 				for(QrtzTriggers eqrtzTriggers:exceptSelfQrtzTriggeres){
@@ -352,6 +348,21 @@ public AjaxJson updateCronExpression(@RequestParam("cronExpression") String cron
 			for(QrtzTriggers qrtzTriggers:beforeQrtzTriggeres) {
 				schedulerService.removeTrigger(qrtzTriggers.getTriggerName(), qrtzTriggers.getTriggerGroup());
 			}
+
+
+
+			JobDetail jobDetail=JobBuilder.newJob((Class<? extends Job>) Class.forName(jobClassName)).withIdentity(qrtzJobDetails.getSchedName())
+					.withIdentity(qrtzJobDetails.getJobName(),qrtzJobDetails.getJobGroup())
+					.withDescription(qrtzJobDetails.getDescription()).storeDurably().build();;
+			//必须要持久化，否则会报异常
+			jobDetail.isDurable();
+
+			//判断是否存在修改job主键相关行为，如存在则移除job
+			if(!stringsEquals(stringsbefore,strings)){
+				schedulerService.deleteJob(stringsbefore[1],stringsbefore[2]);
+			}
+
+
 			//添加job及关联触发器
 			for(QrtzTriggers qrtzTriggers:qrtzTriggerses){
 				CronTriggerImpl cronTrigger=new CronTriggerImpl();
@@ -379,6 +390,15 @@ public AjaxJson updateCronExpression(@RequestParam("cronExpression") String cron
 		j.setMsg(message);
 		return j;
 	}
+
+
+	public static boolean stringsEquals(Object[] a,Object[] b)
+	{
+		for (int i=0;i!=(a.length<b.length?a.length:b.length);i++)
+			if (!a[i].equals(b[i])) return false;
+		return true;
+	}
+
 
 	@RequestMapping(params = "pauseTrigger")
 	@ResponseBody
