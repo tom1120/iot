@@ -21,6 +21,8 @@
 	<context:component-scan base-package="org.jeecgframework.core.quartz"/>
 	<context:component-scan base-package="org.activiti.rest.editor" />
 	<context:component-scan base-package="org.activiti.rest.diagram" />
+	<!--扫描阿里云iot相关api组件-->
+	<context:component-scan base-package="com.aliyun.iot"/>
 
 
 
@@ -30,6 +32,9 @@
 
 	<!--GetClassDir-->
 	<bean id="getClassDir" class="org.jeecgframework.core.util.GetClassDir"></bean>
+	<!--初始化阿里云物联网套件-->
+	<bean id="initSDK" class="com.aliyun.iot.InitSDK"></bean>
+
 
 
 	<!-- 避免IE执行ajax时，返回json出现下载文件 -->

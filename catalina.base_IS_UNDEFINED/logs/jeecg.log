@@ -1,2 +1,4 @@
-2017-07-06 16:49:03.508 [main] INFO  DynamicClientFactory - Created classes: cxf.test.ObjectFactory, cxf.test.Say, cxf.test.SayHello, cxf.test.SayHelloResponse, cxf.test.SayResponse, cxf.test.SayUI, cxf.test.SayUIResponse
-2017-07-06 17:03:28.365 [main] INFO  DynamicClientFactory - Created classes: org.codehaus.xfire.xfiretestservice.Add, org.codehaus.xfire.xfiretestservice.AddResponse, org.codehaus.xfire.xfiretestservice.Mulity, org.codehaus.xfire.xfiretestservice.MulityResponse, org.codehaus.xfire.xfiretestservice.ObjectFactory, org.codehaus.xfire.xfiretestservice.Print, org.codehaus.xfire.xfiretestservice.PrintResponse
+2017-07-14 08:47:05.758 [AWT-EventQueue-0] INFO  CodeGenerate - ----jeecg---Code----Generation----[单表模型:ProductInfo]------- 生成中。。。
+2017-07-14 08:47:06.792 [AWT-EventQueue-0] INFO  CodeGenerate - ----jeecg----Code----Generation-----[单表模型：ProductInfo]------ 生成完成。。。
+2017-07-14 08:53:07.059 [AWT-EventQueue-0] INFO  CodeGenerate - ----jeecg---Code----Generation----[单表模型:ProductInfo]------- 生成中。。。
+2017-07-14 08:53:07.904 [AWT-EventQueue-0] INFO  CodeGenerate - ----jeecg----Code----Generation-----[单表模型：ProductInfo]------ 生成完成。。。
