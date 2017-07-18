@@ -239,7 +239,7 @@ public class ProductInfoController extends BaseController {
 		try{
 			productInfoService.batchSave(deviceinfoList);
 			ajaxJson.setSuccess(true);
-			ajaxJson.setMsg("保存成功！");
+			ajaxJson.setMsg("同步成功！");
 		}
 		catch (Exception e){
 			e.printStackTrace();

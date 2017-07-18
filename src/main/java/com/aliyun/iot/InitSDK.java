@@ -82,10 +82,13 @@ public class InitSDK {
 
     public static void main(String[] args) {
         InitSDK initSDK=new InitSDK();
-//        initSDK.pubMessageToTopic();
-        QueryDeviceResponse response=initSDK.queryDeviceInfoList(1,"7Pi3WAFJhC6",10);
-        JSONObject j=JSONObject.fromObject(response);
-        System.out.println("j.toString() = " + j.toString());
+        initSDK.pubMessageToTopic();
+
+
+
+//        QueryDeviceResponse response=initSDK.queryDeviceInfoList(1,"7Pi3WAFJhC6",10);
+//        JSONObject j=JSONObject.fromObject(response);
+//        System.out.println("j.toString() = " + j.toString());
     }
 
 

@@ -1057,12 +1057,40 @@
 			<artifactId>aliyun-java-sdk-core</artifactId>
 			<version>3.2.4</version>
 		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/com.aliyun/aliyun-java-sdk-iot -->
 		<dependency>
 			<groupId>com.aliyun</groupId>
 			<artifactId>aliyun-java-sdk-iot</artifactId>
 			<version>2.2.0</version>
 		</dependency>
+		<!--阿里云mns消息服务sdk-->
+		<dependency>
+			<groupId>com.aliyun.mns</groupId>
+			<artifactId>aliyun-sdk-mns</artifactId>
+			<version>1.1.5</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpcore -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpcore</artifactId>
+			<version>4.4.6</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpcore-nio -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpcore-nio</artifactId>
+			<version>4.4.6</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.5.3</version>
+		</dependency>
+
+
 		<!--阿里云iot套件-->
 
 
