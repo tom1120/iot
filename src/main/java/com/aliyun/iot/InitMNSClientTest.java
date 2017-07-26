@@ -8,7 +8,6 @@ import com.aliyun.mns.client.CloudAccount;
 import com.aliyun.mns.client.CloudQueue;
 import com.aliyun.mns.client.MNSClient;
 import com.aliyun.mns.model.Message;
-import com.aliyuncs.DefaultAcsClient;
 import org.apache.commons.codec.binary.Base64;
 
 import javax.servlet.ServletContextEvent;
@@ -19,7 +18,7 @@ import javax.servlet.ServletContextListener;
  * @author zhaoyi
  * @date 2017-07-2017/7/18-15:48
  */
-public class InitMNSClient implements ServletContextListener {
+public class InitMNSClientTest {
     private MNSClient mnsClient=null;
 
     public void initMnsClient(){
@@ -40,7 +39,7 @@ public class InitMNSClient implements ServletContextListener {
 
     }
 
-    public InitMNSClient() {
+    public InitMNSClientTest() {
         initMnsClient();
     }
 
@@ -141,35 +140,8 @@ public class InitMNSClient implements ServletContextListener {
 
 
     public static void main(String[] args) {
-        InitMNSClient initMNSClient=new InitMNSClient();
+        InitMNSClientTest initMNSClient=new InitMNSClientTest();
         initMNSClient.testMNSQueue();
     }
 
-
-    @Override
-    public void contextInitialized(ServletContextEvent sce) {
-        sce.getServletContext().log("iot-mns监听服务正在启动..........！");
-
-        Thread thread=new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    InitMNSClient initMNSClient=new InitMNSClient();
-                    initMNSClient.testMNSQueue();
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
-            }
-        });
-
-        thread.start();
-
-
-    }
-
-    @Override
-    public void contextDestroyed(ServletContextEvent sce) {
-        sce.getServletContext().log("iot-mns监听服务正在关闭...........!");
-
-    }
 }

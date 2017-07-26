@@ -25,6 +25,15 @@ public class ProductApi {
     @Autowired
     private InitSDK initSDK;
 
+
+    public InitSDK getInitSDK() {
+        return initSDK;
+    }
+
+    public void setInitSDK(InitSDK initSDK) {
+        this.initSDK = initSDK;
+    }
+
     /**
      * 创建产品api
      * @param catid

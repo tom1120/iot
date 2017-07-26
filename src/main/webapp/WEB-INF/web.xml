@@ -17,6 +17,7 @@
     <listener>
         <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
     </listener>
+
     <!--spring配置加载-->
     <context-param>
         <param-name>contextConfigLocation</param-name>
@@ -111,6 +112,11 @@
     <listener>
         <description>在线用户监听器</description>
         <listener-class>org.jeecgframework.web.system.listener.OnlineListener</listener-class>
+    </listener>
+    <!--iot mns启动服务-->
+    <listener>
+        <description>iot-mns</description>
+        <listener-class>com.aliyun.iot.InitMNSClient</listener-class>
     </listener>
 
 

@@ -43,7 +43,7 @@ public class InitSDK {
         return client;
     }
 
-    //发布消息到topic
+    //发布消息到topic测试
     public void pubMessageToTopic() {
         PubRequest request = new PubRequest();
         request.setProductKey("7Pi3WAFJhC6");
@@ -59,6 +59,11 @@ public class InitSDK {
         System.out.println(response.getSuccess());
         System.out.println(response.getErrorMessage());
     }
+
+
+
+
+
 
 
     public QueryDeviceResponse queryDeviceInfoList(int currentPage, String productKey, int pageSize){
