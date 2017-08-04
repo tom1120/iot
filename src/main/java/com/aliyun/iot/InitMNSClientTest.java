@@ -9,9 +9,15 @@ import com.aliyun.mns.client.CloudQueue;
 import com.aliyun.mns.client.MNSClient;
 import com.aliyun.mns.model.Message;
 import org.apache.commons.codec.binary.Base64;
+import org.jeecgframework.core.util.PropertiesUtil;
+import org.jeecgframework.core.util.UUIDGenerator;
+import org.junit.internal.runners.statements.RunAfters;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
+import java.sql.*;
+import java.util.Properties;
+import java.util.UUID;
 
 /**
  * mns客户端初始化，并执行相关消息的订阅授权
@@ -21,26 +27,43 @@ import javax.servlet.ServletContextListener;
 public class InitMNSClientTest {
     private MNSClient mnsClient=null;
 
+
+    //访问授权
+    String accessKey;
+    String accessSecret;
+
+    //华东2节点队列相关参数
+    //公网Endpoint
+    String accountPublicEndpoint;
+    //私网Endpoint
+    String accountPrivateEndpoint;
+    //VpcEndpoint
+    String accountVpcEndpoint;
+
+    String msgQueue;
+
     public void initMnsClient(){
-        String accessKey = "LTAIFlCD8jBQXlqH";
-        String accessSecret = "TPunQG9dHa81VlI63JuMPyK8X8Hgs3";
-        //公网Endpoint
-        String accountPublicEndpoint="http://1038576842133397.mns.cn-shanghai.aliyuncs.com/";
-        //私网Endpoint
-        String accountPrivateEndpoint="http://1038576842133397.mns.cn-shanghai-internal.aliyuncs.com/";
-        //VpcEndpoint
-        String accountVpcEndpoint="http://1038576842133397.mns.cn-shanghai-internal-vpc.aliyuncs.com";
+        String filePath= "iotconfig.properties";
+        //这个工具类直接从classpath路径下找
+        PropertiesUtil propertiesUtil=new PropertiesUtil(filePath);
+        Properties properties= propertiesUtil.getProperties();
+
+        this.accessKey=properties.getProperty("accessKey");
+        this.accessSecret=properties.getProperty("accessSecret");
+        this.accountPublicEndpoint=properties.getProperty("accountPublicEndpoint");
+        this.accountPrivateEndpoint=properties.getProperty("accountPrivateEndpoint");
+        this.accountVpcEndpoint=properties.getProperty("accountVpcEndpoint");
+        this.msgQueue=properties.getProperty("msgQueue");
+
 
         CloudAccount account=new CloudAccount(accessKey,accessSecret,accountPublicEndpoint);
 
         this.mnsClient=account.getMNSClient();
 
-
-
     }
 
     public InitMNSClientTest() {
-        initMnsClient();
+//        initMnsClient();
     }
 
     public MNSClient getMnsClient() {
@@ -49,7 +72,13 @@ public class InitMNSClientTest {
 
     public void testMNSQueue(){
 
-        CloudQueue queue = mnsClient.getQueueRef("aliyun-iot-7Pi3WAFJhC6"); //参数请输入IoT自动创建的队列名称
+        CloudQueue queue = mnsClient.getQueueRef(msgQueue); //参数请输入IoT自动创建的队列名称，从此队列中获取消息
+        msgReceiveHandler(queue);
+
+    }
+
+
+    private void msgReceiveHandler(CloudQueue queue) {
         while (true) {
             // 获取消息
             Message popMsg = queue.popMessage(10); //长轮询等待时间为10秒
@@ -60,7 +89,7 @@ public class InitMNSClientTest {
                 String msg=popMsg.getMessageBodyAsString();
                 System.out.println("PopMessage decode Body:"
                         + msg);
-                JSONObject json=JSON.parseObject(msg);
+                JSONObject json= JSON.parseObject(msg);
                 String messagetype=json.getString("messagetype");
 
                 String payload= json.getString("payload");
@@ -70,32 +99,67 @@ public class InitMNSClientTest {
                 JSONObject payloadJson=JSON.parseObject(payload);
                 String clientVersion=payloadJson.getString("version");
                 //设备感知status/设备上报upload
-                if(messagetype.equals("upload")&&clientVersion!=null){
-                    //设备端与云端进行版本比较
-                    String cloudVersion="1.0.0-SNAPSHOT";
-                    if(clientVersion.equals(cloudVersion)){
-                        System.out.println("版本一致不用升级！");
-                    }else {
-                        cloudVersion=cloudVersion.replaceAll("[^0-9|\\.]","");
-                        clientVersion=clientVersion.replaceAll("[^0-9|\\.]","");
-                        String[] clientVersionArr=clientVersion.split("\\.");
-                        String[] cloudVersionArr=cloudVersion.split("\\.");
-                        if(twoArrayBigOrSmall(clientVersionArr,cloudVersionArr)){
-                            //发送更新指令到客户端
-                            InitSDK initSDK=new InitSDK();//到时候改为从容器中注入
-                            ProductApi productApi=new ProductApi();
-                            productApi.setInitSDK(initSDK);
-                            //String productKey,String messageContent,String topicFullName,int qosFlag
-                            String messageContent="{\"isUpdateVersion\":true}";
-                            try {
-                                productApi.publishMessageToTopic(payloadJson.getString("productKey"),messageContent,json.getString("topic"),1);
-                            } catch (Exception e) {
-                                e.printStackTrace();
+                if(messagetype.equals("upload")){
+                    if(clientVersion!=null){
+                        //设备端与云端进行版本比较
+                        String cloudVersion="1.0.0-SNAPSHOT";
+                        if(clientVersion.equals(cloudVersion)){
+                            System.out.println("版本一致不用升级！");
+                        }else {
+                            cloudVersion=cloudVersion.replaceAll("[^0-9|\\.]","");
+                            clientVersion=clientVersion.replaceAll("[^0-9|\\.]","");
+                            String[] clientVersionArr=clientVersion.split("\\.");
+                            String[] cloudVersionArr=cloudVersion.split("\\.");
+                            if(twoArrayBigOrSmall(clientVersionArr,cloudVersionArr)){
+                                //发送更新指令到客户端
+                                InitSDK initSDK=new InitSDK();//到时候改为从容器中注入
+                                ProductApi productApi=new ProductApi();
+                                productApi.setInitSDK(initSDK);
+                                //String productKey,String messageContent,String topicFullName,int qosFlag
+                                String messageContent="{\"isUpdateVersion\":true}";
+                                try {
+                                    productApi.publishMessageToTopic(payloadJson.getString("productKey"),messageContent,json.getString("topic"),1);
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+
                             }
-
-
                         }
                     }
+
+                }else if(messagetype.equals("status")){//设备状态上报
+                    Runnable runnable=new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                Class.forName("com.mysql.jdbc.Driver");
+                                String url="jdbc:mysql://localhost:3306/jeecg?useUnicode=true&characterEncoding=UTF-8";
+                                String user="root";
+                                String password="kitoiotserver42899975";
+                                Connection connection= DriverManager.getConnection(url,user,password);
+
+                                String sql="INSERT INTO device_status_news(id,product_key,device_key,device_status,status_return_time,status_lastcheck_time,note) VALUES(?,?,?,?,?,?,?) ";
+                                PreparedStatement preparedStatement=connection.prepareStatement(sql);
+
+                                preparedStatement.setString(1, UUIDGenerator.generate());
+                                preparedStatement.setString(2,payloadJson.getString("productKey"));
+                                preparedStatement.setString(3,payloadJson.getString("deviceName"));
+                                preparedStatement.setString(4,payloadJson.getString("status"));
+                                preparedStatement.setString(5,payloadJson.getString("time"));
+                                preparedStatement.setString(6,payloadJson.getString("lastTime"));
+
+                                preparedStatement.setString(7,"jdbc插入测试");
+                                preparedStatement.executeUpdate();
+
+
+                            } catch (ClassNotFoundException e) {
+                                e.printStackTrace();
+                            } catch (SQLException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    };
+                    new Thread(runnable).start();
 
                 }
 
@@ -105,9 +169,8 @@ public class InitMNSClientTest {
                 System.out.println("Continuing");
             }
         }
-
-
     }
+
 
 
     /**
@@ -141,6 +204,7 @@ public class InitMNSClientTest {
 
     public static void main(String[] args) {
         InitMNSClientTest initMNSClient=new InitMNSClientTest();
+        initMNSClient.initMnsClient();
         initMNSClient.testMNSQueue();
     }
 

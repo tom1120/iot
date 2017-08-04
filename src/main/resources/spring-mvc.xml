@@ -32,8 +32,6 @@
 
 	<!--GetClassDir-->
 	<bean id="getClassDir" class="org.jeecgframework.core.util.GetClassDir"></bean>
-	<!--初始化阿里云物联网套件-->
-	<bean id="initSDK" class="com.aliyun.iot.InitSDK"></bean>
 
 
 

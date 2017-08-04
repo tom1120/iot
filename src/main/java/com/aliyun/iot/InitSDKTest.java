@@ -12,6 +12,8 @@ import com.aliyuncs.profile.DefaultProfile;
 import com.aliyuncs.profile.IClientProfile;
 import com.jeecg.entity.aliyuniot.IotConfig;
 import org.apache.commons.codec.binary.Base64;
+import org.jeecgframework.core.util.GetClassDir;
+import org.jeecgframework.core.util.PropertiesUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -21,11 +23,9 @@ import java.util.Properties;
  * @author zhaoyi
  * @date 2017-07-2017/7/13-14:08
  */
-@Component
-public class InitSDK {
+
+public class InitSDKTest {
     private DefaultAcsClient client=null;
-    @Autowired
-    private IotConfig iotConfig;
 
     private static String accessKey;
     private static String accessSecret;
@@ -38,7 +38,12 @@ public class InitSDK {
 
     //初始化sdk
     public void initsdk() {
-        Properties properties=iotConfig.getMergedProps();
+//        String filePath= GetClassDir.getInstance().getResourcePath("/iotconfig.properties");
+        String filePath= "iotconfig.properties";
+        //这个工具类直接从classpath路径下找
+        PropertiesUtil propertiesUtil=new PropertiesUtil(filePath);
+        Properties properties= propertiesUtil.getProperties();
+
         this.accessKey=properties.getProperty("accessKey");
         this.accessSecret=properties.getProperty("accessSecret");
         this.accountPublicEndpoint=properties.getProperty("accountPublicEndpoint");
@@ -55,7 +60,7 @@ public class InitSDK {
         client = new DefaultAcsClient(profile); //初始化SDK客户端
     }
 
-    public InitSDK(){
+    public InitSDKTest(){
 //        initsdk();
     }
 
@@ -106,7 +111,8 @@ public class InitSDK {
 
 
     public static void main(String[] args) {
-        InitSDK initSDK=new InitSDK();
+        InitSDKTest initSDK=new InitSDKTest();
+        initSDK.initsdk();
         initSDK.pubMessageToTopic();
 
 

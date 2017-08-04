@@ -8,11 +8,19 @@ import com.aliyun.mns.client.CloudAccount;
 import com.aliyun.mns.client.CloudQueue;
 import com.aliyun.mns.client.MNSClient;
 import com.aliyun.mns.model.Message;
-import com.aliyuncs.DefaultAcsClient;
+import com.jeecg.entity.aliyuniot.DeviceStatusNews;
+import com.jeecg.entity.aliyuniot.IotConfig;
+import com.jeecg.service.aliyuniot.DeviceStatusNewsServiceI;
 import org.apache.commons.codec.binary.Base64;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.stereotype.Component;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
+import java.util.Properties;
 
 /**
  * mns客户端初始化，并执行相关消息的订阅授权
@@ -21,16 +29,29 @@ import javax.servlet.ServletContextListener;
  */
 public class InitMNSClient implements ServletContextListener {
     private MNSClient mnsClient=null;
+    //Listener不能@Autowired直接注入服务，必须在类层面使用，否则变量共享不了
+    private static DeviceStatusNewsServiceI deviceStatusNewsService;
 
-    public void initMnsClient(){
-        String accessKey = "LTAIFlCD8jBQXlqH";
-        String accessSecret = "TPunQG9dHa81VlI63JuMPyK8X8Hgs3";
-        //公网Endpoint
-        String accountPublicEndpoint="http://1038576842133397.mns.cn-shanghai.aliyuncs.com/";
-        //私网Endpoint
-        String accountPrivateEndpoint="http://1038576842133397.mns.cn-shanghai-internal.aliyuncs.com/";
-        //VpcEndpoint
-        String accountVpcEndpoint="http://1038576842133397.mns.cn-shanghai-internal-vpc.aliyuncs.com";
+    private static IotConfig iotConfig;
+
+    private static InitSDK initSDK;
+
+    private static ProductApi productApi;
+
+    private static String accessKey;
+    private static String accessSecret;
+    //公网Endpoint
+    private static String accountPublicEndpoint;
+    //私网Endpoint
+    private static String accountPrivateEndpoint;
+    //VpcEndpoint
+    private static String accountVpcEndpoint;
+
+    private static String msgQueue;
+
+
+    private void initMnsClient(){
+
 
         CloudAccount account=new CloudAccount(accessKey,accessSecret,accountPublicEndpoint);
 
@@ -39,9 +60,9 @@ public class InitMNSClient implements ServletContextListener {
 
 
     }
-
+    //先进入构造方法
     public InitMNSClient() {
-        initMnsClient();
+//        initMnsClient();
     }
 
     public MNSClient getMnsClient() {
@@ -50,7 +71,14 @@ public class InitMNSClient implements ServletContextListener {
 
     public void testMNSQueue(){
 
-        CloudQueue queue = mnsClient.getQueueRef("aliyun-iot-7Pi3WAFJhC6"); //参数请输入IoT自动创建的队列名称
+        CloudQueue queue = mnsClient.getQueueRef(msgQueue); //参数请输入IoT自动创建的队列名称
+
+        msgReceiveHandler(queue);
+
+    }
+
+
+    private void msgReceiveHandler(CloudQueue queue) {
         while (true) {
             // 获取消息
             Message popMsg = queue.popMessage(10); //长轮询等待时间为10秒
@@ -61,7 +89,7 @@ public class InitMNSClient implements ServletContextListener {
                 String msg=popMsg.getMessageBodyAsString();
                 System.out.println("PopMessage decode Body:"
                         + msg);
-                JSONObject json=JSON.parseObject(msg);
+                JSONObject json= JSON.parseObject(msg);
                 String messagetype=json.getString("messagetype");
 
                 String payload= json.getString("payload");
@@ -71,32 +99,52 @@ public class InitMNSClient implements ServletContextListener {
                 JSONObject payloadJson=JSON.parseObject(payload);
                 String clientVersion=payloadJson.getString("version");
                 //设备感知status/设备上报upload
-                if(messagetype.equals("upload")&&clientVersion!=null){
-                    //设备端与云端进行版本比较
-                    String cloudVersion="1.0.0-SNAPSHOT";
-                    if(clientVersion.equals(cloudVersion)){
-                        System.out.println("版本一致不用升级！");
-                    }else {
-                        cloudVersion=cloudVersion.replaceAll("[^0-9|\\.]","");
-                        clientVersion=clientVersion.replaceAll("[^0-9|\\.]","");
-                        String[] clientVersionArr=clientVersion.split("\\.");
-                        String[] cloudVersionArr=cloudVersion.split("\\.");
-                        if(twoArrayBigOrSmall(clientVersionArr,cloudVersionArr)){
-                            //发送更新指令到客户端
-                            InitSDK initSDK=new InitSDK();//到时候改为从容器中注入
-                            ProductApi productApi=new ProductApi();
-                            productApi.setInitSDK(initSDK);
-                            //String productKey,String messageContent,String topicFullName,int qosFlag
-                            String messageContent="{\"isUpdateVersion\":true}";
-                            try {
-                                productApi.publishMessageToTopic(payloadJson.getString("productKey"),messageContent,json.getString("topic"),1);
-                            } catch (Exception e) {
-                                e.printStackTrace();
+                if(messagetype.equals("upload")){
+                    if(clientVersion!=null){
+                        //设备端与云端进行版本比较
+                        String cloudVersion="1.0.0-SNAPSHOT";
+                        if(clientVersion.equals(cloudVersion)){
+                            System.out.println("版本一致不用升级！");
+                        }else {
+                            cloudVersion=cloudVersion.replaceAll("[^0-9|\\.]","");
+                            clientVersion=clientVersion.replaceAll("[^0-9|\\.]","");
+                            String[] clientVersionArr=clientVersion.split("\\.");
+                            String[] cloudVersionArr=cloudVersion.split("\\.");
+                            if(twoArrayBigOrSmall(clientVersionArr,cloudVersionArr)){
+                                //发送更新指令到客户端
+//                                InitSDK initSDK=new InitSDK();//到时候改为从容器中注入
+//                                ProductApi productApi=new ProductApi();
+//                                productApi.setInitSDK(initSDK);
+
+
+                                initSDK.initsdk();
+
+                                //String productKey,String messageContent,String topicFullName,int qosFlag
+                                String messageContent="{\"isUpdateVersion\":true}";
+                                try {
+                                    productApi.publishMessageToTopic(payloadJson.getString("productKey"),messageContent,json.getString("topic"),1);
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+
                             }
-
-
                         }
                     }
+
+                }else if(messagetype.equals("status")){//设备状态上报
+                    Runnable runnable=new Runnable() {
+                        @Override
+                        public void run() {
+                            DeviceStatusNews deviceStatusNews=new DeviceStatusNews();
+                            deviceStatusNews.setProductKey(payloadJson.getString("productKey"));
+                            deviceStatusNews.setDeviceKey(payloadJson.getString("deviceName"));
+                            deviceStatusNews.setDeviceStatus(payloadJson.getString("status"));
+                            deviceStatusNews.setStatusReturnTime(payloadJson.getString("time"));
+                            deviceStatusNews.setStatusLastcheckTime(payloadJson.getString("lastTime"));
+                            deviceStatusNewsService.save(deviceStatusNews);
+                        }
+                    };
+                    new Thread(runnable).start();
 
                 }
 
@@ -106,9 +154,8 @@ public class InitMNSClient implements ServletContextListener {
                 System.out.println("Continuing");
             }
         }
-
-
     }
+
 
 
     /**
@@ -117,7 +164,7 @@ public class InitMNSClient implements ServletContextListener {
      * @param cloundVersion
      * @return
      */
-    private boolean twoArrayBigOrSmall(String[] clientVersion,String[] cloundVersion){
+    private static boolean twoArrayBigOrSmall(String[] clientVersion, String[] cloundVersion){
         boolean b=false;
         if(clientVersion.length!=3||cloundVersion.length!=3){
             try {
@@ -148,22 +195,43 @@ public class InitMNSClient implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        sce.getServletContext().log("iot-mns监听服务正在启动..........！");
+        ServletContext servletContext=sce.getServletContext();
+        servletContext.log("iot-mns监听服务正在启动..........！");
+        WebApplicationContext springContext = WebApplicationContextUtils.getWebApplicationContext(servletContext);
+        deviceStatusNewsService= (DeviceStatusNewsServiceI) springContext.getBean("deviceStatusNewsService");
+        iotConfig= (IotConfig) springContext.getBean("iotConfig");
 
-        Thread thread=new Thread(new Runnable() {
+        Properties properties=iotConfig.getMergedProps();
+        this.accessKey=properties.getProperty("accessKey");
+        this.accessSecret=properties.getProperty("accessSecret");
+        this.accountPublicEndpoint=properties.getProperty("accountPublicEndpoint");
+        this.accountPrivateEndpoint=properties.getProperty("accountPrivateEndpoint");
+        this.accountVpcEndpoint=properties.getProperty("accountVpcEndpoint");
+        this.msgQueue=properties.getProperty("msgQueue");
+
+
+        initMnsClient();
+
+        DeviceStatusNews deviceStatusNews=new DeviceStatusNews();
+        deviceStatusNews.setProductKey("testproduct");
+        deviceStatusNews.setDeviceKey("testdevice");
+        deviceStatusNews.setDeviceStatus("offline");
+        deviceStatusNews.setStatusReturnTime("time");
+        deviceStatusNews.setStatusLastcheckTime("lasttime");
+        deviceStatusNewsService.save(deviceStatusNews);
+
+
+
+        new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
-                    InitMNSClient initMNSClient=new InitMNSClient();
-                    initMNSClient.testMNSQueue();
+                    testMNSQueue();
                 }catch (Exception e){
                     e.printStackTrace();
                 }
             }
-        });
-
-        thread.start();
-
+        }).start();
 
     }
 

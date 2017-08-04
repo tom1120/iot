@@ -117,6 +117,7 @@
     <listener>
         <description>iot-mns</description>
         <listener-class>com.aliyun.iot.InitMNSClient</listener-class>
+
     </listener>
 
 
