@@ -15,6 +15,7 @@
         <class>org.jeecgframework.core.quartz.pojo.QrtzTriggers</class>
         <class>com.jeecg.entity.aliyuniot.Deviceinfo</class>
         <class>com.jeecg.entity.aliyuniot.DeviceStatusNews</class>
+        <class>com.jeecg.entity.aliyuniot.DeviceInitbindParams</class>
         <properties>
             <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/jeecg"/>
             <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>

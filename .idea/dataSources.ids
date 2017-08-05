@@ -7438,135 +7438,145 @@ lang_code</columns>
         <mandatory>1</mandatory>
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="2021" parent="145" name="device_type">
-        <comment>设备类型</comment>
+      <column id="2021" parent="145" name="auth_url">
+        <comment>阿里云端url</comment>
         <mandatory>1</mandatory>
-        <data-type>int(11)</data-type>
+        <data-type>varchar(100)</data-type>
       </column>
-      <column id="2022" parent="145" name="device_sn">
+      <column id="2022" parent="145" name="os_name_version">
+        <comment>设备操作系统</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="2023" parent="145" name="device_sn">
         <comment>设备序列号</comment>
         <mandatory>1</mandatory>
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="2023" parent="145" name="wifi_mac">
+      <column id="2024" parent="145" name="wifi_mac">
         <comment>wifimac地址</comment>
         <data-type>varchar(30)</data-type>
       </column>
-      <column id="2024" parent="145" name="product_key">
+      <column id="2025" parent="145" name="product_key">
         <comment>产品key</comment>
         <mandatory>1</mandatory>
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="2025" parent="145" name="device_key">
+      <column id="2026" parent="145" name="device_key">
         <comment>设备key</comment>
         <mandatory>1</mandatory>
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="2026" parent="145" name="note">
+      <column id="2027" parent="145" name="device_secret">
+        <comment>设备secret</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="2028" parent="145" name="note">
         <comment>备注</comment>
         <data-type>varchar(200)</data-type>
       </column>
-      <key id="2027" parent="145" name="PRIMARY">
+      <key id="2029" parent="145" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="2028" parent="146" name="id">
+      <column id="2030" parent="146" name="id">
         <comment>id</comment>
         <mandatory>1</mandatory>
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="2029" parent="146" name="product_key">
+      <column id="2031" parent="146" name="product_key">
         <comment>产品key</comment>
         <mandatory>1</mandatory>
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="2030" parent="146" name="device_key">
+      <column id="2032" parent="146" name="device_key">
         <comment>设备key</comment>
         <mandatory>1</mandatory>
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="2031" parent="146" name="device_status">
+      <column id="2033" parent="146" name="device_status">
         <comment>设备状态</comment>
         <mandatory>1</mandatory>
         <data-type>varchar(20)</data-type>
       </column>
-      <column id="2032" parent="146" name="status_return_time">
+      <column id="2034" parent="146" name="status_return_time">
         <comment>状态上报时间</comment>
         <mandatory>1</mandatory>
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="2033" parent="146" name="status_lastcheck_time">
+      <column id="2035" parent="146" name="status_lastcheck_time">
         <comment>状态最后检测时间</comment>
         <mandatory>1</mandatory>
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="2034" parent="146" name="note">
+      <column id="2036" parent="146" name="note">
         <comment>备注</comment>
         <data-type>varchar(200)</data-type>
       </column>
-      <key id="2035" parent="146" name="PRIMARY">
+      <key id="2037" parent="146" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="2036" parent="147" name="ID_">
+      <column id="2038" parent="147" name="ID_">
         <mandatory>1</mandatory>
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="2037" parent="147" name="REV_">
+      <column id="2039" parent="147" name="REV_">
         <mandatory>1</mandatory>
         <data-type>int(1)</data-type>
         <default-expression>&apos;0&apos;</default-expression>
       </column>
-      <column id="2038" parent="147" name="NAME_">
+      <column id="2040" parent="147" name="NAME_">
         <mandatory>1</mandatory>
         <data-type>varchar(100)</data-type>
       </column>
-      <column id="2039" parent="147" name="TYPE_">
+      <column id="2041" parent="147" name="TYPE_">
         <data-type>varchar(64)</data-type>
       </column>
-      <column id="2040" parent="148" name="USER_ID_">
+      <column id="2042" parent="148" name="USER_ID_">
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="2041" parent="148" name="GROUP_ID_">
+      <column id="2043" parent="148" name="GROUP_ID_">
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="2042" parent="149" name="ID_">
+      <column id="2044" parent="149" name="ID_">
         <mandatory>1</mandatory>
         <data-type>varchar(10)</data-type>
       </column>
-      <column id="2043" parent="149" name="REV_">
+      <column id="2045" parent="149" name="REV_">
         <mandatory>1</mandatory>
         <data-type>int(1)</data-type>
         <default-expression>&apos;0&apos;</default-expression>
       </column>
-      <column id="2044" parent="149" name="FIRST_">
+      <column id="2046" parent="149" name="FIRST_">
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="2045" parent="149" name="LAST_">
+      <column id="2047" parent="149" name="LAST_">
         <mandatory>1</mandatory>
         <data-type>char(0)</data-type>
         <default-expression>&apos;&apos;</default-expression>
       </column>
-      <column id="2046" parent="149" name="EMAIL_">
+      <column id="2048" parent="149" name="EMAIL_">
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="2047" parent="149" name="PWD_">
+      <column id="2049" parent="149" name="PWD_">
         <data-type>varchar(100)</data-type>
       </column>
-      <column id="2048" parent="149" name="PICTURE_ID">
+      <column id="2050" parent="149" name="PICTURE_ID">
         <mandatory>1</mandatory>
         <data-type>char(0)</data-type>
         <default-expression>&apos;&apos;</default-expression>
       </column>
-      <argument id="2049" parent="150" name="tableName">
+      <argument id="2051" parent="150" name="tableName">
         <direction>IN</direction>
         <data-type>varchar(50)</data-type>
       </argument>
-      <argument id="2050" parent="150" name="dbFields">
+      <argument id="2052" parent="150" name="dbFields">
         <direction>IN</direction>
         <data-type>varchar(500)</data-type>
       </argument>
-      <argument id="2051" parent="150" name="whereSql">
+      <argument id="2053" parent="150" name="whereSql">
         <direction>IN</direction>
         <data-type>varchar(1000)</data-type>
       </argument>

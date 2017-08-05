@@ -208,7 +208,9 @@
 						
 						<!-- 菜单样式图标预览 -->
 						<value>webpage/common/functionIconStyleList.jsp</value>
-						<!--apk发布路径-->
+
+						<!--先简单处理，等api接口管理做好后，接入api接口管理-->
+						<value>restful/DeviceInitBindParams/addOrUpdate</value>
 
 
 					</list>

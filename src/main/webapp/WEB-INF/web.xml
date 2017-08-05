@@ -226,6 +226,12 @@
         <servlet-name>restSpringMvc</servlet-name>
         <url-pattern>/rest/*</url-pattern>
     </servlet-mapping>
+    <!--不验证权限-->
+    <servlet-mapping>
+        <servlet-name>restSpringMvc</servlet-name>
+        <url-pattern>/restful/*</url-pattern>
+    </servlet-mapping>
+
     <!--增加一个activiti映射-->
     <servlet>
         <servlet-name>activitiSpringMvc</servlet-name>

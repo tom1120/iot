@@ -86,6 +86,8 @@ public class AuthInterceptor implements HandlerInterceptor {
 			client = ClientManager.getInstance().getClient(
 					request.getParameter("sessionId"));
 		}
+
+
 		if (excludeUrls.contains(requestPath)) {
 			//如果该请求不在拦截范围内，直接返回true
 			return true;

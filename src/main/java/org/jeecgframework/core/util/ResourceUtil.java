@@ -102,7 +102,15 @@ public class ResourceUtil {
 	 * @return
 	 */
 	public static String getRequestPath(HttpServletRequest request) {
-		String requestPath = request.getRequestURI() + "?" + request.getQueryString();
+		String queryString=request.getQueryString();
+		String requestPath =null;
+		//云平台修复请求url参数值为空，造成的null附加，导致部分url找不到问题
+		if(queryString!=null){
+			requestPath=request.getRequestURI() + "?" + queryString;
+		}else{
+			requestPath=request.getRequestURI();
+		}
+
 		if (requestPath.indexOf("&") > -1) {// 去掉其他参数
 			requestPath = requestPath.substring(0, requestPath.indexOf("&"));
 		}
