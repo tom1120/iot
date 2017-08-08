@@ -23,18 +23,15 @@ public class TestCxf {
     @Test
     public  void test(){
 
-//        JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
-//        StandardJavaFileManager fileManager = compiler.getStandardFileManager(null, null, null);
-
         //不依赖服务器端接口来完成调用的，也就是不仅仅能调用Java的接口
-        JaxWsDynamicClientFactory clientFactory = JaxWsDynamicClientFactory.newInstance();
-        Client client = clientFactory.createClient("http://localhost:8088/jeewx/cxf/HelloWorldService?wsdl");
-        Object[] result = new Object[0];
-        try {
-            result = client.invoke("say", "ggg");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        System.out.println(result[0]);
+//        JaxWsDynamicClientFactory clientFactory = JaxWsDynamicClientFactory.newInstance();
+//        Client client = clientFactory.createClient("http://localhost:8088/jeewx/cxf/HelloWorldService?wsdl");
+//        Object[] result = new Object[0];
+//        try {
+//            result = client.invoke("say", "ggg");
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        System.out.println(result[0]);
     }
 }

@@ -1095,7 +1095,7 @@
 
 
 
-		<dependency>
+		<!--<dependency>
 			<groupId>org.codehaus.xfire</groupId>
 			<artifactId>xfire-jaxb2</artifactId>
 			<version>1.1.1</version>
@@ -1104,10 +1104,14 @@
 					<groupId>org.springframework</groupId>
 					<artifactId>spring</artifactId>
 				</exclusion>
-				<!--此包与cxf包存在冲突 导致动态调用出现空指针-->
+				&lt;!&ndash;此包与cxf包存在冲突 导致动态调用出现空指针&ndash;&gt;
 				<exclusion>
 					<artifactId>jaxb-xjc</artifactId>
 					<groupId>com.sun.xml.bind</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>XmlSchema</artifactId>
+					<groupId>org.apache.ws.commons</groupId>
 				</exclusion>
 			</exclusions>
 		</dependency>
@@ -1132,7 +1136,7 @@
 					<artifactId>spring</artifactId>
 				</exclusion>
 			</exclusions>
-		</dependency>
+		</dependency>-->
 
 
 		<!--jeecg plugin -->

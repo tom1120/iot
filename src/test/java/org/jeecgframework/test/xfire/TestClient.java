@@ -15,7 +15,7 @@ import java.net.URL;
  * @date 2017-06-2017/6/14-14:31
  */
 public class TestClient {
-    @Test
+//    @Test
     public void helloWorld() {
         try {
             System.out.println("================================helloWorld()========================");
