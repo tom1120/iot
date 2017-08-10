@@ -3,8 +3,8 @@ package test.testCron;/**
  */
 
 import net.sf.json.JSONObject;
-import org.quartz.CronTrigger;
-import org.quartz.TriggerUtils;
+
+
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -20,8 +20,9 @@ public class CronTest {
 
     public static JSONObject getMoreTimesByCronExpression(String cronExpression,int times) throws ParseException {
         JSONObject jsonObject=new JSONObject();
-        CronTrigger cronTriggerImpl = new CronTrigger();
+/*        CronTrigger cronTriggerImpl = new CronTrigger();
         cronTriggerImpl.setCronExpression(cronExpression);//这里写要准备猜测的cron表达式
+
         Calendar calendar = Calendar.getInstance();
         Date now = calendar.getTime();
         calendar.add(Calendar.YEAR, 2);//把统计的区间段设置为从现在到2年后的今天（主要是为了方法通用考虑，如那些1个月跑一次的任务，如果时间段设置的较短就不足20条)
@@ -34,7 +35,7 @@ public class CronTest {
             }
 //            System.out.println(dateFormat.format(dates.get(i)));
             jsonObject.put(i,dateFormat.format(dates.get(i)));
-        }
+        }*/
 
         return jsonObject;
 
