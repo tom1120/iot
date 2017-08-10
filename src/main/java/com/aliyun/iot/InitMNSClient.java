@@ -212,13 +212,13 @@ public class InitMNSClient implements ServletContextListener {
 
         initMnsClient();
 
-        DeviceStatusNews deviceStatusNews=new DeviceStatusNews();
+/*        DeviceStatusNews deviceStatusNews=new DeviceStatusNews();
         deviceStatusNews.setProductKey("testproduct");
         deviceStatusNews.setDeviceKey("testdevice");
         deviceStatusNews.setDeviceStatus("offline");
         deviceStatusNews.setStatusReturnTime("time");
         deviceStatusNews.setStatusLastcheckTime("lasttime");
-        deviceStatusNewsService.save(deviceStatusNews);
+        deviceStatusNewsService.save(deviceStatusNews);*/
 
 
 
