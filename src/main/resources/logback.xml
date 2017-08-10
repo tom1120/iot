@@ -40,8 +40,8 @@
 		</rollingPolicy>
 	</appender>
 
-	<logger name="java.sql" level="DEBUG" />
-    <logger name="org.springframework" level="DEBUG" />
+	<logger name="java.sql" level="WARN" />
+    <logger name="org.springframework" level="WARN" />
     <logger name="org.apache.cxf.jaxb" level="ERROR" />
     
 	<root level="INFO">
