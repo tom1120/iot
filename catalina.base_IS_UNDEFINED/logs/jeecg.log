@@ -48,3 +48,92 @@
 2017-08-18 09:43:25.753 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED shutting down.
 2017-08-18 09:43:25.753 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED paused.
 2017-08-18 09:43:25.753 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED shutdown complete.
+2017-08-18 14:11:50.315 [main] WARN  RMICacheManagerPeerListener - Explicitly setting the listener hostname to 'localhost' is not recommended. It will only work if all CacheManager peers are on the same machine.
+2017-08-18 14:13:05.009 [main] WARN  RMICacheManagerPeerListener - Explicitly setting the listener hostname to 'localhost' is not recommended. It will only work if all CacheManager peers are on the same machine.
+2017-08-18 14:13:06.168 [main] INFO  Version - Hibernate Validator 4.2.0.Final
+2017-08-18 14:13:06.751 [main] INFO  StdSchedulerFactory - Using default implementation for ThreadExecutor
+2017-08-18 14:13:06.752 [main] INFO  SimpleThreadPool - Job execution threads will use class loader of thread: main
+2017-08-18 14:13:06.761 [main] INFO  SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2017-08-18 14:13:06.762 [main] INFO  QuartzScheduler - Quartz Scheduler v.2.2.3 created.
+2017-08-18 14:13:07.073 [main] INFO  QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.2.3) 'schedulerFactory' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.springframework.scheduling.quartz.LocalDataSourceJobStore' - which supports persistence. and is not clustered.
+
+2017-08-18 14:13:07.073 [main] INFO  StdSchedulerFactory - Quartz scheduler 'schedulerFactory' initialized from an externally provided properties instance.
+2017-08-18 14:13:07.074 [main] INFO  StdSchedulerFactory - Quartz scheduler version: 2.2.3
+2017-08-18 14:13:07.075 [main] INFO  QuartzScheduler - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@6d874695
+2017-08-18 14:13:07.256 [main] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED started.
+2017-08-18 14:13:07.264 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED paused.
+2017-08-18 14:13:07.272 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED shutting down.
+2017-08-18 14:13:07.272 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED paused.
+2017-08-18 14:13:07.272 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED shutdown complete.
+2017-08-18 14:27:40.726 [main] WARN  RMICacheManagerPeerListener - Explicitly setting the listener hostname to 'localhost' is not recommended. It will only work if all CacheManager peers are on the same machine.
+2017-08-18 14:27:41.896 [main] INFO  Version - Hibernate Validator 4.2.0.Final
+2017-08-18 14:27:42.576 [main] INFO  StdSchedulerFactory - Using default implementation for ThreadExecutor
+2017-08-18 14:27:42.577 [main] INFO  SimpleThreadPool - Job execution threads will use class loader of thread: main
+2017-08-18 14:27:42.588 [main] INFO  SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2017-08-18 14:27:42.588 [main] INFO  QuartzScheduler - Quartz Scheduler v.2.2.3 created.
+2017-08-18 14:27:42.895 [main] INFO  QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.2.3) 'schedulerFactory' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.springframework.scheduling.quartz.LocalDataSourceJobStore' - which supports persistence. and is not clustered.
+
+2017-08-18 14:27:42.895 [main] INFO  StdSchedulerFactory - Quartz scheduler 'schedulerFactory' initialized from an externally provided properties instance.
+2017-08-18 14:27:42.895 [main] INFO  StdSchedulerFactory - Quartz scheduler version: 2.2.3
+2017-08-18 14:27:42.897 [main] INFO  QuartzScheduler - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@6d874695
+2017-08-18 14:27:43.089 [main] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED started.
+2017-08-18 14:27:43.101 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED paused.
+2017-08-18 14:27:43.107 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED shutting down.
+2017-08-18 14:27:43.107 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED paused.
+2017-08-18 14:27:43.108 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED shutdown complete.
+2017-08-18 14:51:43.144 [main] WARN  RMICacheManagerPeerListener - Explicitly setting the listener hostname to 'localhost' is not recommended. It will only work if all CacheManager peers are on the same machine.
+2017-08-18 14:51:44.280 [main] INFO  Version - Hibernate Validator 4.2.0.Final
+2017-08-18 14:51:44.879 [main] INFO  StdSchedulerFactory - Using default implementation for ThreadExecutor
+2017-08-18 14:51:44.882 [main] INFO  SimpleThreadPool - Job execution threads will use class loader of thread: main
+2017-08-18 14:51:44.896 [main] INFO  SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2017-08-18 14:51:44.896 [main] INFO  QuartzScheduler - Quartz Scheduler v.2.2.3 created.
+2017-08-18 14:51:45.099 [main] INFO  QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.2.3) 'schedulerFactory' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.springframework.scheduling.quartz.LocalDataSourceJobStore' - which supports persistence. and is not clustered.
+
+2017-08-18 14:51:45.100 [main] INFO  StdSchedulerFactory - Quartz scheduler 'schedulerFactory' initialized from an externally provided properties instance.
+2017-08-18 14:51:45.100 [main] INFO  StdSchedulerFactory - Quartz scheduler version: 2.2.3
+2017-08-18 14:51:45.184 [main] INFO  QuartzScheduler - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@6d874695
+2017-08-18 14:51:45.374 [main] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED started.
+2017-08-18 14:51:45.386 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED paused.
+2017-08-18 14:51:45.391 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED shutting down.
+2017-08-18 14:51:45.391 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED paused.
+2017-08-18 14:51:45.392 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED shutdown complete.
+2017-08-18 15:00:25.847 [main] WARN  RMICacheManagerPeerListener - Explicitly setting the listener hostname to 'localhost' is not recommended. It will only work if all CacheManager peers are on the same machine.
+2017-08-18 15:00:27.027 [main] INFO  Version - Hibernate Validator 4.2.0.Final
+2017-08-18 15:00:27.709 [main] INFO  StdSchedulerFactory - Using default implementation for ThreadExecutor
+2017-08-18 15:00:27.711 [main] INFO  SimpleThreadPool - Job execution threads will use class loader of thread: main
+2017-08-18 15:00:27.720 [main] INFO  SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2017-08-18 15:00:27.721 [main] INFO  QuartzScheduler - Quartz Scheduler v.2.2.3 created.
+2017-08-18 15:00:27.973 [main] INFO  QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.2.3) 'schedulerFactory' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.springframework.scheduling.quartz.LocalDataSourceJobStore' - which supports persistence. and is not clustered.
+
+2017-08-18 15:00:27.974 [main] INFO  StdSchedulerFactory - Quartz scheduler 'schedulerFactory' initialized from an externally provided properties instance.
+2017-08-18 15:00:27.974 [main] INFO  StdSchedulerFactory - Quartz scheduler version: 2.2.3
+2017-08-18 15:00:27.975 [main] INFO  QuartzScheduler - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@6d874695
+2017-08-18 15:00:28.184 [main] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED started.
+2017-08-18 15:00:28.193 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED paused.
+2017-08-18 15:00:28.199 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED shutting down.
+2017-08-18 15:00:28.199 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED paused.
+2017-08-18 15:00:28.200 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED shutdown complete.

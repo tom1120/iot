@@ -42,6 +42,7 @@ public class DeviceInitbindParamsController extends BaseController{
         }
         AjaxJson json=new AjaxJson();
         json.setSuccess(false);
+        json.setMsg("云平台设备参数写入失败!");
         logger.error("接收到设备写入请求!");
         JSONObject jo=new JSONObject();
         jo=jo.fromObject(jsonString);
@@ -63,21 +64,31 @@ public class DeviceInitbindParamsController extends BaseController{
         deviceInitbindParams.setOsNameVersion(osNameVersion);
         try {
             //判断是否存在，如设备记录已经写过则更新相关记录，否则则创建新记录
-//            List<DeviceInitbindParams> deviceInitbindParamsList=deviceInitbindParamsService.findHql("from DeviceInitbindParams where productKey=? and deviceKey=?",new String[]{productKey,deviceName});
+            List<DeviceInitbindParams> deviceInitbindParamsList0=deviceInitbindParamsService.findHql("from DeviceInitbindParams where productKey=? and deviceKey=?",new String[]{productKey,deviceName});
 
             //改变为device_sn设备序号来判断设备是否写过，写过则更新
             List<DeviceInitbindParams> deviceInitbindParamsList=deviceInitbindParamsService.findHql("from DeviceInitbindParams where deviceSn=?",new String[]{deviceSN});
 
+            if(deviceInitbindParamsList0.size()==0){
+                if(deviceInitbindParamsList.size()==0){
+                    deviceInitbindParamsService.save(deviceInitbindParams);//新增
+                }else{
+                    deviceInitbindParamsService.deleteAllEntitie(deviceInitbindParamsList);//删除，然后新增
+                    deviceInitbindParamsService.save(deviceInitbindParams);
 
-            if(deviceInitbindParamsList.size()==0){
-                deviceInitbindParamsService.save(deviceInitbindParams);//新增
-            }else{
-                deviceInitbindParamsService.deleteAllEntitie(deviceInitbindParamsList);//删除，然后新增
-                deviceInitbindParamsService.save(deviceInitbindParams);
+                }
+                json.setSuccess(true);
+                json.setMsg("云平台设备参数写入成功！");
+            }else {
+                DeviceInitbindParams d=deviceInitbindParamsList0.get(0);
+                if(d.getDeviceSn().equals(deviceSN)){
+                    json.setMsg("此设备参数云平台已登记！");
+                }else {
+                    json.setMsg("此设备参数已经被"+d.getDeviceSn()+"设备初始化");
+                }
 
             }
 
-            json.setSuccess(true);
         }catch (Exception e){
             e.printStackTrace();
 
