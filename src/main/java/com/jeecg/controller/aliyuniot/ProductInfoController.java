@@ -15,6 +15,7 @@ import com.jeecg.entity.aliyuniot.Deviceinfo;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -40,6 +41,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.jeecgframework.core.beanvalidator.BeanValidators;
 import java.util.Set;
+import javax.transaction.Transactional;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
 import java.net.URI;
@@ -171,7 +173,7 @@ public class ProductInfoController extends BaseController {
 	public AjaxJson saveDeviceInfo(DeviceInfoList deviceInfoList,HttpServletRequest request){
 		AjaxJson ajaxJson=new AjaxJson();
 		ajaxJson.setSuccess(false);
-		String message="保存失败！阿里云接口批量添加设备api流程比较复杂及美元删除api，请到阿里云上去维护!";
+		String message="保存失败！阿里云接口批量添加设备api流程比较复杂及没有删除api，请到阿里云上去维护!";
 		List<Deviceinfo> deviceinfoList=deviceInfoList.getDeviceInfoList();
 
 /*		if(deviceinfoList.size()==0){
@@ -207,6 +209,7 @@ public class ProductInfoController extends BaseController {
 	 * @param request
      * @return
      */
+	@Transactional
 	@RequestMapping(params = "syncDeviceInfo")
 	@ResponseBody
 	public AjaxJson syncDeviceInfo(@RequestParam("productkey") String productkey,HttpServletRequest request){
@@ -217,7 +220,6 @@ public class ProductInfoController extends BaseController {
 		//查出数据库中的已存在所有设备信息并删除
 		List<Deviceinfo> deviceinfoListDataBase=productInfoService.findHql("from Deviceinfo where productKey=?",productkey);
 		productInfoService.deleteAllEntitie(deviceinfoListDataBase);
-
 		//查出对应产品的所有设备信息
 		QueryDeviceResponse queryDeviceResponse=productApi.queryDeviceInfoList(1,productkey,10);
 		List<QueryDeviceResponse.DeviceInfo> deviceInfos=queryDeviceResponse.getData();
@@ -245,6 +247,8 @@ public class ProductInfoController extends BaseController {
 			e.printStackTrace();
 
 		}
+
+
 
 		return ajaxJson;
 	}

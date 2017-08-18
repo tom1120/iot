@@ -88,7 +88,7 @@
           <element id="library" level="project" name="Maven: com.vaadin:vaadin:6.8.8" />
           <element id="library" level="project" name="Maven: com.h2database:h2:1.3.176" />
           <element id="library" level="project" name="Maven: org.imgscalr:imgscalr-lib:4.2" />
-          <element id="library" level="project" name="Maven: commons-io:commons-io:1.3.2" />
+          <element id="library" level="project" name="Maven: commons-io:commons-io:2.4" />
           <element id="library" level="project" name="Maven: org.codehaus.groovy:groovy-all:2.4.3" />
           <element id="library" level="project" name="Maven: org.vaadin.addons:dcharts-widget:0.10.0" />
           <element id="library" level="project" name="Maven: math.geom2d:javaGeom:0.11.1" />
@@ -228,6 +228,8 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-websocket:4.0.6.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-messaging:4.0.6.RELEASE" />
           <element id="library" level="project" name="Maven: javax.websocket:javax.websocket-api:1.1" />
+          <element id="library" level="project" name="Maven: com.google.zxing:core:3.2.0" />
+          <element id="library" level="project" name="Maven: com.google.zxing:javase:3.2.0" />
         </element>
       </element>
       <element id="directory" name="META-INF">

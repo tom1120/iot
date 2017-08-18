@@ -148,7 +148,9 @@ public class ProductApi {
         queryDeviceRequest.setPageSize(pageSize);
         QueryDeviceResponse response = null;
         try {
+            initSDK.initsdk();
             DefaultAcsClient client=initSDK.getClient();
+
             response = client.getAcsResponse(queryDeviceRequest);
         } catch (ClientException e) {
             e.printStackTrace();

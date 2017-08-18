@@ -63,7 +63,12 @@ public class DeviceInitbindParamsController extends BaseController{
         deviceInitbindParams.setOsNameVersion(osNameVersion);
         try {
             //判断是否存在，如设备记录已经写过则更新相关记录，否则则创建新记录
-            List<DeviceInitbindParams> deviceInitbindParamsList=deviceInitbindParamsService.findHql("from DeviceInitbindParams where productKey=? and deviceKey=?",new String[]{productKey,deviceName});
+//            List<DeviceInitbindParams> deviceInitbindParamsList=deviceInitbindParamsService.findHql("from DeviceInitbindParams where productKey=? and deviceKey=?",new String[]{productKey,deviceName});
+
+            //改变为device_sn设备序号来判断设备是否写过，写过则更新
+            List<DeviceInitbindParams> deviceInitbindParamsList=deviceInitbindParamsService.findHql("from DeviceInitbindParams where deviceSn=?",new String[]{deviceSN});
+
+
             if(deviceInitbindParamsList.size()==0){
                 deviceInitbindParamsService.save(deviceInitbindParams);//新增
             }else{

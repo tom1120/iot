@@ -36,7 +36,7 @@
    <%--<t:dgCol title="修改时间" field="gmtmodified"   width="120"></t:dgCol>--%>
    <%--<t:dgCol title="产品密钥" field="productsecret"   width="120"></t:dgCol>--%>
    <t:dgCol title="操作" field="opt" width="100"></t:dgCol>
-   <%--<t:dgDelOpt title="删除" url="productInfoController.do?del&id={id}" urlclass="ace_button"  urlfont="fa-trash-o"/>--%>
+   <t:dgDelOpt title="删除" url="productInfoController.do?del&id={id}" urlclass="ace_button"  urlfont="fa-trash-o"/>
       <t:dgFunOpt title="同步设备信息" funname="syncDeviceInfo(productkey)" urlclass="ace_button" urlfont="fa-save"></t:dgFunOpt>
    <t:dgToolBar title="录入" icon="icon-add" url="productInfoController.do?addorupdate" funname="add"></t:dgToolBar>
    <t:dgToolBar title="编辑" icon="icon-edit" url="productInfoController.do?addorupdate" funname="update"></t:dgToolBar>
