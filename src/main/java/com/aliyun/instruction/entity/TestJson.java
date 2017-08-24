@@ -22,15 +22,15 @@ public class TestJson {
         List<InstructionMsgBody> instructionMsgBodyList=new ArrayList<>();
         InstructionMsgBody instructionMsgBody0=new InstructionMsgBody();
         instructionMsgBody0.setInstructionType(InstructionType.CUSTOMER_DEFINE);
-        instructionMsgBody0.setInstructionSeparator(":");
+        instructionMsgBody0.setInstructionSeparator("#SEPARAL#");
         instructionMsgBody0.setInstructionContent("test0");
         InstructionMsgBody instructionMsgBody1=new InstructionMsgBody();
         instructionMsgBody1.setInstructionType(InstructionType.DIRECT_DEFINE);
-        instructionMsgBody1.setInstructionSeparator(":");
+        instructionMsgBody1.setInstructionSeparator("#SEPARAL#");
         instructionMsgBody1.setInstructionContent("test1");
         InstructionMsgBody instructionMsgBody2=new InstructionMsgBody();
         instructionMsgBody2.setInstructionType(InstructionType.APP_SERVICE);
-        instructionMsgBody2.setInstructionSeparator(":");
+        instructionMsgBody2.setInstructionSeparator("#SEPARAL#");
         instructionMsgBody2.setInstructionContent("test2");
 
         instructionMsgBodyList.add(instructionMsgBody0);
