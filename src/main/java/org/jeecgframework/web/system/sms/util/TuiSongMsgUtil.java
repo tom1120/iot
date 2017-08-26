@@ -31,8 +31,8 @@ import freemarker.template.TemplateException;
  * 
   * @ClassName: TuiSongMsgUtil 统一发送消息的公用方法
   * @Description: TODO
-  * @author Comsys-skyCc cmzcheng@gmail.com
-  * @date 2014-9-18 下午3:20:34
+  * @author modify by zhaoyi
+  * @date
   *
  */
 public class TuiSongMsgUtil {
@@ -74,8 +74,12 @@ public class TuiSongMsgUtil {
 				TSSmsTemplateEntity tsSmsTemplateEntity= getTSSmsServiceInstance().getEntity(TSSmsTemplateEntity.class, tsSmsTemplateSqlEntity.getTemplateId());
 				String templateContent=tsSmsTemplateEntity.getTemplateContent();//获取模板表的对应的模板内容
 				msgType=tsSmsTemplateEntity.getTemplateType();//获取模板表的模板类型
+
+
+
 				//执行查询出来的模板sql
 				Map<String, Object> rootMap  =  getRootMapBySql(templateSql,map);
+
 				StringReader strR= new StringReader(templateContent);
 				Template template = new Template("strTemplate", strR, new Configuration());
 				StringWriter stringWriter = new StringWriter();

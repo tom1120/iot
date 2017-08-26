@@ -313,55 +313,65 @@ public AjaxJson updateCronExpression(@RequestParam("cronExpression") String cron
 		j.setSuccess(false);
 		try {
 			String jobClassName=qrtzJobDetails.getJobClassName();
-
-			//编辑前任务触发器列表
-			String[] strings={qrtzJobDetails.getSchedName(),qrtzJobDetails.getJobName(),qrtzJobDetails.getJobGroup()};
-			List<QrtzTriggers> beforeQrtzTriggeres=qrtzJobDetailsService.findHql("from QrtzTriggers where schedName=? and jobName=? and jobGroup=?",strings);
-
 			//编辑后任务触发器列表
-			List<QrtzTriggers> qrtzTriggerses =  qrtzTriggersList.getCronTaskList();
+			List<QrtzTriggers> qrtzTriggerses=null;
+
+			if(id==null||id.equals("")){//新增操作
+				//编辑后任务触发器列表
+				qrtzTriggerses =  qrtzTriggersList.getCronTaskList();
 
 
-			String[] strings1=id.split("\\$");
-			String[] stringsbefore={strings1[0],strings1[1],strings1[2]};
-			//查出编辑前除当前job的所有触发器来比较，避免修改出现串到别的触发器上
-			List<QrtzTriggers> exceptSelfQrtzTriggeres=qrtzJobDetailsService.findHql("from QrtzTriggers where schedName!=? or jobName!=? or jobGroup!=?",stringsbefore);
+			}else{//更新操作
+
+				//编辑前任务触发器列表
+				String[] strings={qrtzJobDetails.getSchedName(),qrtzJobDetails.getJobName(),qrtzJobDetails.getJobGroup()};
+				List<QrtzTriggers> beforeQrtzTriggeres=qrtzJobDetailsService.findHql("from QrtzTriggers where schedName=? and jobName=? and jobGroup=?",strings);
+
+				//编辑后任务触发器列表
+				qrtzTriggerses =  qrtzTriggersList.getCronTaskList();
 
 
-			for(QrtzTriggers qrtzTriggers:qrtzTriggerses){
-				for(QrtzTriggers eqrtzTriggers:exceptSelfQrtzTriggeres){
-					if(qrtzTriggers.getSchedName().equals(eqrtzTriggers.getSchedName())
-							&&qrtzTriggers.getTriggerName().equals(eqrtzTriggers.getTriggerName())
-							&&qrtzTriggers.getTriggerGroup().equals(eqrtzTriggers.getTriggerGroup())){
-						j.setMsg("更新失败，触发器："+qrtzTriggers.getTriggerGroup()+"-"+qrtzTriggers.getTriggerName()+"已经在job："+
-								eqrtzTriggers.getJobGroup()+"-"+eqrtzTriggers.getJobName()+"中定义！");
-						j.setSuccess(false);
-						return j;
+				String[] strings1=id.split("\\$");
+				String[] stringsbefore={strings1[0],strings1[1],strings1[2]};
+				//查出编辑前除当前job的所有触发器来比较，避免修改出现串到别的触发器上
+				List<QrtzTriggers> exceptSelfQrtzTriggeres=qrtzJobDetailsService.findHql("from QrtzTriggers where schedName!=? or jobName!=? or jobGroup!=?",stringsbefore);
+
+
+				for(QrtzTriggers qrtzTriggers:qrtzTriggerses){
+					for(QrtzTriggers eqrtzTriggers:exceptSelfQrtzTriggeres){
+						if(qrtzTriggers.getSchedName().equals(eqrtzTriggers.getSchedName())
+								&&qrtzTriggers.getTriggerName().equals(eqrtzTriggers.getTriggerName())
+								&&qrtzTriggers.getTriggerGroup().equals(eqrtzTriggers.getTriggerGroup())){
+							j.setMsg("更新失败，触发器："+qrtzTriggers.getTriggerGroup()+"-"+qrtzTriggers.getTriggerName()+"已经在job："+
+									eqrtzTriggers.getJobGroup()+"-"+eqrtzTriggers.getJobName()+"中定义！");
+							j.setSuccess(false);
+							return j;
+						}
+
+
 					}
-
 
 				}
 
+				//删除原有的触发器列表
+				for(QrtzTriggers qrtzTriggers:beforeQrtzTriggeres) {
+					schedulerService.removeTrigger(qrtzTriggers.getTriggerName(), qrtzTriggers.getTriggerGroup());
+				}
+
+
+				//判断是否存在修改job主键相关行为，如存在则移除job
+				if(!stringsEquals(stringsbefore,strings)){
+					schedulerService.deleteJob(stringsbefore[1],stringsbefore[2]);
+				}
+
+
 			}
-
-			//删除原有的触发器列表
-			for(QrtzTriggers qrtzTriggers:beforeQrtzTriggeres) {
-				schedulerService.removeTrigger(qrtzTriggers.getTriggerName(), qrtzTriggers.getTriggerGroup());
-			}
-
-
 
 			JobDetail jobDetail=JobBuilder.newJob((Class<? extends Job>) Class.forName(jobClassName)).withIdentity(qrtzJobDetails.getSchedName())
 					.withIdentity(qrtzJobDetails.getJobName(),qrtzJobDetails.getJobGroup())
 					.withDescription(qrtzJobDetails.getDescription()).storeDurably().build();;
 			//必须要持久化，否则会报异常
 			jobDetail.isDurable();
-
-			//判断是否存在修改job主键相关行为，如存在则移除job
-			if(!stringsEquals(stringsbefore,strings)){
-				schedulerService.deleteJob(stringsbefore[1],stringsbefore[2]);
-			}
-
 
 			//添加job及关联触发器
 			for(QrtzTriggers qrtzTriggers:qrtzTriggerses){

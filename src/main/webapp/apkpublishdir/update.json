@@ -2,7 +2,7 @@
   "appname": "mqtt1.1",
   "serverVersion": 2,
   "serverFlag": "1",
-  "lastForce": 0,
+  "lastForce": 1,
   "updateurl": "http://iot.kito.cn/jeecg/apkpublishdir/mqtt.apk",
   "upgradeinfo": "V1.1版本更新"
 }
