@@ -12,6 +12,7 @@ import com.jeecg.entity.aliyuniot.DeviceStatusNews;
 import com.jeecg.entity.aliyuniot.IotConfig;
 import com.jeecg.service.aliyuniot.DeviceStatusNewsServiceI;
 import org.apache.commons.codec.binary.Base64;
+import org.apache.log4j.Logger;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.WebApplicationContext;
@@ -20,6 +21,7 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
+import java.util.Date;
 import java.util.Properties;
 
 /**
@@ -28,6 +30,7 @@ import java.util.Properties;
  * @date 2017-07-2017/7/18-15:48
  */
 public class InitMNSClient implements ServletContextListener {
+    private static final Logger log=Logger.getLogger(InitMNSClient.class);
     private MNSClient mnsClient=null;
     //Listener不能@Autowired直接注入服务，必须在类层面使用，否则变量共享不了
     private static DeviceStatusNewsServiceI deviceStatusNewsService;
@@ -48,6 +51,7 @@ public class InitMNSClient implements ServletContextListener {
     private static String accountVpcEndpoint;
 
     private static String msgQueue;
+
 
 
     private void initMnsClient(){
@@ -227,8 +231,17 @@ public class InitMNSClient implements ServletContextListener {
             public void run() {
                 try {
                     testMNSQueue();
+
                 }catch (Exception e){
+                    try {
+                        Thread.sleep(Long.valueOf(properties.getProperty("delayedTime")));
+                    } catch (InterruptedException e1) {
+                        e1.printStackTrace();
+                    }
+                    log.error(new Date(System.currentTimeMillis()));
                     e.printStackTrace();
+                    contextInitialized(sce);//出现异常重新初始化
+
                 }
             }
         }).start();
