@@ -176,6 +176,8 @@
     <!--</servlet-mapping>-->
 
 
+
+
     <!--spring分发servlet-->
     <servlet>
         <description>spring mvc servlet</description>
@@ -198,6 +200,17 @@
         <url-pattern>*.action</url-pattern>
     </servlet-mapping>
 
+
+    <!--udp-->
+    <servlet>
+        <servlet-name>udpServlet</servlet-name>
+        <servlet-class>com.jeecg.controller.wifiprobe.UdpServlet</servlet-class>
+        <load-on-startup>2</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>udpServlet</servlet-name>
+        <url-pattern>/udpudpudp</url-pattern>
+    </servlet-mapping>
 
      <!--集成cxf webservice接口-->
      <servlet>
@@ -230,6 +243,11 @@
     <servlet-mapping>
         <servlet-name>restSpringMvc</servlet-name>
         <url-pattern>/restful/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>restSpringMvc</servlet-name>
+        <url-pattern>/data/upload3</url-pattern>
     </servlet-mapping>
 
     <!--增加一个activiti映射-->

@@ -45,6 +45,8 @@
 	<!--调试hibernate-->
     <!--<logger name="org.springframework.orm.hibernate4.LocalSessionFactoryBean" level="DEBUG" />-->
     <logger name="org.apache.cxf.jaxb" level="ERROR" />
+
+	<logger name="com.jeecg.controller.wifiprobe.WifiprobeController" level="DEBUG"/>
     
 	<root level="INFO">
         <appender-ref ref="CONSOLE" />

@@ -1309,6 +1309,7 @@
 				<configuration>
 					<port>${webserver.port}</port>
 					<path>/${project.artifactId}</path>
+					<!--<path>/</path>-->
 
 					<url>http://121.201.125.154/manager/text</url> <!-- tomcat管理路径 -->
 					<server>Tomcat8</server> <!-- 与settings.xml文件中Server的id相同 -->

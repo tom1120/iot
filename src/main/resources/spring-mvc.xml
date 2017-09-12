@@ -211,6 +211,7 @@
 
 						<!--先简单处理，等api接口管理做好后，接入api接口管理-->
 						<value>restful/DeviceInitBindParams/addOrUpdate</value>
+						<value>data/upload3</value>
 
 
 					</list>

@@ -105,15 +105,16 @@ public class InitSDKTest {
         List<InstructionMsgBody> instructionMsgBodyList=new ArrayList<>();
         InstructionMsgBody instructionMsgBody0=new InstructionMsgBody();
 
-        instructionMsgBody0.setInstructionType(InstructionType.DIRECT_DEFINE);
+/*        instructionMsgBody0.setInstructionType(InstructionType.DIRECT_DEFINE);
         instructionMsgBody0.setInstructionSeparator("#SEPARAL#");
 //        instructionMsgBody0.setInstructionContent("am restart");//重启安卓系统
 //        instructionMsgBody0.setInstructionContent("am start -n com.android.browser/com.android.browser.BrowserActivity");//打开Android自带浏览器
-        instructionMsgBody0.setInstructionContent("am start -a android.intent.action.VIEW -d http://www.baidu.com");//打开Android自带浏览器并指定地址
+        instructionMsgBody0.setInstructionContent("am start -a android.intent.action.VIEW -d http://www.baidu.com");//打开Android自带浏览器并指定地址*/
 
-/*        instructionMsgBody0.setInstructionType(InstructionType.APP_SERVICE);
-        instructionMsgBody0.setInstructionContent("test");
-        instructionMsgBody0.setInstructionSeparator("#SEPARAL#");*/
+        //app云更新
+        instructionMsgBody0.setInstructionType(InstructionType.APP_SERVICE);
+        instructionMsgBody0.setInstructionContent("cloudUpdate");
+        instructionMsgBody0.setInstructionSeparator("#SEPARAL#");
 
 
 
