@@ -19,7 +19,7 @@ public class TestJson {
         Instruction instruction=new Instruction();
         instruction.setMsgType("iotControllerMsg");
 
-        List<InstructionMsgBody> instructionMsgBodyList=new ArrayList<>();
+        List<InstructionMsgBody> instructionMsgBodyList=new ArrayList<InstructionMsgBody>();
         InstructionMsgBody instructionMsgBody0=new InstructionMsgBody();
         instructionMsgBody0.setInstructionType(InstructionType.CUSTOMER_DEFINE);
         instructionMsgBody0.setInstructionSeparator("#SEPARAL#");

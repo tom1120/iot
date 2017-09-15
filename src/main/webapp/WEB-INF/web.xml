@@ -211,6 +211,17 @@
         <servlet-name>udpServlet</servlet-name>
         <url-pattern>/udpudpudp</url-pattern>
     </servlet-mapping>
+    <!--携程登录测试-->
+    <servlet>
+        <servlet-name>xieChengServlet</servlet-name>
+        <servlet-class>com.kito.sso.XieChengServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>xieChengServlet</servlet-name>
+        <url-pattern>/xiechengServlet/*</url-pattern>
+    </servlet-mapping>
+
+
 
      <!--集成cxf webservice接口-->
      <servlet>

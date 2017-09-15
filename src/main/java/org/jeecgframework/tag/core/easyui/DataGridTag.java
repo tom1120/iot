@@ -969,7 +969,15 @@ public class DataGridTag extends TagSupport {
 					}
 					String width = toolBar.getWidth().contains("%")?"'"+toolBar.getWidth()+"'":toolBar.getWidth();
 					String height = toolBar.getHeight().contains("%")?"'"+toolBar.getHeight()+"'":toolBar.getHeight();
-					sb.append("\'"+toolBar.getUrl()+"\',\'"+name+"\',"+width+","+height+")\"");
+					//如果主键字段为id
+					if(idField.equals("id")){
+						sb.append("\'"+toolBar.getUrl()+"\',\'"+name+"\',"+width+","+height+")\"");
+					}else{
+						sb.append("\'"+toolBar.getUrl()+"\',\'"+idField+"\',\'"+name+"\',"+width+","+height+")\"");
+					}
+
+
+
 				}
 				sb.append(">"+toolBar.getTitle()+"</a>");
 			}

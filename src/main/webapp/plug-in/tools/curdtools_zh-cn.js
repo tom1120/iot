@@ -87,6 +87,34 @@ function update(title,url, id,width,height,isRestful) {
 	createwindow(title,url,width,height);
 }
 
+
+/**
+ * 更新事件打开窗口
+ * @param title 编辑框标题
+ * @param addurl//目标页面地址
+ * @param 主键字段非id的函数
+ */
+function updateByIdField(title,url,idField,id,width,height,isRestful) {
+	gridname=id;
+	var rowsData = $('#'+id).datagrid('getSelections');
+	if (!rowsData || rowsData.length==0) {
+		tip('请选择编辑项目');
+		return;
+	}
+	if (rowsData.length>1) {
+		tip('请选择一条记录再编辑');
+		return;
+	}
+	if(isRestful!='undefined'&&isRestful){
+		url += '/'+rowsData[0][idField];
+	}else{
+		url += '&'+idField+'='+rowsData[0][idField];
+	}
+	createwindow(title,url,width,height);
+}
+
+
+
 /**
  * 如果页面是详细查看页面，无效化所有表单元素，只能进行查看
  */

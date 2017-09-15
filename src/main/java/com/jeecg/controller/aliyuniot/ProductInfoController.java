@@ -223,7 +223,7 @@ public class ProductInfoController extends BaseController {
 		//查出对应产品的所有设备信息
 		QueryDeviceResponse queryDeviceResponse=productApi.queryDeviceInfoList(1,productkey,10);
 		List<QueryDeviceResponse.DeviceInfo> deviceInfos=queryDeviceResponse.getData();
-		List<Deviceinfo> deviceinfoList=new ArrayList<>();
+		List<Deviceinfo> deviceinfoList=new ArrayList<Deviceinfo>();
 		for (int i=0;i<deviceInfos.size();i++
 			 ) {
 			String deviceId=deviceInfos.get(i).getDeviceId();

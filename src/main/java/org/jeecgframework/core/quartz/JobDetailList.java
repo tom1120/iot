@@ -13,7 +13,7 @@ import java.util.List;
  * @date 2017-06-2017/6/26-15:34
  */
 public class JobDetailList implements Serializable{
-    private List<JobDetail> detailList=new ArrayList<>();
+    private List<JobDetail> detailList=new ArrayList<JobDetail>();
 
     public List<JobDetail> getDetailList() {
         return detailList;

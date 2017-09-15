@@ -169,9 +169,11 @@
 //					});
 //					formobj.ajaxPost(false,false,"dynamicDataSourceController.do?testConnection");
 //				});
-				var olddata=$("#formobj").serializeArray();
+
+
 
 				$("#dbtest").click(function () {
+					var olddata=$("#formobj").serializeArray();
 					$.ajax({
 						type: "POST",
 						sync:false,

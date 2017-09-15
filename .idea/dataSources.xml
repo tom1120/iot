@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="2419160366">
+  <component name="DataSourceManagerImpl" format="xml" hash="4093117509">
     <data-source source="LOCAL" name="MySQL - jeecg@localhost" uuid="dcdc14e8-86d2-4ae4-914c-26c2f63c47cd">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
@@ -14,6 +14,12 @@
         <property name="characterSetResults" value="utf8" />
         <property name="yearIsDateType" value="false" />
       </driver-properties>
+    </data-source>
+    <data-source source="LOCAL" name="SQL Server (Microsoft) - ekito6@localhost" uuid="56dc0a52-5f1f-4e59-82f3-c056a142e57d">
+      <driver-ref>sqlserver.ms</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
+      <jdbc-url>jdbc:sqlserver://localhost:1433;databaseName=ekito6</jdbc-url>
     </data-source>
   </component>
 </project>

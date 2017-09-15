@@ -22,6 +22,11 @@
 			<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
 
+	<context:component-scan base-package="com.kito.k6.*">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
+
+
 	<!--加载iot组件-->
 	<context:component-scan base-package="com.aliyun.iot.*"></context:component-scan>
 
@@ -76,12 +81,64 @@
 		</property>
 	</bean>
 
+
+	<!-- 配置数据源2 -->
+<!--	<bean name="dataSource_k6" class="com.alibaba.druid.pool.DruidDataSource"
+		  init-method="init" destroy-method="close">
+		<property name="url" value="jdbc:jtds:sqlserver://192.168.100.18:1433;DatabaseName=ekito6" />
+		<property name="username" value="sa" />
+		<property name="password" value="42899975" />
+		&lt;!&ndash; 初始化连接大小 &ndash;&gt;
+		<property name="initialSize" value="0" />
+		&lt;!&ndash; 连接池最大使用连接数量 &ndash;&gt;
+		<property name="maxActive" value="20" />
+		&lt;!&ndash; 连接池最大空闲 &ndash;&gt;
+		<property name="maxIdle" value="20" />
+		&lt;!&ndash; 连接池最小空闲 &ndash;&gt;
+		<property name="minIdle" value="5" />
+		&lt;!&ndash; 获取连接最大等待时间 &ndash;&gt;
+		<property name="maxWait" value="60000" />
+		&lt;!&ndash;
+		<property name="poolPreparedStatements" value="true" />
+		<property name="maxPoolPreparedStatementPerConnectionSize" value="33" />
+		&ndash;&gt;
+		<property name="validationQuery" value="${validationQuery.sqlserver}" />
+		<property name="testOnBorrow" value="false" />
+		<property name="testOnReturn" value="false" />
+		<property name="testWhileIdle" value="true" />
+
+		&lt;!&ndash; 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 &ndash;&gt;
+		<property name="timeBetweenEvictionRunsMillis" value="60000" />
+		&lt;!&ndash; 配置一个连接在池中最小生存的时间，单位是毫秒 &ndash;&gt;
+		<property name="minEvictableIdleTimeMillis" value="25200000" />
+
+		&lt;!&ndash; 打开removeAbandoned功能 &ndash;&gt;
+		<property name="removeAbandoned" value="true" />
+		&lt;!&ndash; 1800秒，也就是30分钟 &ndash;&gt;
+		<property name="removeAbandonedTimeout" value="1800" />
+		&lt;!&ndash; 关闭abanded连接时输出错误日志 &ndash;&gt;
+		<property name="logAbandoned" value="true" />
+
+		&lt;!&ndash; 开启Druid的监控统计功能 &ndash;&gt;
+		<property name="filters" value="stat" />
+		&lt;!&ndash;<property name="filters" value="mergeStat" /> &ndash;&gt;
+		&lt;!&ndash; Oracle连接是获取字段注释 &ndash;&gt;
+		<property name="connectProperties">
+			<props>
+				<prop key="remarksReporting">true</prop>
+			</props>
+		</property>
+	</bean>-->
+
+
+
 	<!-- 数据源集合 -->
 	<bean id="dataSource"
 		class="org.jeecgframework.core.extend.datasource.DynamicDataSource">
 		<property name="targetDataSources">
 			<map key-type="org.jeecgframework.core.extend.datasource.DataSourceType">
 				<entry key="dataSource_jeecg" value-ref="dataSource_jeecg" />
+				<!--<entry key="dataSource_k6" value-ref="dataSource_k6" />-->
 				<!-- <entry key="mapdataSource" value-ref="mapdataSource" /> -->
 			</map>
 		</property>

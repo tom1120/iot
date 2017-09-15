@@ -102,7 +102,7 @@ public class InitSDKTest {
         Instruction instruction=new Instruction();
         instruction.setMsgType("iotControllerMsg");
 
-        List<InstructionMsgBody> instructionMsgBodyList=new ArrayList<>();
+        List<InstructionMsgBody> instructionMsgBodyList=new ArrayList<InstructionMsgBody>();
         InstructionMsgBody instructionMsgBody0=new InstructionMsgBody();
 
 /*        instructionMsgBody0.setInstructionType(InstructionType.DIRECT_DEFINE);

@@ -33,7 +33,7 @@ public class WifiprobeController extends BaseController {
 /*    private static List<Integer> rssiList = new ArrayList<>();
     private static List<Integer> rssiListA = new ArrayList<>();
     private static List<Integer> rssiListB = new ArrayList<>();*/
-    private static List<String> list = new ArrayList<>();
+    private static List<String> list = new ArrayList<String>();
     private static Map<String, List<Integer>> map = new HashedMap();
 
     private static int n = 3;//缓存数
@@ -49,7 +49,7 @@ public class WifiprobeController extends BaseController {
         list.add("7081eba5783d");//张梁
 
         for(int i=0;i<list.size();i++){
-            List<Integer> list1=new ArrayList<>();
+            List<Integer> list1=new ArrayList<Integer>();
             map.put(list.get(i),list1);
         }
     }

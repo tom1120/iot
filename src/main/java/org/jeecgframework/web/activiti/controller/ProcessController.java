@@ -64,7 +64,7 @@ public class ProcessController {
         String searchfield=request.getParameter("searchfield");
 
         HistoricProcessInstanceQuery query =historyService.createHistoricProcessInstanceQuery();
-        List<HistoricProcessInstance> list = new ArrayList<>();
+        List<HistoricProcessInstance> list = new ArrayList<HistoricProcessInstance>();
         String sql="";
 
         if(searchfield!=null&&!searchfield.equals("")){

@@ -13,7 +13,7 @@ import java.util.List;
  * @date 2017-07-2017/7/1-14:45
  */
 public class QrtzTriggersList implements Serializable{
-    private List<QrtzTriggers> cronTaskList=new ArrayList<>();
+    private List<QrtzTriggers> cronTaskList=new ArrayList<QrtzTriggers>();
 
     public List<QrtzTriggers> getCronTaskList() {
         return cronTaskList;
