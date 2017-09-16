@@ -2,11 +2,13 @@ package com.jeecg.controller.wifiprobe;/**
  * Created by zhaoyipc on 2017/9/7.
  */
 
+import com.kito.k6.service.WifiBindK6PersonService;
 import com.kito.xfire.OpenTheDoorClient;
 import org.apache.commons.collections.map.HashedMap;
 import org.jeecgframework.core.common.controller.BaseController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,6 +41,8 @@ public class WifiprobeController extends BaseController {
     private static int n = 3;//缓存数
 
 
+
+/*
     static {
 
         list.add("849fb537b0b1");//本人
@@ -53,11 +57,34 @@ public class WifiprobeController extends BaseController {
             map.put(list.get(i),list1);
         }
     }
+*/
+    @Autowired
+    WifiBindK6PersonService wifiBindK6PersonService;
+
+    public WifiprobeController() {
+
+    }
+
+    /**
+     * 初始化人员方法，只能初始化一次
+     */
+    public void initList(){
+        if(list.size()==0){
+            list=wifiBindK6PersonService.getWifiBindListPerson();
+        }
+        for(int i=0;i<list.size();i++){
+            List<Integer> list1=new ArrayList<Integer>();
+            map.put(list.get(i),list1);
+        }
+    }
 
 
     @RequestMapping(value = "data/upload3", method = RequestMethod.POST)
     @ResponseBody
     public String dataupload3(HttpServletRequest request) {
+        if(map.size()==0){
+            initList();
+        }
 
 //        DataInputStream in=null;
         int len = request.getContentLength();
@@ -209,7 +236,10 @@ public class WifiprobeController extends BaseController {
                                 for (String s : list) {
                                     if (mac.equals(s)) {
 
-                                        List<Integer> rssiList=map.get(mac);
+//                                        List<Integer> rssiList=map.get(mac);
+                                        List<Integer> rssiList=new ArrayList<Integer>();
+                                        rssiList=map.get(mac);
+
                                         rssiList.add(rssi);
                                         logger.debug("rssiList大小："+rssiList.size());
                                         if (rssiList.size() == n) {

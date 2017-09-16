@@ -21,6 +21,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -105,11 +106,11 @@ public class WifiBindK6PersonController extends BaseController{
 
 
         //分页查询
-        sql="select top "+(page)*rows+" staffid,staffcode,name,mobile_wifi_mac,mobile_wifi_mac_flag from hrstaffinfo except " +
-                " select top "+(page-1)*rows+" staffid,staffcode,name,mobile_wifi_mac,mobile_wifi_mac_flag from hrstaffinfo";
+        sql="select top "+(page)*rows+" staffid,staffcode,name,mobile_wifi_mac as mobileWifiMac,mobile_wifi_mac_flag as mobileWifiMacFlag from hrstaffinfo except " +
+                " select top "+(page-1)*rows+" staffid,staffcode,name,mobile_wifi_mac as mobileWifiMac,mobile_wifi_mac_flag as mobileWifiMacFlag from hrstaffinfo";
         if(!queryString.equals("")){
-            sql="select top "+(page)*rows+" staffid,staffcode,name,mobile_wifi_mac,mobile_wifi_mac_flag from hrstaffinfo "+"where "+queryString+"except " +
-                    " select top "+(page-1)*rows+" staffid,staffcode,name,mobile_wifi_mac,mobile_wifi_mac_flag from hrstaffinfo "+"where "+queryString;
+            sql="select top "+(page)*rows+" staffid,staffcode,name,mobile_wifi_mac as mobileWifiMac,mobile_wifi_mac_flag as mobileWifiMacFlag from hrstaffinfo "+"where "+queryString+"except " +
+                    " select top "+(page-1)*rows+" staffid,staffcode,name,mobile_wifi_mac as mobileWifiMac,mobile_wifi_mac_flag as mobileWifiMacFlag from hrstaffinfo "+"where "+queryString;
         }
         List<Map<String,Object>> list=DynamicDBUtil.findList("sqlserver",sql,null);
 /*        StringBuffer rows = new StringBuffer();
@@ -138,6 +139,7 @@ public class WifiBindK6PersonController extends BaseController{
             String sql="select staffid,staffcode,name,mobile_wifi_mac,mobile_wifi_mac_flag from hrstaffinfo where staffid="+hrStaffInfo.getStaffId();
             Map map= (Map) DynamicDBUtil.findOne("sqlserver",sql,null);
             hrStaffInfo.setStaffId((Integer) map.get("staffid"));
+            hrStaffInfo.setStaffCode((String) map.get("staffcode"));
             hrStaffInfo.setName((String) map.get("name"));
             hrStaffInfo.setMobileWifiMac((String) map.get("mobile_wifi_mac"));
             hrStaffInfo.setMobileWifiMacFlag((Integer) map.get("mobile_wifi_mac_flag"));
@@ -145,6 +147,37 @@ public class WifiBindK6PersonController extends BaseController{
         }
         return new ModelAndView("com/kito/k6/wifiBindK6Person");
     }
+
+    @RequestMapping(params = "save")
+    @ResponseBody
+    public AjaxJson save(HrStaffInfo hrStaffInfo,HttpServletRequest request){
+        AjaxJson ajaxJson=new AjaxJson();
+        ajaxJson.setSuccess(false);
+        ajaxJson.setMsg("保存失败!");
+        int staffId=hrStaffInfo.getStaffId();
+        try {
+            if(staffId!=0){
+                String sql="update hrstaffinfo set mobile_wifi_mac=?,mobile_wifi_mac_flag=? where staffid=?";
+                Object[] parames=new Object[]{hrStaffInfo.getMobileWifiMac(),hrStaffInfo.getMobileWifiMacFlag(),hrStaffInfo.getStaffId()};
+
+                int resultrows=DynamicDBUtil.update("sqlserver",sql,parames);
+                if(resultrows>0){
+                    ajaxJson.setSuccess(true);
+                    ajaxJson.setMsg("更新mac地址成功！");
+                }
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+            logger.error("保存失败！"+e.getMessage());
+            ajaxJson.setMsg(e.getMessage());
+        }
+
+        return ajaxJson;
+
+
+    }
+
 
 
 

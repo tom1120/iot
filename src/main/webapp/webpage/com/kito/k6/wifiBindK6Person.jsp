@@ -8,7 +8,7 @@
 </head>
 <body style="overflow-y: hidden" scroll="no">
 <t:formvalid formid="formobj" dialog="true" usePlugin="password" layout="table" action="wifiBindK6PersonController.do?save">
-    <input id="staffId" name="staffId" type="hidden" value="${hrstaffinfo.staffId }">
+    <input id="staffId" name="staffId" type="hidden" value="${hrStaffInfo.staffId }">
     <table style="width: 600px;" cellpadding="0" cellspacing="1" class="formtable">
         <tr>
             <td align="right">
@@ -17,8 +17,8 @@
                 </label>
             </td>
             <td class="value">
-                <input class="inputxt" id="staffcode" name="staffcode" ignore="ignore"
-                       value="${hrstaffinfo.staffcode}">
+                <input class="inputxt" id="staffCode" name="staffCode" ignore="ignore" readonly="readonly"
+                       value="${hrStaffInfo.staffCode}">
                 <span class="Validform_checktip"></span>
             </td>
         </tr>
@@ -29,8 +29,8 @@
                 </label>
             </td>
             <td class="value">
-                <input class="inputxt" id="name" name="name" ignore="ignore"
-                       value="${hrstaffinfo.name}">
+                <input class="inputxt" id="name" name="name" ignore="ignore" readonly="readonly"
+                       value="${hrStaffInfo.name}">
                 <span class="Validform_checktip"></span>
             </td>
         </tr>
@@ -42,7 +42,7 @@
             </td>
             <td class="value">
                 <input class="inputxt" id="mobileWifiMac" name="mobileWifiMac" ignore="ignore"
-                       value="${hrstaffinfo.mobileWifiMac}">
+                       value="${hrStaffInfo.mobileWifiMac}">
                 <span class="Validform_checktip"></span>
             </td>
         </tr>
@@ -54,7 +54,7 @@
             </td>
             <td class="value">
                 <input class="inputxt" id="mobileWifiMacFlag" name="mobileWifiMacFlag" ignore="ignore"
-                       value="${hrstaffinfo.mobileWifiMacFlag}">
+                       value="${hrStaffInfo.mobileWifiMacFlag}">
                 <span class="Validform_checktip"></span>
             </td>
         </tr>

@@ -1,2 +1,39 @@
-2017-09-11 08:52:12.488 [main] INFO  DynamicClientFactory - Created classes: org.codehaus.xfire.finereportsendservice.ExecuteChannelRealtimeStoreAgeSend, org.codehaus.xfire.finereportsendservice.ExecuteChannelRealtimeStoreAgeSendResponse, org.codehaus.xfire.finereportsendservice.ExecuteFactoryProductInSend, org.codehaus.xfire.finereportsendservice.ExecuteFactoryProductInSendResponse, org.codehaus.xfire.finereportsendservice.ExecuteFineReport8, org.codehaus.xfire.finereportsendservice.ExecuteFineReport8Response, org.codehaus.xfire.finereportsendservice.ExecuteForeignTradeLightSend, org.codehaus.xfire.finereportsendservice.ExecuteForeignTradeLightSendResponse, org.codehaus.xfire.finereportsendservice.ExecuteNewProductSend, org.codehaus.xfire.finereportsendservice.ExecuteNewProductSendResponse, org.codehaus.xfire.finereportsendservice.ExecuteProductRealtimeStoreSend, org.codehaus.xfire.finereportsendservice.ExecuteProductRealtimeStoreSendResponse, org.codehaus.xfire.finereportsendservice.ExecuteSaleImgSend, org.codehaus.xfire.finereportsendservice.ExecuteSaleImgSendResponse, org.codehaus.xfire.finereportsendservice.ObjectFactory
-2017-09-11 08:54:01.849 [main] INFO  DynamicClientFactory - Created classes: org.codehaus.xfire.openthedoorservice.ObjectFactory, org.codehaus.xfire.openthedoorservice.OpenTheDoor, org.codehaus.xfire.openthedoorservice.OpenTheDoorResponse
+2017-09-16 07:55:47.022 [main] WARN  RMICacheManagerPeerListener - Explicitly setting the listener hostname to 'localhost' is not recommended. It will only work if all CacheManager peers are on the same machine.
+2017-09-16 07:55:48.185 [main] INFO  Version - Hibernate Validator 4.2.0.Final
+2017-09-16 07:55:48.802 [main] INFO  StdSchedulerFactory - Using default implementation for ThreadExecutor
+2017-09-16 07:55:48.804 [main] INFO  SimpleThreadPool - Job execution threads will use class loader of thread: main
+2017-09-16 07:55:48.815 [main] INFO  SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2017-09-16 07:55:48.815 [main] INFO  QuartzScheduler - Quartz Scheduler v.2.2.3 created.
+2017-09-16 07:55:49.211 [main] INFO  QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.2.3) 'schedulerFactory' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.springframework.scheduling.quartz.LocalDataSourceJobStore' - which supports persistence. and is not clustered.
+
+2017-09-16 07:55:49.211 [main] INFO  StdSchedulerFactory - Quartz scheduler 'schedulerFactory' initialized from an externally provided properties instance.
+2017-09-16 07:55:49.211 [main] INFO  StdSchedulerFactory - Quartz scheduler version: 2.2.3
+2017-09-16 07:55:49.212 [main] INFO  QuartzScheduler - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@49491770
+2017-09-16 07:56:07.778 [main] WARN  RMICacheManagerPeerListener - Explicitly setting the listener hostname to 'localhost' is not recommended. It will only work if all CacheManager peers are on the same machine.
+2017-09-16 07:56:08.983 [main] INFO  Version - Hibernate Validator 4.2.0.Final
+2017-09-16 07:56:09.593 [main] INFO  StdSchedulerFactory - Using default implementation for ThreadExecutor
+2017-09-16 07:56:09.594 [main] INFO  SimpleThreadPool - Job execution threads will use class loader of thread: main
+2017-09-16 07:56:09.607 [main] INFO  SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2017-09-16 07:56:09.607 [main] INFO  QuartzScheduler - Quartz Scheduler v.2.2.3 created.
+2017-09-16 07:56:09.944 [main] INFO  QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.2.3) 'schedulerFactory' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.springframework.scheduling.quartz.LocalDataSourceJobStore' - which supports persistence. and is not clustered.
+
+2017-09-16 07:56:09.944 [main] INFO  StdSchedulerFactory - Quartz scheduler 'schedulerFactory' initialized from an externally provided properties instance.
+2017-09-16 07:56:09.944 [main] INFO  StdSchedulerFactory - Quartz scheduler version: 2.2.3
+2017-09-16 07:56:09.946 [main] INFO  QuartzScheduler - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@49491770
+2017-09-16 07:56:10.362 [main] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED started.
+2017-09-16 07:56:10.369 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED paused.
+2017-09-16 07:56:10.378 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED shutting down.
+2017-09-16 07:56:10.379 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED paused.
+2017-09-16 07:56:10.379 [Thread-3] INFO  QuartzScheduler - Scheduler schedulerFactory_$_NON_CLUSTERED shutdown complete.

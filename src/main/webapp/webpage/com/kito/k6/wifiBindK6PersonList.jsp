@@ -12,7 +12,7 @@
 <t:datagrid name="wifiBindList" title="mac地址绑定" actionUrl="wifiBindK6PersonController.do?datagrid" idField="staffId" queryMode="group">
     <t:dgCol title="id" field="id" hidden="true"></t:dgCol>
     <t:dgCol title="staffid" field="staffId" hidden="true"></t:dgCol>
-    <t:dgCol title="员工编码" field="staffcode" width="20" query="true"></t:dgCol>
+    <t:dgCol title="员工编码" field="staffCode" width="20" query="true"></t:dgCol>
     <t:dgCol title="员工名称" field="name" query="true"></t:dgCol>
     <t:dgCol title="手机mac地址" field="mobileWifiMac" query="true"></t:dgCol>
     <t:dgCol title="绑定标志" field="mobileWifiMacFlag" query="true"></t:dgCol>
