@@ -38,7 +38,9 @@ public class WifiprobeController extends BaseController {
     private static List<String> list = new ArrayList<String>();
     private static Map<String, List<Integer>> map = new HashedMap();
 
-    private static int n = 3;//缓存数
+    private static int n = 2;//缓存数
+
+    private static int rssidefine=60;//强度值
 
 
 
@@ -156,6 +158,7 @@ public class WifiprobeController extends BaseController {
         }
         if (probeature || probebture) {
             //处理上报探测到的mac地址信息
+            logger.debug("data:"+data);
             dataConvert(data);
             return "ok";
         }
@@ -191,7 +194,7 @@ public class WifiprobeController extends BaseController {
         Set<Map.Entry<String, String>> set = map.entrySet();
         logger.debug("------------------------------");
         for (Map.Entry entry : set) {
-            System.out.println(entry.getKey() + ":" + entry.getValue());
+//            System.out.println(entry.getKey() + ":" + entry.getValue());
         }
         logger.debug("------------------------------");
         return map;
@@ -223,22 +226,26 @@ public class WifiprobeController extends BaseController {
                 for (int i = 0; i < datasplits.length; i++) {
                     if (datasplits[i].length() > 12) {
                         String mac = datasplits[i].substring(0, 12);
-                        logger.debug("mac = " + mac);
+//                        logger.debug("mac = " + mac);
                         byte[] datasplitbytes = datasplits[i].getBytes();
 
                         for (int j = 12; j < datasplitbytes.length; j++) {
                             int rssi = datasplitbytes[j];
                             if (rssi > 9 && rssi < 100) {
                                 //自己处理数据
-                                logger.debug("rssi = " + rssi);
+//                                logger.debug("mac = " + mac);
+//                                logger.debug("rssi = " + rssi);
 
 
                                 for (String s : list) {
-                                    if (mac.equals(s)) {
-
+                                    String[] strings=s.split("\\$");
+                                    if (mac.equals(strings[0])) {
+                                        logger.debug("当前人员："+s);
+                                        logger.debug("mac = " + mac);
+                                        logger.debug("rssi = " + rssi);
 //                                        List<Integer> rssiList=map.get(mac);
                                         List<Integer> rssiList=new ArrayList<Integer>();
-                                        rssiList=map.get(mac);
+                                        rssiList=map.get(s);
 
                                         rssiList.add(rssi);
                                         logger.debug("rssiList大小："+rssiList.size());
@@ -251,12 +258,12 @@ public class WifiprobeController extends BaseController {
                                             }
                                             int rssiAvg = rssiSum / n;
                                             logger.debug("rssiAvg = " + rssiAvg);
-                                            if (rssiAvg < 65) {
+                                            if (rssiAvg < rssidefine) {
                                                 synchronized (this) {
                                                     boolean b = OpenTheDoorClient.openTheDoor("192.168.111.2", 1);
 
                                                     if (b) {
-                                                        logger.debug("门禁已经打开!");
+                                                        logger.debug(strings[1]+"门禁已经打开!");
                                                     }
                                                 }
                                             }

@@ -23,7 +23,10 @@ public class WifiBindK6PersonServiceImpl extends CommonServiceImpl implements Wi
         List<String> list=new ArrayList<String>();
 //        String sql="select staffid,staffcode,name,mobile_wifi_mac as mobileWifiMac,mobile_wifi_mac_flag as mobileWifiMacFlag from hrstaffinfo " +
 //                " where mobile_wifi_mac_flag=1 and mobile_wifi_mac is not null";
-        String sql="select mobile_wifi_mac as mobileWifiMac from hrstaffinfo " +
+//        String sql="select mobile_wifi_mac as mobileWifiMac from hrstaffinfo " +
+//                " where mobile_wifi_mac_flag=1 and mobile_wifi_mac is not null";
+
+        String sql="select mobile_wifi_mac+'$'+name as mobileWifiMac from hrstaffinfo " +
                 " where mobile_wifi_mac_flag=1 and mobile_wifi_mac is not null";
         List<Map<String,Object>> list1=DynamicDBUtil.findList("sqlserver",sql,null);
 

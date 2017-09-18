@@ -19,7 +19,8 @@ public class OpenTheDoorClient {
 //            Client client = new Client(url);
             JaxWsDynamicClientFactory clientFactory = JaxWsDynamicClientFactory.newInstance();
 //            Client client=clientFactory.createClient("http://k6.kito.cn/services/FineReportSendService?wsdl");
-            Client client=clientFactory.createClient("http://iot.kito.cn:8080/kito/services/OpenTheDoorService?wsdl");
+//            Client client=clientFactory.createClient("http://iot.kito.cn:8080/kito/services/OpenTheDoorService?wsdl");
+            Client client=clientFactory.createClient("http://k6.kito.cn/services/OpenTheDoorService?wsdl");
 
             Object[] results = new Object[1];
             results = client.invoke("openTheDoor",new Object[]{ip,port});
