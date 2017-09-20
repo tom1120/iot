@@ -24,7 +24,7 @@ layui.use('layim', function(layim){
     //     var socket = new WebSocket("ws://echo.websocket.org");
 
 //      //建立WebSocket通讯
-    var socket = new WebSocket("ws://"+chatIp+":8080/jeecg/WebSocket/"+id);
+    var socket = new WebSocket("ws://"+chatIp+":80/jeecg/WebSocket/"+id);
 
 
     //基础配置

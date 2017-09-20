@@ -2,6 +2,8 @@ package com.jeecg.controller.wifiprobe;/**
  * Created by zhaoyipc on 2017/9/7.
  */
 
+import com.jeecg.entity.wifiprobe.WifiprobeUploadInfoEntity;
+import com.jeecg.service.wifiprobe.WifiprobeUploadInfoServiceI;
 import com.kito.k6.service.WifiBindK6PersonService;
 import com.kito.xfire.OpenTheDoorClient;
 import org.apache.commons.collections.map.HashedMap;
@@ -62,6 +64,9 @@ public class WifiprobeController extends BaseController {
 */
     @Autowired
     WifiBindK6PersonService wifiBindK6PersonService;
+
+    @Autowired
+    WifiprobeUploadInfoServiceI wifiprobeUploadInfoService;
 
     public WifiprobeController() {
 
@@ -159,7 +164,7 @@ public class WifiprobeController extends BaseController {
         if (probeature || probebture) {
             //处理上报探测到的mac地址信息
             logger.debug("data:"+data);
-            dataConvert(data);
+            dataConvert(data,sta);
             return "ok";
         }
         if (type.equals("tag")) {
@@ -215,7 +220,7 @@ public class WifiprobeController extends BaseController {
     }
 
 
-    public void dataConvert(String data) {
+    public void dataConvert(String data,String sta) {
         String delimiter = "\1";
         int startp = data.indexOf(delimiter);
         if (startp != -1) {
@@ -235,6 +240,27 @@ public class WifiprobeController extends BaseController {
                                 //自己处理数据
 //                                logger.debug("mac = " + mac);
 //                                logger.debug("rssi = " + rssi);
+                                Runnable runnable=new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        long timelong = System.currentTimeMillis();
+                                        Date d = new Date(timelong);
+                                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss SSS");
+                                        String dstring = sdf.format(d);
+
+                                        WifiprobeUploadInfoEntity wifiprobeUploadInfoEntity=new WifiprobeUploadInfoEntity();
+                                        wifiprobeUploadInfoEntity.setProbeInfo(sta);
+                                        wifiprobeUploadInfoEntity.setMac(mac);
+                                        wifiprobeUploadInfoEntity.setRssi(rssi);
+                                        wifiprobeUploadInfoEntity.setUploadTime(dstring);
+                                        wifiprobeUploadInfoEntity.setNote("测试");
+                                        wifiprobeUploadInfoService.save(wifiprobeUploadInfoEntity);
+                                    }
+                                };
+
+                                new Thread(runnable).start();
+
+
 
 
                                 for (String s : list) {
