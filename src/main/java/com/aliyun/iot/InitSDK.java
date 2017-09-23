@@ -2,6 +2,9 @@ package com.aliyun.iot;/**
  * Created by zhaoyipc on 2017/7/13.
  */
 
+import com.aliyun.instruction.entity.Instruction;
+import com.aliyun.instruction.entity.InstructionMsgBody;
+import com.aliyun.instruction.entity.InstructionType;
 import com.aliyuncs.DefaultAcsClient;
 import com.aliyuncs.exceptions.ClientException;
 import com.aliyuncs.iot.model.v20170620.PubRequest;
@@ -10,11 +13,15 @@ import com.aliyuncs.iot.model.v20170620.QueryDeviceRequest;
 import com.aliyuncs.iot.model.v20170620.QueryDeviceResponse;
 import com.aliyuncs.profile.DefaultProfile;
 import com.aliyuncs.profile.IClientProfile;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jeecg.entity.aliyuniot.IotConfig;
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 /**
@@ -81,6 +88,59 @@ public class InitSDK {
     }
 
 
+
+
+    //发布控制消息到topic测试
+
+    /**
+     *
+     * @param productKey
+     * @param topicFullName
+     * @param instruction
+     * @throws JsonProcessingException
+     */
+    public void pubControllerMessageToTopic(String productKey,String topicFullName,Instruction instruction) throws JsonProcessingException {
+        PubRequest request = new PubRequest();
+        request.setProductKey(productKey);
+
+/*        Instruction instruction=new Instruction();
+        instruction.setMsgType("iotControllerMsg");
+
+        List<InstructionMsgBody> instructionMsgBodyList=new ArrayList<InstructionMsgBody>();
+        InstructionMsgBody instructionMsgBody0=new InstructionMsgBody();
+
+        instructionMsgBody0.setInstructionType(InstructionType.DIRECT_DEFINE);
+        instructionMsgBody0.setInstructionSeparator("#SEPARAL#");
+//        instructionMsgBody0.setInstructionContent("am restart");//重启安卓系统
+//        instructionMsgBody0.setInstructionContent("am start -n com.android.browser/com.android.browser.BrowserActivity");//打开Android自带浏览器
+        instructionMsgBody0.setInstructionContent("am start -a android.intent.action.VIEW -d http://www.baidu.com");//打开Android自带浏览器并指定地址
+
+        //app云更新
+//        instructionMsgBody0.setInstructionType(InstructionType.APP_SERVICE);
+//        instructionMsgBody0.setInstructionContent("cloudUpdate");
+//        instructionMsgBody0.setInstructionSeparator("#SEPARAL#");
+
+
+
+        instructionMsgBodyList.add(instructionMsgBody0);
+
+        instruction.setMsgBody(instructionMsgBodyList);*/
+
+        ObjectMapper objectMapper= new ObjectMapper();;
+        String jsonObject = objectMapper.writeValueAsString(instruction);
+
+        request.setMessageContent(Base64.encodeBase64String(jsonObject.getBytes()));
+        request.setTopicFullName(topicFullName);
+        request.setQos(0); //目前支持QoS0和QoS1
+        PubResponse response = null;
+        try {
+            response = client.getAcsResponse(request);
+        } catch (ClientException e) {
+            e.printStackTrace();
+        }
+        System.out.println(response.getSuccess());
+        System.out.println(response.getErrorMessage());
+    }
 
 
 

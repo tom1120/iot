@@ -2,10 +2,19 @@ package com.jeecg.controller.wifiprobe;/**
  * Created by zhaoyipc on 2017/9/7.
  */
 
+import com.aliyun.instruction.entity.Instruction;
+import com.aliyun.instruction.entity.InstructionMsgBody;
+import com.aliyun.instruction.entity.InstructionType;
+import com.aliyun.iot.InitSDK;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.jeecg.entity.wifiprobe.WifiprobeSysParamEntity;
 import com.jeecg.entity.wifiprobe.WifiprobeUploadInfoEntity;
+import com.jeecg.service.wifiprobe.WifiprobeSysParamServiceI;
 import com.jeecg.service.wifiprobe.WifiprobeUploadInfoServiceI;
 import com.kito.k6.service.WifiBindK6PersonService;
+import com.kito.util.dwr.ServerPushMessage;
 import com.kito.xfire.OpenTheDoorClient;
+import net.sf.json.JSONObject;
 import org.apache.commons.collections.map.HashedMap;
 import org.jeecgframework.core.common.controller.BaseController;
 import org.slf4j.Logger;
@@ -32,64 +41,119 @@ import java.util.*;
 @Controller
 @RequestMapping("/")
 public class WifiprobeController extends BaseController {
-    private static final Logger logger= LoggerFactory.getLogger(WifiprobeController.class);
+    private static final Logger logger = LoggerFactory.getLogger(WifiprobeController.class);
 
-/*    private static List<Integer> rssiList = new ArrayList<>();
-    private static List<Integer> rssiListA = new ArrayList<>();
-    private static List<Integer> rssiListB = new ArrayList<>();*/
+    /*    private static List<Integer> rssiList = new ArrayList<>();
+        private static List<Integer> rssiListA = new ArrayList<>();
+        private static List<Integer> rssiListB = new ArrayList<>();*/
     private static List<String> list = new ArrayList<String>();
     private static Map<String, List<Integer>> map = new HashedMap();
 
     private static int n = 2;//缓存数
 
-    private static int rssidefine=60;//强度值
+    private static int rssidefine = 57;//强度值
+
+    private static long afterOpenClientDelayTime=8000;//打开客户端后延时
+
+    private static long beforeCloseClientDelayTime=30000;//关闭客户端前延时
 
 
 
-/*
-    static {
 
-        list.add("849fb537b0b1");//本人
-        list.add("24240ec122cc");//龙总
-        list.add("f4cb523eeab3");//阿其
-        list.add("8c0d76dec53a");//阿飞
-        list.add("64b0a6252c7f");//阿安
-        list.add("7081eba5783d");//张梁
 
-        for(int i=0;i<list.size();i++){
-            List<Integer> list1=new ArrayList<Integer>();
-            map.put(list.get(i),list1);
+    /*
+        static {
+
+            list.add("849fb537b0b1");//本人
+            list.add("24240ec122cc");//龙总
+            list.add("f4cb523eeab3");//阿其
+            list.add("8c0d76dec53a");//阿飞
+            list.add("64b0a6252c7f");//阿安
+            list.add("7081eba5783d");//张梁
+
+            for(int i=0;i<list.size();i++){
+                List<Integer> list1=new ArrayList<Integer>();
+                map.put(list.get(i),list1);
+            }
         }
-    }
-*/
+    */
     @Autowired
     WifiBindK6PersonService wifiBindK6PersonService;
 
     @Autowired
     WifiprobeUploadInfoServiceI wifiprobeUploadInfoService;
 
+    @Autowired
+    InitSDK initSDK;
+
+    @Autowired
+    WifiprobeSysParamServiceI wifiprobeSysParamService;
+
     public WifiprobeController() {
 
     }
 
+
     /**
      * 初始化人员方法，只能初始化一次
+     *
      */
-    public void initList(){
-        if(list.size()==0){
-            list=wifiBindK6PersonService.getWifiBindListPerson();
+    private void initList() {
+
+        List<WifiprobeSysParamEntity> wifiprobeSysParamEntities=wifiprobeSysParamService.findByQueryString("from WifiprobeSysParamEntity where isDefault=1");
+
+        if(wifiprobeSysParamEntities.size()>0){
+            WifiprobeSysParamEntity wifiprobeSysParamEntity=wifiprobeSysParamEntities.get(0);
+            this.rssidefine=wifiprobeSysParamEntity.getRssi();
+            this.n=wifiprobeSysParamEntity.getCacheNumber();
+            this.afterOpenClientDelayTime=wifiprobeSysParamEntity.getAfterOpenClientDelayTime();
+            this.beforeCloseClientDelayTime=wifiprobeSysParamEntity.getBeforeCloseClientDelayTime();
         }
-        for(int i=0;i<list.size();i++){
-            List<Integer> list1=new ArrayList<Integer>();
-            map.put(list.get(i),list1);
+
+
+        if (list.size() == 0) {
+            list = wifiBindK6PersonService.getWifiBindListPerson();
+        }
+        for (int i = 0; i < list.size(); i++) {
+            List<Integer> list1 = new ArrayList<Integer>();
+            map.put(list.get(i), list1);
         }
     }
+
+
+    /**
+     * 刷新缓存方法
+     *
+     */
+    private void initList(WifiprobeSysParamEntity wifiprobeSysParamEntity) {
+
+        this.rssidefine=wifiprobeSysParamEntity.getRssi();
+        this.n=wifiprobeSysParamEntity.getCacheNumber();
+        this.afterOpenClientDelayTime=wifiprobeSysParamEntity.getAfterOpenClientDelayTime();
+        this.beforeCloseClientDelayTime=wifiprobeSysParamEntity.getBeforeCloseClientDelayTime();
+
+        if (list.size() == 0) {
+            list = wifiBindK6PersonService.getWifiBindListPerson();
+        }
+        for (int i = 0; i < list.size(); i++) {
+            List<Integer> list1 = new ArrayList<Integer>();
+            map.put(list.get(i), list1);
+        }
+    }
+
+    /**
+     * 刷新缓存方法
+     */
+    public void refreshCache(WifiprobeSysParamEntity wifiprobeSysParamEntity) {
+        initList(wifiprobeSysParamEntity);
+    }
+
 
 
     @RequestMapping(value = "data/upload3", method = RequestMethod.POST)
     @ResponseBody
     public String dataupload3(HttpServletRequest request) {
-        if(map.size()==0){
+        if (map.size() == 0) {
             initList();
         }
 
@@ -163,8 +227,8 @@ public class WifiprobeController extends BaseController {
         }
         if (probeature || probebture) {
             //处理上报探测到的mac地址信息
-            logger.debug("data:"+data);
-            dataConvert(data,sta);
+//            logger.debug("data:" + data);
+            dataConvert(data, sta);
             return "ok";
         }
         if (type.equals("tag")) {
@@ -197,11 +261,11 @@ public class WifiprobeController extends BaseController {
         }
 
         Set<Map.Entry<String, String>> set = map.entrySet();
-        logger.debug("------------------------------");
+//        logger.debug("------------------------------");
         for (Map.Entry entry : set) {
 //            System.out.println(entry.getKey() + ":" + entry.getValue());
         }
-        logger.debug("------------------------------");
+//        logger.debug("------------------------------");
         return map;
     }
 
@@ -220,7 +284,7 @@ public class WifiprobeController extends BaseController {
     }
 
 
-    public void dataConvert(String data,String sta) {
+    public void dataConvert(String data, String sta) {
         String delimiter = "\1";
         int startp = data.indexOf(delimiter);
         if (startp != -1) {
@@ -240,7 +304,7 @@ public class WifiprobeController extends BaseController {
                                 //自己处理数据
 //                                logger.debug("mac = " + mac);
 //                                logger.debug("rssi = " + rssi);
-                                Runnable runnable=new Runnable() {
+                                Runnable runnable = new Runnable() {
                                     @Override
                                     public void run() {
                                         long timelong = System.currentTimeMillis();
@@ -248,7 +312,7 @@ public class WifiprobeController extends BaseController {
                                         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss SSS");
                                         String dstring = sdf.format(d);
 
-                                        WifiprobeUploadInfoEntity wifiprobeUploadInfoEntity=new WifiprobeUploadInfoEntity();
+                                        WifiprobeUploadInfoEntity wifiprobeUploadInfoEntity = new WifiprobeUploadInfoEntity();
                                         wifiprobeUploadInfoEntity.setProbeInfo(sta);
                                         wifiprobeUploadInfoEntity.setMac(mac);
                                         wifiprobeUploadInfoEntity.setRssi(rssi);
@@ -261,20 +325,23 @@ public class WifiprobeController extends BaseController {
                                 new Thread(runnable).start();
 
 
-
-
                                 for (String s : list) {
-                                    String[] strings=s.split("\\$");
+                                    String[] strings = s.split("\\$");
                                     if (mac.equals(strings[0])) {
-                                        logger.debug("当前人员："+s);
+                                        logger.debug("当前人员：" + s);
                                         logger.debug("mac = " + mac);
                                         logger.debug("rssi = " + rssi);
 //                                        List<Integer> rssiList=map.get(mac);
-                                        List<Integer> rssiList=new ArrayList<Integer>();
-                                        rssiList=map.get(s);
+                                        List<Integer> rssiList = new ArrayList<Integer>();
+                                        rssiList = map.get(s);
+
+
+
 
                                         rssiList.add(rssi);
-                                        logger.debug("rssiList大小："+rssiList.size());
+                                        logger.debug("rssiList大小：" + rssiList.size());
+
+
                                         if (rssiList.size() == n) {
                                             int rssiSum = 0;
 
@@ -282,19 +349,103 @@ public class WifiprobeController extends BaseController {
                                                 logger.debug("rssiList.get(x) = " + rssiList.get(x));
                                                 rssiSum += rssiList.get(x);
                                             }
+                                            rssiList.clear();//计算完了立马清空缓存
                                             int rssiAvg = rssiSum / n;
+
                                             logger.debug("rssiAvg = " + rssiAvg);
                                             if (rssiAvg < rssidefine) {
-                                                synchronized (this) {
+                                                synchronized (this) {//防止上报过快造成数据出现超出缓存情况
                                                     boolean b = OpenTheDoorClient.openTheDoor("192.168.111.2", 1);
 
                                                     if (b) {
-                                                        logger.debug(strings[1]+"门禁已经打开!");
+                                                        logger.debug(strings[1] + "门禁已经打开!");
+                                                        //等到指令系统完善后再正式启用，正式部署先不执行这段代码
+                                                        /*Runnable opendoor = new Runnable() {
+                                                            @Override
+                                                            public void run() {
+                                                                //1、发送指令给设备打开指定网址
+                                                                initSDK.initsdk();
+
+                                                                Instruction instruction=new Instruction();
+                                                                instruction.setMsgType("iotControllerMsg");
+
+                                                                List<InstructionMsgBody> instructionMsgBodyList=new ArrayList<InstructionMsgBody>();
+                                                                InstructionMsgBody instructionMsgBody0=new InstructionMsgBody();
+
+                                                                instructionMsgBody0.setInstructionType(InstructionType.DIRECT_DEFINE);
+                                                                instructionMsgBody0.setInstructionSeparator("#SEPARAL#");
+                                                                instructionMsgBody0.setInstructionContent("am force-stop com.android.browser");//打开Android自带浏览器并指定地址
+
+                                                                instructionMsgBodyList.add(instructionMsgBody0);
+
+                                                                InstructionMsgBody instructionMsgBody1=new InstructionMsgBody();
+                                                                instructionMsgBody1.setInstructionType(InstructionType.DIRECT_DEFINE);
+                                                                instructionMsgBody1.setInstructionSeparator("#SEPARAL#");
+                                                                instructionMsgBody1.setInstructionContent("am start -a android.intent.action.VIEW -d http://iot.kito.cn/jeecg/webpage/com/kito/dwr/welcomeVisitor.jsp");//打开Android自带浏览器并指定地址
+                                                                instructionMsgBodyList.add(instructionMsgBody1);
+
+                                                                instruction.setMsgBody(instructionMsgBodyList);
+
+                                                                try {
+                                                                    initSDK.pubControllerMessageToTopic("7Pi3WAFJhC6","/7Pi3WAFJhC6/kitotv02/get",instruction);
+                                                                } catch (JsonProcessingException e) {
+                                                                    e.printStackTrace();
+                                                                }
+
+                                                                //2、做打开客户显示端前合理延时
+                                                                try {
+                                                                    Thread.currentThread().sleep(afterOpenClientDelayTime);
+                                                                } catch (InterruptedException e) {
+                                                                    e.printStackTrace();
+                                                                }
+
+                                                                //3、开始推送相关信息到浏览器端
+                                                                ServerPushMessage serverPushMessage = new ServerPushMessage("showVisitorName");
+                                                                //服务端推送消息
+                                                                JSONObject jsonObject = new JSONObject();
+                                                                jsonObject.put("visitorname", strings[1]);
+//                                                                jsonObject.put("headimgurl",);
+//                                                                jsonObject.put("sex",);
+                                                                if(serverPushMessage==null){//找不到客户端就不推送
+                                                                    logger.debug("============开始推送给浏览器客户端==================");
+                                                                    serverPushMessage.sendMessageAuto(jsonObject.toString());
+                                                                    logger.debug("============推送完成===============================");
+                                                                }
+
+
+                                                                //4、做关闭客户显示端前合理延时
+                                                                try {
+                                                                    Thread.currentThread().sleep(beforeCloseClientDelayTime);
+                                                                } catch (InterruptedException e) {
+                                                                    e.printStackTrace();
+                                                                }
+
+                                                                //5、发送指令关闭客户单显示端
+
+
+                                                                instruction.setMsgType("iotControllerMsg");
+                                                                InstructionMsgBody instructionMsgBody3=new InstructionMsgBody();
+                                                                instructionMsgBody3.setInstructionType(InstructionType.DIRECT_DEFINE);
+                                                                instructionMsgBody3.setInstructionSeparator("#SEPARAL#");
+                                                                instructionMsgBody3.setInstructionContent("am force-stop com.android.browser");//打开Android自带浏览器并指定地址
+                                                                instructionMsgBodyList.clear();
+                                                                instructionMsgBodyList.add(instructionMsgBody3);
+                                                                instruction.setMsgBody(instructionMsgBodyList);
+                                                                try {
+                                                                    initSDK.pubControllerMessageToTopic("7Pi3WAFJhC6","/7Pi3WAFJhC6/kitotv02/get",instruction);
+                                                                } catch (JsonProcessingException e) {
+                                                                    e.printStackTrace();
+                                                                }
+
+                                                            }
+                                                        };
+
+                                                        new Thread(opendoor).start();*/
                                                     }
                                                 }
                                             }
 
-                                            rssiList.clear();
+
                                         }
                                     }
                                 }

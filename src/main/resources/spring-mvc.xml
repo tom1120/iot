@@ -216,8 +216,14 @@
 
 					</list>
 				</property>
+				<property name="excludeContainUrls">
+					<list>
+						<value>/dwr</value>
+					</list>
+				</property>
 			</bean>
 		</mvc:interceptor>
+
 	</mvc:interceptors>
 
 	<!-- 智能表单配置引入 -->

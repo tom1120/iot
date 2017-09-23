@@ -1,0 +1,22 @@
+<!DOCTYPE dwr PUBLIC
+        "-//GetAhead Limited//DTD Direct Web Remoting 3.0//EN"
+        "http://getahead.org/dwr/dwr30.dtd">
+
+<dwr>
+    <allow>
+        <!--基础消息推送-->
+        <create creator="new" javascript="MessagePush">
+            <param name="class" value="com.kito.util.dwr.MessagePush"/>
+        </create>
+
+        <create creator="new" javascript="ServerPushMessage">
+            <param name="class" value="com.kito.util.dwr.ServerPushMessage"/>
+        </create>
+<!--        <create creator="new" javascript="JDate">
+            <param name="class" value="java.util.Date"/>
+        </create>-->
+<!--        <create creator="new" javascript="Demo">
+            <param name="class" value="your.java.Bean"/>
+        </create>-->
+    </allow>
+</dwr>

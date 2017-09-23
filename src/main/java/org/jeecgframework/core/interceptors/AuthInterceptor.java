@@ -44,6 +44,19 @@ public class AuthInterceptor implements HandlerInterceptor {
 	private List<String> excludeUrls;
 	private static List<TSFunction> functionList;
 
+	/**
+	 * 包含匹配（请求链接包含该配置链接，就进行过滤处理）
+	 */
+	private List<String> excludeContainUrls;
+
+	public List<String> getExcludeContainUrls() {
+		return excludeContainUrls;
+	}
+
+	public void setExcludeContainUrls(List<String> excludeContainUrls) {
+		this.excludeContainUrls = excludeContainUrls;
+	}
+
 
 	public List<String> getExcludeUrls() {
 		return excludeUrls;
@@ -91,7 +104,9 @@ public class AuthInterceptor implements HandlerInterceptor {
 		if (excludeUrls.contains(requestPath)) {
 			//如果该请求不在拦截范围内，直接返回true
 			return true;
-		} else {
+		}else if(moHuContain(excludeContainUrls, requestPath)){
+			return true;
+		}else {
 			if (client != null && client.getUser()!=null ) {
 				if((!hasMenuAuth(request)) && !client.getUser().getUserName().equals("admin")){
 					 response.sendRedirect("loginController.do?noAuth");
@@ -277,6 +292,22 @@ public class AuthInterceptor implements HandlerInterceptor {
 //      update-end--Author:chenjin  Date:20160828 for：TASK #1324 【bug】Session超时后，重新登录页面显示在标签里,让它重新显示登录页面
 		//request.getRequestDispatcher("loginController.do?login").forward(request, response);
 		//update-start--Author:scott  Date:20160803 for：无登陆情况跳转登陆页
+	}
+
+
+	/**
+	 * 模糊匹配字符串
+	 * @param list
+	 * @param key
+	 * @return
+	 */
+	private boolean moHuContain(List<String> list,String key){
+		for(String str : list){
+			if(key.contains(str)){
+				return true;
+			}
+		}
+		return false;
 	}
 
 }

@@ -95,38 +95,47 @@ public class InitSDKTest {
 
 
     //发布控制消息到topic测试
-    public void pubControllerMessageToTopic() throws JsonProcessingException {
-        PubRequest request = new PubRequest();
-        request.setProductKey("7Pi3WAFJhC6");
 
-        Instruction instruction=new Instruction();
+    /**
+     *
+     * @param productKey
+     * @param topicFullName
+     * @param instruction
+     * @throws JsonProcessingException
+     */
+    public void pubControllerMessageToTopic(String productKey,String topicFullName,Instruction instruction) throws JsonProcessingException {
+        PubRequest request = new PubRequest();
+        request.setProductKey(productKey);
+
+/*        Instruction instruction=new Instruction();
         instruction.setMsgType("iotControllerMsg");
 
         List<InstructionMsgBody> instructionMsgBodyList=new ArrayList<InstructionMsgBody>();
         InstructionMsgBody instructionMsgBody0=new InstructionMsgBody();
 
-/*        instructionMsgBody0.setInstructionType(InstructionType.DIRECT_DEFINE);
+        instructionMsgBody0.setInstructionType(InstructionType.DIRECT_DEFINE);
         instructionMsgBody0.setInstructionSeparator("#SEPARAL#");
 //        instructionMsgBody0.setInstructionContent("am restart");//重启安卓系统
 //        instructionMsgBody0.setInstructionContent("am start -n com.android.browser/com.android.browser.BrowserActivity");//打开Android自带浏览器
-        instructionMsgBody0.setInstructionContent("am start -a android.intent.action.VIEW -d http://www.baidu.com");//打开Android自带浏览器并指定地址*/
+        instructionMsgBody0.setInstructionContent("am start -a android.intent.action.VIEW -d http://www.baidu.com");//打开Android自带浏览器并指定地址
 
         //app云更新
-        instructionMsgBody0.setInstructionType(InstructionType.APP_SERVICE);
-        instructionMsgBody0.setInstructionContent("cloudUpdate");
-        instructionMsgBody0.setInstructionSeparator("#SEPARAL#");
+//        instructionMsgBody0.setInstructionType(InstructionType.APP_SERVICE);
+//        instructionMsgBody0.setInstructionContent("cloudUpdate");
+//        instructionMsgBody0.setInstructionSeparator("#SEPARAL#");
 
 
 
         instructionMsgBodyList.add(instructionMsgBody0);
 
-        instruction.setMsgBody(instructionMsgBodyList);
+        instruction.setMsgBody(instructionMsgBodyList);*/
 
         ObjectMapper objectMapper= new ObjectMapper();;
         String jsonObject = objectMapper.writeValueAsString(instruction);
+        System.out.println("jsonObject = " + jsonObject);
 
         request.setMessageContent(Base64.encodeBase64String(jsonObject.getBytes()));
-        request.setTopicFullName("/7Pi3WAFJhC6/kitotv02/get");
+        request.setTopicFullName(topicFullName);
         request.setQos(0); //目前支持QoS0和QoS1
         PubResponse response = null;
         try {
@@ -169,11 +178,42 @@ public class InitSDKTest {
         initSDK.initsdk();
 //        initSDK.pubMessageToTopic();
 
+        Instruction instruction=new Instruction();
+        instruction.setMsgType("iotControllerMsg");
+
+        List<InstructionMsgBody> instructionMsgBodyList=new ArrayList<InstructionMsgBody>();
+        InstructionMsgBody instructionMsgBody0=new InstructionMsgBody();
+
+        instructionMsgBody0.setInstructionType(InstructionType.DIRECT_DEFINE);
+        instructionMsgBody0.setInstructionSeparator("#SEPARAL#");
+        instructionMsgBody0.setInstructionContent("am force-stop com.android.browser");//打开Android自带浏览器并指定地址
+
+        instructionMsgBodyList.add(instructionMsgBody0);
+
+
         try {
-            initSDK.pubControllerMessageToTopic();
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        InstructionMsgBody instructionMsgBody1=new InstructionMsgBody();
+
+        instructionMsgBody1.setInstructionType(InstructionType.DIRECT_DEFINE);
+        instructionMsgBody1.setInstructionSeparator("#SEPARAL#");
+        instructionMsgBody1.setInstructionContent("am start -a android.intent.action.VIEW -d http://iot.kito.cn/jeecg/webpage/com/kito/dwr/welcomeVisitor.jsp");//打开Android自带浏览器并指定地址
+
+        instructionMsgBodyList.add(instructionMsgBody1);
+
+        instruction.setMsgBody(instructionMsgBodyList);
+
+
+
+        try {
+            initSDK.pubControllerMessageToTopic("7Pi3WAFJhC6","/7Pi3WAFJhC6/kitotv02/get",instruction);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
+
 
 
 //        QueryDeviceResponse response=initSDK.queryDeviceInfoList(1,"7Pi3WAFJhC6",10);
