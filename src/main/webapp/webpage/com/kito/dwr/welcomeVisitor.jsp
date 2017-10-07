@@ -93,15 +93,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!--			<div id="headurl"><img id="img1"/></div>-->
       
 			<table border="0" cellspacing="" cellpadding="">
-				<tr>
+<%--				<tr>
 					<td></td>
 					<td><div id="headurl"><img id="img1"/></div></td>
 					
-				</tr>
+				</tr>--%>
 				<tr>
+					<td><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></td>
 					<td><div id="visitorname"></div></td>
-					<td><p>&nbsp;</p></td>
-					<td><div id="sex"></div></td>
+<%--					<td><p>&nbsp;</p></td>
+					<td><div id="sex"></div></td>--%>
 				</tr>
 			</table>
 			

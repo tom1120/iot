@@ -7786,69 +7786,74 @@ device_product_action_instruction_id</columns>
         <comment>备注</comment>
         <data-type>varchar(255)</data-type>
       </column>
-      <key id="2098" parent="154" name="PRIMARY">
+      <column id="2098" parent="154" name="action_type">
+        <comment>行为类型</comment>
+        <data-type>int(11)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <key id="2099" parent="154" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="2099" parent="155" name="ID_">
+      <column id="2100" parent="155" name="ID_">
         <mandatory>1</mandatory>
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="2100" parent="155" name="REV_">
+      <column id="2101" parent="155" name="REV_">
         <mandatory>1</mandatory>
         <data-type>int(1)</data-type>
         <default-expression>&apos;0&apos;</default-expression>
       </column>
-      <column id="2101" parent="155" name="NAME_">
+      <column id="2102" parent="155" name="NAME_">
         <mandatory>1</mandatory>
         <data-type>varchar(100)</data-type>
       </column>
-      <column id="2102" parent="155" name="TYPE_">
+      <column id="2103" parent="155" name="TYPE_">
         <data-type>varchar(64)</data-type>
       </column>
-      <column id="2103" parent="156" name="USER_ID_">
+      <column id="2104" parent="156" name="USER_ID_">
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="2104" parent="156" name="GROUP_ID_">
+      <column id="2105" parent="156" name="GROUP_ID_">
         <data-type>varchar(32)</data-type>
       </column>
-      <column id="2105" parent="157" name="ID_">
+      <column id="2106" parent="157" name="ID_">
         <mandatory>1</mandatory>
         <data-type>varchar(10)</data-type>
       </column>
-      <column id="2106" parent="157" name="REV_">
+      <column id="2107" parent="157" name="REV_">
         <mandatory>1</mandatory>
         <data-type>int(1)</data-type>
         <default-expression>&apos;0&apos;</default-expression>
       </column>
-      <column id="2107" parent="157" name="FIRST_">
+      <column id="2108" parent="157" name="FIRST_">
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="2108" parent="157" name="LAST_">
+      <column id="2109" parent="157" name="LAST_">
         <mandatory>1</mandatory>
         <data-type>char(0)</data-type>
         <default-expression>&apos;&apos;</default-expression>
       </column>
-      <column id="2109" parent="157" name="EMAIL_">
+      <column id="2110" parent="157" name="EMAIL_">
         <data-type>varchar(50)</data-type>
       </column>
-      <column id="2110" parent="157" name="PWD_">
+      <column id="2111" parent="157" name="PWD_">
         <data-type>varchar(100)</data-type>
       </column>
-      <column id="2111" parent="157" name="PICTURE_ID">
+      <column id="2112" parent="157" name="PICTURE_ID">
         <mandatory>1</mandatory>
         <data-type>char(0)</data-type>
         <default-expression>&apos;&apos;</default-expression>
       </column>
-      <argument id="2112" parent="158" name="tableName">
+      <argument id="2113" parent="158" name="tableName">
         <direction>IN</direction>
         <data-type>varchar(50)</data-type>
       </argument>
-      <argument id="2113" parent="158" name="dbFields">
+      <argument id="2114" parent="158" name="dbFields">
         <direction>IN</direction>
         <data-type>varchar(500)</data-type>
       </argument>
-      <argument id="2114" parent="158" name="whereSql">
+      <argument id="2115" parent="158" name="whereSql">
         <direction>IN</direction>
         <data-type>varchar(1000)</data-type>
       </argument>

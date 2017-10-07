@@ -156,6 +156,7 @@ public class DeviceProductActionInstructionController extends BaseController {
 	public ModelAndView addorupdate(DeviceProductActionInstructionEntity deviceProductActionInstruction, HttpServletRequest req) {
 		if (StringUtil.isNotEmpty(deviceProductActionInstruction.getId())) {
 			deviceProductActionInstruction = deviceProductActionInstructionService.getEntity(DeviceProductActionInstructionEntity.class, deviceProductActionInstruction.getId());
+			deviceProductActionInstruction.setActionInstructionJson(deviceProductActionInstruction.getActionInstructionJson().replaceAll("\"","&quot;"));
 			req.setAttribute("deviceProductActionInstructionPage", deviceProductActionInstruction);
 		}
 		return new ModelAndView("com/jeecg/wifiprobe/deviceProductActionInstruction");

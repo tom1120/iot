@@ -9,8 +9,18 @@ import java.util.List;
  * @date 2017-08-2017/8/18-16:02
  */
 public class Instruction {
+//    private MsgType msgType;
     private String msgType;
     private List<InstructionMsgBody> msgBody;
+
+//    public MsgType getMsgType() {
+//        return msgType;
+//    }
+//
+//    public void setMsgType(MsgType msgType) {
+//        this.msgType = msgType;
+//    }
+
 
     public String getMsgType() {
         return msgType;

@@ -5,6 +5,7 @@ package com.aliyun.iot;/**
 import com.aliyun.instruction.entity.Instruction;
 import com.aliyun.instruction.entity.InstructionMsgBody;
 import com.aliyun.instruction.entity.InstructionType;
+import com.aliyun.instruction.entity.MsgType;
 import com.aliyuncs.DefaultAcsClient;
 import com.aliyuncs.exceptions.ClientException;
 import com.aliyuncs.iot.model.v20170620.PubRequest;
@@ -17,6 +18,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jeecg.entity.aliyuniot.IotConfig;
 import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.validator.Msg;
 import org.jeecgframework.core.util.GetClassDir;
 import org.jeecgframework.core.util.PropertiesUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -179,6 +181,7 @@ public class InitSDKTest {
 //        initSDK.pubMessageToTopic();
 
         Instruction instruction=new Instruction();
+//        instruction.setMsgType(MsgType.iotControllerMsg);
         instruction.setMsgType("iotControllerMsg");
 
         List<InstructionMsgBody> instructionMsgBodyList=new ArrayList<InstructionMsgBody>();

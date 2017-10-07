@@ -36,6 +36,8 @@ public class DeviceProductActionInstructionEntity implements java.io.Serializabl
 	private java.lang.String actionInstructionJson;
 
 	private Set<DeviceActionEntity> deviceActionEntities;
+	/**行为类型*/
+	private Integer actionType;
 
 	/**备注*/
 	private java.lang.String note;
@@ -132,6 +134,15 @@ public class DeviceProductActionInstructionEntity implements java.io.Serializabl
 
 	public void setDeviceActionEntities(Set<DeviceActionEntity> deviceActionEntities) {
 		this.deviceActionEntities = deviceActionEntities;
+	}
+
+	@Column(name="action_type",nullable = false)
+	public Integer getActionType() {
+		return actionType;
+	}
+
+	public void setActionType(Integer actionType) {
+		this.actionType = actionType;
 	}
 
 	/**

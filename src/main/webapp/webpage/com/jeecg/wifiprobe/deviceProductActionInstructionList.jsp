@@ -9,6 +9,7 @@
    <t:dgCol title="行动key" field="actionKey"   width="120"></t:dgCol>
    <t:dgCol title="行动描述" field="actionDesc"   width="120"></t:dgCol>
    <t:dgCol title="行动指令json" field="actionInstructionJson"   width="120"></t:dgCol>
+      <t:dgCol title="行为类型" field="actionType" width="120"></t:dgCol>
    <t:dgCol title="备注" field="note"   width="120"></t:dgCol>
    <t:dgCol title="操作" field="opt" width="100"></t:dgCol>
    <t:dgDelOpt title="删除" url="deviceProductActionInstructionController.do?del&id={id}" urlclass="ace_button"  urlfont="fa-trash-o"/>

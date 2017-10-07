@@ -5,6 +5,8 @@ package com.jeecg.controller.wifiprobe;/**
 import com.aliyun.instruction.entity.Instruction;
 import com.aliyun.instruction.entity.InstructionMsgBody;
 import com.aliyun.instruction.entity.InstructionType;
+import com.aliyun.instruction.entity.MsgType;
+import com.aliyun.instruction.util.InstructionUtils;
 import com.aliyun.iot.InitSDK;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.jeecg.entity.wifiprobe.WifiprobeSysParamEntity;
@@ -16,6 +18,7 @@ import com.kito.util.dwr.ServerPushMessage;
 import com.kito.xfire.OpenTheDoorClient;
 import net.sf.json.JSONObject;
 import org.apache.commons.collections.map.HashedMap;
+import org.apache.commons.validator.Msg;
 import org.jeecgframework.core.common.controller.BaseController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,6 +38,8 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
+ * 目前一个门禁一个人一个缓存开门，如在此上报类实现多个门禁开门配置的话，那缓存就得更大些。
+ *
  * @author zhaoyi
  * @date 2017-09-2017/9/7-8:39
  */
@@ -325,9 +330,9 @@ public class WifiprobeController extends BaseController {
                                 new Thread(runnable).start();
 
 
-                                for (String s : list) {
+                                for (String s : list) {//循环判断开门mac地址白名单
                                     String[] strings = s.split("\\$");
-                                    if (mac.equals(strings[0])) {
+                                    if (mac.equals(strings[0])) {//在mac地址白名单中
                                         logger.debug("当前人员：" + s);
                                         logger.debug("mac = " + mac);
                                         logger.debug("rssi = " + rssi);
@@ -360,34 +365,36 @@ public class WifiprobeController extends BaseController {
                                                     if (b) {
                                                         logger.debug(strings[1] + "门禁已经打开!");
                                                         //等到指令系统完善后再正式启用，正式部署先不执行这段代码
-                                                        /*Runnable opendoor = new Runnable() {
+                                                        Runnable opendoor = new Runnable() {
                                                             @Override
                                                             public void run() {
                                                                 //1、发送指令给设备打开指定网址
                                                                 initSDK.initsdk();
 
-                                                                Instruction instruction=new Instruction();
-                                                                instruction.setMsgType("iotControllerMsg");
+
 
                                                                 List<InstructionMsgBody> instructionMsgBodyList=new ArrayList<InstructionMsgBody>();
                                                                 InstructionMsgBody instructionMsgBody0=new InstructionMsgBody();
 
                                                                 instructionMsgBody0.setInstructionType(InstructionType.DIRECT_DEFINE);
                                                                 instructionMsgBody0.setInstructionSeparator("#SEPARAL#");
-                                                                instructionMsgBody0.setInstructionContent("am force-stop com.android.browser");//打开Android自带浏览器并指定地址
+//                                                                instructionMsgBody0.setInstructionContent("am force-stop com.android.browser");//打开Android自带浏览器并指定地址
+                                                                instructionMsgBody0.setInstructionContent("taskkill /F /IM chrome.exe /T");//打开Windows自带浏览器并指定地址
 
                                                                 instructionMsgBodyList.add(instructionMsgBody0);
 
                                                                 InstructionMsgBody instructionMsgBody1=new InstructionMsgBody();
                                                                 instructionMsgBody1.setInstructionType(InstructionType.DIRECT_DEFINE);
                                                                 instructionMsgBody1.setInstructionSeparator("#SEPARAL#");
-                                                                instructionMsgBody1.setInstructionContent("am start -a android.intent.action.VIEW -d http://iot.kito.cn/jeecg/webpage/com/kito/dwr/welcomeVisitor.jsp");//打开Android自带浏览器并指定地址
+//                                                                instructionMsgBody1.setInstructionContent("am start -a android.intent.action.VIEW -d http://iot.kito.cn/jeecg/webpage/com/kito/dwr/welcomeVisitor.jsp");//打开Android自带浏览器并指定地址
+                                                                instructionMsgBody1.setInstructionContent("start C:\\Users\\Administrator\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe --kiosk http://cloud.kito.cn/jeecg/webpage/com/kito/dwr/welcomeVisitor.jsp");//打开Windows自带浏览器并指定地址
                                                                 instructionMsgBodyList.add(instructionMsgBody1);
 
-                                                                instruction.setMsgBody(instructionMsgBodyList);
+                                                                Instruction instruction=InstructionUtils.getIotControllerInstruction(instructionMsgBodyList);
 
                                                                 try {
-                                                                    initSDK.pubControllerMessageToTopic("7Pi3WAFJhC6","/7Pi3WAFJhC6/kitotv02/get",instruction);
+//                                                                    initSDK.pubControllerMessageToTopic("7Pi3WAFJhC6","/7Pi3WAFJhC6/kitotv01/get",instruction);
+                                                                    initSDK.pubControllerMessageToTopic("1Suqb1xdJg1","/1Suqb1xdJg1/kito_windowstv_000001/get",instruction);
                                                                 } catch (JsonProcessingException e) {
                                                                     e.printStackTrace();
                                                                 }
@@ -406,7 +413,7 @@ public class WifiprobeController extends BaseController {
                                                                 jsonObject.put("visitorname", strings[1]);
 //                                                                jsonObject.put("headimgurl",);
 //                                                                jsonObject.put("sex",);
-                                                                if(serverPushMessage==null){//找不到客户端就不推送
+                                                                if(serverPushMessage!=null){//找不到客户端就不推送
                                                                     logger.debug("============开始推送给浏览器客户端==================");
                                                                     serverPushMessage.sendMessageAuto(jsonObject.toString());
                                                                     logger.debug("============推送完成===============================");
@@ -423,16 +430,19 @@ public class WifiprobeController extends BaseController {
                                                                 //5、发送指令关闭客户单显示端
 
 
-                                                                instruction.setMsgType("iotControllerMsg");
                                                                 InstructionMsgBody instructionMsgBody3=new InstructionMsgBody();
                                                                 instructionMsgBody3.setInstructionType(InstructionType.DIRECT_DEFINE);
                                                                 instructionMsgBody3.setInstructionSeparator("#SEPARAL#");
-                                                                instructionMsgBody3.setInstructionContent("am force-stop com.android.browser");//打开Android自带浏览器并指定地址
+//                                                                instructionMsgBody3.setInstructionContent("am force-stop com.android.browser");//打开Android自带浏览器并指定地址
+                                                                instructionMsgBody3.setInstructionContent("taskkill /F /IM chrome.exe /T");//打开Windows自带浏览器并指定地址
+
                                                                 instructionMsgBodyList.clear();
                                                                 instructionMsgBodyList.add(instructionMsgBody3);
+
                                                                 instruction.setMsgBody(instructionMsgBodyList);
                                                                 try {
-                                                                    initSDK.pubControllerMessageToTopic("7Pi3WAFJhC6","/7Pi3WAFJhC6/kitotv02/get",instruction);
+//                                                                    initSDK.pubControllerMessageToTopic("7Pi3WAFJhC6","/7Pi3WAFJhC6/kitotv01/get",instruction);
+                                                                    initSDK.pubControllerMessageToTopic("1Suqb1xdJg1","/1Suqb1xdJg1/kito_windowstv_000001/get",instruction);
                                                                 } catch (JsonProcessingException e) {
                                                                     e.printStackTrace();
                                                                 }
@@ -440,7 +450,7 @@ public class WifiprobeController extends BaseController {
                                                             }
                                                         };
 
-                                                        new Thread(opendoor).start();*/
+                                                        new Thread(opendoor).start();
                                                     }
                                                 }
                                             }

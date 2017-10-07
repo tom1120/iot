@@ -53,11 +53,23 @@
 						</label>
 					</td>
 					<td class="value">
-<%--						<input class="inputxt" id="actionInstructionJson" name="actionInstructionJson"
-							   value="${deviceProductActionInstructionPage.actionInstructionJson}" datatype="*">--%>
-						<textarea class="" class="inputxt" id="actionInstructionJson" name="actionInstructionJson"
-								  value="${deviceProductActionInstructionPage.actionInstructionJson}" datatype="*">
+						<input class="inputxt" id="actionInstructionJson" name="actionInstructionJson"
+							   value="${deviceProductActionInstructionPage.actionInstructionJson}" datatype="*">
+<%--						<textarea class="" class="inputxt" id="actionInstructionJson" name="actionInstructionJson"
+								  value="${deviceProductActionInstructionPage.actionInstructionJson}" datatype="*">--%>
 						</textarea>
+						<span class="Validform_checktip"></span>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						<label class="Validform_label">
+							行为类型:
+						</label>
+					</td>
+					<td class="value">
+						<input class="inputxt" id="actionType" name="actionType"
+							   value="${deviceProductActionInstructionPage.actionType}" datatype="n">
 						<span class="Validform_checktip"></span>
 					</td>
 				</tr>

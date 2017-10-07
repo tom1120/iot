@@ -104,7 +104,8 @@ public class InitMNSClient implements ServletContextListener {
                 String clientVersion=payloadJson.getString("version");
                 //设备感知status/设备上报upload
                 if(messagetype.equals("upload")){
-                    if(clientVersion!=null){
+
+  /*                  if(clientVersion!=null){
                         //设备端与云端进行版本比较
                         String cloudVersion="1.0.0-SNAPSHOT";
                         if(clientVersion.equals(cloudVersion)){
@@ -133,7 +134,8 @@ public class InitMNSClient implements ServletContextListener {
 
                             }
                         }
-                    }
+                    }*/
+
 
                 }else if(messagetype.equals("status")){//设备状态上报
                     Runnable runnable=new Runnable() {

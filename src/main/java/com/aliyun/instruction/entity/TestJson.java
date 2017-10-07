@@ -17,6 +17,7 @@ public class TestJson {
     public static void main(String[] args) throws JsonProcessingException {
 
         Instruction instruction=new Instruction();
+//        instruction.setMsgType(MsgType.iotControllerMsg);
         instruction.setMsgType("iotControllerMsg");
 
         List<InstructionMsgBody> instructionMsgBodyList=new ArrayList<InstructionMsgBody>();
