@@ -7,6 +7,7 @@
    <t:dgCol title="编号" field="id" hidden="true"></t:dgCol>
    <t:dgCol title="缓存数" field="cacheNumber"   width="120"></t:dgCol>
    <t:dgCol title="临界强度值" field="rssi"   width="120"></t:dgCol>
+      <t:dgCol title="最小临界值" field="rssiMin"   width="120"></t:dgCol>
    <t:dgCol title="打开客户端后延时" field="afterOpenClientDelayTime"   width="120"></t:dgCol>
    <t:dgCol title="关闭客户端前延时" field="beforeCloseClientDelayTime"   width="120"></t:dgCol>
    <t:dgCol title="系统参数刷新时间" field="refreshTime"   width="120"></t:dgCol>

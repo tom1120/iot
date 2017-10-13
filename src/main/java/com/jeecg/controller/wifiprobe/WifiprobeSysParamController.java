@@ -65,6 +65,8 @@ public class WifiprobeSysParamController extends BaseController {
 	private SystemService systemService;
 	@Autowired
 	private Validator validator;
+	@Autowired
+	private WifiprobeController wifiprobeController;
 	
 
 
@@ -129,7 +131,6 @@ public class WifiprobeSysParamController extends BaseController {
 		wifiprobeSysParam = systemService.getEntity(WifiprobeSysParamEntity.class, wifiprobeSysParam.getId());
 		message = "wifi探针参数设置刷新成功";
 //		wifiprobeSysParamService.delete(wifiprobeSysParam);
-		WifiprobeController wifiprobeController=new WifiprobeController();
 		wifiprobeController.refreshCache(wifiprobeSysParam);
 		systemService.addLog(message, Globals.Log_Leavel_INFO, Globals.Log_Leavel_INFO);
 

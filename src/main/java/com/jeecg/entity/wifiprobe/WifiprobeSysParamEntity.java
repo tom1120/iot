@@ -35,6 +35,8 @@ public class WifiprobeSysParamEntity implements java.io.Serializable {
 	private java.lang.Integer cacheNumber;
 	/**临界强度值*/
 	private java.lang.Integer rssi;
+	/**最小临界值*/
+	private java.lang.Integer rssiMin;
 	/**打开客户端后延时*/
 	private java.lang.Integer afterOpenClientDelayTime;
 	/**关闭客户端前延时*/
@@ -97,6 +99,22 @@ public class WifiprobeSysParamEntity implements java.io.Serializable {
 	 */
 	public void setRssi(java.lang.Integer rssi){
 		this.rssi = rssi;
+	}
+	/**
+	 *方法: 取得java.lang.Integer
+	 *@return: java.lang.Integer  最小临界值
+	 */
+	@Column(name ="RSSI_MIN",nullable=false,precision=10,scale=0)
+	public java.lang.Integer getRssiMin(){
+		return this.rssiMin;
+	}
+
+	/**
+	 *方法: 设置java.lang.Integer
+	 *@param: java.lang.Integer  最小临界值
+	 */
+	public void setRssiMin(java.lang.Integer rssiMin){
+		this.rssiMin = rssiMin;
 	}
 	/**
 	 *方法: 取得java.lang.Integer
