@@ -20,6 +20,7 @@ import net.sf.json.JSONObject;
 import org.apache.commons.collections.map.HashedMap;
 import org.apache.commons.validator.Msg;
 import org.jeecgframework.core.common.controller.BaseController;
+import org.jeecgframework.core.util.ApplicationContextUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,6 +58,8 @@ public class WifiprobeController extends BaseController {
     private static int n = 2;//缓存数
 
     private static int rssidefine = 57;//强度值
+
+    private static int rssiMin = 57;//最小临界值
 
     private static long afterOpenClientDelayTime=8000;//打开客户端后延时
 
@@ -110,6 +113,7 @@ public class WifiprobeController extends BaseController {
         if(wifiprobeSysParamEntities.size()>0){
             WifiprobeSysParamEntity wifiprobeSysParamEntity=wifiprobeSysParamEntities.get(0);
             this.rssidefine=wifiprobeSysParamEntity.getRssi();
+            this.rssiMin=wifiprobeSysParamEntity.getRssiMin();
             this.n=wifiprobeSysParamEntity.getCacheNumber();
             this.afterOpenClientDelayTime=wifiprobeSysParamEntity.getAfterOpenClientDelayTime();
             this.beforeCloseClientDelayTime=wifiprobeSysParamEntity.getBeforeCloseClientDelayTime();
@@ -133,6 +137,7 @@ public class WifiprobeController extends BaseController {
     private void initList(WifiprobeSysParamEntity wifiprobeSysParamEntity) {
 
         this.rssidefine=wifiprobeSysParamEntity.getRssi();
+        this.rssiMin=wifiprobeSysParamEntity.getRssiMin();
         this.n=wifiprobeSysParamEntity.getCacheNumber();
         this.afterOpenClientDelayTime=wifiprobeSysParamEntity.getAfterOpenClientDelayTime();
         this.beforeCloseClientDelayTime=wifiprobeSysParamEntity.getBeforeCloseClientDelayTime();
@@ -329,6 +334,7 @@ public class WifiprobeController extends BaseController {
 
                                 new Thread(runnable).start();
 
+                                int n_min = 0;//计算超出最小临界值次数的计数器
 
                                 for (String s : list) {//循环判断开门mac地址白名单
                                     String[] strings = s.split("\\$");
@@ -340,122 +346,130 @@ public class WifiprobeController extends BaseController {
                                         List<Integer> rssiList = new ArrayList<Integer>();
                                         rssiList = map.get(s);
 
-
-
-
                                         rssiList.add(rssi);
                                         logger.debug("rssiList大小：" + rssiList.size());
 
+                                        if (rssi < rssiMin){
+                                            n_min++;
+                                        }
 
                                         if (rssiList.size() == n) {
-                                            int rssiSum = 0;
+                                            if ( n_min > 0 ) {
+                                                int rssiSum = 0;
 
-                                            for (int x = 0; x < n; x++) {
-                                                logger.debug("rssiList.get(x) = " + rssiList.get(x));
-                                                rssiSum += rssiList.get(x);
-                                            }
-                                            rssiList.clear();//计算完了立马清空缓存
-                                            int rssiAvg = rssiSum / n;
+                                                for (int x = 0; x < n; x++) {
+                                                    logger.debug("rssiList.get(x) = " + rssiList.get(x));
+                                                    rssiSum += rssiList.get(x);
+                                                }
 
-                                            logger.debug("rssiAvg = " + rssiAvg);
-                                            if (rssiAvg < rssidefine) {
-                                                synchronized (this) {//防止上报过快造成数据出现超出缓存情况
-                                                    boolean b = OpenTheDoorClient.openTheDoor("192.168.111.2", 1);
+                                                int rssiAvg = rssiSum / n;
 
-                                                    if (b) {
-                                                        logger.debug(strings[1] + "门禁已经打开!");
-                                                        //等到指令系统完善后再正式启用，正式部署先不执行这段代码
-                                                        Runnable opendoor = new Runnable() {
-                                                            @Override
-                                                            public void run() {
-                                                                //1、发送指令给设备打开指定网址
-                                                                initSDK.initsdk();
+                                                logger.debug("rssiAvg = " + rssiAvg);
+
+                                                if (rssiAvg < rssidefine) {
+                                                    rssiList.clear();//成功开门则清空缓存
+                                                    n_min = 0;//成功开门则计数器归零
+                                                    synchronized (this) {//防止上报过快造成数据出现超出缓存情况
+                                                        boolean b = OpenTheDoorClient.openTheDoor("192.168.111.2", 1);
+                                                        if (b) {
+                                                            logger.debug(strings[1] + "门禁已经打开!");
+                                                            //等到指令系统完善后再正式启用，正式部署先不执行这段代码
+                                                            Runnable opendoor = new Runnable() {
+                                                                @Override
+                                                                public void run() {
+                                                                    //1、发送指令给设备打开指定网址
+                                                                    initSDK.initsdk();
 
 
+                                                                    List<InstructionMsgBody> instructionMsgBodyList = new ArrayList<InstructionMsgBody>();
+                                                                    InstructionMsgBody instructionMsgBody0 = new InstructionMsgBody();
 
-                                                                List<InstructionMsgBody> instructionMsgBodyList=new ArrayList<InstructionMsgBody>();
-                                                                InstructionMsgBody instructionMsgBody0=new InstructionMsgBody();
-
-                                                                instructionMsgBody0.setInstructionType(InstructionType.DIRECT_DEFINE);
-                                                                instructionMsgBody0.setInstructionSeparator("#SEPARAL#");
+                                                                    instructionMsgBody0.setInstructionType(InstructionType.DIRECT_DEFINE);
+                                                                    instructionMsgBody0.setInstructionSeparator("#SEPARAL#");
 //                                                                instructionMsgBody0.setInstructionContent("am force-stop com.android.browser");//打开Android自带浏览器并指定地址
-                                                                instructionMsgBody0.setInstructionContent("taskkill /F /IM chrome.exe /T");//打开Windows自带浏览器并指定地址
+                                                                    instructionMsgBody0.setInstructionContent("taskkill /F /IM chrome.exe /T");//打开Windows自带浏览器并指定地址
 
-                                                                instructionMsgBodyList.add(instructionMsgBody0);
+                                                                    instructionMsgBodyList.add(instructionMsgBody0);
 
-                                                                InstructionMsgBody instructionMsgBody1=new InstructionMsgBody();
-                                                                instructionMsgBody1.setInstructionType(InstructionType.DIRECT_DEFINE);
-                                                                instructionMsgBody1.setInstructionSeparator("#SEPARAL#");
+                                                                    InstructionMsgBody instructionMsgBody1 = new InstructionMsgBody();
+                                                                    instructionMsgBody1.setInstructionType(InstructionType.DIRECT_DEFINE);
+                                                                    instructionMsgBody1.setInstructionSeparator("#SEPARAL#");
 //                                                                instructionMsgBody1.setInstructionContent("am start -a android.intent.action.VIEW -d http://iot.kito.cn/jeecg/webpage/com/kito/dwr/welcomeVisitor.jsp");//打开Android自带浏览器并指定地址
-                                                                instructionMsgBody1.setInstructionContent("start C:\\Users\\Administrator\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe --kiosk http://cloud.kito.cn/jeecg/webpage/com/kito/dwr/welcomeVisitor.jsp");//打开Windows自带浏览器并指定地址
-                                                                instructionMsgBodyList.add(instructionMsgBody1);
+                                                                    instructionMsgBody1.setInstructionContent("start C:\\Users\\Administrator\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe --kiosk http://cloud.kito.cn/jeecg/webpage/com/kito/dwr/welcomeVisitor.jsp");//打开Windows自带浏览器并指定地址
+                                                                    instructionMsgBodyList.add(instructionMsgBody1);
 
-                                                                Instruction instruction=InstructionUtils.getIotControllerInstruction(instructionMsgBodyList);
+                                                                    Instruction instruction = InstructionUtils.getIotControllerInstruction(instructionMsgBodyList);
 
-                                                                try {
+                                                                    try {
 //                                                                    initSDK.pubControllerMessageToTopic("7Pi3WAFJhC6","/7Pi3WAFJhC6/kitotv01/get",instruction);
-                                                                    initSDK.pubControllerMessageToTopic("1Suqb1xdJg1","/1Suqb1xdJg1/kito_windowstv_000001/get",instruction);
-                                                                } catch (JsonProcessingException e) {
-                                                                    e.printStackTrace();
-                                                                }
+                                                                        initSDK.pubControllerMessageToTopic("1Suqb1xdJg1", "/1Suqb1xdJg1/kito_windowstv_000001/get", instruction);
+                                                                    } catch (JsonProcessingException e) {
+                                                                        e.printStackTrace();
+                                                                    }
 
-                                                                //2、做打开客户显示端前合理延时
-                                                                try {
-                                                                    Thread.currentThread().sleep(afterOpenClientDelayTime);
-                                                                } catch (InterruptedException e) {
-                                                                    e.printStackTrace();
-                                                                }
+                                                                    //2、做打开客户显示端前合理延时
+                                                                    try {
+                                                                        Thread.currentThread().sleep(afterOpenClientDelayTime);
+                                                                    } catch (InterruptedException e) {
+                                                                        e.printStackTrace();
+                                                                    }
 
-                                                                //3、开始推送相关信息到浏览器端
-                                                                ServerPushMessage serverPushMessage = new ServerPushMessage("showVisitorName");
-                                                                //服务端推送消息
-                                                                JSONObject jsonObject = new JSONObject();
-                                                                jsonObject.put("visitorname", strings[1]);
+                                                                    //3、开始推送相关信息到浏览器端
+                                                                    ServerPushMessage serverPushMessage = new ServerPushMessage("showVisitorName");
+                                                                    //服务端推送消息
+                                                                    JSONObject jsonObject = new JSONObject();
+                                                                    jsonObject.put("visitorname", strings[1]);
 //                                                                jsonObject.put("headimgurl",);
 //                                                                jsonObject.put("sex",);
-                                                                if(serverPushMessage!=null){//找不到客户端就不推送
-                                                                    logger.debug("============开始推送给浏览器客户端==================");
-                                                                    serverPushMessage.sendMessageAuto(jsonObject.toString());
-                                                                    logger.debug("============推送完成===============================");
-                                                                }
+                                                                    if (serverPushMessage != null) {//找不到客户端就不推送
+                                                                        logger.debug("============开始推送给浏览器客户端==================");
+                                                                        serverPushMessage.sendMessageAuto(jsonObject.toString());
+                                                                        logger.debug("============推送完成===============================");
+                                                                    }
 
 
-                                                                //4、做关闭客户显示端前合理延时
-                                                                try {
-                                                                    Thread.currentThread().sleep(beforeCloseClientDelayTime);
-                                                                } catch (InterruptedException e) {
-                                                                    e.printStackTrace();
-                                                                }
+                                                                    //4、做关闭客户显示端前合理延时
+                                                                    try {
+                                                                        Thread.currentThread().sleep(beforeCloseClientDelayTime);
+                                                                    } catch (InterruptedException e) {
+                                                                        e.printStackTrace();
+                                                                    }
 
-                                                                //5、发送指令关闭客户单显示端
+                                                                    //5、发送指令关闭客户单显示端
 
 
-                                                                InstructionMsgBody instructionMsgBody3=new InstructionMsgBody();
-                                                                instructionMsgBody3.setInstructionType(InstructionType.DIRECT_DEFINE);
-                                                                instructionMsgBody3.setInstructionSeparator("#SEPARAL#");
+                                                                    InstructionMsgBody instructionMsgBody3 = new InstructionMsgBody();
+                                                                    instructionMsgBody3.setInstructionType(InstructionType.DIRECT_DEFINE);
+                                                                    instructionMsgBody3.setInstructionSeparator("#SEPARAL#");
 //                                                                instructionMsgBody3.setInstructionContent("am force-stop com.android.browser");//打开Android自带浏览器并指定地址
-                                                                instructionMsgBody3.setInstructionContent("taskkill /F /IM chrome.exe /T");//打开Windows自带浏览器并指定地址
+                                                                    instructionMsgBody3.setInstructionContent("taskkill /F /IM chrome.exe /T");//打开Windows自带浏览器并指定地址
 
-                                                                instructionMsgBodyList.clear();
-                                                                instructionMsgBodyList.add(instructionMsgBody3);
+                                                                    instructionMsgBodyList.clear();
+                                                                    instructionMsgBodyList.add(instructionMsgBody3);
 
-                                                                instruction.setMsgBody(instructionMsgBodyList);
-                                                                try {
+                                                                    instruction.setMsgBody(instructionMsgBodyList);
+                                                                    try {
 //                                                                    initSDK.pubControllerMessageToTopic("7Pi3WAFJhC6","/7Pi3WAFJhC6/kitotv01/get",instruction);
-                                                                    initSDK.pubControllerMessageToTopic("1Suqb1xdJg1","/1Suqb1xdJg1/kito_windowstv_000001/get",instruction);
-                                                                } catch (JsonProcessingException e) {
-                                                                    e.printStackTrace();
+                                                                        initSDK.pubControllerMessageToTopic("1Suqb1xdJg1", "/1Suqb1xdJg1/kito_windowstv_000001/get", instruction);
+                                                                    } catch (JsonProcessingException e) {
+                                                                        e.printStackTrace();
+                                                                    }
+
                                                                 }
+                                                            };
 
-                                                            }
-                                                        };
-
-                                                        new Thread(opendoor).start();
+                                                            new Thread(opendoor).start();
+                                                        }
                                                     }
                                                 }
+                                                else {
+                                                    rssiList.remove(0);//不满足平均值条件则删除第一个数据
+                                                }
+
                                             }
-
-
+                                            else {
+                                                rssiList.remove(0);//不满足最小临界值条件则删除第一个数据
+                                            }
                                         }
                                     }
                                 }

@@ -37,6 +37,18 @@
 				<tr>
 					<td align="right">
 						<label class="Validform_label">
+							最小临界值:
+						</label>
+					</td>
+					<td class="value">
+						<input class="inputxt" id="rssiMin" name="rssiMin"
+							   value="${wifiprobeSysParamPage.rssiMin}" datatype="n">
+						<span class="Validform_checktip"></span>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						<label class="Validform_label">
 							打开客户端后延时:
 						</label>
 					</td>

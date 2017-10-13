@@ -49,7 +49,7 @@ public class UdpServlet extends HttpServlet{
         }
     }
 
-    @Override
+   /* @Override
     public void init() throws ServletException {
         super.init();
         Runnable runnable=new Runnable() {
@@ -61,5 +61,5 @@ public class UdpServlet extends HttpServlet{
         logger.error("Udp线程启动！");
         new Thread(runnable).start();
 
-    }
+    }*/
 }
